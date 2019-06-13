@@ -48,7 +48,7 @@ medAnnIntImageMaskHelper::medAnnIntImageMaskHelper(medAnnotationInteractor * ann
 medAnnIntImageMaskHelper::~medAnnIntImageMaskHelper()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool medAnnIntImageMaskHelper::addAnnotation( medAnnotationData * annData )

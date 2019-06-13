@@ -151,7 +151,7 @@ void medDatabaseControllerPrivate::buildMetaDataLookup()
 
 }
 
-medDatabaseController * medDatabaseController::s_instance = NULL;
+medDatabaseController * medDatabaseController::s_instance = nullptr;
 
 medDatabaseController* medDatabaseController::instance() {
     if ( ! s_instance) {

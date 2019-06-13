@@ -72,7 +72,7 @@ medApplication::medApplication(int & argc, char**argv) :
     QtSingleApplication(argc,argv),
     d(new medApplicationPrivate)
 {
-    d->mainWindow = NULL;
+    d->mainWindow = nullptr;
 
     this->setApplicationName("medInria");
     dtkDebug() << "Version:" << MEDINRIA_VERSION;
@@ -101,7 +101,7 @@ medApplication::medApplication(int & argc, char**argv) :
 medApplication::~medApplication(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool medApplication::event(QEvent *event)

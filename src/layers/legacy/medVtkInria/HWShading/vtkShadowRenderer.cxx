@@ -77,10 +77,10 @@ vtkShadowRenderer::vtkShadowRenderer()
 vtkShadowRenderer::~vtkShadowRenderer()
 {
   this->ShadowMappingHelper->Delete();
-  this->ShadowMappingHelper = NULL;
+  this->ShadowMappingHelper = nullptr;
 
   this->ShadowMappingSP->Delete();
-  this->ShadowMappingSP = NULL;
+  this->ShadowMappingSP = nullptr;
 }
 
 void vtkShadowRenderer::DeviceRender()
@@ -178,7 +178,7 @@ void vtkShadowRenderer::RegenerateShadowMap()
 
   //this->ShadowMappingHelper->RegenerateShadowMap(this);
   this->ShadowMappingHelper->PreShadowMapRender(light_cam);
-  light_cam->Delete(); light_cam = NULL;
+  light_cam->Delete(); light_cam = nullptr;
   this->UpdateGeometry();
   this->ShadowMappingHelper->PostShadowMapRender();
 
@@ -283,9 +283,9 @@ void vtkShadowRenderer::RenderWithShadows()
   glMultMatrixd(inverseViewTransformMatrix->Element[0]);
 
   inverseViewTransformMatrix->Delete();
-  inverseViewTransformMatrix = NULL;
-  viewTransformMatrix = NULL;
-  cam = NULL;
+  inverseViewTransformMatrix = nullptr;
+  viewTransformMatrix = nullptr;
+  cam = nullptr;
 
   // set matrix mode for actors
   glMatrixMode(GL_MODELVIEW);

@@ -28,7 +28,7 @@ class MEDCORE_EXPORT medAbstractMedianFilterProcess: public medAbstractSingleFil
     Q_OBJECT
 
 public:
-    medAbstractMedianFilterProcess(QObject *parent = NULL);
+    medAbstractMedianFilterProcess(QObject *parent = nullptr);
     virtual ~medAbstractMedianFilterProcess();
 
     medIntParameter *radius();

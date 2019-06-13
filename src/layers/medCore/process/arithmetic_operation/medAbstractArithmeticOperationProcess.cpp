@@ -27,9 +27,9 @@ public:
 medAbstractArithmeticOperationProcess::medAbstractArithmeticOperationProcess(QObject *parent): medAbstractProcess(parent),
     d(new medAbstractArithmeticOperationProcessPrivate)
 {
-    d->input1 = NULL;
-    d->input2 = NULL;
-    d->output = NULL;
+    d->input1 = nullptr;
+    d->input2 = nullptr;
+    d->output = nullptr;
 }
 
 medAbstractArithmeticOperationProcess::~medAbstractArithmeticOperationProcess()

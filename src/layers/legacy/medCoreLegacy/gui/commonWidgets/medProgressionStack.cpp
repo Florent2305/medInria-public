@@ -65,7 +65,7 @@ medProgressionStack::~medProgressionStack(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 QSize medProgressionStack::sizeHint(void) const

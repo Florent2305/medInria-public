@@ -104,7 +104,7 @@ bool medViewEventFilter::eventFilter( QObject *obj, QEvent *event )
 {
     FilterObjToViewType::const_iterator it( m_filterObjToView.find( obj ) );
 
-    medAbstractView * view = NULL;
+    medAbstractView * view = nullptr;
     if ( it == m_filterObjToView.end()) {
         dtkWarn() <<  __FILE__ << __LINE__ << " : Filtering events on unknown QObject";
         return false;
@@ -156,7 +156,7 @@ bool medViewEventFilter::eventFilter( QObject *obj, QEvent *event )
 void medViewEventFilter::installOnView( medAbstractView * view )
 {
     if ( !view ) {
-        dtkWarn() << "medViewEventFilter::installOnView : View is NULL";
+        dtkWarn() << "medViewEventFilter::installOnView : View is nullptr";
         return;
     }
 

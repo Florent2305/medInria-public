@@ -28,7 +28,7 @@ class MEDCORE_EXPORT  medAbstractSingleFilterOperationProcess : public medAbstra
     Q_OBJECT
 
 public:
-    medAbstractSingleFilterOperationProcess(QObject *parent = NULL);
+    medAbstractSingleFilterOperationProcess(QObject *parent = nullptr);
     virtual ~medAbstractSingleFilterOperationProcess();
 
     void setInput(medAbstractImageData* data);

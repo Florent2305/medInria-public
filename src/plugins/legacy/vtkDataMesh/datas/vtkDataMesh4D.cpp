@@ -40,12 +40,12 @@ public:
 vtkDataMesh4D::vtkDataMesh4D(): medAbstractMeshData(), d (new vtkDataMesh4DPrivate)
 {
   this->moveToThread(QApplication::instance()->thread());
-  d->meshsequence = NULL;
+  d->meshsequence = nullptr;
 }
 vtkDataMesh4D::~vtkDataMesh4D()
 {
   delete d;
-  d = NULL;
+  d = nullptr;
 }
 
 bool vtkDataMesh4D::registered()

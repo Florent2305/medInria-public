@@ -26,7 +26,7 @@ QWidget* medMultiplyFilterProcessNode::editor()
 {
     medAbstractProcess* process = this->object();
     if (!process)
-        return NULL;
+        return nullptr;
     medAbstractProcessPresenter* presenter = medWidgets::singleFilterOperation::multiplyFilter::presenterFactory().create(process);
     return presenter->buildToolBoxWidget();
 }

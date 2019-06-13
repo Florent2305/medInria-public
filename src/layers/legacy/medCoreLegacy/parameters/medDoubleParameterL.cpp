@@ -58,9 +58,9 @@ medDoubleParameterL::medDoubleParameterL(QString name, QObject *parent):
     d->min = 0;
     d->max = 0;
     m_value = 0;
-    d->spinBox = NULL;
-    d->slider = NULL;
-    d->valueLabel = NULL;
+    d->spinBox = nullptr;
+    d->slider = nullptr;
+    d->valueLabel = nullptr;
     d->step = 0.1;
     d->decimals = -1;
 }
@@ -212,13 +212,13 @@ QWidget* medDoubleParameterL::getWidget()
 void medDoubleParameterL::removeInternSpinBox()
 {
     this->removeFromInternWidgets(d->spinBox);
-    d->spinBox = NULL;
+    d->spinBox = nullptr;
 }
 
 void medDoubleParameterL::removeInternSlider()
 {
     this->removeFromInternWidgets(d->slider);
-    d->slider = NULL;
+    d->slider = nullptr;
 }
 
 int medDoubleParameterL::convertToInt(double value)

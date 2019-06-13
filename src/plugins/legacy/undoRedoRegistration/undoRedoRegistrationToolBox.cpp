@@ -88,7 +88,7 @@ undoRedoRegistrationToolBox::~undoRedoRegistrationToolBox(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool undoRedoRegistrationToolBox::registered(void)

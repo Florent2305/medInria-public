@@ -82,8 +82,8 @@ medVtkView::medVtkView(QObject* parent): medAbstractImageView(parent),
     d(new medVtkViewPrivate)
 {
     // setup initial internal state of the view
-    d->currentView = NULL;
-    d->interactorStyle2D = NULL;
+    d->currentView = nullptr;
+    d->interactorStyle2D = nullptr;
 
     // construct render window
         // renWin

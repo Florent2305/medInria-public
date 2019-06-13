@@ -55,17 +55,17 @@ public:
   virtual void SetSourceText (const char* _arg)
     {
     vtkDebugMacro(<< this->GetClassName() << " (" << this << "): setting SourceText to " << (_arg?_arg:"(null)") );
-    if ( this->SourceText == NULL && _arg == NULL) { return;}
+    if ( this->SourceText == nullptr && _arg == nullptr) { return;}
     if ( this->SourceText && _arg && (!strcmp(this->SourceText,_arg))) { return;}
     if (this->SourceText) { delete [] this->SourceText; }
     if (_arg)
       {
       this->SourceText = new char[strlen(_arg)+1];
-      strcpy(this->SourceText,_arg);
+      strncpy_s(this->SourceText, strlen(_arg) + 1, _arg, strlen(_arg));
       }
     else
       {
-      this->SourceText = NULL;
+      this->SourceText = nullptr;
       }
     this->Modified();
     } 

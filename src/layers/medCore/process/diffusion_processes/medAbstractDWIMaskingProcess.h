@@ -27,7 +27,7 @@ class MEDCORE_EXPORT medAbstractDWIMaskingProcess : public medAbstractProcess
     Q_OBJECT
 
 public:
-    medAbstractDWIMaskingProcess(QObject *parent = NULL);
+    medAbstractDWIMaskingProcess(QObject *parent = nullptr);
     virtual ~medAbstractDWIMaskingProcess();
 
     virtual void setInput(medAbstractImageData* data);

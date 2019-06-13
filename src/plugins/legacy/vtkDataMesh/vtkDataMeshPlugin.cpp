@@ -59,7 +59,7 @@ vtkDataMeshPlugin::vtkDataMeshPlugin(QObject *parent) : dtkPlugin(parent), d(new
 vtkDataMeshPlugin::~vtkDataMeshPlugin()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool vtkDataMeshPlugin::initialize()

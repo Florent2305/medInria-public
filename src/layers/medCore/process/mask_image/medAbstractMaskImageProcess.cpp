@@ -27,9 +27,9 @@ public:
 medAbstractMaskImageProcess::medAbstractMaskImageProcess(QObject *parent)
     : medAbstractProcess(parent), d(new medAbstractMaskImageProcessPrivate)
 {
-    d->input = NULL;
-    d->output = NULL;
-    d->mask = NULL;
+    d->input = nullptr;
+    d->output = nullptr;
+    d->mask = nullptr;
 }
 
 medAbstractMaskImageProcess::~medAbstractMaskImageProcess()

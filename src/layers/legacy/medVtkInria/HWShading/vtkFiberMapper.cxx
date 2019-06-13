@@ -114,9 +114,9 @@ vtkFiberMapper::vtkFiberMapper()
 
 vtkFiberMapper::~vtkFiberMapper()
 {
-  this->ShaderProgram->Delete();       this->ShaderProgram       = NULL;
-  this->ShaderProgramShadow->Delete(); this->ShaderProgramShadow = NULL;
-  this->ShadowMappingHelper->Delete(); this->ShadowMappingHelper = NULL;
+  this->ShaderProgram->Delete();       this->ShaderProgram       = nullptr;
+  this->ShaderProgramShadow->Delete(); this->ShaderProgramShadow = nullptr;
+  this->ShadowMappingHelper->Delete(); this->ShadowMappingHelper = nullptr;
 }
 
 void vtkFiberMapper::Render(vtkRenderer* aren, vtkActor* act)
@@ -142,13 +142,13 @@ void vtkFiberMapper::Render(vtkRenderer* aren, vtkActor* act)
   vtkOpenGLRenderer *ren = (vtkOpenGLRenderer *)aren;
   vtkPolyData* input = this->GetInput();
 
-  if (ren == NULL)
+  if (ren == nullptr)
     {
     vtkErrorMacro(<<"Trying to render with renderer NULL. Aborting.");
     return;
     }
 
-  if (input == NULL)
+  if (input == nullptr)
     {
     vtkWarningMacro(<<"Input is NULL. Nothing to render.");
     return;
@@ -266,7 +266,7 @@ void vtkFiberMapper::DrawLines(vtkPoints* points, vtkCellArray* lineStrips,
                 vtkRenderer* ren, int &noAbort)
 {
   vtkDebugMacro(<<"Drawing lines...");
-  assert(lineStrips != NULL);
+  assert(lineStrips != nullptr);
 
   int i; int j;
   vtkIdType *pts = 0;
@@ -278,7 +278,7 @@ void vtkFiberMapper::DrawLines(vtkPoints* points, vtkCellArray* lineStrips,
   vtkDebugMacro(<<"Drawing "<<totalCells<<" line strips.");
 
   double* previousPoint = new double[3];
-  double* currentPoint = NULL;
+  double* currentPoint = nullptr;
 
   //unsigned short countMax = totalCells/103;
 
@@ -388,7 +388,7 @@ void vtkFiberMapper::DrawLines(vtkPoints* points, vtkCellArray* lineStrips,
 
     ++cellNum;
     } // for count
-    delete[] tangent; tangent = NULL;
+    delete[] tangent; tangent = nullptr;
 } // DrawLines
 
 void vtkFiberMapper::RegenerateShadowMap(vtkPoints* points, vtkCellArray* lineStrips,
@@ -397,9 +397,9 @@ void vtkFiberMapper::RegenerateShadowMap(vtkPoints* points, vtkCellArray* lineSt
   vtkDebugMacro(<<"Create camera from light");
 
   vtkCamera* light_cam = vtkCamera::New();
-  assert(ren != NULL);
+  assert(ren != nullptr);
   vtkCamera* view_cam = ren->GetActiveCamera();
-  assert(view_cam != NULL);
+  assert(view_cam != nullptr);
 
   // Light camera follows the regular camera
   double vec[3];
@@ -423,7 +423,7 @@ void vtkFiberMapper::RegenerateShadowMap(vtkPoints* points, vtkCellArray* lineSt
 //  glDepthFunc(GL_LESS);
 
   this->ShadowMappingHelper->PreShadowMapRender(light_cam);
-  light_cam->Delete(); light_cam = NULL;
+  light_cam->Delete(); light_cam = nullptr;
   //this->UpdateGeometry();
   //this->DrawLines();
 

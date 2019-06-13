@@ -42,7 +42,7 @@ medSettingsManager::medSettingsManager( void ): d(new medSettingsManagerPrivate)
 medSettingsManager::~medSettingsManager( void )
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**
@@ -127,4 +127,4 @@ void medSettingsManager::remove (const QString & section, const QString & key)
     d->settings.endGroup();
 }
 
-medSettingsManager *medSettingsManager::s_instance = NULL;
+medSettingsManager *medSettingsManager::s_instance = nullptr;

@@ -46,7 +46,7 @@ itkDataSHImagePlugin::itkDataSHImagePlugin(QObject *parent): dtkPlugin(parent),d
 
 itkDataSHImagePlugin::~itkDataSHImagePlugin() {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool itkDataSHImagePlugin::initialize() {

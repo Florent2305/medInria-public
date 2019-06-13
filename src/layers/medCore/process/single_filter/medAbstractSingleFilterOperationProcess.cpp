@@ -28,8 +28,8 @@ public:
 medAbstractSingleFilterOperationProcess::medAbstractSingleFilterOperationProcess(QObject *parent): medAbstractProcess(parent),
     d(new medAbstractSingleFilterOperationProcessPrivate)
 {
-    d->input = NULL;
-    d->output = NULL;
+    d->input = nullptr;
+    d->output = nullptr;
 }
 
 medAbstractSingleFilterOperationProcess::~medAbstractSingleFilterOperationProcess()

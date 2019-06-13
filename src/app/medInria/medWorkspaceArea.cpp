@@ -55,7 +55,7 @@
 
 medWorkspaceArea::medWorkspaceArea(QWidget *parent) : QWidget(parent), d(new medWorkspaceAreaPrivate)
 {
-    d->selectionToolBox = NULL;
+    d->selectionToolBox = nullptr;
 
     // -- Internal logic
     d->currentWorkspaceName = "";
@@ -120,7 +120,7 @@ medWorkspaceArea::~medWorkspaceArea(void)
 {
     medSettingsManager::instance()->setValue("workspaceAreaSplitter", "state", d->splitter->saveState());
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QPixmap medWorkspaceArea::grabScreenshot()
@@ -216,7 +216,7 @@ void medWorkspaceArea::setupWorkspace(const QString &id)
     if (d->workspaces.contains(id))
         return;
 
-    medAbstractWorkspaceLegacy *workspace = NULL;
+    medAbstractWorkspaceLegacy *workspace = nullptr;
 
     workspace = medWorkspaceFactory::instance()->createWorkspace(id, this);
     if (workspace)

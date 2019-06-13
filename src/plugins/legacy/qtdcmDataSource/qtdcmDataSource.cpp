@@ -74,8 +74,8 @@ qtdcmDataSourcePrivate::~qtdcmDataSourcePrivate()
 
 qtdcmDataSource::qtdcmDataSource() : medAbstractDataSource(), d ( new qtdcmDataSourcePrivate )
 {
-    d->mainWidget = NULL;
-    d->rightWidget = NULL;
+    d->mainWidget = nullptr;
+    d->rightWidget = nullptr;
 
     // Create gui for the right Widget;
     d->localDicomSettingsWidget = new QtDcmLocalDicomSettingsWidget;
@@ -114,7 +114,7 @@ qtdcmDataSource::qtdcmDataSource() : medAbstractDataSource(), d ( new qtdcmDataS
 qtdcmDataSource::~qtdcmDataSource()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool qtdcmDataSource::registered()

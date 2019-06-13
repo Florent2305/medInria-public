@@ -26,7 +26,7 @@ class MEDPACS_EXPORT medPacsWidget : public QTreeWidget
     Q_OBJECT
 
 public:
-     medPacsWidget(QWidget* parent = NULL);
+     medPacsWidget(QWidget* parent = nullptr);
     ~medPacsWidget();
     
     /*

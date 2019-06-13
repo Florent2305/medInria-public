@@ -41,7 +41,7 @@ medDatabaseReader::~medDatabaseReader()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 medAbstractData* medDatabaseReader::run()
@@ -151,7 +151,7 @@ medAbstractData* medDatabaseReader::run()
             if ( !fileinfo.exists() )
             {
                 emit failure ( this );
-                return NULL;
+                return nullptr;
             }
 
             filenames << filename;
@@ -286,7 +286,7 @@ medAbstractData *medDatabaseReader::readFile( QString filename )
 
 medAbstractData *medDatabaseReader::readFile( const QStringList filenames )
 {
-    medAbstractData *medData = NULL;
+    medAbstractData *medData = nullptr;
 
     QList<QString> readers = medAbstractDataFactory::instance()->readers();
 

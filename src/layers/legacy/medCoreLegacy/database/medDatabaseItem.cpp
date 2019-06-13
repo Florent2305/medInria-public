@@ -38,7 +38,7 @@ medDatabaseItem::~medDatabaseItem(void)
     qDeleteAll(d->childItems);
     d->childItems.clear();
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 medAbstractDatabaseItem *medDatabaseItem::child(int row)

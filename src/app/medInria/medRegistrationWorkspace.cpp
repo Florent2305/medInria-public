@@ -74,7 +74,7 @@ medRegistrationWorkspace::medRegistrationWorkspace(QWidget *parent) : medAbstrac
 medRegistrationWorkspace::~medRegistrationWorkspace(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medRegistrationWorkspace::setupTabbedViewContainer()
@@ -151,7 +151,7 @@ void medRegistrationWorkspace::updateFromMovingContainer()
 
         }
 
-        d->registrationToolBox->setMovingData(NULL);
+        d->registrationToolBox->setMovingData(nullptr);
         return;
     }
 
@@ -210,7 +210,7 @@ void medRegistrationWorkspace::updateFromFixedContainer()
 
         }
 
-        d->registrationToolBox->setFixedData(NULL);
+        d->registrationToolBox->setFixedData(nullptr);
         return;
     }
 
@@ -307,5 +307,5 @@ void medRegistrationWorkspace::updateFromRegistrationSuccess(medAbstractData *ou
 
 void medRegistrationWorkspace::removeSlectorInternToolBox()
 {
-    d->registrationToolBox = NULL;
+    d->registrationToolBox = nullptr;
 }

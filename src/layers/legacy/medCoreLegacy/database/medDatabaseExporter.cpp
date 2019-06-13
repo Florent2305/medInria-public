@@ -36,7 +36,7 @@ medDatabaseExporter::~medDatabaseExporter(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 /**

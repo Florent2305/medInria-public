@@ -40,7 +40,7 @@ medDropSite::~medDropSite(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 QSize medDropSite::sizeHint(void) const

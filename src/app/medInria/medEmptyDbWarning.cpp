@@ -52,7 +52,7 @@ medEmptyDbWarning::medEmptyDbWarning(QWidget *parent) :
 medEmptyDbWarning::~medEmptyDbWarning()
 {
     delete d;
-    d= NULL;
+    d= nullptr;
 }
 
 void medEmptyDbWarning::accept()

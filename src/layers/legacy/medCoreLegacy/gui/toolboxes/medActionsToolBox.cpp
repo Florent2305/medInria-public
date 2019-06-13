@@ -183,9 +183,9 @@ medActionsToolBox::medActionsToolBox( QWidget *parent /*= 0*/, bool FILE_SYSTEM 
 medActionsToolBox::~medActionsToolBox()
 {
 //    delete d->itemToActions;
-//    d->itemToActions = NULL;
+//    d->itemToActions = nullptr;
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**

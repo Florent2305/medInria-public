@@ -70,7 +70,7 @@ medDatabaseRemover::~medDatabaseRemover()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 void medDatabaseRemover::internalRun()

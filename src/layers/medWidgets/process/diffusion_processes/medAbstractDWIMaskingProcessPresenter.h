@@ -31,7 +31,7 @@ class MEDWIDGETS_EXPORT medAbstractDWIMaskingProcessPresenter : public medAbstra
     Q_OBJECT
 
 public:
-    medAbstractDWIMaskingProcessPresenter(medAbstractDWIMaskingProcess *parent = NULL);
+    medAbstractDWIMaskingProcessPresenter(medAbstractDWIMaskingProcess *parent = nullptr);
     virtual ~medAbstractDWIMaskingProcessPresenter();
 
     void setUseRunControls(bool useRun);

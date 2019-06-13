@@ -144,7 +144,7 @@ medDiffusionSelectorToolBox::medDiffusionSelectorToolBox(QWidget *parent, Select
 medDiffusionSelectorToolBox::~medDiffusionSelectorToolBox(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medDiffusionSelectorToolBox::chooseProcess(int id)

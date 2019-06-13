@@ -40,7 +40,7 @@ itkProcessRegistrationDiffeomorphicDemonsPlugin::~itkProcessRegistrationDiffeomo
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool itkProcessRegistrationDiffeomorphicDemonsPlugin::initialize()

@@ -29,8 +29,8 @@ public:
 medAbstractMorphomathOperationProcess::medAbstractMorphomathOperationProcess(QObject *parent)
     : medAbstractProcess(parent), d(new medAbstractMorphomathOperationProcessPrivate)
 {
-    d->input = NULL;
-    d->output = NULL;
+    d->input = nullptr;
+    d->output = nullptr;
 
     d->kernelRadius = new medIntParameter("kernel_radius", this);
     d->kernelRadius->setCaption("Kernel radius");

@@ -42,7 +42,7 @@ void medStringParameter::setValue( QString const& value)
     {
        int i = -1;
        QString tmpVal = value;
-       if (d->poValidator == NULL || d->poValidator->validate(tmpVal, i) == QValidator::Acceptable)
+       if (d->poValidator == nullptr || d->poValidator->validate(tmpVal, i) == QValidator::Acceptable)
        {
           d->value = value;
           emit valueChanged(d->value);

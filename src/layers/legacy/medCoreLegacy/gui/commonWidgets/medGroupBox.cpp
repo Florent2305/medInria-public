@@ -35,7 +35,7 @@ medGroupBox::medGroupBox(QWidget *parent) :
 medGroupBox::~medGroupBox()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool medGroupBox::isCollapsible()

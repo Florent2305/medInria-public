@@ -70,9 +70,9 @@ medTimeLineParameterL::medTimeLineParameterL(QString name, QObject *parent):
     medAbstractGroupParameterL(name, parent),
     d(new medTimeLineParameterLPrivate)
 {
-    d->widget = NULL;
-    d->frameLabel = NULL;
-    d->numberOfFramesLabel = NULL;
+    d->widget = nullptr;
+    d->frameLabel = nullptr;
+    d->numberOfFramesLabel = nullptr;
 
     d->speedFactorParameter = new medIntParameterL("Speed", this);
     d->speedFactorParameter->setRange(1,5000);
@@ -375,7 +375,7 @@ void medTimeLineParameterL::updateNumberOfFrameLabel()
 void medTimeLineParameterL::removeInternWidget()
 {
     this->removeFromInternWidgets(d->widget);
-    d->widget = NULL;
+    d->widget = nullptr;
 }
 
 void medTimeLineParameterL::trigger()

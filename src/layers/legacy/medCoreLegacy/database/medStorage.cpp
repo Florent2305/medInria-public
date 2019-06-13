@@ -22,7 +22,7 @@
 
 #include <medSettingsManager.h>
 
-QString medStorage::m_dataLocation = NULL;
+QString medStorage::m_dataLocation = nullptr;
 
 medStorage::medStorage(void)
 {
@@ -47,7 +47,7 @@ QString medStorage::dataLocation(void)
     QString vDbLoc;
 
     // first check if someone set the data location, then try to pull the actual database
-    if (m_dataLocation != NULL)
+    if (m_dataLocation != nullptr)
     {
         return m_dataLocation;
     }
@@ -83,7 +83,7 @@ QString medStorage::configLocation(void)
 void medStorage::setDataLocation( QString newLocation)
 {
     // return without writing if the location ist the same
-    if(m_dataLocation != NULL)
+    if(m_dataLocation != nullptr)
         if(m_dataLocation.compare(newLocation) == 0)
             return;
 

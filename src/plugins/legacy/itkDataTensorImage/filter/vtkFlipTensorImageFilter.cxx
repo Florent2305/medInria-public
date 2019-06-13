@@ -57,7 +57,7 @@ int vtkFlipTensorImageFilter::RequestData(vtkInformation *vtkNotUsed(request),
   vtkPointData *pd = input->GetPointData();
   vtkPointData *outPD = output->GetPointData();
   vtkIdType ptId, numPts;
-  vtkDoubleArray *newTensors=NULL;
+  vtkDoubleArray *newTensors=nullptr;
   
   // First, copy the input to the output as a starting point
   output->CopyStructure( input );

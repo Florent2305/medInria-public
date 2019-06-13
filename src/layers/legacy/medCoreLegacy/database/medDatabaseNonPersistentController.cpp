@@ -48,7 +48,7 @@ public:
 // medDatabaseNonPersitentController
 // /////////////////////////////////////////////////////////////////
 
-medDatabaseNonPersistentController*  medDatabaseNonPersistentController::s_instance = NULL;
+medDatabaseNonPersistentController*  medDatabaseNonPersistentController::s_instance = nullptr;
 
 medDatabaseNonPersistentController* medDatabaseNonPersistentController::instance() {
     if ( ! s_instance) {
@@ -134,7 +134,7 @@ medDatabaseNonPersistentController::~medDatabaseNonPersistentController(void)
     qDeleteAll(d->items);
 
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool medDatabaseNonPersistentController::isConnected() const
@@ -347,7 +347,7 @@ QString medDatabaseNonPersistentController::metaData( const medDataIndex& index,
     typedef medDatabaseNonPersistentControllerPrivate::DataHashMapType MapType;
 
     MapType::const_iterator it(d->items.find(index));
-    if (it != d->items.end()  && it.value()!=NULL ) {
+    if (it != d->items.end()  && it.value()!=nullptr ) {
         medAbstractData *data = it.value()->data();
         if (data &&  data->hasMetaData(key) )
             return data->metadata(key);
@@ -355,7 +355,7 @@ QString medDatabaseNonPersistentController::metaData( const medDataIndex& index,
         // Cannot find an exact match for the given index. Find first data that may match
         // using ordered map.
         it = d->items.lowerBound( index );
-        if (it != d->items.end() && medDataIndex::isMatch( it.key(), index) && it.value()!=NULL ) {
+        if (it != d->items.end() && medDataIndex::isMatch( it.key(), index) && it.value()!=nullptr ) {
             medAbstractData *data = it.value()->data();
             if (data &&  data->hasMetaData(key) )
                 return data->metadata(key);
@@ -411,7 +411,7 @@ QList<medDataIndex> medDatabaseNonPersistentController::moveStudy(const medDataI
         return newIndexList;
     }
 
-    medDatabaseNonPersistentItem * studyItem = NULL;
+    medDatabaseNonPersistentItem * studyItem = nullptr;
 
     studyItem = d->items.find(indexStudy).value();
 
@@ -421,7 +421,7 @@ QList<medDataIndex> medDatabaseNonPersistentController::moveStudy(const medDataI
     //retrieve destination patient information
     medAbstractData *dataPatient = retrieve(toPatient);
 
-    if(dataPatient==NULL)
+    if(dataPatient==nullptr)
     {
         // let's try to get patient information from its series
         QList<medDataIndex> studiesIndexList = studies(toPatient);
@@ -435,13 +435,13 @@ QList<medDataIndex> medDatabaseNonPersistentController::moveStudy(const medDataI
                 break;
             }
         }
-        if( dataPatient == NULL )
+        if( dataPatient == nullptr )
             return newIndexList;
     }
 
     medAbstractData *dataStudy = retrieve(indexStudy);
 
-    if(dataStudy!=NULL)
+    if(dataStudy!=nullptr)
     {
         //update metadata
         dataStudy->setMetaData ( medMetaDataKeys::PatientName.key(),
@@ -467,7 +467,7 @@ QList<medDataIndex> medDatabaseNonPersistentController::moveStudy(const medDataI
     {
         dataStudy = retrieve(serie);
 
-        if(dataStudy!=NULL)
+        if(dataStudy!=nullptr)
         {
             medDataIndex newSerieIndex = moveSerie(serie, newIndex);
 
@@ -507,10 +507,10 @@ medDataIndex medDatabaseNonPersistentController::moveSerie(const medDataIndex& i
     //retrieve destination study information
     medAbstractData *dataStudy = retrieve(toStudy);
 
-    medDatabaseNonPersistentItem * serieItem = NULL;
+    medDatabaseNonPersistentItem * serieItem = nullptr;
     serieItem = d->items.find(indexSerie).value();
 
-    if(dataStudy == NULL)
+    if(dataStudy == nullptr)
     {
         // let's try to get study information from its series
         QList<medDataIndex> seriesIndexList = series(toStudy);
@@ -559,8 +559,8 @@ medAbstractData* medDatabaseNonPersistentController::retrieve(const medDataIndex
     medDatabaseNonPersistentControllerPrivate::DataHashMapType::const_iterator it( d->items.find(index) );
 
     // Is item in our table ? if not, return null.
-    if ( it == d->items.end() || it.value() == NULL )
-        return NULL;
+    if ( it == d->items.end() || it.value() == nullptr )
+        return nullptr;
 
     medAbstractData* retreivedData(it.value()->data());
 

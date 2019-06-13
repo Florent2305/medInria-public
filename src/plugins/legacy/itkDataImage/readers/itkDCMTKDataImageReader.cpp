@@ -118,8 +118,8 @@ public:
     static QAtomicPointer<QMutex> mutex;
 };
 
-QList<itk::DCMTKImageIO::Pointer> * itkDCMTKDataImageReaderPrivate::ioPointers = NULL;
-QList<QThread*> * itkDCMTKDataImageReaderPrivate::ioThreads = NULL;
+QList<itk::DCMTKImageIO::Pointer> * itkDCMTKDataImageReaderPrivate::ioPointers = nullptr;
+QList<QThread*> * itkDCMTKDataImageReaderPrivate::ioThreads = nullptr;
 QAtomicPointer<QMutex> itkDCMTKDataImageReaderPrivate::mutex;
 
 itkDCMTKDataImageReaderPrivate::itkDCMTKDataImageReaderPrivate()
@@ -161,7 +161,7 @@ void itkDCMTKDataImageReaderPrivate::initialiseStatic()
 {
     if ( ! mutex) {
         QMutex * m = new QMutex();
-        if ( ! mutex.testAndSetOrdered(NULL, m))
+        if ( ! mutex.testAndSetOrdered(nullptr, m))
             delete m;
     }
 

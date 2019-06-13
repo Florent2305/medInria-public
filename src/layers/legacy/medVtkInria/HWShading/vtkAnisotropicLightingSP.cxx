@@ -111,28 +111,28 @@ vtkAnisotropicLightingSP::vtkAnisotropicLightingSP()
 vtkAnisotropicLightingSP::~vtkAnisotropicLightingSP()
 {
   this->SpecularPowerUniform->Delete();
-  this->SpecularPowerUniform = NULL;
+  this->SpecularPowerUniform = nullptr;
   this->DiffuseContributionUniform->Delete();
-  this->DiffuseContributionUniform = NULL;
+  this->DiffuseContributionUniform = nullptr;
   this->SpecularContributionUniform->Delete();
-  this->SpecularContributionUniform = NULL;
+  this->SpecularContributionUniform = nullptr;
   this->AmbientContributionUniform->Delete();
-  this->AmbientContributionUniform = NULL;
+  this->AmbientContributionUniform = nullptr;
   this->RGBColoringUniform->Delete();
-  this->RGBColoringUniform = NULL;
+  this->RGBColoringUniform = nullptr;
   this->ToneShadingUniform->Delete();
-  this->ToneShadingUniform = NULL;
+  this->ToneShadingUniform = nullptr;
   this->WarmColorUniform->Delete();
-  this->WarmColorUniform = NULL;
+  this->WarmColorUniform = nullptr;
   this->CoolColorUniform->Delete();
-  this->CoolColorUniform = NULL;
+  this->CoolColorUniform = nullptr;
 
   this->VertexShader->Delete();
-  this->VertexShader = NULL;
+  this->VertexShader = nullptr;
   this->FragmentShader->Delete();
-  this->FragmentShader = NULL;
+  this->FragmentShader = nullptr;
   this->ShaderFunctions->Delete();
-  this->ShaderFunctions = NULL;
+  this->ShaderFunctions = nullptr;
 }
 
 void vtkAnisotropicLightingSP::SetSpecularPower(float power)

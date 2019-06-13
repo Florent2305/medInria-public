@@ -22,7 +22,7 @@ class MEDCORE_EXPORT medBoolParameter : public medAbstractParameter
     Q_OBJECT
 
 public:
-    medBoolParameter(const QString & name, QObject *parent = NULL);
+    medBoolParameter(const QString & name, QObject *parent = nullptr);
     virtual ~medBoolParameter();
 
     virtual medParameterType type() const {return medParameterType::MED_PARAMETER_BOOL;}

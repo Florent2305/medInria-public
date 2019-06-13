@@ -471,13 +471,13 @@ const char* vtkDataManagerWriter::GetDataSetName()
 vtkXMLWriter* vtkDataManagerWriter::CreateWriter(vtkMetaDataSet* metadataset)
 {
 
-  vtkXMLWriter* writer = NULL;
+  vtkXMLWriter* writer = nullptr;
   
   if (vtkMetaDataSetSequence::SafeDownCast (metadataset))
-    return NULL;
+    return nullptr;
 
   if (!metadataset || !metadataset->GetDataSet())
-    return NULL;
+    return nullptr;
     
   
   switch (metadataset->GetType())

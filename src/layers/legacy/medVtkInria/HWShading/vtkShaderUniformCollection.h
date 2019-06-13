@@ -43,7 +43,7 @@ public:
     };
 
   /**
-   * Get the next ShaderUniform in the list. Return NULL when at the end of the 
+   * Get the next ShaderUniform in the list. Return nullptr when at the end of the 
    * list.
    */
   vtkShaderUniform *GetNextItem()

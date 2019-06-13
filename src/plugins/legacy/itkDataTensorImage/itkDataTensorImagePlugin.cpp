@@ -63,7 +63,7 @@ itkDataTensorImagePlugin::~itkDataTensorImagePlugin()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool itkDataTensorImagePlugin::initialize()

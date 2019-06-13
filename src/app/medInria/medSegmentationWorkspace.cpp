@@ -42,14 +42,14 @@ class medSegmentationWorkspacePrivate
 public:
     // Give values to items without a constructor.
     medSegmentationWorkspacePrivate() :
-       segmentationToolBox(NULL)
+       segmentationToolBox(nullptr)
     {}
 
     medSegmentationSelectorToolBox *segmentationToolBox;
 };
 
 
-medSegmentationWorkspace::medSegmentationWorkspace(QWidget * parent /* = NULL */ ) :
+medSegmentationWorkspace::medSegmentationWorkspace(QWidget * parent /* = nullptr */ ) :
 medAbstractWorkspaceLegacy(parent), d(new medSegmentationWorkspacePrivate)
 {
     d->segmentationToolBox = new medSegmentationSelectorToolBox(parent);
@@ -88,7 +88,7 @@ void medSegmentationWorkspace::setupTabbedViewContainer()
 medSegmentationWorkspace::~medSegmentationWorkspace(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 medSegmentationSelectorToolBox * medSegmentationWorkspace::segmentationToobox()

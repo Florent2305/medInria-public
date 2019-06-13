@@ -24,7 +24,7 @@ class MEDCORELEGACY_EXPORT medAbstractDiffusionProcess : public medAbstractProce
     Q_OBJECT
 
 public:
-    medAbstractDiffusionProcess(medAbstractProcessLegacy *parent = NULL);
+    medAbstractDiffusionProcess(medAbstractProcessLegacy *parent = nullptr);
     virtual ~medAbstractDiffusionProcess();
 
     virtual void setInputImage(medAbstractData *data) = 0;

@@ -31,7 +31,7 @@ class MEDCORE_EXPORT medAbstractParameter : public QObject
     Q_OBJECT
 
 public:
-    medAbstractParameter(QString const& id, QObject* parent = NULL);
+    medAbstractParameter(QString const& id, QObject* parent = nullptr);
     virtual ~medAbstractParameter();
 
     QString id() const;

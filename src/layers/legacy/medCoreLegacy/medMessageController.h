@@ -30,7 +30,7 @@ class MEDCORELEGACY_EXPORT medMessage : public QWidget
     Q_OBJECT
 
 public:
-     medMessage(QWidget *parent = 0, const QString& text=NULL, unsigned int timeout=0);
+     medMessage(QWidget *parent = 0, const QString& text=nullptr, unsigned int timeout=0);
     ~medMessage();
     void startTimer();
     void stopTimer();

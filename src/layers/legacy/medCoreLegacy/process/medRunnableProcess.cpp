@@ -30,7 +30,7 @@ medRunnableProcess::medRunnableProcess(void): medJobItemL(), d (new medRunnableP
 medRunnableProcess::~medRunnableProcess()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**

@@ -156,7 +156,7 @@ medFileSystemDataSource::medFileSystemDataSource( QWidget* parent ): medAbstract
 medFileSystemDataSource::~medFileSystemDataSource()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QWidget* medFileSystemDataSource::mainViewWidget()

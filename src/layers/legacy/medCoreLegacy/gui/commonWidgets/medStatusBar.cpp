@@ -23,7 +23,7 @@ public:
 
 medStatusBar::medStatusBar ( QWidget* parent ) : QStatusBar ( parent ), d ( new medStatusBarPrivate )
 {
-    d->statusBarLayout = NULL;
+    d->statusBarLayout = nullptr;
     this->statusBarWidth = this->size().width();
     this->availableSpace = -1; //value before initialization (after, always positive)
 }
@@ -31,7 +31,7 @@ medStatusBar::medStatusBar ( QWidget* parent ) : QStatusBar ( parent ), d ( new 
 medStatusBar::~medStatusBar()
 {
     delete d;
-    d= NULL;
+    d= nullptr;
 }
 
 /**

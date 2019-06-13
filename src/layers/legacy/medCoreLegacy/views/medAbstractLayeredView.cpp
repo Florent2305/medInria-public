@@ -46,7 +46,7 @@ public:
 
 medAbstractLayeredView::medAbstractLayeredView(QObject *parent) : medAbstractView(parent), d (new medAbstractLayeredViewPrivate)
 {
-    d->primaryNavigator = NULL;
+    d->primaryNavigator = nullptr;
     d->currentLayer = 0;
 
     d->dataListParameter = new medDataListParameterL("DataList",this);
@@ -153,7 +153,7 @@ bool medAbstractLayeredView::initialiseNavigators()
 medAbstractLayeredViewInteractor* medAbstractLayeredView::primaryInteractor(medAbstractData* data)
 {
     if(d->primaryInteractorsHash.isEmpty())
-        return NULL;
+        return nullptr;
 
     return d->primaryInteractorsHash.value(data);
 }
@@ -300,7 +300,7 @@ void medAbstractLayeredView::insertLayer(unsigned int layer, medAbstractData *da
 {
     if(!data)
     {
-        dtkWarn() << "Attempt to add a NULL data to the view: " << this;
+        dtkWarn() << "Attempt to add a nullptr data to the view: " << this;
         return;
     }
 
@@ -331,7 +331,7 @@ medAbstractData * medAbstractLayeredView::layerData(unsigned int layer) const
     if (layer >= (unsigned int)d->layersDataList.size())
     {
         dtkWarn() << "Unable to retrieve data at layer:" <<layer << "from: "<< this->description();
-        return NULL;
+        return nullptr;
     }
     return d->layersDataList[layer];
 }
@@ -367,7 +367,7 @@ medAbstractBoolParameterL* medAbstractLayeredView::visibilityParameter(unsigned 
     medAbstractLayeredViewInteractor* pInteractor = this->primaryInteractor(layer);
     if(!pInteractor)
     {
-        return NULL;
+        return nullptr;
     }
 
     return pInteractor->visibilityParameter();

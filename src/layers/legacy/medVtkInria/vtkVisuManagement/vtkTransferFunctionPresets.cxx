@@ -94,12 +94,12 @@ void vtkTransferFunctionPresets::GetTransferFunction(
   vtkColorTransferFunction * rgb,
   vtkPiecewiseFunction * alpha )
 {
-  if ( rgb == NULL )
+  if ( rgb == nullptr )
     rgb = vtkColorTransferFunction::New();
   else
     rgb->RemoveAllPoints();
 
-  if ( alpha == NULL )
+  if ( alpha == nullptr )
     alpha = vtkPiecewiseFunction::New();
   else
     alpha->RemoveAllPoints();

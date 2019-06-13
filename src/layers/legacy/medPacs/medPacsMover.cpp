@@ -34,7 +34,7 @@ medPacsMover::medPacsMover(const QVector<medMoveCommandItem>& cmdList): medJobIt
 {
     d->cmdList = cmdList;
 
-    d->move = NULL;
+    d->move = nullptr;
 }
 
 medPacsMover::~medPacsMover( void )
@@ -42,7 +42,7 @@ medPacsMover::~medPacsMover( void )
     if (d->move) delete d->move;
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 void medPacsMover::internalRun( void )

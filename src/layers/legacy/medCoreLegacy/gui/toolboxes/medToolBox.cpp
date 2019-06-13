@@ -49,7 +49,7 @@ medToolBox::medToolBox(QWidget *parent) : QWidget(parent), d(new medToolBoxPriva
     d->body = new medToolBoxBody(this);
     d->isContextVisible = false;
     d->aboutPluginVisibility = false;
-    d->plugin= NULL;
+    d->plugin= nullptr;
 
 
     d->layout = new QVBoxLayout(this);
@@ -66,7 +66,7 @@ medToolBox::medToolBox(QWidget *parent) : QWidget(parent), d(new medToolBoxPriva
 medToolBox::~medToolBox(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**

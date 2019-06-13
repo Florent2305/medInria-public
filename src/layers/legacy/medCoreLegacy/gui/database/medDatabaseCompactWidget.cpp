@@ -45,7 +45,7 @@ medDatabaseCompactWidget::medDatabaseCompactWidget(QWidget *parent): d(new medDa
 medDatabaseCompactWidget::~medDatabaseCompactWidget()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 

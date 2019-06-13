@@ -97,7 +97,7 @@ bool itkDataImageReaderBase::readInformation (const QString& path)
     }
 
     //TODO why all of this is in a methode named readInformation ? - RDE
-    medAbstractData *medData = NULL;
+    medAbstractData *medData = nullptr;
     if (this->io->GetPixelType()==itk::ImageIOBase::SCALAR )
     {
 

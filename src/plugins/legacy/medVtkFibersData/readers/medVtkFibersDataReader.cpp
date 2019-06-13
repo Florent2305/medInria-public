@@ -38,7 +38,7 @@ medVtkFibersDataReader::~medVtkFibersDataReader()
 {
     d->reader->Delete();
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QStringList medVtkFibersDataReader::handled() const

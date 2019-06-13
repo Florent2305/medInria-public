@@ -74,7 +74,7 @@ medAbstractData *medDataReaderWriter::read(const QString& path) {
         dreader->read(path);
         return dynamic_cast<medAbstractData*>(dreader->data());
     }
-    return NULL;
+    return nullptr;
 }
 
 bool medDataReaderWriter::write(const QString& path,medAbstractData* data) {

@@ -73,9 +73,9 @@ medDatabaseEditItemDialog::medDatabaseEditItemDialog(QList<QString> attributes, 
         if(attrib.isEmpty())
             continue;
         
-        QLineEdit *textEdit = NULL;
-        QSpinBox *spinbox = NULL;
-        QDateEdit *dateEdit = NULL;
+        QLineEdit *textEdit = nullptr;
+        QSpinBox *spinbox = nullptr;
+        QDateEdit *dateEdit = nullptr;
 
         switch(data.type())
         {
@@ -126,7 +126,7 @@ medDatabaseEditItemDialog::medDatabaseEditItemDialog(QList<QString> attributes, 
 medDatabaseEditItemDialog::~medDatabaseEditItemDialog()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 

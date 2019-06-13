@@ -63,8 +63,8 @@ medViewFactory::~medViewFactory()
 medAbstractNavigator* medViewFactory::createAdditionalNavigator(QString identifier, medAbstractView *parent)
 {
 
-    medAbstractNavigator* navigator = NULL;
-    addNavigatorCreator c = NULL;
+    medAbstractNavigator* navigator = nullptr;
+    addNavigatorCreator c = nullptr;
     c = d->addNavigatorCreators.value(identifier);
     if(c)
         navigator = (c)(parent);
@@ -74,8 +74,8 @@ medAbstractNavigator* medViewFactory::createAdditionalNavigator(QString identifi
 
 medAbstractInteractor*  medViewFactory::createAdditionalInteractor(QString identifier, medAbstractView *parent)
 {
-    medAbstractInteractor* interactor = NULL;
-    addInteractorCreator c = NULL;
+    medAbstractInteractor* interactor = nullptr;
+    addInteractorCreator c = nullptr;
     c = d->addInteractorCreators.value(identifier);
     if(c)
         interactor = (c)(parent);
@@ -257,7 +257,7 @@ QStringList medViewFactory::additionalInteractorsAbleToHandle(const QString view
 //  construc / destruct factory
 
 
-medViewFactory *medViewFactory::s_instance = NULL;
+medViewFactory *medViewFactory::s_instance = nullptr;
 
 
 

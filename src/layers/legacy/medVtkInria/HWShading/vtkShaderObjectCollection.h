@@ -43,7 +43,7 @@ public:
     };
 
   /**
-   * Get the next ShaderObject in the list. Return NULL when at the end of the 
+   * Get the next ShaderObject in the list. Return nullptr when at the end of the 
    * list.
    */
   vtkShaderObject *GetNextItem()

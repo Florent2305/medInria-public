@@ -24,7 +24,7 @@ class MEDCORELEGACY_EXPORT medAbstractRegistrationProcess : public medAbstractPr
     Q_OBJECT
 
 public:
-    medAbstractRegistrationProcess(medAbstractProcessLegacy *parent = NULL);
+    medAbstractRegistrationProcess(medAbstractProcessLegacy *parent = nullptr);
     virtual ~medAbstractRegistrationProcess();
 
 public:

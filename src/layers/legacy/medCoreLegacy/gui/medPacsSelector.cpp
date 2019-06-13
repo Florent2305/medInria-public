@@ -39,7 +39,7 @@ medPacsSelector::medPacsSelector( QWidget *parent /*= 0*/ ): d(new medToolBoxPac
 medPacsSelector::~medPacsSelector( void )
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medPacsSelector::readSettings( void )

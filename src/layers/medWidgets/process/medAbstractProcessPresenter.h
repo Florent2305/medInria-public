@@ -30,7 +30,7 @@ class MEDWIDGETS_EXPORT medAbstractProcessPresenter : public QObject
     Q_OBJECT
 
 public:
-    medAbstractProcessPresenter(medAbstractProcess *parent = NULL);
+    medAbstractProcessPresenter(medAbstractProcess *parent = nullptr);
     virtual ~medAbstractProcessPresenter();
 
     virtual medAbstractProcess *process() const = 0;

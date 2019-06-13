@@ -160,7 +160,7 @@ medDataSourceManager * medDataSourceManager::instance( void )
 medDataSourceManager::~medDataSourceManager( void )
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medDataSourceManager::openFromPath(QString path)
@@ -197,4 +197,4 @@ medDatabaseDataSource* medDataSourceManager::databaseDataSource()
     return d->dbSource;
 }
 
-medDataSourceManager *medDataSourceManager::s_instance = NULL;
+medDataSourceManager *medDataSourceManager::s_instance = nullptr;

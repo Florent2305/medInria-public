@@ -26,8 +26,8 @@ public:
 medAbstractDiffusionScalarMapsProcess::medAbstractDiffusionScalarMapsProcess(QObject *parent)
     : medAbstractProcess(parent), d(new medAbstractDiffusionScalarMapsProcessPrivate)
 {
-    d->input = NULL;
-    d->output = NULL;
+    d->input = nullptr;
+    d->output = nullptr;
 }
 
 medAbstractDiffusionScalarMapsProcess::~medAbstractDiffusionScalarMapsProcess()

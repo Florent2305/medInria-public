@@ -61,7 +61,7 @@ qtdcmDataSourceServersSettingsToolBox::~qtdcmDataSourceServersSettingsToolBox()
     if (d)
         delete d;
     
-    d = NULL;
+    d = nullptr;
 }
 
 QtDcmServersDicomSettingsWidget* qtdcmDataSourceServersSettingsToolBox::getServersDicomSettingsWidget()

@@ -14,8 +14,8 @@ vtkImage2DDisplay::vtkImage2DDisplay()
     this->WindowLevel->SetOutputFormatToRGBA();
     this->ColorWindow       = 1e-3 * VTK_DOUBLE_MAX;
     this->ColorLevel        = 0;
-    this->ColorTransferFunction   = NULL;
-    this->OpacityTransferFunction = NULL;
+    this->ColorTransferFunction   = nullptr;
+    this->OpacityTransferFunction = nullptr;
     this->UseLookupTable    = false;
 }
 

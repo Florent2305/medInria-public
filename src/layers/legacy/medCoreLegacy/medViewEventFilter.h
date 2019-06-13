@@ -42,7 +42,7 @@ class MEDCORELEGACY_EXPORT medViewEventFilter : public dtkAbstractObject
     Q_OBJECT
 
 public:
-             medViewEventFilter(dtkAbstractObject * parent = NULL);
+             medViewEventFilter(dtkAbstractObject * parent = nullptr);
     virtual ~medViewEventFilter();
 
     virtual QString description() const;

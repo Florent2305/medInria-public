@@ -149,10 +149,10 @@ medPluginManager::medPluginManager(void) : dtkPluginManager(), d(new medPluginMa
 medPluginManager::~medPluginManager(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
-medPluginManager *medPluginManager::s_instance = NULL;
+medPluginManager *medPluginManager::s_instance = nullptr;
 
 
 void medPluginManager::onLoadError(const QString &errorMessage)

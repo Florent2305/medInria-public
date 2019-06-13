@@ -28,7 +28,7 @@ class MEDCORE_EXPORT  medAbstractWindowingFilterProcess : public medAbstractSing
     Q_OBJECT
 
 public:
-    medAbstractWindowingFilterProcess(QObject *parent = NULL);
+    medAbstractWindowingFilterProcess(QObject *parent = nullptr);
     virtual ~medAbstractWindowingFilterProcess();
 
     virtual medDoubleParameter* minimumIntensityValue();

@@ -94,8 +94,8 @@ medPacsWidget::medPacsWidget(QWidget *parent) : QTreeWidget(parent), d(new medPa
 
     this->setHeaderLabels(QStringList() << "Name" << "Description" << "Id" << "Modality");
 
-    d->find = NULL;
-    d->echo = NULL;
+    d->find = nullptr;
+    d->echo = nullptr;
     d->server = medAbstractPacsFactory::instance()->createStoreScp("dcmtkStoreScp");
     if (!d->server) {
         dtkWarn() << "Unable to find a valid implementation of the store scp service.";
@@ -124,7 +124,7 @@ medPacsWidget::~medPacsWidget(void)
     }
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 void medPacsWidget::readSettings(void)

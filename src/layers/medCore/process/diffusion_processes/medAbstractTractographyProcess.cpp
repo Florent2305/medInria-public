@@ -26,8 +26,8 @@ public:
 medAbstractTractographyProcess::medAbstractTractographyProcess(QObject *parent)
     : medAbstractProcess(parent), d(new medAbstractTractographyProcessPrivate)
 {
-    d->input = NULL;
-    d->output = NULL;
+    d->input = nullptr;
+    d->output = nullptr;
 }
 
 medAbstractTractographyProcess::~medAbstractTractographyProcess()

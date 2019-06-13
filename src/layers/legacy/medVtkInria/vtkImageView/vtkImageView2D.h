@@ -138,7 +138,7 @@ public:
     
     //int AddInput (vtkImageData *image, vtkMatrix4x4 *matrix);
 
-    virtual vtkActor* AddDataSet (vtkPointSet* arg, vtkProperty* prop = NULL);
+    virtual vtkActor* AddDataSet (vtkPointSet* arg, vtkProperty* prop = nullptr);
     virtual void RemoveDataSet (vtkPointSet *arg);
 
     medVtkImageInfo* GetMedVtkImageInfo(int layer = 0) const;

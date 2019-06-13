@@ -30,8 +30,8 @@ medAbstractImageViewInteractor::medAbstractImageViewInteractor(medAbstractView *
     medAbstractLayeredViewInteractor(parent), d(new medAbstractImageViewInteractorPrivate)
 {
     d->view = dynamic_cast<medAbstractImageView *>(parent);
-    d->opacityParameter = NULL;
-    d->windowLevelParameter = NULL;
+    d->opacityParameter = nullptr;
+    d->windowLevelParameter = nullptr;
 
     connect(d->view, SIGNAL(currentTimeChanged(double)), this, SLOT(setCurrentTime(double)));
 }

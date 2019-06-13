@@ -27,7 +27,7 @@ class MEDCORE_EXPORT medJobManager: public QObject
     Q_OBJECT
 
 private:
-    medJobManager(QObject *parent = NULL);
+    medJobManager(QObject *parent = nullptr);
     ~medJobManager();
     static medJobManager *s_instance;
 

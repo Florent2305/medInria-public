@@ -29,7 +29,7 @@ medSegmentationAbstractToolBox::medSegmentationAbstractToolBox(QWidget *parent) 
 medSegmentationAbstractToolBox::~medSegmentationAbstractToolBox(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 //! Get the segmentationToolbox (usually one instance)

@@ -104,7 +104,7 @@ medDataIndex medDatabaseNonPersistentImporter::populateDatabaseAndGenerateThumbn
 
     // check if patient is already in the persistent database
     medDataIndex databaseIndex = medDatabaseController::instance()->indexForPatient ( patientName );
-    medDatabaseNonPersistentItem *patientItem = NULL;
+    medDatabaseNonPersistentItem *patientItem = nullptr;
 
     if ( databaseIndex.isValid() )
     {
@@ -131,7 +131,7 @@ medDataIndex medDatabaseNonPersistentImporter::populateDatabaseAndGenerateThumbn
 
     medDataIndex index;
 
-    if ( patientItem == NULL )
+    if ( patientItem == nullptr )
     {
         // create an item for patient
         patientItem = new medDatabaseNonPersistentItem;
@@ -163,7 +163,7 @@ medDataIndex medDatabaseNonPersistentImporter::populateDatabaseAndGenerateThumbn
     {
         // check if study is already in the persistent database
         databaseIndex = medDatabaseController::instance()->indexForStudy ( patientName, studyName );
-        medDatabaseNonPersistentItem *studyItem = NULL;
+        medDatabaseNonPersistentItem *studyItem = nullptr;
 
         if ( databaseIndex.isValid() )
         {
@@ -185,7 +185,7 @@ medDataIndex medDatabaseNonPersistentImporter::populateDatabaseAndGenerateThumbn
         {
             studyDbId = npdc->studyId ( true );
         }
-        if ( studyItem == NULL )
+        if ( studyItem == nullptr )
         {
             // create an item for study
             studyItem = new medDatabaseNonPersistentItem;

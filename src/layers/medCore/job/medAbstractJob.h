@@ -36,7 +36,7 @@ public:
     Q_ENUMS(medJobExitStatus)
 
 
-    medAbstractJob(QObject *parent = NULL);
+    medAbstractJob(QObject *parent = nullptr);
     virtual ~medAbstractJob();
 
     virtual QString caption() const = 0;

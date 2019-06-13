@@ -61,7 +61,7 @@ int vtkVectorOrienter::RequestData(
     double inV[4];
 
     vtkIdType ptId, numPts;
-    vtkDoubleArray *newVectors=NULL;
+    vtkDoubleArray *newVectors=nullptr;
 
     // First, copy the input to the output as a starting point
     output->CopyStructure( input );

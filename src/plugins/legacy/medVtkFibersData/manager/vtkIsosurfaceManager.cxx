@@ -96,7 +96,7 @@ void vtkIsosurfaceManager::SetRenderWindowInteractor (vtkRenderWindowInteractor*
 { 
   if( rwin != this->RenderWindowInteractor )
   {   
-    if( this->RenderWindowInteractor != NULL )
+    if( this->RenderWindowInteractor != nullptr )
     {
       this->RemoveAllActors();
       this->RenderWindowInteractor->UnRegister (this);

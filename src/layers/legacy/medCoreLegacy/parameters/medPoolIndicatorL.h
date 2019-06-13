@@ -23,7 +23,7 @@ class MEDCORELEGACY_EXPORT medPoolIndicatorL: public QWidget
     Q_OBJECT
 
 public:
-    medPoolIndicatorL(QWidget* parent = NULL);
+    medPoolIndicatorL(QWidget* parent = nullptr);
     ~medPoolIndicatorL();
 
     void addColorIndicator(QColor, QString);

@@ -100,8 +100,8 @@ medViewContainer::medViewContainer(medViewContainerSplitter *parent): QFrame(par
     d->uuid = QUuid::createUuid();
     medViewContainerManager::instance()->registerNewContainer(this);
 
-    d->view = NULL;
-    d->viewToolbar = NULL;
+    d->view = nullptr;
+    d->viewToolbar = nullptr;
 
     d->defaultWidget = new QWidget;
     d->defaultWidget->setObjectName("defaultWidget");
@@ -237,7 +237,7 @@ medViewContainer::~medViewContainer()
 
 void medViewContainer::checkIfStillDeserveToLiveContainer()
 {
-    this->setParent(NULL);    
+    this->setParent(nullptr);    
     this->close();
 }
 
@@ -525,15 +525,15 @@ void medViewContainer::removeView()
     if(!d->view)
         return;
 
-    emit dataAdded(NULL);
+    emit dataAdded(nullptr);
     delete d->view;
-    // removeInternView should be called, so no need to set d->view to NULL
+    // removeInternView should be called, so no need to set d->view to nullptr
     // or whatever else
 }
 
 void medViewContainer::removeInternView()
 {
-    d->view = NULL;
+    d->view = nullptr;
     d->maximizedAction->setEnabled(false);
     d->defaultWidget->show();
     this->updateToolBar();
@@ -720,7 +720,7 @@ void medViewContainer::addData(medDataIndex index)
 medViewContainer * medViewContainer::splitHorizontally()
 {
     if(!d->parent)
-        return NULL;
+        return nullptr;
 
     return d->parent->splitHorizontally(this);
 }
@@ -728,7 +728,7 @@ medViewContainer * medViewContainer::splitHorizontally()
 medViewContainer * medViewContainer::splitVertically()
 {
     if(!d->parent)
-        return NULL;
+        return nullptr;
 
     return d->parent->splitVertically(this);
 }
@@ -736,7 +736,7 @@ medViewContainer * medViewContainer::splitVertically()
 medViewContainer *medViewContainer::split(Qt::AlignmentFlag alignement)
 {
     if(!d->parent)
-        return NULL;
+        return nullptr;
 
     return d->parent->split(this, alignement);
 }
@@ -779,7 +779,7 @@ void medViewContainer::updateToolBar()
     if(d->viewToolbar)
     {
         delete d->viewToolbar;
-        d->viewToolbar = NULL;
+        d->viewToolbar = nullptr;
     }
 
     if(d->view)

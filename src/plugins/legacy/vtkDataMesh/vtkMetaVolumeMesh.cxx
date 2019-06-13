@@ -76,7 +76,7 @@ void vtkMetaVolumeMesh::Initialize()
 vtkUnstructuredGrid* vtkMetaVolumeMesh::GetUnstructuredGrid() const
 {
   if (!this->DataSet)
-    return NULL;
+    return nullptr;
   return vtkUnstructuredGrid::SafeDownCast (this->DataSet);
 }
 

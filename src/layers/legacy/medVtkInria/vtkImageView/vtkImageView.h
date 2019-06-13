@@ -465,7 +465,7 @@ public:
      ******************************
    */
 
-    virtual vtkActor* AddDataSet (vtkPointSet* arg, vtkProperty* prop = NULL) = 0;
+    virtual vtkActor* AddDataSet (vtkPointSet* arg, vtkProperty* prop = nullptr) = 0;
 
     virtual void RemoveDataSet (vtkPointSet *arg);
 

@@ -39,7 +39,7 @@ medAbstractPacsFactory *medAbstractPacsFactory::instance(void)
 medAbstractPacsEchoScu *medAbstractPacsFactory::createEchoScu( QString type )
 {
     if(!d->echoScuCreators.contains(type))
-        return NULL;
+        return nullptr;
 
     medAbstractPacsEchoScu *scu = d->echoScuCreators[type]();
 
@@ -49,7 +49,7 @@ medAbstractPacsEchoScu *medAbstractPacsFactory::createEchoScu( QString type )
 medAbstractPacsFindScu *medAbstractPacsFactory::createFindScu(QString type)
 {
     if(!d->findScuCreators.contains(type))
-        return NULL;
+        return nullptr;
 
     medAbstractPacsFindScu *scu = d->findScuCreators[type]();
 
@@ -59,7 +59,7 @@ medAbstractPacsFindScu *medAbstractPacsFactory::createFindScu(QString type)
 medAbstractPacsMoveScu *medAbstractPacsFactory::createMoveScu(QString type)
 {
     if(!d->moveScuCreators.contains(type))
-        return NULL;
+        return nullptr;
 
     medAbstractPacsMoveScu *scu = d->moveScuCreators[type]();
 
@@ -69,7 +69,7 @@ medAbstractPacsMoveScu *medAbstractPacsFactory::createMoveScu(QString type)
 medAbstractPacsStoreScu *medAbstractPacsFactory::createStoreScu(QString type)
 {
     if(!d->storeScuCreators.contains(type))
-        return NULL;
+        return nullptr;
 
     medAbstractPacsStoreScu *scu = d->storeScuCreators[type]();
 
@@ -79,7 +79,7 @@ medAbstractPacsStoreScu *medAbstractPacsFactory::createStoreScu(QString type)
 medAbstractPacsStoreScp *medAbstractPacsFactory::createStoreScp(QString type)
 {
     if(!d->storeScpCreators.contains(type))
-        return NULL;
+        return nullptr;
 
     medAbstractPacsStoreScp *scp = d->storeScpCreators[type]();
 
@@ -145,7 +145,7 @@ medAbstractPacsFactory::~medAbstractPacsFactory(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
-medAbstractPacsFactory *medAbstractPacsFactory::s_instance = NULL;
+medAbstractPacsFactory *medAbstractPacsFactory::s_instance = nullptr;

@@ -33,8 +33,8 @@ public:
 medAbstractDiffusionModelEstimationProcess::medAbstractDiffusionModelEstimationProcess(QObject *parent)
     : medAbstractProcess(parent), d(new medAbstractDiffusionModelEstimationProcessPrivate)
 {
-    d->input = NULL;
-    d->output = NULL;
+    d->input = nullptr;
+    d->output = nullptr;
 
     d->gradientsInImageCoordinates = new medBoolParameter("grad_coords",this);
     d->gradientsInImageCoordinates->setCaption("Gradients in image coordinates");

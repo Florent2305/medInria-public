@@ -38,7 +38,7 @@ medXMLToLUTReader::medXMLToLUTReader (QList<medClutEditorTable*> * tables):
 medXMLToLUTReader::~medXMLToLUTReader()
 {
    delete d;
-   d = NULL;
+   d = nullptr;
 }
 
 bool medXMLToLUTReader::read(QIODevice *device)

@@ -31,7 +31,7 @@ public:
     typedef itk::LabelMapToLabelImageFilter< LabelMapType, MaskType > MapToImageFilter;
 
 
-    medClickAndMoveEventFilter(medAlgorithmPaintToolbox *cb  = NULL);
+    medClickAndMoveEventFilter(medAlgorithmPaintToolbox *cb  = nullptr);
     ~medClickAndMoveEventFilter();
 
     virtual bool mousePressEvent(medAbstractView *view, QMouseEvent *mouseEvent );

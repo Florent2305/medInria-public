@@ -367,7 +367,7 @@ vtkSphericalHarmonicGlyph::SetSourceConnection(int id,vtkAlgorithmOutput* algOut
 vtkPolyData*
 vtkSphericalHarmonicGlyph::GetSource() {
     if (GetNumberOfInputConnections(1)<1)
-        return NULL;
+        return nullptr;
     return vtkPolyData::SafeDownCast(GetExecutive()->GetInputData(1,0));
 }
 

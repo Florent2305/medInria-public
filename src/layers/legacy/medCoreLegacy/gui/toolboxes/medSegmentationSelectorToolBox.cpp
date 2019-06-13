@@ -35,7 +35,7 @@ medSegmentationSelectorToolBox::medSegmentationSelectorToolBox(QWidget *parent) 
     medToolBox(parent),
     d(new medSegmentationSelectorToolBoxPrivate)
 {
-    d->currentSegmentationToolBox = NULL;
+    d->currentSegmentationToolBox = nullptr;
 
 
     d->chooseSegmentationComboBox = new QComboBox;
@@ -70,7 +70,7 @@ medSegmentationSelectorToolBox::medSegmentationSelectorToolBox(QWidget *parent) 
 medSegmentationSelectorToolBox::~medSegmentationSelectorToolBox(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 medSegmentationAbstractToolBox* medSegmentationSelectorToolBox::currentToolBox()
@@ -81,7 +81,7 @@ medSegmentationAbstractToolBox* medSegmentationSelectorToolBox::currentToolBox()
 
 void medSegmentationSelectorToolBox::changeCurrentToolBox(int index)
 {
-    medSegmentationAbstractToolBox *toolbox = NULL;
+    medSegmentationAbstractToolBox *toolbox = nullptr;
     //get identifier for toolbox.
     QString identifier = d->chooseSegmentationComboBox->itemData(index).toString();
     if (d->segmentationToolBoxes.contains (identifier))
@@ -104,7 +104,7 @@ void medSegmentationSelectorToolBox::changeCurrentToolBox(int index)
     {
         d->currentSegmentationToolBox->hide();
         d->mainLayout->removeWidget(d->currentSegmentationToolBox);
-        d->currentSegmentationToolBox = NULL;
+        d->currentSegmentationToolBox = nullptr;
     }
 
     if(!toolbox)

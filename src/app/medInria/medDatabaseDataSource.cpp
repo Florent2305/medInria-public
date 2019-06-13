@@ -60,7 +60,7 @@ medDatabaseDataSource::medDatabaseDataSource( QWidget* parent ): medAbstractData
 medDatabaseDataSource::~medDatabaseDataSource()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QWidget* medDatabaseDataSource::mainViewWidget()

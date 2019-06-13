@@ -34,7 +34,7 @@ public:
 medAbstractParameterPresenter::medAbstractParameterPresenter(medAbstractParameter *parent)
     : QObject(parent), d(new medAbstractParameterPresenterPrivate)
 {
-    if(parent == NULL)
+    if(parent == nullptr)
     {
         dtkWarn() << "Constructing presenter parented to a null parameter"
                   << this;
@@ -84,7 +84,7 @@ void medAbstractParameterPresenter::_connectWidget(QWidget *widget)
 
 medAbstractParameterPresenter* medAbstractParameterPresenter::buildFromParameter(medAbstractParameter *parameter)
 {
-    medAbstractParameterPresenter *presenter = NULL;
+    medAbstractParameterPresenter *presenter = nullptr;
     switch(parameter->type())
     {
     case medParameterType::MED_PARAMETER_BOOL :

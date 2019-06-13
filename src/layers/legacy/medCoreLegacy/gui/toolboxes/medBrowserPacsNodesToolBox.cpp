@@ -82,7 +82,7 @@ medBrowserPacsNodesToolBox::~medBrowserPacsNodesToolBox(void)
     this->writeSettings();
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 void medBrowserPacsNodesToolBox::readSettings(void)

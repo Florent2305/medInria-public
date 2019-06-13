@@ -30,7 +30,7 @@ class MEDCORE_EXPORT medAbstractDiffusionModelEstimationProcess : public medAbst
     Q_OBJECT
 
 public:
-    medAbstractDiffusionModelEstimationProcess(QObject *parent = NULL);
+    medAbstractDiffusionModelEstimationProcess(QObject *parent = nullptr);
     virtual ~medAbstractDiffusionModelEstimationProcess();
 
     void setInput(medAbstractImageData* data);

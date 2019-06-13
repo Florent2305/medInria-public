@@ -51,9 +51,9 @@ PURPOSE.  See the above copyright notices for more information.
 
 vtkShaderObject::vtkShaderObject()
 {
-  //this->SourceFileName = NULL;
-  //this->SourceText = ""; //NULL;
-  this->SourceText = NULL;
+  //this->SourceFileName = nullptr;
+  //this->SourceText = ""; //nullptr;
+  this->SourceText = nullptr;
   this->Compiled = false;
 
   //this.CompileTime = vtkTimeStamp::New();
@@ -66,10 +66,10 @@ vtkShaderObject::~vtkShaderObject()
     this->Compiled = false;
     }
 
-  if (this->SourceText != NULL)
+  if (this->SourceText != nullptr)
     {
     delete [] this->SourceText;
-    this->SourceText = NULL;
+    this->SourceText = nullptr;
     }
 
   // check for HandleValid is in DeleteGlShader().
@@ -119,7 +119,7 @@ void vtkShaderObject::Compile()
 
 bool vtkShaderObject::SetGlShaderSource()
 {
-  if (this->SourceText == NULL)
+  if (this->SourceText == nullptr)
     {
     vtkWarningMacro(<<"No source text was specified!");
     return false;
@@ -127,12 +127,12 @@ bool vtkShaderObject::SetGlShaderSource()
     }
 
   const char* text = this->SourceText;
-  //glShaderSource(this->GetHandle(), 1, &text, NULL);
-  glShaderSource(this->GetHandle(), 1, &text, NULL);
+  //glShaderSource(this->GetHandle(), 1, &text, nullptr);
+  glShaderSource(this->GetHandle(), 1, &text, nullptr);
 
   // XXX: I think/assume text only copies the pointer to SourceText,
   // so it does not need to be deleted here.
-  text = NULL;
+  text = nullptr;
 
   return true;
 }
@@ -228,7 +228,7 @@ void vtkShaderObject::PrintShaderInfoLog(GLuint shader)
     if (infologLength > 0)
     {
     infoLog = (GLchar *)malloc(infologLength);
-        if (infoLog == NULL)
+        if (infoLog == nullptr)
         {
             printf("ERROR: Could not allocate InfoLog buffer\n");
             exit(1);

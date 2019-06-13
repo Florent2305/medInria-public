@@ -74,7 +74,7 @@ void vtkTensorManager::SetRenderWindowInteractor (vtkRenderWindowInteractor* rwi
   if( rwin != this->RenderWindowInteractor )
   {
     
-    if( this->RenderWindowInteractor != NULL )
+    if( this->RenderWindowInteractor != nullptr )
     {
       this->Initialize();
       this->RenderWindowInteractor->UnRegister (this);

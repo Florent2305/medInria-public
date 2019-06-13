@@ -31,7 +31,7 @@ medAbstractLayeredViewInteractor::medAbstractLayeredViewInteractor(medAbstractVi
     medAbstractViewInteractor(parent), d(new medAbstractLayeredViewInteractorPrivate)
 {
     d->view = dynamic_cast<medAbstractLayeredView *>(parent);
-    d->visibilityParameter = NULL;
+    d->visibilityParameter = nullptr;
 }
 
 medAbstractLayeredViewInteractor::~medAbstractLayeredViewInteractor()

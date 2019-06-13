@@ -41,7 +41,7 @@ void vtkFiberPickerCallback::Execute(vtkObject *caller, unsigned long event, voi
     }
 
     int cellid = picker->GetCellId();
-    picker->SetPath (NULL); // to prevent a bounding box to appear
+    picker->SetPath (nullptr); // to prevent a bounding box to appear
 
     if( cellid < 0 )
     {

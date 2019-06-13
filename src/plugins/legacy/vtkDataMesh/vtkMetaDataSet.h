@@ -286,7 +286,7 @@ class VTKDATAMESHPLUGIN_EXPORT vtkMetaDataSet: public vtkDataObject
   }
   /**
      Returns the vtkDataArray contained in the DataSet or in metadataset, named name
-     returns NULL if not found
+     returns nullptr if not found
   */
   virtual vtkDataArray* GetArray (const char* name);
 

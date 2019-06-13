@@ -30,7 +30,7 @@ class MEDWIDGETS_EXPORT medAbstractSingleFilterOperationDoubleProcessPresenter :
     Q_OBJECT
 
 public:
-    medAbstractSingleFilterOperationDoubleProcessPresenter(medAbstractSingleFilterOperationDoubleProcess *parent = NULL);
+    medAbstractSingleFilterOperationDoubleProcessPresenter(medAbstractSingleFilterOperationDoubleProcess *parent = nullptr);
     virtual ~medAbstractSingleFilterOperationDoubleProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();

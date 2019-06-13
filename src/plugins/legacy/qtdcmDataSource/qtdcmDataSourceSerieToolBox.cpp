@@ -61,7 +61,7 @@ qtdcmDataSourceSerieToolBox::~qtdcmDataSourceSerieToolBox()
     if (d)
         delete d;
     
-    d = NULL;
+    d = nullptr;
 }
 
 QtDcmPreviewWidget* qtdcmDataSourceSerieToolBox::getPreviewWidget()

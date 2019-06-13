@@ -20,11 +20,11 @@
 
 #include <medAbstractJob.h>
 
-medJobManager* medJobManager::s_instance = NULL;
+medJobManager* medJobManager::s_instance = nullptr;
 
 medJobManager* medJobManager::instance()
 {
-    if(s_instance == NULL)
+    if(s_instance == nullptr)
         s_instance = new medJobManager(QApplication::instance());
         // delete is delegate to the QApplication instance.
     return s_instance;
@@ -75,7 +75,7 @@ void medJobManager::startJobInThread(medAbstractJob *job)
 }
 
 medJobRunner::medJobRunner(medAbstractJob *job)
-    : QObject(NULL)
+    : QObject(nullptr)
 {
     m_job = job;
 }

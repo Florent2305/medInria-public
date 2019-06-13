@@ -21,7 +21,7 @@ class MEDCORE_EXPORT medDoubleParameter : public medAbstractParameter
     Q_OBJECT
 
 public:
-    medDoubleParameter(const QString & name, QObject *parent = NULL);
+    medDoubleParameter(const QString & name, QObject *parent = nullptr);
     virtual ~medDoubleParameter();
 
     virtual medParameterType type() const {return medParameterType::MED_PARAMETER_DOUBLE;}

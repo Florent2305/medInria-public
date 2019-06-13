@@ -19,13 +19,13 @@
 
 medDatabaseNonPersistentItem::medDatabaseNonPersistentItem(void) : QObject(), d(new medDatabaseNonPersistentItemPrivate)
 {
-    //d->data = NULL;
+    //d->data = nullptr;
 }
 
 medDatabaseNonPersistentItem::~medDatabaseNonPersistentItem(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 const QString& medDatabaseNonPersistentItem::name(void) const

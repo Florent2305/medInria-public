@@ -68,11 +68,11 @@ vtkAnisoLiShadowMapSP::vtkAnisoLiShadowMapSP()
 vtkAnisoLiShadowMapSP::~vtkAnisoLiShadowMapSP()
 {
   this->AmbientContributionShadowUniform->Delete();
-  this->AmbientContributionShadowUniform = NULL;
+  this->AmbientContributionShadowUniform = nullptr;
   this->DiffuseContributionShadowUniform->Delete();
-  this->DiffuseContributionShadowUniform = NULL;
+  this->DiffuseContributionShadowUniform = nullptr;
   this->SpecularContributionShadowUniform->Delete();
-  this->SpecularContributionShadowUniform = NULL;
+  this->SpecularContributionShadowUniform = nullptr;
 }
 
 void vtkAnisoLiShadowMapSP::SetAmbientContributionShadow(float contribution)

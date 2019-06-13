@@ -31,7 +31,7 @@ class MEDWIDGETS_EXPORT medDiffusionModelEstimationMetaProcessPresenter : public
     Q_OBJECT
 
 public:
-    medDiffusionModelEstimationMetaProcessPresenter(medDiffusionModelEstimationMetaProcess *parent = NULL);
+    medDiffusionModelEstimationMetaProcessPresenter(medDiffusionModelEstimationMetaProcess *parent = nullptr);
     virtual ~medDiffusionModelEstimationMetaProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();

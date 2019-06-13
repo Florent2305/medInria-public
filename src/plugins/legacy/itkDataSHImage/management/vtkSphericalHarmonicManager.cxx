@@ -63,7 +63,7 @@ void
 vtkSphericalHarmonicManager::SetRenderWindowInteractor(vtkRenderWindowInteractor* rwin,vtkRenderer* ren) {
 
     if (rwin!=RenderWindowInteractor) {
-        if (RenderWindowInteractor!=NULL) {
+        if (RenderWindowInteractor!=nullptr) {
             Initialize();
             RenderWindowInteractor->UnRegister(this);
         }

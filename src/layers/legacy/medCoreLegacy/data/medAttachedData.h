@@ -28,7 +28,7 @@ class MEDCORELEGACY_EXPORT medAttachedData : public medAbstractData
 
 public:
 
-    medAttachedData( medAttachedData *parent = NULL );
+    medAttachedData( medAttachedData *parent = nullptr );
     virtual ~medAttachedData();
 
     medAbstractData * parentData() const;

@@ -29,13 +29,13 @@ medToolBoxBody::medToolBoxBody(QWidget *parent) : QFrame(parent), d(new medToolB
     d->layout->setContentsMargins(0, 0, 0, 0);
     d->layout->setSpacing(0);
     d->layoutOrientation = Qt::Vertical;
-    d->tab = NULL;
+    d->tab = nullptr;
 }
 
 medToolBoxBody::~medToolBoxBody(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medToolBoxBody::addWidget(QWidget *widget)

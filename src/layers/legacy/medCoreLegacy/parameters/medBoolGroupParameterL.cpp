@@ -60,17 +60,17 @@ medBoolGroupParameterL::medBoolGroupParameterL(QString name, QObject* parent):
     medAbstractGroupParameterL(name, parent),
     d(new medBoolGroupParameterLPrivate)
 {
-    d->pushButtonGroupWidget = NULL;
-    d->checkBoxGroupWidget = NULL;
-    d->radioButtonGroupWidget = NULL;
+    d->pushButtonGroupWidget = nullptr;
+    d->checkBoxGroupWidget = nullptr;
+    d->radioButtonGroupWidget = nullptr;
 
-    d->pushButtonGroup = NULL;
-    d->checkBoxGroup = NULL;
-    d->radioButtonGroup = NULL;
+    d->pushButtonGroup = nullptr;
+    d->checkBoxGroup = nullptr;
+    d->radioButtonGroup = nullptr;
 
-    d->pushButtonLayout = NULL;
-    d->checkBoxLayout = NULL;
-    d->radioButtonLayout = NULL;
+    d->pushButtonLayout = nullptr;
+    d->checkBoxLayout = nullptr;
+    d->radioButtonLayout = nullptr;
 
     d->checkBoxDirection = QBoxLayout::TopToBottom;
     d->radioButtonDirection = QBoxLayout::TopToBottom;
@@ -232,22 +232,22 @@ QWidget* medBoolGroupParameterL::getWidget()
 void medBoolGroupParameterL::removeInternPushButtonGroup()
 {
     this->removeFromInternWidgets(d->pushButtonGroupWidget);
-    d->pushButtonGroupWidget = NULL;
-    d->pushButtonLayout = NULL;
+    d->pushButtonGroupWidget = nullptr;
+    d->pushButtonLayout = nullptr;
 }
 
 void medBoolGroupParameterL::removeInternCheckBoxGroup()
 {
     this->removeFromInternWidgets(d->checkBoxGroupWidget);
-    d->checkBoxGroupWidget = NULL;
-    d->checkBoxLayout = NULL;
+    d->checkBoxGroupWidget = nullptr;
+    d->checkBoxLayout = nullptr;
 }
 
 void medBoolGroupParameterL::removeInternRadioButtonGroup()
 {
     this->removeFromInternWidgets(d->radioButtonGroupWidget);
-    d->radioButtonGroupWidget = NULL;
-    d->radioButtonLayout = NULL;
+    d->radioButtonGroupWidget = nullptr;
+    d->radioButtonLayout = nullptr;
 }
 
 void medBoolGroupParameterL::trigger()

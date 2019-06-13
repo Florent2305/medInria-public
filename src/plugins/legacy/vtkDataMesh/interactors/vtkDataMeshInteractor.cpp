@@ -111,12 +111,12 @@ vtkDataMeshInteractor::vtkDataMeshInteractor(medAbstractView *parent):
     for (int i=0; i<6; i++)
         d->imageBounds[i] = 0;
 
-    d->attributesParam = NULL;
-    d->LUTParam = NULL;
-    d->edgeVisibleParam = NULL;
-    d->colorParam = NULL;
-    d->renderingParam = NULL;
-    d->slicingParameter = NULL;
+    d->attributesParam = nullptr;
+    d->LUTParam = nullptr;
+    d->edgeVisibleParam = nullptr;
+    d->colorParam = nullptr;
+    d->renderingParam = nullptr;
+    d->slicingParameter = nullptr;
     d->minIntensityParameter = 0;
     d->maxIntensityParameter = 0;
     d->poLutWidget = nullptr;
@@ -126,7 +126,7 @@ vtkDataMeshInteractor::vtkDataMeshInteractor(medAbstractView *parent):
 vtkDataMeshInteractor::~vtkDataMeshInteractor()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 
@@ -169,7 +169,7 @@ void vtkDataMeshInteractor::setInputData(medAbstractData *data)
     vtkMetaDataSet * mesh = dynamic_cast<vtkMetaDataSet*>((vtkDataObject *)(data->data()));
 
     d->metaDataSet = mesh;
-    d->lut = LutPair(NULL, "Default");
+    d->lut = LutPair(nullptr, "Default");
 
     updatePipeline();
 
@@ -350,7 +350,7 @@ void vtkDataMeshInteractor::setAttribute(const QString & attributeName)
     if ( ! pointSet )
         return;
 
-    vtkDataSetAttributes * attributes = NULL;
+    vtkDataSetAttributes * attributes = nullptr;
     vtkMapper * mapper2d = d->actor2d->GetMapper();
     vtkMapper * mapper3d = d->actor3d->GetMapper();
     if (pointSet->GetPointData()->HasArray(qPrintable(attributeName)))
@@ -414,7 +414,7 @@ void vtkDataMeshInteractor::setAttribute(const QString & attributeName)
         if(d->colorParam)
             d->colorParam->show();
 
-        d->attribute = NULL;
+        d->attribute = nullptr;
         mapper2d->SetScalarVisibility(0);
         mapper3d->SetScalarVisibility(0);
     }
@@ -455,7 +455,7 @@ QString vtkDataMeshInteractor::attribute() const
 
 void vtkDataMeshInteractor::setLut(const QString & lutName)
 {
-    vtkLookupTable * lut = NULL;
+    vtkLookupTable * lut = nullptr;
 
     if (lutName != "Default")
         lut = vtkLookupTableManager::GetLookupTable(lutName.toStdString());

@@ -28,7 +28,7 @@ class MEDCORE_EXPORT medAbstractTractographyProcess : public medAbstractProcess
     Q_OBJECT
 
 public:
-    medAbstractTractographyProcess(QObject *parent = NULL);
+    medAbstractTractographyProcess(QObject *parent = nullptr);
     virtual ~medAbstractTractographyProcess();
 
     void setInput(medAbstractDiffusionModelImageData* data);

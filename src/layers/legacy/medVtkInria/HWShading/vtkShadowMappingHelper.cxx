@@ -92,8 +92,8 @@ vtkShadowMappingHelper::vtkShadowMappingHelper() {
     FragmentShader->SetSourceText(BuildShadowMapFragmentText);
     this->ShaderProgram->AddShaderObject(VertexShader);
     this->ShaderProgram->AddShaderObject(FragmentShader);
-    VertexShader->Delete(); VertexShader = NULL;
-    FragmentShader->Delete(); FragmentShader = NULL;
+    VertexShader->Delete(); VertexShader = nullptr;
+    FragmentShader->Delete(); FragmentShader = nullptr;
 
     //this->ShadowMapWidth = 4000;
     //this->ShadowMapHeight = 3072;
@@ -107,7 +107,7 @@ vtkShadowMappingHelper::vtkShadowMappingHelper() {
 
 vtkShadowMappingHelper::~vtkShadowMappingHelper() {
     this->ShadowMapSampler->Delete();
-    this->ShadowMapSampler = NULL;
+    this->ShadowMapSampler = nullptr;
 
     this->ShaderProgram->Delete();
 
@@ -135,9 +135,9 @@ void vtkShadowMappingHelper::InitializeShadowMap()
     // Border: 0
     // Format: Depth component
     // Type: unsigned byte
-    // Image data pointer: NULL
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->ShadowMapWidth, this->ShadowMapHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-    //  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->ShadowMapWidth, this->ShadowMapHeight, 0, GL_RGB, GL_SHORT, NULL);
+    // Image data pointer: nullptr
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->ShadowMapWidth, this->ShadowMapHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+    //  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, this->ShadowMapWidth, this->ShadowMapHeight, 0, GL_RGB, GL_SHORT, nullptr);
 
     // Linear interpolation for pixel values when pixel is > or <= one
     // texture element:
@@ -333,9 +333,9 @@ void vtkShadowMappingHelper::PreShadowMapRender(vtkCamera* lightCamera)
   glMultMatrixd(inverseViewTransformMatrix->Element[0]);
 
   inverseViewTransformMatrix->Delete();
-  inverseViewTransformMatrix = NULL;
-  viewTransformMatrix = NULL;
-  //cam = NULL;
+  inverseViewTransformMatrix = nullptr;
+  viewTransformMatrix = nullptr;
+  //cam = nullptr;
 */
     // tot hier
 
@@ -351,7 +351,7 @@ void vtkShadowMappingHelper::PreShadowMapRender(vtkCamera* lightCamera)
 
     glMatrixMode(GL_MODELVIEW);
 
-    matrix->Delete(); matrix = NULL;
+    matrix->Delete(); matrix = nullptr;
 
     //glPolygonOffset(po_scale, po_bias);
     //glEnable(GL_POLYGON_OFFSET_FILL);
@@ -462,8 +462,8 @@ void vtkShadowMappingHelper::SetupTextureMatrix(vtkCamera* cam)
 
     glMultMatrixd(inverseViewTransformMatrix->Element[0]);
     inverseViewTransformMatrix->Delete();
-    inverseViewTransformMatrix = NULL;
-    viewTransformMatrix = NULL;
+    inverseViewTransformMatrix = nullptr;
+    viewTransformMatrix = nullptr;
 }
 
 void vtkShadowMappingHelper::RestoreTextureMatrix()

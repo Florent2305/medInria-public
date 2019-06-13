@@ -154,7 +154,7 @@ medDatabaseModel::~medDatabaseModel(void)
     delete d->root;
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 int medDatabaseModel::rowCount(const QModelIndex& parent) const
@@ -457,7 +457,7 @@ QMimeData *medDatabaseModel::mimeData(const QModelIndexList &indexes) const
     else
     {
         d->draggedDataIndex = medDataIndex();
-        return NULL;
+        return nullptr;
     }
 }
 

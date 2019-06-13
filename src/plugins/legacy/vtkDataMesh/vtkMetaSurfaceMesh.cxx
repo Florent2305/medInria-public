@@ -83,7 +83,7 @@ void vtkMetaSurfaceMesh::Initialize()
 vtkPolyData* vtkMetaSurfaceMesh::GetPolyData() const
 {
   if (!this->DataSet)
-    return NULL;
+    return nullptr;
   return vtkPolyData::SafeDownCast (this->DataSet);
 }
 

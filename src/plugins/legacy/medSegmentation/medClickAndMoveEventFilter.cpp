@@ -30,10 +30,10 @@ medClickAndMoveEventFilter::medClickAndMoveEventFilter(medAlgorithmPaintToolbox 
     m_paintState(PaintState::None),
     m_lastPaintState(PaintState::None)
 {
-    m_maskAnnotationData = NULL;
-    m_maskData = NULL;
-    m_imageData = NULL;
-    m_view = NULL;
+    m_maskAnnotationData = nullptr;
+    m_maskData = nullptr;
+    m_imageData = nullptr;
+    m_view = nullptr;
 }
 
 medClickAndMoveEventFilter::~medClickAndMoveEventFilter()
@@ -240,7 +240,7 @@ void medClickAndMoveEventFilter::setData( medAbstractData *medData )
 
     if ( m_imageData )
     {
-        medImageMaskAnnotationData *existingMaskAnnData = NULL;
+        medImageMaskAnnotationData *existingMaskAnnData = nullptr;
         foreach( medAttachedData * data, m_imageData->attachedData() ) 
         {
             if ( qobject_cast<medImageMaskAnnotationData*>(data) ) {
@@ -283,7 +283,7 @@ void medClickAndMoveEventFilter::setData( medAbstractData *medData )
     }
     else
     {
-        m_itkMask = NULL;
+        m_itkMask = nullptr;
         m_toolbox->showButtons(false);
     }
 

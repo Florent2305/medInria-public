@@ -29,7 +29,7 @@ class MEDCORELEGACY_EXPORT medDatabaseCompactWidget: public QWidget
 {
     Q_OBJECT
 public :
-    medDatabaseCompactWidget(QWidget *parent = NULL);
+    medDatabaseCompactWidget(QWidget *parent = nullptr);
     virtual ~medDatabaseCompactWidget();
 
     void setViewAndPreview(medDatabaseView *view, medDatabasePreview *preview);

@@ -154,11 +154,11 @@ itkDataTensorImageVtkViewInteractor::itkDataTensorImageVtkViewInteractor(medAbst
 
     d->manager = vtkTensorManager::New();
 
-    d->datasetFloat = NULL;
-    d->filterFloat = NULL;
+    d->datasetFloat = nullptr;
+    d->filterFloat = nullptr;
 
-    d->datasetDouble = NULL;
-    d->filterDouble = NULL;
+    d->datasetDouble = nullptr;
+    d->filterDouble = nullptr;
 
     d->minorScaling = 1;
     d->majorScalingExponent = 3;
@@ -182,7 +182,7 @@ itkDataTensorImageVtkViewInteractor::itkDataTensorImageVtkViewInteractor(medAbst
 itkDataTensorImageVtkViewInteractor::~itkDataTensorImageVtkViewInteractor()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void itkDataTensorImageVtkViewInteractor::removeData()

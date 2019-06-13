@@ -102,7 +102,7 @@ itkDataImagePlugin::~itkDataImagePlugin()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool itkDataImagePlugin::initialize()

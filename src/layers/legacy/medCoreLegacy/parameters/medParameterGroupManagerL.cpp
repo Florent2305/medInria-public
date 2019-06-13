@@ -46,7 +46,7 @@ medParameterGroupManagerL::medParameterGroupManagerL(void) : d(new medParameterG
 medParameterGroupManagerL::~medParameterGroupManagerL(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medParameterGroupManagerL::registerNewGroup(medAbstractParameterGroupL* group)
@@ -95,7 +95,7 @@ QList<medLayerParameterGroupL*> medParameterGroupManagerL::layerGroups(QString w
 
 medViewParameterGroupL* medParameterGroupManagerL::viewGroup(QString groupName, QString workspace)
 {
-    medViewParameterGroupL* result = NULL;
+    medViewParameterGroupL* result = nullptr;
     if(workspace == "")
         workspace = d->currentWorkspace;
 
@@ -113,7 +113,7 @@ medViewParameterGroupL* medParameterGroupManagerL::viewGroup(QString groupName, 
 
 medLayerParameterGroupL* medParameterGroupManagerL::layerGroup(QString groupName, QString workspace)
 {
-    medLayerParameterGroupL* result = NULL;
+    medLayerParameterGroupL* result = nullptr;
     if(workspace == "")
         workspace = d->currentWorkspace;
 
@@ -166,4 +166,4 @@ void medParameterGroupManagerL::setCurrentWorkspace(QString workspace)
     d->currentWorkspace = workspace;
 }
 
-medParameterGroupManagerL *medParameterGroupManagerL::s_instance = NULL;
+medParameterGroupManagerL *medParameterGroupManagerL::s_instance = nullptr;

@@ -32,7 +32,7 @@ class MEDWIDGETS_EXPORT medAbstractDiffusionScalarMapsProcessPresenter : public 
     Q_OBJECT
 
 public:
-    medAbstractDiffusionScalarMapsProcessPresenter(medAbstractDiffusionScalarMapsProcess *parent = NULL);
+    medAbstractDiffusionScalarMapsProcessPresenter(medAbstractDiffusionScalarMapsProcess *parent = nullptr);
     virtual ~medAbstractDiffusionScalarMapsProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();

@@ -192,7 +192,7 @@ public:
     virtual void InstallInteractor();
     virtual void UnInstallInteractor();
 
-    virtual vtkActor* AddDataSet (vtkPointSet* arg, vtkProperty* prop = NULL);
+    virtual vtkActor* AddDataSet (vtkPointSet* arg, vtkProperty* prop = nullptr);
     virtual void RemoveDataSet (vtkPointSet* arg);
 
     virtual void AddLayer (int layer);

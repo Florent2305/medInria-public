@@ -44,7 +44,7 @@ medBrowserPacsSearchToolBox::~medBrowserPacsSearchToolBox(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 void medBrowserPacsSearchToolBox::onSearch(void)

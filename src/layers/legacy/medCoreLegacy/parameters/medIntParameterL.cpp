@@ -42,8 +42,8 @@ medIntParameterL::medIntParameterL(QString name, QObject* parent):
     d->min = 0;
     d->max = 100;
     m_value = 0;
-    d->spinBox = NULL;
-    d->slider = NULL;
+    d->spinBox = nullptr;
+    d->slider = nullptr;
 }
 
 medIntParameterL::~medIntParameterL()
@@ -130,13 +130,13 @@ QWidget* medIntParameterL::getWidget()
 void medIntParameterL::removeInternSlider()
 {
     this->removeFromInternWidgets(d->slider);
-    d->slider = NULL;
+    d->slider = nullptr;
 }
 
 void medIntParameterL::removeInternSpinBox()
 {
     this->removeFromInternWidgets(d->spinBox);
-    d->spinBox = NULL;
+    d->spinBox = nullptr;
 }
 
 

@@ -178,7 +178,7 @@ vtkFibersManager::~vtkFibersManager()
   this->RibbonFilter->Delete();
   this->HelpMessage->Delete();
 
-  this->Actor->SetMapper(NULL);
+  this->Actor->SetMapper(nullptr);
   
   this->Mapper->Delete();
   this->Actor->Delete();
@@ -232,7 +232,7 @@ void vtkFibersManager::SetRenderWindowInteractor (vtkRenderWindowInteractor* rwi
 {
   if( rwin != this->RenderWindowInteractor )
   {
-    if( this->RenderWindowInteractor != NULL )
+    if( this->RenderWindowInteractor != nullptr )
     {
       this->Disable();
       this->RenderWindowInteractor->UnRegister (this);
@@ -286,7 +286,7 @@ void vtkFibersManager::SetInput(vtkPolyData* input)
   
   this->PickerCallback->SetFiberImage ( this->GetInput() );
   
-  this->Callback->Execute (this->BoxWidget, 0, NULL);
+  this->Callback->Execute (this->BoxWidget, 0, nullptr);
   
   int totalLines = this->Callback->GetOutput()->GetNumberOfLines();
   double ratio = (double)totalLines/(double)(this->MaximumNumberOfFibers);
@@ -328,7 +328,7 @@ void vtkFibersManager::Reset()
   
   this->Callback->GetFiberLimiter()->SetInputConnection ( this->Callback->GetROIFiberLimiter()->GetOutputPort() );
   
-  this->Callback->Execute (this->BoxWidget, 0, NULL);
+  this->Callback->Execute (this->BoxWidget, 0, nullptr);
 }
 
 void vtkFibersManager::SetVisibility (bool isVisible)

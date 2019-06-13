@@ -91,7 +91,7 @@ medToolBox *medToolBoxFactory::createToolBox(QString identifier,
                                                          QWidget *parent)
 {
     if(!d->creators.contains(identifier))
-        return NULL;
+        return nullptr;
 
     medToolBox *toolbox =
             (d->creators[identifier])->creator(parent);
@@ -144,15 +144,15 @@ medToolBoxFactory::~medToolBoxFactory(void)
     foreach (medToolBoxDetails * detail, d->creators.values())
     {
         delete detail;
-        detail = NULL;
+        detail = nullptr;
     }
 
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
-medToolBoxFactory *medToolBoxFactory::s_instance = NULL;
+medToolBoxFactory *medToolBoxFactory::s_instance = nullptr;
 
 
 

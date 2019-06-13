@@ -172,7 +172,7 @@ medAlgorithmPaintToolbox::~medAlgorithmPaintToolbox()
 
 medAbstractData* medAlgorithmPaintToolbox::processOutput()
 {
-    return NULL;
+    return nullptr;
 }
 
 void medAlgorithmPaintToolbox::setWandSliderValue(double val)

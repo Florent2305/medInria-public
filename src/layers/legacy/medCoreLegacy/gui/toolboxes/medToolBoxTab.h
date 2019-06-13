@@ -26,7 +26,7 @@ class MEDCORELEGACY_EXPORT medToolBoxTab : public QTabWidget
     Q_PROPERTY(int height READ height WRITE setFixedHeight)
 
 public:
-     medToolBoxTab(QWidget *parent = NULL);
+     medToolBoxTab(QWidget *parent = nullptr);
     ~medToolBoxTab();
 
 private:

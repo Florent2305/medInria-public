@@ -26,8 +26,8 @@ public:
 medAbstractDWIMaskingProcess::medAbstractDWIMaskingProcess(QObject *parent)
     : medAbstractProcess(parent), d(new medAbstractDWIMaskingProcessPrivate)
 {
-    d->input = NULL;
-    d->output = NULL;
+    d->input = nullptr;
+    d->output = nullptr;
 }
 
 medAbstractDWIMaskingProcess::~medAbstractDWIMaskingProcess()

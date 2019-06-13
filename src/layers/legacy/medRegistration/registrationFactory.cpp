@@ -39,7 +39,7 @@ registrationFactory::registrationFactory( void ): d(new registrationFactoryPriva
 
 registrationFactory::~registrationFactory( void ){
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void registrationFactory::reset()
@@ -71,7 +71,7 @@ unsigned int registrationFactory::addTransformation(itk::Transform<double,3,3>::
     return i;
 }
 
-registrationFactory *registrationFactory::s_instance = NULL;
+registrationFactory *registrationFactory::s_instance = nullptr;
 
 
 

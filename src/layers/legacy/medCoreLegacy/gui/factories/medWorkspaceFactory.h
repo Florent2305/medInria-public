@@ -44,7 +44,7 @@ public:
                 QString description_,
                 QString category_,
                 medWorkspaceCreator creator_,
-                medWorkspaceIsUsable isUsable_ = NULL,
+                medWorkspaceIsUsable isUsable_ = nullptr,
                 bool isActive_ = true)
             : identifier(id_)
             , name(name_)
@@ -123,7 +123,7 @@ protected:
                            QString description,
                            QString category,
                            medWorkspaceCreator creator,
-                           medWorkspaceIsUsable isUsable=NULL, bool isActive=true);
+                           medWorkspaceIsUsable isUsable=nullptr, bool isActive=true);
 
      medWorkspaceFactory();
     virtual ~medWorkspaceFactory();

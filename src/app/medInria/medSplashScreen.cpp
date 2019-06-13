@@ -42,7 +42,7 @@ medSplashScreen::medSplashScreen(const QPixmap& thePixmap)
 medSplashScreen::~medSplashScreen()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 ////////////////////////////////////////////////////////////////////////////

@@ -36,9 +36,9 @@ medAbstractImageViewNavigator::medAbstractImageViewNavigator(medAbstractView *pa
     medAbstractLayeredViewNavigator(parent), d(new medAbstractImageViewNavigatorPrivate)
 {
     d->view = dynamic_cast<medAbstractImageView *>(parent);
-    d->positionBeingViewedParameter = NULL;
-    d->cameraParameter = NULL;
-    d->timeLineParameter = NULL;
+    d->positionBeingViewedParameter = nullptr;
+    d->cameraParameter = nullptr;
+    d->timeLineParameter = nullptr;
 
     d->view = dynamic_cast<medAbstractImageView *>(parent);
     if(!d->view)

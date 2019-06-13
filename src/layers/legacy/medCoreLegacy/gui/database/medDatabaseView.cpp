@@ -48,7 +48,7 @@ void NoFocusDelegate::paint(QPainter* painter, const QStyleOptionViewItem & opti
         itemOption.state = itemOption.state ^ QStyle::State_HasFocus;
 
     if(index.isValid()) {
-        medAbstractDatabaseItem *item = NULL;
+        medAbstractDatabaseItem *item = nullptr;
 
         if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(m_view->model()))
             item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -211,7 +211,7 @@ void medDatabaseView::updateContextMenu(const QPoint& point)
         d->contextMenu->clear();
         d->contextMenu->addAction(d->addPatientAction);
 
-        medAbstractDatabaseItem *item = NULL;
+        medAbstractDatabaseItem *item = nullptr;
 
         if(index.isValid())
         {
@@ -280,7 +280,7 @@ void medDatabaseView::onViewSelectedItemRequested(void)
     if(!index.isValid())
         return;
 
-    medAbstractDatabaseItem *item = NULL;
+    medAbstractDatabaseItem *item = nullptr;
 
     if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
         item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -302,7 +302,7 @@ void medDatabaseView::onExportSelectedItemRequested(void)
     if(!index.isValid())
         return;
 
-    medAbstractDatabaseItem *item = NULL;
+    medAbstractDatabaseItem *item = nullptr;
 
     if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
         item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -367,7 +367,7 @@ void medDatabaseView::onSelectionChanged(const QItemSelection& selected, const Q
 
 medAbstractDatabaseItem* medDatabaseView::getItemFromIndex(const QModelIndex& index)
 {
-    medAbstractDatabaseItem *item = NULL;
+    medAbstractDatabaseItem *item = nullptr;
 
     if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
         item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -391,7 +391,7 @@ void medDatabaseView::onRemoveSelectedItemRequested( void )
     {
         foreach(const QModelIndex& index, this->selectionModel()->selectedRows())
         {
-            medAbstractDatabaseItem *item = NULL;
+            medAbstractDatabaseItem *item = nullptr;
             if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
                 item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
 
@@ -415,7 +415,7 @@ void medDatabaseView::onSaveSelectedItemRequested(void)
 
     QModelIndex index = indexes.at(0);
 
-    medAbstractDatabaseItem *item = NULL;
+    medAbstractDatabaseItem *item = nullptr;
 
     if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
         item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -441,7 +441,7 @@ void medDatabaseView::onCreatePatientRequested(void)
     {
         QModelIndex index = indexes.at(0);
 
-        medAbstractDatabaseItem *item = NULL;
+        medAbstractDatabaseItem *item = nullptr;
 
         if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
             item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -501,7 +501,7 @@ void medDatabaseView::onCreateStudyRequested(void)
 
     QModelIndex index = indexes.at(0);
 
-    medAbstractDatabaseItem *item = NULL;
+    medAbstractDatabaseItem *item = nullptr;
 
     if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
         item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -558,7 +558,7 @@ void medDatabaseView::onEditRequested(void)
 
     QModelIndex index = indexes.at(0);
 
-    medAbstractDatabaseItem *item = NULL;
+    medAbstractDatabaseItem *item = nullptr;
 
     if(QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel *>(this->model()))
         item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());

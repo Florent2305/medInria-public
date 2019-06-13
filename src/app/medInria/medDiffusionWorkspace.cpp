@@ -82,7 +82,7 @@ medDiffusionWorkspace::medDiffusionWorkspace(QWidget *parent) : medAbstractWorks
 medDiffusionWorkspace::~medDiffusionWorkspace()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medDiffusionWorkspace::setupTabbedViewContainer()

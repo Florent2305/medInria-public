@@ -57,7 +57,7 @@ public:
         else if (nonPersDbController->dataSourceId() == id)
             return nonPersDbController;
         else
-            return NULL;
+            return nullptr;
     }
 
     Q_DECLARE_PUBLIC(medDataManager)
@@ -73,7 +73,7 @@ public:
 
 // ------------------------- medDataManager -----------------------------------
 
-medDataManager * medDataManager::s_instance = NULL;
+medDataManager * medDataManager::s_instance = nullptr;
 
 // Not thread-safe, but should only be called once, at application start-up
 void medDataManager::initialize()
@@ -118,7 +118,7 @@ medAbstractData* medDataManager::retrieveData(const medDataIndex& index)
         d->loadedDataObjectTracker.insert(index, dataObjRef);
         return dataObjRef;
     }
-    return NULL;
+    return nullptr;
 }
 
 
@@ -387,7 +387,7 @@ QPixmap medDataManager::thumbnail(const medDataIndex & index)
     medAbstractDbController* dbc = d->controllerForDataSource(index.dataSourceId());
 
     QPixmap pix;
-    // dbc is NULL when called from the importer, as data is not imported yet
+    // dbc is nullptr when called from the importer, as data is not imported yet
     if (dbc) {
         pix = dbc->thumbnail(index);
     }

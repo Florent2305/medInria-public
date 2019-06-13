@@ -51,15 +51,15 @@ vtkImageOrientedPointWidget::vtkImageOrientedPointWidget()
   this->EventCallbackCommand->SetCallback(vtkImageOrientedPointWidget::ProcessEvents);
 
   this->Interaction = 1;
-  this->ViewProp = NULL;
+  this->ViewProp = nullptr;
   this->PickCount = 0;
   this->SnapToImage = 0;
   this->AutoClose = 0;
   this->CaptureRadius = 1.0;
   this->IsSnapping = 0;
   this->ImageSnapType = VTK_ITW_SNAP_CELLS;
-  this->CurrentPicker = NULL;
-  this->CurrentHandle = NULL;
+  this->CurrentPicker = nullptr;
+  this->CurrentHandle = nullptr;
   this->CurrentHandleIndex = -1;
   this->ProjectionNormal = VTK_ITW_PROJECTION_XY;
   this->ProjectionPosition = 0.0;
@@ -133,16 +133,16 @@ vtkImageOrientedPointWidget::vtkImageOrientedPointWidget()
   this->LinePicker->PickFromListOn();
 
   // Set up the initial properties
-  this->HandleProperty1 = NULL;
-  this->HandleProperty2 = NULL;
-  this->SelectedHandleProperty = NULL;
-  this->LineProperty = NULL;
-  this->SelectedLineProperty = NULL;
+  this->HandleProperty1 = nullptr;
+  this->HandleProperty2 = nullptr;
+  this->SelectedHandleProperty = nullptr;
+  this->LineProperty = nullptr;
+  this->SelectedLineProperty = nullptr;
   this->CreateDefaultProperties();
 
   // Initialize ivars
-  this->Handle = NULL;
-  this->HandleGeometry = NULL;
+  this->Handle = nullptr;
+  this->HandleGeometry = nullptr;
 
   // Create one handle
   this->AllocateHandles(1);
@@ -167,12 +167,12 @@ vtkImageOrientedPointWidget::~vtkImageOrientedPointWidget()
   if ( this->Handle )
     {
     delete [] this->Handle;
-    this->Handle = NULL;
+    this->Handle = nullptr;
     }
   if ( this->HandleGeometry )
     {
     delete [] this->HandleGeometry;
-    this->HandleGeometry = NULL;
+    this->HandleGeometry = nullptr;
     }
  
   if ( this->HandleProperty1 )
@@ -207,8 +207,8 @@ vtkImageOrientedPointWidget::~vtkImageOrientedPointWidget()
 
   this->LinePicker->Delete();
   this->HandlePicker->Delete();
-  this->CurrentPicker = NULL;
-  this->CurrentHandle = NULL;
+  this->CurrentPicker = nullptr;
+  this->CurrentHandle = nullptr;
 
   this->PropPicker->Delete();
   this->TransformFilter1->Delete();
@@ -293,7 +293,7 @@ void vtkImageOrientedPointWidget::SetEnabled(int enabling)
     this->LineActor->SetProperty(this->LineProperty);
     this->LineActor->PickableOff();
 
-    this->InvokeEvent(vtkCommand::EnableEvent,NULL);
+    this->InvokeEvent(vtkCommand::EnableEvent,nullptr);
     }
 
   else // disabling
@@ -325,9 +325,9 @@ void vtkImageOrientedPointWidget::SetEnabled(int enabling)
 
     this->CurrentRenderer->RemoveViewProp(this->LineActor);
 
-    this->CurrentHandle = NULL;
-    this->InvokeEvent(vtkCommand::DisableEvent,NULL);
-    this->SetCurrentRenderer(NULL);
+    this->CurrentHandle = nullptr;
+    this->InvokeEvent(vtkCommand::DisableEvent,nullptr);
+    this->SetCurrentRenderer(nullptr);
     }
 
   this->Interactor->Render();
@@ -609,7 +609,7 @@ void vtkImageOrientedPointWidget::GetHandlePosition(int handle, double xyz[3])
 
 double* vtkImageOrientedPointWidget::GetHandlePosition(int handle)
 {
-  if ( handle < 0 || handle >= this->NumberOfHandles ){ return NULL; }
+  if ( handle < 0 || handle >= this->NumberOfHandles ){ return nullptr; }
   return this->HandleGeometry[handle]->GetCenter();
 }
 
@@ -668,7 +668,7 @@ void vtkImageOrientedPointWidget::OnLeftButtonDown()
 
   this->EventCallbackCommand->SetAbortFlag(1);
   this->StartInteraction();
-  this->InvokeEvent(vtkCommand::StartInteractionEvent,NULL);
+  this->InvokeEvent(vtkCommand::StartInteractionEvent,nullptr);
   this->Interactor->Render();
   this->OnLeftButtonUp();
 
@@ -692,7 +692,7 @@ void vtkImageOrientedPointWidget::OnLeftButtonUp()
     }
 
   this->State = vtkImageOrientedPointWidget::Start;
-  this->CurrentHandleIndex = this->HighlightHandle(NULL);
+  this->CurrentHandleIndex = this->HighlightHandle(nullptr);
 
   if ( this->AutoClose )
     {
@@ -707,9 +707,9 @@ void vtkImageOrientedPointWidget::OnLeftButtonUp()
 
   this->EventCallbackCommand->SetAbortFlag(1);
   this->EndInteraction();
-  this->InvokeEvent(vtkCommand::EndInteractionEvent,NULL);
+  this->InvokeEvent(vtkCommand::EndInteractionEvent,nullptr);
   this->Interactor->Render();
-  this->CurrentPicker = NULL;
+  this->CurrentPicker = nullptr;
   
 }
 
@@ -798,13 +798,13 @@ void vtkImageOrientedPointWidget::OnRightButtonDown()
       {
       this->ViewProp->PickableOn();
       }
-    this->CurrentPicker = NULL;
+    this->CurrentPicker = nullptr;
     return;
     }
 
   this->EventCallbackCommand->SetAbortFlag(1);
   this->StartInteraction();
-  this->InvokeEvent(vtkCommand::StartInteractionEvent,NULL);
+  this->InvokeEvent(vtkCommand::StartInteractionEvent,nullptr);
   this->Interactor->Render();
 }
 
@@ -820,7 +820,7 @@ void vtkImageOrientedPointWidget::OnRightButtonUp()
   if ( this->State == vtkImageOrientedPointWidget::Erasing )
     {
     int index = this->CurrentHandleIndex;
-    this->CurrentHandleIndex = this->HighlightHandle(NULL);
+    this->CurrentHandleIndex = this->HighlightHandle(nullptr);
     int closed = this->IsClosed();
     this->EraseHandle(index);
     this->BuildLinesFromHandles();
@@ -831,7 +831,7 @@ void vtkImageOrientedPointWidget::OnRightButtonUp()
     }
   else if ( this->State == vtkImageOrientedPointWidget::Moving )
     {
-    this->CurrentHandleIndex = this->HighlightHandle(NULL);
+    this->CurrentHandleIndex = this->HighlightHandle(nullptr);
     if ( this->AutoClose && !this->IsClosed() )
       {
       this->ClosePath();
@@ -843,7 +843,7 @@ void vtkImageOrientedPointWidget::OnRightButtonUp()
     }
   else if ( this->State == vtkImageOrientedPointWidget::Translating )
     {
-    this->CurrentHandleIndex = this->HighlightHandle(NULL);
+    this->CurrentHandleIndex = this->HighlightHandle(nullptr);
     }
 
   this->State = vtkImageOrientedPointWidget::Start;
@@ -857,9 +857,9 @@ void vtkImageOrientedPointWidget::OnRightButtonUp()
 
   this->EventCallbackCommand->SetAbortFlag(1);
   this->EndInteraction();
-  this->InvokeEvent(vtkCommand::EndInteractionEvent,NULL);
+  this->InvokeEvent(vtkCommand::EndInteractionEvent,nullptr);
   this->Interactor->Render();
-  this->CurrentPicker = NULL;
+  this->CurrentPicker = nullptr;
 }
 
 void vtkImageOrientedPointWidget::OnMouseMove()
@@ -914,8 +914,8 @@ void vtkImageOrientedPointWidget::OnMouseMove()
 
   // Interact, if desired
   this->EventCallbackCommand->SetAbortFlag(1);
-  this->InvokeEvent(vtkCommand::InteractionEvent,NULL);
-  this->InvokeEvent(vtkCommand::MouseMoveEvent,NULL);
+  this->InvokeEvent(vtkCommand::InteractionEvent,nullptr);
+  this->InvokeEvent(vtkCommand::MouseMoveEvent,nullptr);
   
   this->Interactor->Render();
 }
@@ -1041,7 +1041,7 @@ void vtkImageOrientedPointWidget::ResetHandles()
 
   if ( this->CurrentHandle )
     {
-    this->CurrentHandle = NULL;
+    this->CurrentHandle = nullptr;
     }
 
   this->HandlePicker->InitializePickList();
@@ -1066,12 +1066,12 @@ void vtkImageOrientedPointWidget::ResetHandles()
   if ( this->Handle )
     {
     delete [] this->Handle;
-    this->Handle = NULL;
+    this->Handle = nullptr;
     }
   if ( this->HandleGeometry )
     {
     delete [] this->HandleGeometry;
-    this->HandleGeometry = NULL;
+    this->HandleGeometry = nullptr;
     }
 }
 
@@ -1343,7 +1343,7 @@ void vtkImageOrientedPointWidget::Snap(double* pos) // overwrites pos
     double weights[8];
     double pcoords[3];
     int subId;
-    vtkIdType cellId = ptr->FindCell(pos,NULL,-1,0.0,subId,pcoords,weights);
+    vtkIdType cellId = ptr->FindCell(pos,nullptr,-1,0.0,subId,pcoords,weights);
     if ( cellId != -1 )
       {
       ptr->GetCellBounds(cellId,bounds);

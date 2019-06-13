@@ -54,7 +54,7 @@ medDatabasePreviewStaticScene::medDatabasePreviewStaticScene(QObject *parent):
 medDatabasePreviewStaticScene::~medDatabasePreviewStaticScene()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medDatabasePreviewStaticScene::setImage(const medDataIndex &index)
@@ -188,7 +188,7 @@ medDatabasePreviewDynamicScene::medDatabasePreviewDynamicScene(const QList<QPair
 medDatabasePreviewDynamicScene::~medDatabasePreviewDynamicScene()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 
@@ -224,8 +224,8 @@ medDatabasePreview::medDatabasePreview(QWidget *parent): d(new medDatabasePrevie
     QGraphicsScene *scene = new QGraphicsScene;
     this->setScene(scene);
 
-    d->dynamicScene = NULL;
-    d->staticScene = NULL;
+    d->dynamicScene = nullptr;
+    d->staticScene = nullptr;
 
     QGraphicsPixmapItem *pixmap = new QGraphicsPixmapItem;
     pixmap->setPixmap(QPixmap(":/pixmaps/default_thumbnail.png"));
@@ -247,7 +247,7 @@ medDatabasePreview::medDatabasePreview(QWidget *parent): d(new medDatabasePrevie
 medDatabasePreview::~medDatabasePreview()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 

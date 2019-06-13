@@ -28,7 +28,7 @@ class MEDCORE_EXPORT medAbstractMorphomathOperationProcess : public medAbstractP
     Q_OBJECT
 
 public:
-    medAbstractMorphomathOperationProcess(QObject *parent = NULL);
+    medAbstractMorphomathOperationProcess(QObject *parent = nullptr);
     virtual ~medAbstractMorphomathOperationProcess();
 
     void setInput(medAbstractImageData* data);

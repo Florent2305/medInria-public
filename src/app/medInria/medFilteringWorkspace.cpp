@@ -426,7 +426,7 @@ medFilteringWorkspace::medFilteringWorkspace(QWidget *parent): medAbstractWorksp
 medFilteringWorkspace::~medFilteringWorkspace()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medFilteringWorkspace::setupTabbedViewContainer()
@@ -917,7 +917,7 @@ void medFilteringWorkspace::createFilterEnvironment()
     d->FiltersParamToolBox->setTitle(QString("Parameters of ") + poProcess->caption());
     d->FiltersParamToolBox->addWidget(poToolBoxWidget);
 
-    d->iCurrentTab = d->oProcessTab.size()-1;
+    d->iCurrentTab = static_cast<int>(d->oProcessTab.size()-1);
 
     if (this->tabbedViewContainers()->currentWidget() == 0)
         this->tabbedViewContainers()->setSplitter(this->tabbedViewContainers()->currentIndex(), poPresenter->buildViewContainerSplitter());
@@ -942,7 +942,7 @@ void medFilteringWorkspace::closingTab(int index)
 {
     stProcessAndToolBox &stTmp = d->oProcessTab[index];
     d->FiltersParamToolBox->removeWidget(stTmp.toolBox);
-    d->iCurrentTab = d->oProcessTab.size();
+    d->iCurrentTab = static_cast<int>(d->oProcessTab.size());
     delete stTmp.presenter;
     delete stTmp.process;
     delete stTmp.toolBox;

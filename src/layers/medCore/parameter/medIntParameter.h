@@ -21,7 +21,7 @@ class MEDCORE_EXPORT medIntParameter : public medAbstractParameter
     Q_OBJECT
 
 public:
-    medIntParameter(const QString & name, QObject *parent = NULL);
+    medIntParameter(const QString & name, QObject *parent = nullptr);
     virtual ~medIntParameter();
 
     virtual medParameterType type() const {return medParameterType::MED_PARAMETER_INT;}

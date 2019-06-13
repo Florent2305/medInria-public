@@ -43,7 +43,7 @@ vtkStandardNewMacro( vtkMetaDataSet );
 vtkMetaDataSet::vtkMetaDataSet()
 {
   this->DataSet          = 0;
-  this->WirePolyData = NULL;
+  this->WirePolyData = nullptr;
 
   this->ActorList = vtkActorCollection::New();
   this->ArrayCollection = vtkDataArrayCollection::New();
@@ -496,7 +496,7 @@ void vtkMetaDataSet::ReadDataInternal(const char* filename)
   
   file.close();
 
-  vtkDataSetAttributes* attributes = NULL;
+  vtkDataSetAttributes* attributes = nullptr;
   
   if (type == 1) // assign array to points
   {
@@ -746,7 +746,7 @@ vtkDataArray* vtkMetaDataSet::GetArray (const char* name)
   
 
   // then try in the pointdata and celldata array collections
-  vtkDataArray* ret = NULL;
+  vtkDataArray* ret = nullptr;
 
   vtkDataArrayCollection* arrays = vtkDataArrayCollection::New();
   this->GetColorArrayCollection (arrays);

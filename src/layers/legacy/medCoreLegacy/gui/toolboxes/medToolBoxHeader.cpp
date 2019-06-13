@@ -28,14 +28,14 @@ public:
 
 
 const QString medToolBoxHeaderPrivate::tooltip = QObject::tr("About this plugin");
-QPixmap * medToolBoxHeaderPrivate::png = NULL;
+QPixmap * medToolBoxHeaderPrivate::png = nullptr;
 
 medToolBoxHeader::medToolBoxHeader(QWidget *parent) : QFrame(parent), d(new medToolBoxHeaderPrivate)
 {
     if (!d->png)  d->png = new QPixmap(":icons/information.png");
     d->title = "Untitled";
     d->titleOffset = QPoint( 0, 0 );
-//    d->about = NULL;
+//    d->about = nullptr;
     QBoxLayout* layout = new QBoxLayout(QBoxLayout::LeftToRight,this);
     layout->setMargin(0);
 
@@ -51,7 +51,7 @@ medToolBoxHeader::~medToolBoxHeader(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 /**

@@ -22,14 +22,14 @@ public:
 
 medFilteringAbstractToolBox::medFilteringAbstractToolBox(QWidget *parent) : medToolBox(parent), d(new medFilteringAbstractToolBoxPrivate)
 {
-    d->parent = NULL;
+    d->parent = nullptr;
 }
 
 medFilteringAbstractToolBox::~medFilteringAbstractToolBox(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 void medFilteringAbstractToolBox::setFilteringToolBox(medFilteringSelectorToolBox *toolbox)

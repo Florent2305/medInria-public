@@ -50,7 +50,7 @@ itkDataDiffusionGradientListPlugin::~itkDataDiffusionGradientListPlugin()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool itkDataDiffusionGradientListPlugin::initialize()

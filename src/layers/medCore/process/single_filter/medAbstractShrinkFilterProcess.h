@@ -28,7 +28,7 @@ class MEDCORE_EXPORT medAbstractShrinkFilterProcess : public medAbstractSingleFi
     Q_OBJECT
 
 public:
-    medAbstractShrinkFilterProcess(QObject *parent = NULL);
+    medAbstractShrinkFilterProcess(QObject *parent = nullptr);
     virtual ~medAbstractShrinkFilterProcess();
 
     virtual medIntParameter* shrinkFactor1();

@@ -31,7 +31,7 @@ class MEDWIDGETS_EXPORT medAbstractMorphomathOperationProcessPresenter : public 
     Q_OBJECT
 
 public:
-    medAbstractMorphomathOperationProcessPresenter(medAbstractMorphomathOperationProcess *parent = NULL);
+    medAbstractMorphomathOperationProcessPresenter(medAbstractMorphomathOperationProcess *parent = nullptr);
     virtual ~medAbstractMorphomathOperationProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();

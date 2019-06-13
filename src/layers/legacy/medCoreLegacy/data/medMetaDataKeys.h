@@ -71,7 +71,7 @@ namespace medMetaDataKeys {
                 if( (*it)->key() == name )
                     return *it;
             }
-            return NULL;
+            return nullptr;
         }
 
 

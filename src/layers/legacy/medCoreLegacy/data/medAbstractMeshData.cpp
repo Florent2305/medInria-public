@@ -38,7 +38,7 @@ medAbstractMeshData::medAbstractMeshData(const  medAbstractMeshData& other): med
 medAbstractMeshData::~medAbstractMeshData(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void *medAbstractMeshData::mesh(void)

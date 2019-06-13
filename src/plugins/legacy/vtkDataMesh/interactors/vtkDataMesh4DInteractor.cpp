@@ -40,7 +40,7 @@ vtkDataMesh4DInteractor::vtkDataMesh4DInteractor(medAbstractView* parent): vtkDa
     d(new vtkDataMesh4DInteractorPrivate)
 {
     d->view = dynamic_cast<medAbstractImageView *>(parent);
-    d->data = NULL;
+    d->data = nullptr;
 }
 
 vtkDataMesh4DInteractor::~vtkDataMesh4DInteractor()

@@ -62,7 +62,7 @@ QList<QString> medWorkspaceFactory::workspaces(void)
 medAbstractWorkspaceLegacy *medWorkspaceFactory::createWorkspace(QString type,QWidget* parent)
 {
     if(!d->creators.contains(type))
-        return NULL;
+        return nullptr;
 
     medAbstractWorkspaceLegacy * workspace = d->creators[type]->creator(parent);
 
@@ -119,7 +119,7 @@ medWorkspaceFactory::~medWorkspaceFactory(void)
 {
     qDeleteAll(d->creators);
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**
@@ -131,7 +131,7 @@ medWorkspaceFactory::Details * medWorkspaceFactory::workspaceDetailsFromId(QStri
     return d->creators.value(identifier);
 }
 
-medWorkspaceFactory *medWorkspaceFactory::s_instance = NULL;
+medWorkspaceFactory *medWorkspaceFactory::s_instance = nullptr;
 
 
 
@@ -139,7 +139,7 @@ bool medWorkspaceFactory::isUsable(QString identifier) const
 {
     if (d->creators.contains(identifier))
     {
-        if (d->creators.value(identifier)->isUsable==NULL)
+        if (d->creators.value(identifier)->isUsable==nullptr)
             return true;
         else
             return d->creators.value(identifier)->isUsable();

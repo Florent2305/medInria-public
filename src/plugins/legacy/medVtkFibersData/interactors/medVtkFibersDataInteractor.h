@@ -31,7 +31,7 @@ class medVtkFibersDataInteractorPrivate;
  * Fiber visualization can be controlled with Regions of Interest (ROI), which
  * are images of unsigned char defining regions of voxels where fibers should
  * (or shouldn't) pass. The meaning of each ROI can be controlled with the
- * setRoiBoolean() method: 0 is NULL (ROI is deactivated), 1 (fibers should not pass
+ * setRoiBoolean() method: 0 is nullptr (ROI is deactivated), 1 (fibers should not pass
  * through the ROI), and 2 (fibers should pass through the ROI).
  * Moreover, this class offers an interface to fiber bundle statistics: given a
  * fiber bundle (identified by a name), subclass should implement calculation of
@@ -43,7 +43,7 @@ class MEDVTKFIBERSDATAPLUGIN_EXPORT medVtkFibersDataInteractor: public medAbstra
     Q_OBJECT
 
 public:
-    medVtkFibersDataInteractor(medAbstractView *parent = NULL);
+    medVtkFibersDataInteractor(medAbstractView *parent = nullptr);
     virtual ~medVtkFibersDataInteractor();
 
     virtual QString description() const;

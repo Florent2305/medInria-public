@@ -90,8 +90,8 @@ bool medQtDataImageReader::readInformation( const QStringList& paths )
 
 void medQtDataImageReader::reset()
 {
-    m_reader.reset(NULL);
-    this->setData(NULL);
+    m_reader.reset(nullptr);
+    this->setData(nullptr);
 }
 
 void medQtDataImageReader::setMetaDataFromImageReader()
@@ -160,7 +160,7 @@ int medQtDataImageReader::readStartingFrom( const QString& path, int iStart )
 
     QImage nextImage = m_reader->read();
     if ( nextImage.isNull() ) {
-        this->setData(NULL);
+        this->setData(nullptr);
         return 0;
     }
 

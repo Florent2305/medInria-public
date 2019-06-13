@@ -218,7 +218,7 @@ medMessageProgress* medMessageController::showProgress(const QString& text)
 
 void medMessageController::remove(medMessage *message)
 {
-    if(message != NULL)
+    if(message != nullptr)
     {
         emit removeMessage(message);
         message->deleteLater();
@@ -233,4 +233,4 @@ medMessageController::~medMessageController(void)
 {
 }
 
-medMessageController *medMessageController::s_instance = NULL;
+medMessageController *medMessageController::s_instance = nullptr;

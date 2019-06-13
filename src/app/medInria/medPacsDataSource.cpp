@@ -76,7 +76,7 @@ medPacsDataSource::~medPacsDataSource()
     //we can delete the pacsdatasource without destroying the parent.
     d->pacsWidget->deleteLater();
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QWidget* medPacsDataSource::mainViewWidget()

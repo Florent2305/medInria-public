@@ -71,7 +71,7 @@ QList<QString> medSettingsWidgetFactory::settingsWidgets(void)
 medSettingsWidget *medSettingsWidgetFactory::createSettingsWidget(QString type,QWidget * parent)
 {
     if(!d->creators.contains(type))
-        return NULL;
+        return nullptr;
 
     medSettingsWidget *conf = d->creators[type]->creator(parent);
 
@@ -113,7 +113,7 @@ medSettingsWidgetFactory::~medSettingsWidgetFactory(void)
     d->creators.clear();
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
-medSettingsWidgetFactory *medSettingsWidgetFactory::s_instance = NULL;
+medSettingsWidgetFactory *medSettingsWidgetFactory::s_instance = nullptr;

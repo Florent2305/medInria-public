@@ -31,7 +31,7 @@ class MEDWIDGETS_EXPORT medAbstractMaskImageProcessPresenter : public medAbstrac
     Q_OBJECT
 
 public:
-    medAbstractMaskImageProcessPresenter(medAbstractMaskImageProcess *parent = NULL);
+    medAbstractMaskImageProcessPresenter(medAbstractMaskImageProcess *parent = nullptr);
     virtual ~medAbstractMaskImageProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();

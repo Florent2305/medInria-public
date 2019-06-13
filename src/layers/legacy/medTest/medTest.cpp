@@ -59,7 +59,7 @@ namespace medTest
 
         return medDataManager::instance()->data(index);
         */
-		return NULL;
+		return nullptr;
     }
 
 } // end of namespace

@@ -49,7 +49,7 @@ medCompositeDataSetImporterSelectorToolBox::medCompositeDataSetImporterSelectorT
 medCompositeDataSetImporterSelectorToolBox::~medCompositeDataSetImporterSelectorToolBox(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medCompositeDataSetImporterSelectorToolBoxPrivate::read(QString filename) { }
@@ -183,7 +183,7 @@ bool medCompositeDataSetImporterSelectorToolBox::import()
 
 void medCompositeDataSetImporterSelectorToolBox::onCurrentTypeChanged(const int i) {
 
-    medCompositeDataSetImporterAbstractToolBox* toolbox = NULL;
+    medCompositeDataSetImporterAbstractToolBox* toolbox = nullptr;
     const QString id = d->type->itemData(i).toString();
 
     if (d->toolBoxes.contains(id))

@@ -239,7 +239,7 @@ medPluginWidget::medPluginWidget(QWidget *parent) :
 medPluginWidget::~medPluginWidget()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medPluginWidget::reset()

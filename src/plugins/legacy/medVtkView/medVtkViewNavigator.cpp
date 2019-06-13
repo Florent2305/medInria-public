@@ -99,8 +99,8 @@ medVtkViewNavigator::medVtkViewNavigator(medAbstractView *parent) :
     d->view2d = backend->view2D;
     d->view3d = backend->view3D;
 
-    d->currentView = NULL;
-    d->showOptionsWidget = NULL;
+    d->currentView = nullptr;
+    d->showOptionsWidget = nullptr;
 
     d->renderer2d = d->view2d->GetRenderer();
     d->renderer3d = d->view3d->GetRenderer();
@@ -588,7 +588,7 @@ void medVtkViewNavigator::changeOrientation(medImageView::Orientation orientatio
         d->currentView->GetCurrentPoint(pos);
         d->currentView->UnInstallInteractor();
         renWin = d->currentView->GetRenderWindow();
-        d->currentView->SetRenderWindow(NULL);
+        d->currentView->SetRenderWindow(nullptr);
     }
 
     switch(orientation)

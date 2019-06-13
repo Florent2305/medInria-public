@@ -113,7 +113,7 @@ medAbstractWorkspaceLegacy::medAbstractWorkspaceLegacy(QWidget *parent) : QObjec
 
     d->layerListToolBox->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-    d->layerListWidget = NULL;
+    d->layerListWidget = nullptr;
 
     d->temporaryPoolForInteractors = new medParameterPoolL(this);
 
@@ -121,14 +121,14 @@ medAbstractWorkspaceLegacy::medAbstractWorkspaceLegacy(QWidget *parent) : QObjec
     this->setUserLayerPoolable(true);
     this->setUserViewPoolable(true);
 
-    d->viewLinkMenu = NULL;
-    d->layerLinkMenu = NULL;
+    d->viewLinkMenu = nullptr;
+    d->layerLinkMenu = nullptr;
 }
 
 medAbstractWorkspaceLegacy::~medAbstractWorkspaceLegacy(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medAbstractWorkspaceLegacy::addToolBox(medToolBox *toolbox)
@@ -202,7 +202,7 @@ void medAbstractWorkspaceLegacy::updateNavigatorsToolBox()
 {
     d->navigatorToolBox->clear();
 
-    medAbstractView* view = NULL;
+    medAbstractView* view = nullptr;
     QList<QWidget*>  navigators;
     QStringList viewType;
 
@@ -609,7 +609,7 @@ QWidget* medAbstractWorkspaceLegacy::buildViewLinkMenu()
     connect(d->viewLinkMenu, SIGNAL(groupDeleted(QString)), this, SLOT(removeViewGroup(QString)));
     connect(d->viewLinkMenu, SIGNAL(groupColorChangeRequest(QString,QColor)), this, SLOT(changeViewGroupColor(QString, QColor)));
 
-    medAbstractView* view = NULL;
+    medAbstractView* view = nullptr;
     QStringList viewType;
     QList<medAbstractView*> views;
     QList<medAbstractParameterL*>  viewsParams;
@@ -758,7 +758,7 @@ QWidget* medAbstractWorkspaceLegacy::buildLayerLinkMenu(QList<QListWidgetItem*> 
 
 void medAbstractWorkspaceLegacy::addViewstoGroup(QString group)
 {
-    medAbstractView* view = NULL;
+    medAbstractView* view = nullptr;
 
     medViewParameterGroupL *paramGroup = medParameterGroupManagerL::instance()->viewGroup(group, this->identifier());
 
@@ -776,7 +776,7 @@ void medAbstractWorkspaceLegacy::addViewstoGroup(QString group)
 
 void medAbstractWorkspaceLegacy::removeViewsFromGroup(QString group)
 {
-    medAbstractView* view = NULL;
+    medAbstractView* view = nullptr;
 
     medViewParameterGroupL *paramGroup = medParameterGroupManagerL::instance()->viewGroup(group, this->identifier());
 

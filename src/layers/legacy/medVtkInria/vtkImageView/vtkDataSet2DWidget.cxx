@@ -187,7 +187,7 @@ void vtkDataSet2DWidgetCommand::Execute(vtkObject *caller,
     if (!view)
       return;    
     vtkRenderer* renderer = view->GetRenderer();
-    vtkCamera *cam = renderer ? renderer->GetActiveCamera() : NULL;
+    vtkCamera *cam = renderer ? renderer->GetActiveCamera() : nullptr;
     if (!cam)
       return;
 

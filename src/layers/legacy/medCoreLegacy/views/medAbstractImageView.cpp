@@ -90,8 +90,8 @@ public:
 medAbstractImageView::medAbstractImageView(QObject *parent) : medAbstractLayeredView(parent),
     d(new medAbstractImageViewPrivate)
 {
-    d->primaryNavigator = NULL;
-    d->fourViewsParameter = NULL;
+    d->primaryNavigator = nullptr;
+    d->fourViewsParameter = nullptr;
 }
 
 medAbstractImageView::~medAbstractImageView()
@@ -118,7 +118,7 @@ void medAbstractImageView::removeData(medAbstractData *data)
 medAbstractImageViewInteractor* medAbstractImageView::primaryInteractor(medAbstractData* data)
 {
     if(d->primaryInteractorsHash.isEmpty())
-        return NULL;
+        return nullptr;
 
     return d->primaryInteractorsHash.value(data);
 }
@@ -332,7 +332,7 @@ medCompositeParameterL *medAbstractImageView::cameraParameter()
     medAbstractImageViewNavigator* pNavigator = this->primaryNavigator();
     if(!pNavigator)
     {
-        return NULL;
+        return nullptr;
     }
 
     return pNavigator->cameraParameter();
@@ -343,7 +343,7 @@ medAbstractVector3DParameterL *medAbstractImageView::positionBeingViewedParamete
     medAbstractImageViewNavigator* pNavigator = this->primaryNavigator();
     if(!pNavigator)
     {
-        return NULL;
+        return nullptr;
     }
 
     return pNavigator->positionBeingViewedParameter();
@@ -354,7 +354,7 @@ medDoubleParameterL *medAbstractImageView::opacityParameter(unsigned int layer)
     medAbstractImageViewInteractor* pInteractor = this->primaryInteractor(layer);
     if(!pInteractor)
     {
-        return NULL;
+        return nullptr;
     }
 
     return pInteractor->opacityParameter();
@@ -383,7 +383,7 @@ medCompositeParameterL *medAbstractImageView::windowLevelParameter(unsigned int 
     medAbstractImageViewInteractor* pInteractor = this->primaryInteractor(layer);
     if(!pInteractor)
     {
-        return NULL;
+        return nullptr;
     }
 
     return pInteractor->windowLevelParameter();
@@ -394,7 +394,7 @@ medTimeLineParameterL *medAbstractImageView::timeLineParameter()
     medAbstractImageViewNavigator* pNavigator = this->primaryNavigator();
     if(!pNavigator)
     {
-        return NULL;
+        return nullptr;
     }
 
     return pNavigator->timeLineParameter();

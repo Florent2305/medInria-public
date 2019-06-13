@@ -78,12 +78,12 @@ medVtkViewItkDataImageInteractor::medVtkViewItkDataImageInteractor(medAbstractVi
     medVtkViewBackend* backend = static_cast<medVtkViewBackend*>(parent->backend());
     d->view2d = backend->view2D;
     d->view3d = backend->view3D;
-    d->imageData = NULL;
+    d->imageData = nullptr;
 
-    d->lutParam = NULL;
-    d->presetParam = NULL;
-    d->slicingParameter = NULL;
-    d->enableWindowLevelParameter = NULL;
+    d->lutParam = nullptr;
+    d->presetParam = nullptr;
+    d->slicingParameter = nullptr;
+    d->enableWindowLevelParameter = nullptr;
 
     d->enableInterpolation = nullptr;
 
@@ -95,7 +95,7 @@ medVtkViewItkDataImageInteractor::medVtkViewItkDataImageInteractor(medAbstractVi
 medVtkViewItkDataImageInteractor::~medVtkViewItkDataImageInteractor()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QStringList medVtkViewItkDataImageInteractor::dataHandled()

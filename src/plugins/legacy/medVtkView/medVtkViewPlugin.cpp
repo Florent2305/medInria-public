@@ -41,7 +41,7 @@ medVtkViewPlugin::medVtkViewPlugin(QObject *parent) :
 medVtkViewPlugin::~medVtkViewPlugin()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool medVtkViewPlugin::initialize()

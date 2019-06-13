@@ -147,7 +147,7 @@ itkProcessRegistrationDiffeomorphicDemonsToolBox::~itkProcessRegistrationDiffeom
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool itkProcessRegistrationDiffeomorphicDemonsToolBox::registered()

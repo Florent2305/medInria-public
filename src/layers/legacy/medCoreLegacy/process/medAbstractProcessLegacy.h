@@ -29,7 +29,7 @@ class MEDCORELEGACY_EXPORT medAbstractProcessLegacy : public dtkAbstractProcess
     Q_OBJECT
 
 public:
-    medAbstractProcessLegacy( medAbstractProcessLegacy * parent = NULL );
+    medAbstractProcessLegacy( medAbstractProcessLegacy * parent = nullptr );
     virtual ~medAbstractProcessLegacy();
 
 public slots:

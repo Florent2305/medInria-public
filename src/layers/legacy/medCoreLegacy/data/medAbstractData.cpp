@@ -51,7 +51,7 @@ medAbstractData::~medAbstractData( void )
 {
     dtkDebug() << "deleting data with index " << d->index.asString();
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**
@@ -83,7 +83,7 @@ medDataIndex medAbstractData::dataIndex() const
 */
 medAbstractData * medAbstractData::convert(const QString &toType)
 {
-    medAbstractData *conversion = NULL;
+    medAbstractData *conversion = nullptr;
 
     foreach (QString converterId, medAbstractDataFactory::instance()->converters())
     {
@@ -162,7 +162,7 @@ void medAbstractData::removeAttachedData( medAttachedData * data )
     d->attachedData.removeAll( data );
     if ( n > d->attachedData.count() ) {
         emit attachedDataRemoved( data );
-        data->setParentData(NULL);
+        data->setParentData(nullptr);
     }
 }
 

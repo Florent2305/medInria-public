@@ -49,7 +49,7 @@ medToolBoxContainer::medToolBoxContainer(QWidget *parent) : QScrollArea(parent),
 medToolBoxContainer::~medToolBoxContainer(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medToolBoxContainer::insertToolBox(int index, medToolBox* toolBox)

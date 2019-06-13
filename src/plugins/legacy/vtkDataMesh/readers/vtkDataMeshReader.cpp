@@ -74,7 +74,7 @@ bool vtkDataMeshReader::read(const QString& path) {
         if (!(medData->identifier() == "vtkDataMesh"))
             return false;
 
-        vtkMetaDataSet * dataSet = NULL;
+        vtkMetaDataSet * dataSet = nullptr;
         if (vtkMetaVolumeMesh::CanReadFile(path.toLocal8Bit().constData()) != 0)
         {
             dataSet = vtkMetaVolumeMesh::New();

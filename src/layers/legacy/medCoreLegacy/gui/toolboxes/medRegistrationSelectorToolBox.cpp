@@ -65,11 +65,11 @@ public:
 
 medRegistrationSelectorToolBox::medRegistrationSelectorToolBox(QWidget *parent) : medToolBox(parent), d(new medRegistrationSelectorToolBoxPrivate)
 {
-    d->fixedData  = NULL;
-    d->movingData = NULL;
-    d->process = NULL;
-    d->undoRedoProcess = NULL;
-    d->undoRedoToolBox = NULL;
+    d->fixedData  = nullptr;
+    d->movingData = nullptr;
+    d->process = nullptr;
+    d->undoRedoProcess = nullptr;
+    d->undoRedoToolBox = nullptr;
     d->nameOfCurrentAlgorithm = "";
     d->savePath = QDir::homePath();
     // Process section
@@ -135,7 +135,7 @@ medRegistrationSelectorToolBox::medRegistrationSelectorToolBox(QWidget *parent) 
 
 
     this->setTitle(tr("Registration"));
-    d->currentToolBox = NULL;
+    d->currentToolBox = nullptr;
 
     //Connect Message Controller:
     connect(this,SIGNAL(showError(const QString&,unsigned int)),
@@ -149,7 +149,7 @@ medRegistrationSelectorToolBox::~medRegistrationSelectorToolBox(void)
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 //! Gets the fixedData.
@@ -178,7 +178,7 @@ void medRegistrationSelectorToolBox::changeCurrentToolBox(int index)
         this->header()->aboutButton()->disconnect(d->currentToolBox);
         d->currentToolBox->hide();
         d->toolBoxLayout->removeWidget(d->currentToolBox);
-        d->currentToolBox = NULL;
+        d->currentToolBox = nullptr;
     }
 
     //get identifier for toolbox.
@@ -354,7 +354,7 @@ void medRegistrationSelectorToolBox::onSaveTrans()
 
 void medRegistrationSelectorToolBox::handleOutput(typeOfOperation type, QString algoName)
 {
-    medAbstractData *output(NULL);
+    medAbstractData *output(nullptr);
     if (type == algorithm)
         if (d->process)
             output = dynamic_cast<medAbstractData*>(d->process->output());

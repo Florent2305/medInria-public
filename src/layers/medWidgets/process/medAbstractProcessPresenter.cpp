@@ -31,7 +31,7 @@ public:
 medAbstractProcessPresenter::medAbstractProcessPresenter(medAbstractProcess*parent)
     : QObject(parent), d(new medAbstractProcessPresenterPrivate)
 {
-    if(parent == NULL)
+    if(parent == nullptr)
     {
         dtkWarn() << "Constructing presenter parented to a null process"
                   << this;

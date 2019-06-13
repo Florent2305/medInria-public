@@ -54,7 +54,7 @@ medVtkFibersDataPlugin::~medVtkFibersDataPlugin()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool medVtkFibersDataPlugin::initialize()

@@ -30,8 +30,8 @@ medAbstractViewNavigator::medAbstractViewNavigator(medAbstractView* parent):
     medAbstractNavigator(parent), d(new medAbstractViewNavigatorPrivate)
 {
     d->view = parent;
-    d->zoomParameter = NULL;
-    d->panParameter = NULL;
+    d->zoomParameter = nullptr;
+    d->panParameter = nullptr;
 }
 
 medAbstractViewNavigator::~medAbstractViewNavigator()

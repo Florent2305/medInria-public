@@ -62,18 +62,18 @@ void vtkInteractorStyleTrackballCamera2::OnLeftButtonDown()
 void vtkInteractorStyleTrackballCamera2::OnMouseWheelForward()
 {
     vtkInteractorStyleTrackballCamera::OnMouseWheelForward();
-    this->InvokeEvent(vtkCommand::InteractionEvent, NULL);
+    this->InvokeEvent(vtkCommand::InteractionEvent, nullptr);
 }
 
 void vtkInteractorStyleTrackballCamera2::OnMouseWheelBackward()
 {
     vtkInteractorStyleTrackballCamera::OnMouseWheelBackward();
-    this->InvokeEvent(vtkCommand::InteractionEvent, NULL);
+    this->InvokeEvent(vtkCommand::InteractionEvent, nullptr);
 }
 
 void vtkInteractorStyleTrackballCamera2::Rotate()
 {
-  if (this->CurrentRenderer == NULL)
+  if (this->CurrentRenderer == nullptr)
     return;
     
   vtkRenderWindowInteractor *rwi = this->Interactor;

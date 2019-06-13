@@ -312,7 +312,7 @@ medHomepageArea::~medHomepageArea()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 void medHomepageArea::resizeEvent ( QResizeEvent * event )

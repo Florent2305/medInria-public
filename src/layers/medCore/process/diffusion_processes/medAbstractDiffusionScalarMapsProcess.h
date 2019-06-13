@@ -28,7 +28,7 @@ class MEDCORE_EXPORT medAbstractDiffusionScalarMapsProcess : public medAbstractP
     Q_OBJECT
 
 public:
-    medAbstractDiffusionScalarMapsProcess(QObject *parent = NULL);
+    medAbstractDiffusionScalarMapsProcess(QObject *parent = nullptr);
     virtual ~medAbstractDiffusionScalarMapsProcess();
 
     void setInput(medAbstractDiffusionModelImageData* data);

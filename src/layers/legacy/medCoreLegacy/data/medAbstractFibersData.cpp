@@ -38,7 +38,7 @@ medAbstractFibersData::medAbstractFibersData(const  medAbstractFibersData& other
 medAbstractFibersData::~medAbstractFibersData(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void *medAbstractFibersData::fibers(void)

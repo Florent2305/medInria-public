@@ -45,7 +45,7 @@ medLayoutChooser::medLayoutChooser(QWidget *parent) : QTableWidget(parent), d(ne
 medLayoutChooser::~medLayoutChooser(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QSize medLayoutChooser::sizeHint(void) const

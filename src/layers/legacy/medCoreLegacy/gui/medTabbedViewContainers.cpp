@@ -79,7 +79,7 @@ medTabbedViewContainers::medTabbedViewContainers(medAbstractWorkspaceLegacy* own
 medTabbedViewContainers::~medTabbedViewContainers(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 

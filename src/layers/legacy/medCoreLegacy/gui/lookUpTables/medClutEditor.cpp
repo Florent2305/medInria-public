@@ -73,7 +73,7 @@ medClutEditorVertex::medClutEditorVertex( const medClutEditorVertex & other,
                                          QGraphicsItem * parent)
 : QObject(), QGraphicsItem( parent )
 {
-    if ( parent == NULL )
+    if ( parent == nullptr )
         this->setParentItem( other.parentItem() );
 
     d = new medClutEditorVertexPrivate;
@@ -130,11 +130,11 @@ void medClutEditorVertex::shiftValue( qreal amount, bool forceConstraints )
 void medClutEditorVertex::interpolate( medClutEditorVertex * prev,
                                        medClutEditorVertex * next )
 {
-    if ( prev != NULL && next == NULL )
+    if ( prev != nullptr && next == nullptr )
         setColor( prev->color() );
-    else if ( prev == NULL && next != NULL )
+    else if ( prev == nullptr && next != nullptr )
         setColor( next->color() );
-    else if ( prev != NULL && next != NULL ) {
+    else if ( prev != nullptr && next != nullptr ) {
         if ( ( prev->color().alpha() == 0 ) &&
              ( next->color().alpha() > 0 ) )
             setColor( next->color() );
@@ -501,8 +501,8 @@ void medClutEditorTable::addVertex( medClutEditorVertex *vertex,
     if (interpolate) {
         int i    = d->vertices.indexOf( vertex );
         int last = d->vertices.count() - 1;
-        medClutEditorVertex * prev = i > 0    ? d->vertices[i-1] : NULL;
-        medClutEditorVertex * next = i < last ? d->vertices[i+1] : NULL;
+        medClutEditorVertex * prev = i > 0    ? d->vertices[i-1] : nullptr;
+        medClutEditorVertex * next = i < last ? d->vertices[i+1] : nullptr;
         vertex->interpolate( prev, next );
     }
 
@@ -688,7 +688,7 @@ void medClutEditorTable::setTransferFunction( QList<double> &scalars,
 {
     medClutEditorScene * scene =
         dynamic_cast< medClutEditorScene * >( this->scene() );
-    if ( scene == NULL )
+    if ( scene == nullptr )
         return;
 
     int size = qMin( scalars.count(), colors.count() );
@@ -817,7 +817,7 @@ void medClutEditorTable::paint(QPainter *painter,
 
     medClutEditorScene * scene =
         dynamic_cast< medClutEditorScene * >( this->scene() );
-    if ( scene == NULL )
+    if ( scene == nullptr )
         return;
 
     // QPointF origin = scene->valueToCoordinate( QPointF( 0.0, 0.0 ) );
@@ -928,7 +928,7 @@ medClutEditorHistogram::medClutEditorHistogram(QGraphicsItem *parent)
 medClutEditorHistogram::~medClutEditorHistogram(void)
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 QRectF medClutEditorHistogram::boundingRect(void) const
@@ -992,7 +992,7 @@ void medClutEditorHistogram::setValues(const QMap<qreal, qreal> & bins)
 
     medClutEditorScene * scene =
     dynamic_cast< medClutEditorScene * >( this->scene() );
-    if ( scene != NULL )
+    if ( scene != nullptr )
         scene->adjustRange();
 }
 
@@ -1005,7 +1005,7 @@ void medClutEditorHistogram::addValue(qreal intensity, qreal number)
 
     medClutEditorScene * scene =
         dynamic_cast< medClutEditorScene * >( this->scene() );
-    if ( scene != NULL )
+    if ( scene != nullptr )
         scene->adjustRange();
 }
 
@@ -1019,7 +1019,7 @@ void medClutEditorHistogram::paint(QPainter *painter,
     medClutEditorScene * scene =
         dynamic_cast< medClutEditorScene * >( this->scene() );
 
-    if ( scene            == NULL ||
+    if ( scene            == nullptr ||
          d->maxLogNum     == 0.0  ||
          d->values.size() == 0    )
         return;
@@ -1052,9 +1052,9 @@ void medClutEditorHistogram::mouseDoubleClickEvent(
 {
     medClutEditorScene * scene =
         dynamic_cast< medClutEditorScene * >( this->scene() );
-    medClutEditorTable * table = scene != NULL ? scene->table() : NULL;
+    medClutEditorTable * table = scene != nullptr ? scene->table() : nullptr;
 
-    if ( table != NULL ) {
+    if ( table != nullptr ) {
         const QPointF & p = event->pos();
         QPointF value = scene->coordinateToValue( p );
         medClutEditorVertex * vertex =
@@ -1102,7 +1102,7 @@ medClutEditorView * medClutEditorScene::view()
              dynamic_cast<medClutEditorView *>( view ) )
             return v;
 
-    return NULL;
+    return nullptr;
 }
 
 medClutEditorTable * medClutEditorScene::table()
@@ -1112,7 +1112,7 @@ medClutEditorTable * medClutEditorScene::table()
              dynamic_cast<medClutEditorTable *>( item ) )
             return table;
 
-    return NULL;
+    return nullptr;
 }
 
 medClutEditorHistogram * medClutEditorScene::histogram()
@@ -1122,7 +1122,7 @@ medClutEditorHistogram * medClutEditorScene::histogram()
              dynamic_cast<medClutEditorHistogram *>( item ) )
             return histogram;
 
-    return NULL;
+    return nullptr;
 }
 
 QRectF medClutEditorScene::plotArea()
@@ -1267,8 +1267,8 @@ medClutEditorTable * medClutEditorView::table()
 {
     medClutEditorScene * scene =
         dynamic_cast< medClutEditorScene * >( this->scene() );
-    if ( scene == NULL )
-        return NULL;
+    if ( scene == nullptr )
+        return nullptr;
 
     return dynamic_cast< medClutEditorTable * >( scene->table() );
 }
@@ -1279,7 +1279,7 @@ void medClutEditorView::resizeEvent(QResizeEvent *event)
 
     medClutEditorScene * scene =
     dynamic_cast< medClutEditorScene * >( this->scene() );
-    if ( scene != NULL )
+    if ( scene != nullptr )
         scene->setSize( this->size() );
 }
 
@@ -1298,7 +1298,7 @@ void medClutEditorView::wheelEvent( QWheelEvent * event )
     {
         medClutEditorScene * scene =
             dynamic_cast< medClutEditorScene * >( this->scene() );
-        if ( scene != NULL )
+        if ( scene != nullptr )
         {
             if ( !withShift )
                 scene->scaleRange( scale );
@@ -1308,7 +1308,7 @@ void medClutEditorView::wheelEvent( QWheelEvent * event )
     }
     else {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
         {
             if ( !withShift )
                 table->scaleWindowWidth( scale );
@@ -1330,7 +1330,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_A:
     {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
             table->setSelectedAllVertices( !withShift );
         break;
     }
@@ -1338,7 +1338,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_C:
     {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
             table->setColorOfSelection();
         break;
     }
@@ -1346,7 +1346,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_S:
     {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
             table->simplifyTransferFunction();
         break;
     }
@@ -1354,7 +1354,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_Delete:
     {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
             table->deleteSelection();
         break;
     }
@@ -1363,7 +1363,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_Enter:
     {
         medClutEditor * editor = dynamic_cast<medClutEditor *>(this->parent());
-        if ( editor != NULL )
+        if ( editor != nullptr )
             editor->applyTable();
     }
 
@@ -1371,7 +1371,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_Equal:
     {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
             table->changeDisplayAlpha( withCtrl ? 0.05 : 0.25 );
 
         break;
@@ -1380,7 +1380,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_Underscore:
     {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
             table->changeDisplayAlpha( withCtrl ? -0.05 : -0.25 );
 
         break;
@@ -1388,7 +1388,7 @@ void medClutEditorView::keyPressEvent( QKeyEvent * event ) {
     case Qt::Key_0:
     {
         medClutEditorTable * table = this->table();
-        if ( table != NULL )
+        if ( table != nullptr )
             table->resetDisplayAlpha();
 
         break;
@@ -1451,7 +1451,7 @@ medClutEditor::medClutEditor(QWidget *parent) : QWidget(parent)
     d->scene = new medClutEditorScene;
     d->view  = new medClutEditorView( this );
     d->view->setScene(d->scene);
-    d->histogram = NULL;
+    d->histogram = nullptr;
 
     d->newAction                = new QAction("New table",    this);
     d->loadTableAction          = new QAction("Load table",   this);
@@ -1522,7 +1522,7 @@ medClutEditor::~medClutEditor(void)
 
 void medClutEditor::setData(medAbstractData *data)
 {
-    if ( data == NULL ) {
+    if ( data == nullptr ) {
         this->deleteTable();
         d->dtk_data = data;
     }
@@ -1533,7 +1533,7 @@ void medClutEditor::setData(medAbstractData *data)
     if (medAbstractImageData *image =
         dynamic_cast<medAbstractImageData *>(data)) {
 
-        if ( d->histogram != NULL )
+        if ( d->histogram != nullptr )
             delete d->histogram;
 
         d->histogram = new medClutEditorHistogram();
@@ -1566,7 +1566,7 @@ void medClutEditor::setView(medAbstractImageView *view, bool force)
 
     d->med_view = view;
 
-    if (d->med_view != NULL)
+    if (d->med_view != nullptr)
     {
         QList<double> scalars;
         QList<QColor> colors;
@@ -1625,7 +1625,7 @@ void medClutEditor::applyTable(void)
 {
     // if (medAbstractImageData *image =
     //     dynamic_cast<medAbstractImageData *>(d->dtk_data)) {
-    if ( d->med_view != NULL )
+    if ( d->med_view != nullptr )
     {
 
         QList<double> scalars;

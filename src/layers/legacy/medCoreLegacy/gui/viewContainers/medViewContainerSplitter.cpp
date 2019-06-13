@@ -51,7 +51,7 @@ medViewContainer * medViewContainerSplitter::splitVertically(medViewContainer *s
 medViewContainer *medViewContainerSplitter::split(medViewContainer *sender, Qt::AlignmentFlag alignement)
 {
     if(!sender)
-        return NULL;
+        return nullptr;
 
     int index = this->indexOf(sender);
     int newSize;

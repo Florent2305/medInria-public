@@ -63,7 +63,7 @@ public:
 itkProcessRegistrationDiffeomorphicDemons::itkProcessRegistrationDiffeomorphicDemons() : itkProcessRegistration(), d(new itkProcessRegistrationDiffeomorphicDemonsPrivate)
 {
     d->proc = this;
-    d->registrationMethod = NULL ;
+    d->registrationMethod = nullptr ;
     d->updateRule = 0;
     d->gradientType = 0;
     d->maximumUpdateStepLength = 2.0;

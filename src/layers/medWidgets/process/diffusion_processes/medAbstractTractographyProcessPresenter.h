@@ -32,7 +32,7 @@ class MEDWIDGETS_EXPORT medAbstractTractographyProcessPresenter : public medAbst
     Q_OBJECT
 
 public:
-    medAbstractTractographyProcessPresenter(medAbstractTractographyProcess *parent = NULL);
+    medAbstractTractographyProcessPresenter(medAbstractTractographyProcess *parent = nullptr);
     virtual ~medAbstractTractographyProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();

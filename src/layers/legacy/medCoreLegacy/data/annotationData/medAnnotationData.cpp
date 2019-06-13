@@ -29,7 +29,7 @@ medAnnotationData::medAnnotationData()
 medAnnotationData::~medAnnotationData()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 

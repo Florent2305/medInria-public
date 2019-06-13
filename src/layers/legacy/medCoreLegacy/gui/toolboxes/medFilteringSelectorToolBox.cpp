@@ -71,14 +71,14 @@ medFilteringSelectorToolBox::medFilteringSelectorToolBox ( QWidget *parent ) :
     this->setTitle (tr("Filtering View"));
     this->addWidget(displayWidget);
 
-    d->inputData = NULL;
-    d->currentToolBox = NULL;
+    d->inputData = nullptr;
+    d->currentToolBox = nullptr;
 }
 
 medFilteringSelectorToolBox::~medFilteringSelectorToolBox()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 /**
@@ -102,7 +102,7 @@ medAbstractData*  medFilteringSelectorToolBox::data()
  */
 void medFilteringSelectorToolBox::changeCurrentToolBox ( int index )
 {    
-    medFilteringAbstractToolBox *toolbox = NULL;
+    medFilteringAbstractToolBox *toolbox = nullptr;
     //get identifier for toolbox.
     QString identifier = d->chooseFilter->itemData(index).toString();
     if (d->toolBoxes.contains (identifier))
@@ -138,7 +138,7 @@ void medFilteringSelectorToolBox::changeCurrentToolBox ( int index )
     {
         d->currentToolBox->hide();
         d->filterLayout->removeWidget ( d->currentToolBox );
-        d->currentToolBox = NULL;
+        d->currentToolBox = nullptr;
     }
 
     d->currentToolBox = toolbox;
@@ -163,8 +163,8 @@ void medFilteringSelectorToolBox::onInputSelected(medAbstractData *data)
 {   
     d->inputData = data;
 
-    if (d->inputData != NULL && !d->inputData->dataIndex().isValidForSeries())
-        d->inputData = NULL;
+    if (d->inputData != nullptr && !d->inputData->dataIndex().isValidForSeries())
+        d->inputData = nullptr;
 
     if(d->currentToolBox)
         d->currentToolBox->update(d->inputData);
@@ -175,7 +175,7 @@ void medFilteringSelectorToolBox::onInputSelected(medAbstractData *data)
  */
 void medFilteringSelectorToolBox::clear()
 {
-    d->inputData = NULL;
+    d->inputData = nullptr;
 
     if(d->currentToolBox)
         d->currentToolBox->update(d->inputData);

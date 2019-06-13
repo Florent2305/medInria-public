@@ -39,7 +39,7 @@ medQtDataImage::medQtDataImage() :
 medQtDataImage::~medQtDataImage()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medQtDataImage::setData( void* data )
@@ -90,7 +90,7 @@ void medQtDataImage::setData( void* data, int channel )
 void * medQtDataImage::data( void )
 {
     if ( d->images.isEmpty() )
-        return NULL;
+        return nullptr;
 
     return &(d->images[0]);
 }
@@ -98,7 +98,7 @@ void * medQtDataImage::data( void )
 void * medQtDataImage::data( int channel )
 {
     if ( (channel < d->images.size() ) || (channel >= d->images.size() ))
-        return NULL;
+        return nullptr;
 
     return &(d->images[channel]);
 }

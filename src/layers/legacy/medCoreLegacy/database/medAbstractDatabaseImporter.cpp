@@ -49,7 +49,7 @@ medAbstractDatabaseImporter::medAbstractDatabaseImporter ( const QString& file, 
 {
     d->isCancelled = false;
     d->file = file;
-    d->data = NULL;
+    d->data = nullptr;
     d->indexWithoutImporting = indexWithoutImporting;
     d->uuid = uuid;
 }
@@ -71,7 +71,7 @@ medAbstractDatabaseImporter::~medAbstractDatabaseImporter ( void )
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 /**
@@ -676,7 +676,7 @@ QStringList medAbstractDatabaseImporter::generateThumbnails ( medAbstractData* m
 /**
 * Tries to find a @dtkAbstractDataReader able to read input file/s.
 * @param filename - Input file/s we would like to find a reader for
-* @return a proper reader if found, NULL otherwise
+* @return a proper reader if found, nullptr otherwise
 **/
 dtkSmartPointer<dtkAbstractDataReader> medAbstractDatabaseImporter::getSuitableReader ( QStringList filename )
 {
@@ -686,7 +686,7 @@ dtkSmartPointer<dtkAbstractDataReader> medAbstractDatabaseImporter::getSuitableR
     {
         emit showError (tr ( "No reader plugin" ), 5000 );
         emit failure ( this );
-        return NULL;
+        return nullptr;
     }
 
     dtkSmartPointer<dtkAbstractDataReader> dataReader;
@@ -699,7 +699,7 @@ dtkSmartPointer<dtkAbstractDataReader> medAbstractDatabaseImporter::getSuitableR
     }
 
     dtkWarn() << "No suitable reader found!";
-    return NULL;
+    return nullptr;
 }
 
 //-----------------------------------------------------------------------------------------------------------
@@ -707,12 +707,12 @@ dtkSmartPointer<dtkAbstractDataReader> medAbstractDatabaseImporter::getSuitableR
 * Tries to find a @dtkAbstractDataWriter able to write input file/s.
 * @param filename - name of the file we want to write
 * @param medData - the @medAbstractData object we want to write
-* @return a proper writer if found, NULL otherwise
+* @return a proper writer if found, nullptr otherwise
 **/
 dtkSmartPointer<dtkAbstractDataWriter> medAbstractDatabaseImporter::getSuitableWriter(QString filename,medAbstractData* medData)
 {
     if ( !medData )
-        return NULL;
+        return nullptr;
 
     QList<QString> writers = medAbstractDataFactory::instance()->writers();
     dtkSmartPointer<dtkAbstractDataWriter> dataWriter;
@@ -727,7 +727,7 @@ dtkSmartPointer<dtkAbstractDataWriter> medAbstractDatabaseImporter::getSuitableW
             return dataWriter;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 //-----------------------------------------------------------------------------------------------------------
@@ -770,7 +770,7 @@ QStringList medAbstractDatabaseImporter::getAllFilesToBeProcessed ( QString file
 **/
 medAbstractData* medAbstractDatabaseImporter::tryReadImages ( const QStringList& filesPaths,const bool readOnlyImageInformation )
 {
-    medAbstractData *medData = NULL;
+    medAbstractData *medData = nullptr;
 
     dtkSmartPointer<dtkAbstractDataReader> dataReader;
     dataReader = getSuitableReader ( filesPaths );

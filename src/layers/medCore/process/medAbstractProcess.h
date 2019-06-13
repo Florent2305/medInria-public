@@ -26,7 +26,7 @@ class MEDCORE_EXPORT medAbstractProcess: public medAbstractJob
 {
     Q_OBJECT
 public:
-    medAbstractProcess(QObject *parent = NULL);
+    medAbstractProcess(QObject *parent = nullptr);
     virtual ~medAbstractProcess();
 
     virtual QString description() const = 0;

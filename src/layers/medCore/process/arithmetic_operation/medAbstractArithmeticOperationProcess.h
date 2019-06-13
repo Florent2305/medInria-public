@@ -27,7 +27,7 @@ class MEDCORE_EXPORT  medAbstractArithmeticOperationProcess : public medAbstract
     Q_OBJECT
 
 public:
-    medAbstractArithmeticOperationProcess(QObject *parent = NULL);
+    medAbstractArithmeticOperationProcess(QObject *parent = nullptr);
     virtual ~medAbstractArithmeticOperationProcess();
 
     void setInput1(medAbstractImageData* data);

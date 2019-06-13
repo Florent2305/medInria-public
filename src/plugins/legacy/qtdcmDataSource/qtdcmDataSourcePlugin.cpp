@@ -39,7 +39,7 @@ qtdcmDataSourcePlugin::~qtdcmDataSourcePlugin()
 {
     delete d;
 
-    d = NULL;
+    d = nullptr;
 }
 
 bool qtdcmDataSourcePlugin::initialize()

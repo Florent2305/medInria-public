@@ -121,8 +121,8 @@ medMainWindow::medMainWindow ( QWidget *parent ) : QMainWindow ( parent ), d ( n
 
     //  Setting up widgets
 
-    d->settingsEditor = NULL;
-    d->currentArea = NULL;
+    d->settingsEditor = nullptr;
+    d->currentArea = nullptr;
 
     //  Browser area.
     d->browserArea = new medBrowserArea(this);
@@ -296,7 +296,7 @@ medMainWindow::medMainWindow ( QWidget *parent ) : QMainWindow ( parent ), d ( n
 medMainWindow::~medMainWindow()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 void medMainWindow::mousePressEvent ( QMouseEvent* event )

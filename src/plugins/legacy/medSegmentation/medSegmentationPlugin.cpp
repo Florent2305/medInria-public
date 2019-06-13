@@ -42,7 +42,7 @@ medSegmentationPlugin::medSegmentationPlugin(QObject *parent) : dtkPlugin(parent
 medSegmentationPlugin::~medSegmentationPlugin()
 {
     delete d;
-    d = NULL;
+    d = nullptr;
 }
 
 bool medSegmentationPlugin::initialize()
