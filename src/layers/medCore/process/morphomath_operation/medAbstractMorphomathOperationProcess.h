@@ -29,7 +29,7 @@ class MEDCORE_EXPORT medAbstractMorphomathOperationProcess : public medAbstractP
 
 public:
     medAbstractMorphomathOperationProcess(QObject *parent = nullptr);
-    virtual ~medAbstractMorphomathOperationProcess();
+    ~medAbstractMorphomathOperationProcess() override;
 
     void setInput(medAbstractImageData* data);
     medAbstractImageData* input() const;
@@ -39,7 +39,7 @@ public:
 
 protected:
     void setOutput(medAbstractImageData* data);
-    virtual QString outputNameAddon() const {return "morpho";}
+    QString outputNameAddon() const override {return "morpho";}
 
 private:
     const QScopedPointer<medAbstractMorphomathOperationProcessPrivate> d;

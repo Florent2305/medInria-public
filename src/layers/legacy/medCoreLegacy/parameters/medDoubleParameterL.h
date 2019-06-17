@@ -28,8 +28,8 @@ class MEDCORELEGACY_EXPORT medDoubleParameterL : public medAbstractDoubleParamet
     Q_OBJECT
 
 public:
-    medDoubleParameterL(QString name = "Unknow double parameter", QObject* parent = 0);
-    virtual ~medDoubleParameterL();
+    medDoubleParameterL(QString name = "Unknow double parameter", QObject* parent = nullptr);
+    ~medDoubleParameterL() override;
 
     void setRange(double min, double max);
     void setSingleStep(double step);
@@ -39,19 +39,19 @@ public:
     QSlider* getSlider();
     QLabel* getValueLabel();
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
 public slots:
-    void setValue(double value);
+    void setValue(double value) override;
 
 protected:
-    virtual void updateInternWigets();
+    void updateInternWigets() override;
 
 private slots:
     void removeInternSpinBox();
     void removeInternSlider();
 
-    void setIntValue(int);
+    void setIntValue(int value);
 
 private:
     int convertToInt(double value);

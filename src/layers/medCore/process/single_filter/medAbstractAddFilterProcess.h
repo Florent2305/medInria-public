@@ -26,7 +26,7 @@ public:
     medAbstractAddFilterProcess(QObject *parent);
 
 protected:
-    virtual QString outputNameAddon() const {return "add constant";}
+    QString outputNameAddon() const override {return "add constant";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractAddFilterProcess, MEDCORE_EXPORT)

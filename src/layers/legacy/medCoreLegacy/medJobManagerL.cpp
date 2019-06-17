@@ -23,7 +23,7 @@ public:
     bool m_IsActive;
 };
 
-medJobManagerL *medJobManagerL::instance(void)
+medJobManagerL *medJobManagerL::instance()
 {
     if(!s_instance)
         s_instance = new medJobManagerL;
@@ -31,12 +31,12 @@ medJobManagerL *medJobManagerL::instance(void)
     return s_instance;
 }
 
-medJobManagerL::medJobManagerL( void ) : d(new medJobManagerLPrivate)
+medJobManagerL::medJobManagerL() : d(new medJobManagerLPrivate)
 {
     d->m_IsActive = true;
 }
 
-medJobManagerL::~medJobManagerL( void )
+medJobManagerL::~medJobManagerL()
 {
     delete d;
 

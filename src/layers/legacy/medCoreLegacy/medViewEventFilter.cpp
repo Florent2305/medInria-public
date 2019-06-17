@@ -46,19 +46,19 @@ medViewEventFilter::medViewEventFilter(dtkAbstractObject * parent)
 {
 }
 
-medViewEventFilter::~medViewEventFilter(void)
+medViewEventFilter::~medViewEventFilter()
 {
     removeFromAllViews();
 }
 
 //! Implement dtkAbstractObject.
-QString medViewEventFilter::description(void) const
+QString medViewEventFilter::description() const
 {
     return s_description();
 }
 
 //! Implement dtkAbstractObject.
-QString medViewEventFilter::identifier(void) const
+QString medViewEventFilter::identifier() const
 {
     return s_description();
 }
@@ -66,7 +66,7 @@ QString medViewEventFilter::identifier(void) const
 /** Event handlers, derived classes should override those they need.
  *  \return     true if the event was processed and should not be passed to the next handler.
  *  The default implementations do nothing, returning false. */
-bool medViewEventFilter::mousePressEvent( medAbstractView * vscene, QGraphicsSceneMouseEvent *mouseEvent )
+bool medViewEventFilter::mousePressEvent( medAbstractView * view, QGraphicsSceneMouseEvent *mouseEvent )
 {
     return false;
 }
@@ -79,7 +79,7 @@ bool medViewEventFilter::mousePressEvent( medAbstractView *view, QMouseEvent *mo
     return false;
 }
 
-bool medViewEventFilter::mouseReleaseEvent( medAbstractView * vscene, QGraphicsSceneMouseEvent *mouseEvent )
+bool medViewEventFilter::mouseReleaseEvent( medAbstractView * view, QGraphicsSceneMouseEvent *mouseEvent )
 {
     return false;
 }
@@ -89,7 +89,7 @@ bool medViewEventFilter::mouseReleaseEvent( medAbstractView *view, QMouseEvent *
     return false;
 }
 
-bool medViewEventFilter::mouseMoveEvent( medAbstractView * vscene, QGraphicsSceneMouseEvent *mouseEvent )
+bool medViewEventFilter::mouseMoveEvent( medAbstractView * view, QGraphicsSceneMouseEvent *mouseEvent )
 {
     return false;
 }

@@ -22,6 +22,6 @@ class MEDCORELEGACY_EXPORT medAbstractLayeredViewNavigator : public medAbstractV
     Q_OBJECT
 
 public:
-             medAbstractLayeredViewNavigator(medAbstractView* parent);
-    virtual ~medAbstractLayeredViewNavigator();
+     medAbstractLayeredViewNavigator(medAbstractView* parent);
+    ~medAbstractLayeredViewNavigator() override;
 };

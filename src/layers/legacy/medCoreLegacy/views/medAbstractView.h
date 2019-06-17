@@ -50,11 +50,11 @@ class MEDCORELEGACY_EXPORT medAbstractView: public dtkAbstractView
     Q_OBJECT
 
 public:
-    medAbstractView(QObject* parent = 0);
-    virtual ~medAbstractView();
+    medAbstractView(QObject* parent = nullptr);
+    ~medAbstractView() override;
 
     virtual void addData(medAbstractData* data);
-    virtual void clear();
+    void clear() override;
 
     virtual QWidget* navigatorWidget();
     virtual QWidget *viewWidget() = 0;
@@ -70,7 +70,7 @@ public:
     virtual QList<medAbstractParameterL*> linkableParameters();
 
     virtual medViewBackend * backend() const = 0;
-    virtual QString description() const = 0;
+    QString description() const override = 0 ;
 
     QImage generateThumbnail(const QSize &size);
     virtual void setOffscreenRendering(bool isOffscreen);
@@ -78,7 +78,7 @@ public:
     QUndoStack* undoStack() const;
 
 public slots:
-    virtual void reset() = 0;
+    void reset() override = 0;
     virtual void render() = 0;
 
 signals:
@@ -102,7 +102,7 @@ protected:
     virtual bool initialiseInteractors(medAbstractData* data);
     virtual bool initialiseNavigators();
     virtual void removeInteractors(medAbstractData *data);
-    virtual bool eventFilter(QObject *, QEvent *);
+    bool eventFilter(QObject *obj, QEvent *event) override;
 
     virtual void setUpViewForThumbnail();
     virtual QImage buildThumbnail(const QSize &size) = 0;

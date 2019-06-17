@@ -111,7 +111,7 @@ void medAbstractImageView::removeData(medAbstractData *data)
     if( this->layersCount() == 0 && d->fourViewsParameter)
     {
         delete d->fourViewsParameter;
-        d->fourViewsParameter = 0;
+        d->fourViewsParameter = nullptr;
     }
 }
 

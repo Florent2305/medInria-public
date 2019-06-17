@@ -26,7 +26,7 @@ public:
     medAbstractErodeImageProcess(QObject *parent): medAbstractMorphomathOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "erode";}
+    QString outputNameAddon() const override {return "erode";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractErodeImageProcess, MEDCORE_EXPORT)

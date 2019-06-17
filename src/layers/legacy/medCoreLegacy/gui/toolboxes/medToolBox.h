@@ -39,8 +39,8 @@ class MEDCORELEGACY_EXPORT medToolBox : public QWidget
     Q_OBJECT
 
 public:
-    medToolBox(QWidget *parent = 0);
-    virtual ~medToolBox();
+    medToolBox(QWidget *parent = nullptr);
+    ~medToolBox() override;
 
     void addWidget(QWidget *widget);
     void removeWidget(QWidget *widget);

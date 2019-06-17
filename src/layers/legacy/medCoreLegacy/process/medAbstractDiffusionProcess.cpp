@@ -19,7 +19,4 @@ medAbstractDiffusionProcess::medAbstractDiffusionProcess(medAbstractProcessLegac
 
 }
 
-medAbstractDiffusionProcess::~medAbstractDiffusionProcess()
-{
-
-}
+medAbstractDiffusionProcess::~medAbstractDiffusionProcess() = default;

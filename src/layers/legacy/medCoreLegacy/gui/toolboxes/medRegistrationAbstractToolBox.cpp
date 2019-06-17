@@ -25,7 +25,7 @@ medRegistrationAbstractToolBox::medRegistrationAbstractToolBox(QWidget *parent) 
     d->parent = nullptr;
 }
 
-medRegistrationAbstractToolBox::~medRegistrationAbstractToolBox(void)
+medRegistrationAbstractToolBox::~medRegistrationAbstractToolBox()
 {
     delete d;
 
@@ -37,7 +37,7 @@ void medRegistrationAbstractToolBox::setRegistrationToolBox(medRegistrationSelec
     d->parent = toolbox;
 }
 
-medRegistrationSelectorToolBox *medRegistrationAbstractToolBox::parentToolBox(void)
+medRegistrationSelectorToolBox *medRegistrationAbstractToolBox::parentToolBox()
 {
     return d->parent;
 }

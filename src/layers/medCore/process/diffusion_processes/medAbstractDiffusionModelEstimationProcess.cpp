@@ -42,9 +42,7 @@ medAbstractDiffusionModelEstimationProcess::medAbstractDiffusionModelEstimationP
     d->gradientsInImageCoordinates->setValue(true);
 }
 
-medAbstractDiffusionModelEstimationProcess::~medAbstractDiffusionModelEstimationProcess()
-{
-}
+medAbstractDiffusionModelEstimationProcess::~medAbstractDiffusionModelEstimationProcess() = default;
 
 void medAbstractDiffusionModelEstimationProcess::setInput(medAbstractImageData *data)
 {

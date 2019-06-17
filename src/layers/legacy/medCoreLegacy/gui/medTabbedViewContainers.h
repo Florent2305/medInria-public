@@ -35,8 +35,8 @@ class MEDCORELEGACY_EXPORT medTabbedViewContainers : public QTabWidget
     Q_OBJECT
 
 public:
-     medTabbedViewContainers(medAbstractWorkspaceLegacy* owningWorkspace, QWidget *parent = 0);
-    ~medTabbedViewContainers();
+     medTabbedViewContainers(medAbstractWorkspaceLegacy* owningWorkspace, QWidget *parent = nullptr);
+    ~medTabbedViewContainers() override;
 
     void lockTabs();
     void unlockTabs();

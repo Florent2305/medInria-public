@@ -24,18 +24,18 @@ class MEDCORELEGACY_EXPORT medLayoutChooser : public QTableWidget
     Q_OBJECT
 
 public:
-     medLayoutChooser(QWidget *parent = 0);
-    ~medLayoutChooser();
+     medLayoutChooser(QWidget *parent = nullptr);
+    ~medLayoutChooser() override;
 
-    QSize sizeHint() const;
-    int sizeHintForRow(int row) const;
-    int sizeHintForColumn(int column) const;
+    QSize sizeHint() const override;
+    int sizeHintForRow(int row) const override;
+    int sizeHintForColumn(int column) const override;
 
 signals:
     void selected(unsigned int rows, unsigned int cols);
 
 protected:
-    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
 private:
     medLayoutChooserPrivate *d;

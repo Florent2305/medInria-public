@@ -31,8 +31,8 @@ class MEDCORELEGACY_EXPORT medGroupBox : public QGroupBox
     Q_PROPERTY(bool collapsible READ isCollapsible WRITE setCollapsible)
 
 public:
-    explicit medGroupBox(QWidget *parent = 0);
-    ~medGroupBox();
+    explicit medGroupBox(QWidget *parent = nullptr);
+    ~medGroupBox() override;
     bool isCollapsible();
     void setCollapsible(bool collapsible);
     bool isCollapsed();
@@ -45,7 +45,7 @@ public slots:
     void setExpanded(bool expand);
 
 protected:
-        virtual void childEvent(QChildEvent* event);
+        void childEvent(QChildEvent* event) override;
 
 private:
     medGroupBoxPrivate * d;

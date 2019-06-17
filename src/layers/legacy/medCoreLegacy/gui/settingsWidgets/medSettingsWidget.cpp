@@ -31,9 +31,7 @@ medSettingsWidgetPrivate::medSettingsWidgetPrivate()
     this->section = QString();
 }
 
-medSettingsWidgetPrivate::~medSettingsWidgetPrivate()
-{
-}
+medSettingsWidgetPrivate::~medSettingsWidgetPrivate() = default;
 
 /**
  * @brief Should not be used directly, the factory will instanciate all the settingsWidgets.

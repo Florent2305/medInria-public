@@ -25,21 +25,21 @@ class MEDCORELEGACY_EXPORT medLayerParameterGroupL : public medAbstractParameter
     Q_OBJECT
 
 public:
-    medLayerParameterGroupL(QString name = "", QObject *parent = 0, QString workspace = "");
-    virtual ~medLayerParameterGroupL();
+    medLayerParameterGroupL(QString name = "", QObject *parent = nullptr, QString workspace = "");
+    ~medLayerParameterGroupL() override;
 
     void addImpactedlayer(medAbstractLayeredView *view, medAbstractData* layerData);
     void removeImpactedlayer(medAbstractLayeredView *view, medAbstractData* layerData);
     QMultiHash<medAbstractLayeredView*, medAbstractData*> impactedLayers();
 
-    void setLinkAllParameters(bool linkAll);
+    void setLinkAllParameters(bool linkAll) override;
 
 protected:
-    virtual void updatePool();
-    void updateParameterToLinkList(medAbstractLayeredView *view, medAbstractData* layerData);
+    void updatePool() override;
+    void updateParameterToLinkList(medAbstractLayeredView *view, medAbstractData *layerData);
 
 private slots:
-    void removeImpactedlayer(medAbstractData*);
+    void removeImpactedlayer(medAbstractData *layerData);
 
 private:
     medLayerParameterGroupLL *d;

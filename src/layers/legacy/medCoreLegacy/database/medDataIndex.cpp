@@ -24,14 +24,7 @@ medDataIndex::medDataIndex(int dataSourceId, int patientId, int studyId, int ser
 
 }
 
-medDataIndex::medDataIndex(const medDataIndex& index)
-    : m_dataSourceId(index.m_dataSourceId),
-    m_patientId(index.m_patientId),
-    m_studyId(index.m_studyId),
-    m_seriesId(index.m_seriesId),
-    m_imageId(index.m_imageId)
-{
-}
+medDataIndex::medDataIndex(const medDataIndex& index) = default;
 
 medDataIndex::medDataIndex()
     : m_dataSourceId(NOT_VALID),
@@ -43,46 +36,35 @@ medDataIndex::medDataIndex()
 }
 
 
-medDataIndex::~medDataIndex(void)
-{
-}
+medDataIndex::~medDataIndex() = default;
 
-bool medDataIndex::isValid(void) const
+bool medDataIndex::isValid() const
 {
     return (m_dataSourceId != NOT_VALID && m_patientId != NOT_VALID);
 }
 
-bool medDataIndex::isValidForPatient(void) const
+bool medDataIndex::isValidForPatient() const
 {
     return (m_dataSourceId != NOT_VALID && m_patientId != NOT_VALID);
 }
 
-bool medDataIndex::isValidForStudy(void) const
+bool medDataIndex::isValidForStudy() const
 {
     return (isValidForPatient() && (m_studyId != NOT_VALID));
 }
 
-bool medDataIndex::isValidForSeries(void) const
+bool medDataIndex::isValidForSeries() const
 {
     return (isValidForStudy() && (m_seriesId != NOT_VALID));
 }
 
-bool medDataIndex::isValidForImage(void) const
+bool medDataIndex::isValidForImage() const
 {
     return (isValidForSeries() && (m_imageId != NOT_VALID));
 }
 
 
-medDataIndex& medDataIndex::operator=(const medDataIndex& index)
-{
-    m_dataSourceId = index.m_dataSourceId;
-    m_patientId = index.m_patientId;
-    m_studyId = index.m_studyId;
-    m_seriesId = index.m_seriesId;
-    m_imageId = index.m_imageId;
-
-	return *this;
-}
+medDataIndex& medDataIndex::operator=(const medDataIndex& index) = default;
 
 QString medDataIndex::asString() const
 {
@@ -147,18 +129,22 @@ medDataIndex medDataIndex::readMimeData( const QMimeData * mimeData )
 {
     if (mimeData->hasFormat("med/index")) {
         QStringList ids = QString(mimeData->data("med/index")).split(":");
-        if ( ids.size() >= 5 ) {
+        if ( ids.size() >= 5 ) 
+        {
             int intIds[5];
             bool allOk = true;
-            for ( int i(0); i<5; ++i ) {
+            for ( int i(0); i<5; ++i ) 
+            {
                 bool ok = false;
                 intIds[i] = ids.at(i).toInt(&ok);
-                if ( !ok ) {
+                if ( !ok ) 
+                {
                     allOk = false;
                     break;
                 }
             }
-            if (allOk) {
+            if (allOk)
+            {
                 return medDataIndex( intIds[0], intIds[1], intIds[2], intIds[3], intIds[4] );
             }
         }

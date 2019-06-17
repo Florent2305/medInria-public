@@ -46,7 +46,7 @@ public:
     medAbstractDatabaseImporter (const QString& file, const QUuid &uuid, bool indexWithoutImporting = false);
     medAbstractDatabaseImporter ( medAbstractData* medData, const QUuid& uuid, bool indexWithoutImporting = false);
 
-    ~medAbstractDatabaseImporter ( void );
+    ~medAbstractDatabaseImporter () override;
 
 
 signals:
@@ -65,18 +65,18 @@ signals:
     void dataImported ( const medDataIndex& index, const QUuid& uuid );
 
 public slots:
-    void onCancel ( QObject* );
+    void onCancel ( QObject* obj) override;
 
 
 protected:
-    virtual void internalRun ( void ) ;
+    void internalRun () override;
 
-    QString file ( void );
-    bool isCancelled ( void );
-    bool indexWithoutImporting ( void );
-    QMap<int, QString> volumeIdToImageFile ( void );
-    QString callerUuid ( void );
-    medDataIndex index(void) const;
+    QString file ();
+    bool isCancelled ();
+    bool indexWithoutImporting ();
+    QMap<int, QString> volumeIdToImageFile ();
+    QString callerUuid ();
+    medDataIndex index() const;
 
     void populateMissingMetadata ( medAbstractData* medData, const QString seriesDescription );
     void addAdditionalMetaData ( medAbstractData* imData, QString aggregatedFileName, QStringList aggregatedFilesPaths );
@@ -86,7 +86,7 @@ protected:
 
     QStringList getAllFilesToBeProcessed ( QString fileOrDirectory );
 
-    medAbstractData *tryReadImages ( const QStringList& filesPath,const bool readOnlyImageInformation );
+    medAbstractData *tryReadImages ( const QStringList& filesPath, bool readOnlyImageInformation );
     bool tryWriteImage ( QString filePath, medAbstractData* medData );
 
     QString determineFutureImageFileName ( const medAbstractData* medData, int volumeNumber );

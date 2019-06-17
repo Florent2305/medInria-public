@@ -70,7 +70,7 @@ signals:
 private slots:
     void exportDialog_updateSuffix(int index);
     void garbageCollect();
-    void removeFromNonPersistent(medDataIndex,QUuid);
+    void removeFromNonPersistent(medDataIndex indexImported, QUuid uuid);
     void setWriterPriorities();
 
 protected:
@@ -78,7 +78,7 @@ protected:
 
 private:
     medDataManager();
-    virtual ~medDataManager();
+    ~medDataManager() override;
 
     static medDataManager * s_instance;
 

@@ -35,8 +35,8 @@ class MEDCORELEGACY_EXPORT medAbstractLayeredView : public medAbstractView
     Q_OBJECT
 
 public:
-    medAbstractLayeredView(QObject * parent = 0);
-    virtual ~medAbstractLayeredView();
+    medAbstractLayeredView(QObject * parent = nullptr);
+    ~medAbstractLayeredView() override;
 
     virtual void addLayer(medAbstractData *data);
     virtual void removeData(medAbstractData *data);
@@ -55,14 +55,14 @@ public:
     void setCurrentLayer(unsigned int layer);
     unsigned int currentLayer() const;
 
-    QList <medAbstractInteractor*> interactors();
+    QList <medAbstractInteractor*> interactors() override;
     QList <medAbstractInteractor*> layerInteractors(unsigned int layer);
-    QList<medAbstractNavigator*> navigators();
+    QList<medAbstractNavigator*> navigators() override;
 
     medAbstractBoolParameterL* visibilityParameter(unsigned int layer);
     medDataListParameterL *dataListParameter() const;
 
-    virtual QList<medAbstractParameterL*> linkableParameters();
+    QList<medAbstractParameterL*> linkableParameters() override;
     virtual QList<medAbstractParameterL*> linkableParameters(unsigned int layer);
 
 public slots:
@@ -76,19 +76,19 @@ signals:
     void currentLayerChanged() const;
 
 protected:
-    virtual medAbstractLayeredViewInteractor * primaryInteractor(medAbstractData* data);
-    virtual QList<medAbstractInteractor *> extraInteractors(medAbstractData* data);
+    medAbstractLayeredViewInteractor * primaryInteractor(medAbstractData* data) override;
+    QList<medAbstractInteractor *> extraInteractors(medAbstractData* data) override;
     virtual medAbstractLayeredViewInteractor * primaryInteractor(unsigned int layer);
     virtual QList<medAbstractInteractor *> extraInteractors(unsigned int layer);
-    virtual medAbstractLayeredViewInteractor * primaryInteractor();
-    virtual QList<medAbstractInteractor *> extraInteractors();
+    medAbstractLayeredViewInteractor * primaryInteractor() override;
+    QList<medAbstractInteractor *> extraInteractors() override;
 
-    virtual medAbstractLayeredViewNavigator * primaryNavigator();
-    virtual QList<medAbstractNavigator *> extraNavigators();
+    medAbstractLayeredViewNavigator * primaryNavigator() override;
+    QList<medAbstractNavigator *> extraNavigators() override;
 
-    virtual bool initialiseInteractors(medAbstractData* data);
-    virtual bool initialiseNavigators();
-    virtual void removeInteractors(medAbstractData *data);
+    bool initialiseInteractors(medAbstractData* data) override;
+    bool initialiseNavigators() override;
+    void removeInteractors(medAbstractData *data) override;
 
     virtual QList<medAbstractParameterL*> interactorsParameters(unsigned int layer);
 

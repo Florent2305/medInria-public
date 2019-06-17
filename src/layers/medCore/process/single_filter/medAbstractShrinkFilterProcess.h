@@ -29,14 +29,14 @@ class MEDCORE_EXPORT medAbstractShrinkFilterProcess : public medAbstractSingleFi
 
 public:
     medAbstractShrinkFilterProcess(QObject *parent = nullptr);
-    virtual ~medAbstractShrinkFilterProcess();
+    ~medAbstractShrinkFilterProcess() override;
 
     virtual medIntParameter* shrinkFactor1();
     virtual medIntParameter* shrinkFactor2();
     virtual medIntParameter* shrinkFactor3();
 
 protected:
-    virtual QString outputNameAddon() const {return "shrink filter";}
+    QString outputNameAddon() const override {return "shrink filter";}
 
 private:
     const QScopedPointer<medAbstractShrinkFilterProcessPrivate> d;

@@ -18,6 +18,7 @@
 #include <QtCore>
 
 #include <medCoreLegacyExport.h>
+#include <utility>
 
 class medToolBox;
 class medToolBoxFactoryPrivate;
@@ -48,7 +49,7 @@ class MEDCORELEGACY_EXPORT medToolBoxFactory : public dtkAbstractFactory
     Q_OBJECT
 
 public:
-    typedef medToolBox *(*medToolBoxCreator)(QWidget *parent);
+    using medToolBoxCreator = medToolBox *(*)(QWidget *parent);
 
 public:
     static medToolBoxFactory *instance();
@@ -77,11 +78,10 @@ public:
     QList<QString> toolBoxesFromCategory(const QString& category) const;
     medToolBoxDetails* toolBoxDetailsFromId ( const QString& id ) const;
 
-    QHash<QString, medToolBoxDetails*> toolBoxDetailsFromCategory (
-            const QString& id )const;
+    QHash<QString, medToolBoxDetails*> toolBoxDetailsFromCategory (const QString& cat )const;
 
 public slots:
-    medToolBox *createToolBox(QString identifier, QWidget *parent=0);
+    medToolBox *createToolBox(QString identifier, QWidget *parent = nullptr);
 
 
 protected:
@@ -93,7 +93,7 @@ protected:
                          medToolBoxCreator creator);
 
      medToolBoxFactory();
-    ~medToolBoxFactory();
+    ~medToolBoxFactory() override;
 
 private:
     static medToolBoxFactory *s_instance;
@@ -120,10 +120,8 @@ struct MEDCORELEGACY_EXPORT medToolBoxDetails{
     QString description; /** (tooltip) short description of the Toolbox */
     QStringList categories; /** List of categories the toolbox falls in*/
     medToolBoxFactory::medToolBoxCreator creator; /** function pointer allocating memory for the toolbox*/
-    medToolBoxDetails(QString name,QString description, QStringList categories,
-                     medToolBoxFactory::medToolBoxCreator creator):
-        name(name),description(description),categories(categories),
-        creator(creator){}
+    medToolBoxDetails(QString name,QString description, QStringList categories, medToolBoxFactory::medToolBoxCreator creator):
+        name(std::move(name)), description(std::move(description)), categories(std::move(categories)), creator(std::move(creator)){}
 };
 
 

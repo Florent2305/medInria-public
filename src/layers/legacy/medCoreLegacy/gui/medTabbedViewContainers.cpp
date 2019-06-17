@@ -76,7 +76,7 @@ medTabbedViewContainers::medTabbedViewContainers(medAbstractWorkspaceLegacy* own
     d->pool = new medParameterPoolL(this);
 }
 
-medTabbedViewContainers::~medTabbedViewContainers(void)
+medTabbedViewContainers::~medTabbedViewContainers()
 {
     delete d;
     d = nullptr;
@@ -299,8 +299,8 @@ void medTabbedViewContainers::removeContainerFromSelection(QUuid container)
         {
             d->containerSelectedForTabIndex.insert(tabIndex, containersSelected);
             medViewContainer *unSelectedContainer =  medViewContainerManager::instance()->container(container);
-            this->disconnect(unSelectedContainer, SIGNAL(viewRemoved()), this, 0);
-            this->disconnect(unSelectedContainer, SIGNAL(viewContentChanged()), this, 0);
+            this->disconnect(unSelectedContainer, SIGNAL(viewRemoved()), this, nullptr);
+            this->disconnect(unSelectedContainer, SIGNAL(viewContentChanged()), this, nullptr);
             emit containersSelectedChanged();
             break;
         }
@@ -343,8 +343,8 @@ void medTabbedViewContainers::connectContainerSelectedForCurrentTab()
             foreach (QUuid uuid, containersSelected)
             {
                 medViewContainer *container =  medViewContainerManager::instance()->container(uuid);
-                this->disconnect(container, SIGNAL(viewRemoved()), this, 0);
-                this->disconnect(container, SIGNAL(viewContentChanged()), this, 0);
+                this->disconnect(container, SIGNAL(viewRemoved()), this, nullptr);
+                this->disconnect(container, SIGNAL(viewContentChanged()), this, nullptr);
             }
         }
     }

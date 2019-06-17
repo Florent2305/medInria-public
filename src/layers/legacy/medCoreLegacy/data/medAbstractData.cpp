@@ -47,7 +47,7 @@ medAbstractData::medAbstractData( medAbstractData *parent )
 }
 
 
-medAbstractData::~medAbstractData( void )
+medAbstractData::~medAbstractData()
 {
     dtkDebug() << "deleting data with index " << d->index.asString();
     delete d;

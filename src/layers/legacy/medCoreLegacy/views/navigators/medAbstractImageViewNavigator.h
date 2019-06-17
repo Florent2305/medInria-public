@@ -29,8 +29,8 @@ class MEDCORELEGACY_EXPORT medAbstractImageViewNavigator : public medAbstractLay
     Q_OBJECT
 
 public:
-             medAbstractImageViewNavigator(medAbstractView* parent);
-    virtual ~medAbstractImageViewNavigator();
+     medAbstractImageViewNavigator(medAbstractView* parent);
+    ~medAbstractImageViewNavigator() override;
 
 public:
     virtual medImageView::Orientation orientation() const = 0;

@@ -46,10 +46,10 @@ class MEDCORELEGACY_EXPORT medJobItemL :  public QObject, public QRunnable
     Q_OBJECT
 
 public:
-             medJobItemL();
-    virtual ~medJobItemL();
+    medJobItemL();
+    ~medJobItemL() override;
 
-    virtual void run();
+    void run() override;
 
 signals:
     void progress  (QObject* sender, int progress);
@@ -75,7 +75,7 @@ public slots:
     * @param: QObject *sender
     * @return   void
     */
-    virtual void onCancel(QObject*);
+    virtual void onCancel(QObject* obj);
 
 protected:
     virtual void internalRun() = 0;

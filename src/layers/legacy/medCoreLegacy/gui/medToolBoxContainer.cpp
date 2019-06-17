@@ -46,7 +46,7 @@ medToolBoxContainer::medToolBoxContainer(QWidget *parent) : QScrollArea(parent),
     this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
-medToolBoxContainer::~medToolBoxContainer(void)
+medToolBoxContainer::~medToolBoxContainer()
 {
     delete d;
     d = nullptr;
@@ -90,7 +90,7 @@ void medToolBoxContainer::clear()
     d->toolboxes.clear();
 }
 
-QList<medToolBox*> medToolBoxContainer::toolBoxes(void) const
+QList<medToolBox*> medToolBoxContainer::toolBoxes() const
 {
     return d->toolboxes;
 }

@@ -19,7 +19,7 @@ class medLoadLUTDialog : public QInputDialog
 {
     Q_OBJECT
 public:
-    medLoadLUTDialog(const QStringList & titles, QWidget *parent = 0);
+    medLoadLUTDialog(const QStringList & titles, QWidget *parent = nullptr);
 
 signals:
 

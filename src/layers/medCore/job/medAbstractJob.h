@@ -37,7 +37,7 @@ public:
 
 
     medAbstractJob(QObject *parent = nullptr);
-    virtual ~medAbstractJob();
+    ~medAbstractJob() override;
 
     virtual QString caption() const = 0;
 

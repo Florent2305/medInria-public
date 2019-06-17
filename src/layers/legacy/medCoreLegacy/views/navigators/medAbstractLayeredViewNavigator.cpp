@@ -21,8 +21,4 @@ medAbstractLayeredViewNavigator::medAbstractLayeredViewNavigator(medAbstractView
 
 }
 
-medAbstractLayeredViewNavigator::~medAbstractLayeredViewNavigator()
-{
-
-}
-
+medAbstractLayeredViewNavigator::~medAbstractLayeredViewNavigator() = default;

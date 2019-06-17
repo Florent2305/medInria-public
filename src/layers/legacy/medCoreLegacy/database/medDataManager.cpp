@@ -171,7 +171,7 @@ void medDataManager::exportData(medAbstractData* data)
         return;
     }
 
-    QFileDialog * exportDialog = new QFileDialog(0, tr("Exporting : please choose a file name and directory"));
+    QFileDialog * exportDialog = new QFileDialog(nullptr, tr("Exporting : please choose a file name and directory"));
     exportDialog->setOption(QFileDialog::DontUseNativeDialog);
     exportDialog->setAcceptMode(QFileDialog::AcceptSave);
 
@@ -206,7 +206,7 @@ void medDataManager::exportData(medAbstractData* data)
 
     exportDialog->setLayout(gridbox);
 
-    // Set a default filename based on the series's description
+    // Set a default path based on the series's description
     medAbstractDbController * dbController = d->controllerForDataSource(data->dataIndex().dataSourceId());
     if (dbController) {
         QString defaultName = dbController->metaData(data->dataIndex(), medMetaDataKeys::SeriesDescription);
@@ -224,10 +224,10 @@ void medDataManager::exportData(medAbstractData* data)
 }
 
 
-void medDataManager::exportDataToPath(medAbstractData *data, const QString & filename, const QString & writer)
+void medDataManager::exportDataToPath(medAbstractData *data, const QString & path, const QString & format)
 {
-    medDatabaseExporter *exporter = new medDatabaseExporter (data, filename, writer);
-    QFileInfo info(filename);
+    medDatabaseExporter *exporter = new medDatabaseExporter (data, path, format);
+    QFileInfo info(path);
     medMessageProgress *message = medMessageController::instance()->showProgress("Exporting data to " + info.baseName());
 
     connect(exporter, SIGNAL(progressed(int)), message, SLOT(setProgress(int)));
@@ -402,7 +402,7 @@ void medDataManager::setWriterPriorities()
 
     int startIndex = 0;
 
-    // set itkMetaDataImageWriter as the top priority writer
+    // set itkMetaDataImageWriter as the top priority format
     if(writers.contains("itkMetaDataImageWriter"))
     {
         writerPriorites.insert(0, "itkMetaDataImageWriter");
@@ -436,6 +436,4 @@ medDataManager::medDataManager() : d_ptr(new medDataManagerPrivate(this))
 }
 
 
-medDataManager::~medDataManager()
-{
-}
+medDataManager::~medDataManager() = default;

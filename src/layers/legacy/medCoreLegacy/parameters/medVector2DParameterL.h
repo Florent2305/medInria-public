@@ -23,13 +23,13 @@ class QVector2D;
 class MEDCORELEGACY_EXPORT medVector2DParameterL : public medAbstractVector2DParameterL
 {
 public:
-    medVector2DParameterL(QString name = "Unknow Vector 2D parameter", QObject* parent = 0);
-    virtual ~medVector2DParameterL();
+    medVector2DParameterL(QString name = "Unknow Vector 2D parameter", QObject* parent = nullptr);
+    ~medVector2DParameterL() override;
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
 protected:
-    virtual void updateInternWigets();
+    void updateInternWigets() override;
 
 private:
     medVector2DParameterLPrivate *d;

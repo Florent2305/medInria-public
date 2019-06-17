@@ -33,10 +33,7 @@ medAbstractMedianFilterProcess::medAbstractMedianFilterProcess(QObject *parent):
     d->radius->setDescription("Median filter box radius");
 }
 
-medAbstractMedianFilterProcess::~medAbstractMedianFilterProcess()
-{
-
-}
+medAbstractMedianFilterProcess::~medAbstractMedianFilterProcess() = default;
 
 medIntParameter* medAbstractMedianFilterProcess::radius()
 {

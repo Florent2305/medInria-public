@@ -38,7 +38,7 @@ public slots:
 
 protected:
      medViewContainerManager();
-    ~medViewContainerManager();
+    ~medViewContainerManager() override;
 
 protected:
     static medViewContainerManager *s_instance;

@@ -40,24 +40,24 @@ class MEDCORELEGACY_EXPORT medDatabaseImporter : public medAbstractDatabaseImpor
 public:
     medDatabaseImporter ( const QString& file, const QUuid& uuid, bool indexWithoutImporting = false);
     medDatabaseImporter ( medAbstractData* medData, const QUuid& callerUuid );
-    ~medDatabaseImporter ( void );
+    ~medDatabaseImporter () override;
 
 
 private:
 
-    QString ensureUniqueSeriesName ( const QString seriesName );
+    QString ensureUniqueSeriesName ( const QString seriesName ) override;
 
-    bool checkIfExists ( medAbstractData* medData, QString imageName );
+    bool checkIfExists ( medAbstractData* medData, QString imageName ) override;
 
-    medDataIndex populateDatabaseAndGenerateThumbnails ( medAbstractData* medData, QString pathToStoreThumbnails );
+    medDataIndex populateDatabaseAndGenerateThumbnails ( medAbstractData* medData, QString pathToStoreThumbnails ) override;
 
     int getOrCreatePatient ( const medAbstractData* medData, QSqlDatabase db );
-    int getOrCreateStudy ( const medAbstractData* medData, QSqlDatabase db, int patientId );
-    int getOrCreateSeries ( const medAbstractData* medData, QSqlDatabase db, int studyId );
+    int getOrCreateStudy ( const medAbstractData* medData, QSqlDatabase db, int patientDbId);
+    int getOrCreateSeries ( const medAbstractData* medData, QSqlDatabase db, int studyDbId);
 
-    void createMissingImages ( medAbstractData* medData, QSqlDatabase db, int seriesId, QStringList thumbPaths );
+    void createMissingImages ( medAbstractData* medData, QSqlDatabase db, int seriesDbId, QStringList thumbPaths);
 
-    QString getPatientID(QString patientName, QString birthDate);
+    QString getPatientID(QString patientName, QString birthDate) override;
 
 };
 

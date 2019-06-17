@@ -27,8 +27,8 @@ class MEDCORELEGACY_EXPORT medWorkspaceFactory : public dtkAbstractFactory
     Q_OBJECT
 
 public:
-    typedef medAbstractWorkspaceLegacy *(*medWorkspaceCreator)(QWidget* parent);
-    typedef bool (*medWorkspaceIsUsable)();
+    using medWorkspaceCreator = medAbstractWorkspaceLegacy *(*)(QWidget* parent);
+    using medWorkspaceIsUsable = bool (*)();
 
     struct Details
     {
@@ -39,10 +39,10 @@ public:
         medWorkspaceCreator creator;
         medWorkspaceIsUsable isUsable;
         bool isActive;
-        Details(QString id_,
-                QString name_,
-                QString description_,
-                QString category_,
+        Details(QString &id_,
+                QString &name_,
+                QString &description_,
+                QString &category_,
                 medWorkspaceCreator creator_,
                 medWorkspaceIsUsable isUsable_ = nullptr,
                 bool isActive_ = true)
@@ -102,7 +102,7 @@ public:
 
 public slots:
 
-    medAbstractWorkspaceLegacy* createWorkspace(QString type,QWidget* parent=0);
+    medAbstractWorkspaceLegacy* createWorkspace(QString type,QWidget* parent=nullptr);
 
 protected:
 
@@ -125,8 +125,8 @@ protected:
                            medWorkspaceCreator creator,
                            medWorkspaceIsUsable isUsable=nullptr, bool isActive=true);
 
-     medWorkspaceFactory();
-    virtual ~medWorkspaceFactory();
+    medWorkspaceFactory();
+    ~medWorkspaceFactory() override;
 
 private:
     static medWorkspaceFactory *s_instance;
@@ -136,8 +136,9 @@ private:
      * @warning keep it static if you don't want to freeze your brain (solution in http://www.parashift.com/c++-faq-lite/pointers-to-members.html#faq-33.5 for those interested)
      */
     template < typename T >
-    static medAbstractWorkspaceLegacy* create ( QWidget* parent ) {
-    return ( new T(parent) );
+    static medAbstractWorkspaceLegacy* create ( QWidget* parent )
+    {
+        return ( new T(parent) );
     }
 
 private:

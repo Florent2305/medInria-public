@@ -17,7 +17,6 @@
 
 #include <medCoreLegacyExport.h>
 
-class medAbstractData;
 
 /**
  * Base class for annotations : a specialization of medAttachedData.
@@ -29,7 +28,7 @@ class MEDCORELEGACY_EXPORT medAnnotationData : public medAttachedData
 
 public:
     medAnnotationData( );
-    virtual ~medAnnotationData();
+    ~medAnnotationData() override;
 
 
 signals:
@@ -39,9 +38,6 @@ public slots:
 protected:
 
 private:
-
-    class medAnnotationDataPrivate;
-    medAnnotationDataPrivate * d;
 };
 
 

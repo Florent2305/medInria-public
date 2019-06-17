@@ -48,7 +48,7 @@ medBrowserPacsHostToolBox::medBrowserPacsHostToolBox(QWidget *parent) : medToolB
     this->readSettings();
 }
 
-medBrowserPacsHostToolBox::~medBrowserPacsHostToolBox(void)
+medBrowserPacsHostToolBox::~medBrowserPacsHostToolBox()
 {
     this->writeSettings();
 
@@ -57,7 +57,7 @@ medBrowserPacsHostToolBox::~medBrowserPacsHostToolBox(void)
     d = nullptr;
 }
 
-void medBrowserPacsHostToolBox::readSettings(void)
+void medBrowserPacsHostToolBox::readSettings()
 {
     QSettings settings;
     settings.beginGroup("medBrowserPacsHostToolBox");
@@ -76,7 +76,7 @@ void medBrowserPacsHostToolBox::readSettings(void)
 
 }
 
-void medBrowserPacsHostToolBox::writeSettings(void)
+void medBrowserPacsHostToolBox::writeSettings()
 {
     QSettings settings;
     settings.beginGroup("medBrowserPacsHostToolBox");
@@ -85,17 +85,17 @@ void medBrowserPacsHostToolBox::writeSettings(void)
     settings.endGroup();
 }
 
-QString medBrowserPacsHostToolBox::title(void)
+QString medBrowserPacsHostToolBox::title()
 {
     return d->title->text();
 }
 
-QString medBrowserPacsHostToolBox::port(void)
+QString medBrowserPacsHostToolBox::port()
 {
     return d->port->text();
 }
 
-void medBrowserPacsHostToolBox::onSettingsApplied(void)
+void medBrowserPacsHostToolBox::onSettingsApplied()
 {
     this->writeSettings();
 }

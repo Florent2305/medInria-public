@@ -29,7 +29,7 @@ class MEDCORE_EXPORT medAbstractTractographyProcess : public medAbstractProcess
 
 public:
     medAbstractTractographyProcess(QObject *parent = nullptr);
-    virtual ~medAbstractTractographyProcess();
+    ~medAbstractTractographyProcess() override;
 
     void setInput(medAbstractDiffusionModelImageData* data);
     medAbstractDiffusionModelImageData* input() const;
@@ -37,8 +37,8 @@ public:
     medAbstractFibersData* output() const;
 
 protected:
-    void setOutput(medAbstractFibersData* data);
-    virtual QString outputNameAddon() const {return "fibers";}
+    void setOutput(medAbstractFibersData *data);
+    QString outputNameAddon() const override {return "fibers";}
 
 private:
     const QScopedPointer<medAbstractTractographyProcessPrivate> d;

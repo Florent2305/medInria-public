@@ -36,17 +36,15 @@ public:
 medDiffusionModelEstimationMetaProcess::medDiffusionModelEstimationMetaProcess(QObject *parent)
     : medAbstractProcess(parent), d(new medDiffusionModelEstimationMetaProcessPrivate)
 {
-    d->input = 0;
-    d->output = 0;
+    d->input = nullptr;
+    d->output = nullptr;
 
-    d->dwiMaskCalculator = 0;
+    d->dwiMaskCalculator = nullptr;
     d->dwiMaskApplyer = medCore::maskImage::pluginFactory().create("medItkMaskImageProcess");
-    d->modelEstimator = 0;
+    d->modelEstimator = nullptr;
 }
 
-medDiffusionModelEstimationMetaProcess::~medDiffusionModelEstimationMetaProcess()
-{
-}
+medDiffusionModelEstimationMetaProcess::~medDiffusionModelEstimationMetaProcess() = default;
 
 void medDiffusionModelEstimationMetaProcess::setInput(medAbstractImageData *data)
 {
@@ -119,7 +117,7 @@ bool medDiffusionModelEstimationMetaProcess::chooseDWIMaskingPlugin(QString proc
 
     d->dwiMaskCalculator = medCore::dwiMasking::pluginFactory().create(processName);
 
-    return (d->dwiMaskCalculator != 0);
+    return (d->dwiMaskCalculator != nullptr);
 }
 
 bool medDiffusionModelEstimationMetaProcess::chooseModelEstimationPlugin(QString processName)
@@ -132,7 +130,7 @@ bool medDiffusionModelEstimationMetaProcess::chooseModelEstimationPlugin(QString
 
     d->modelEstimator = medCore::diffusionModelEstimation::pluginFactory().create(processName);
 
-    return (d->modelEstimator != 0);
+    return (d->modelEstimator != nullptr);
 }
 
 medAbstractDWIMaskingProcess *medDiffusionModelEstimationMetaProcess::dwiMaskCalculatorProcess()

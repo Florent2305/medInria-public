@@ -51,13 +51,13 @@ public:
     void buildMetaDataLookup();
     bool isConnected;
     struct TableEntry {
-        TableEntry( QString t, QString c, bool isPath_ = false ) : table(t), column(c), isPath(isPath_) {}
+        TableEntry( QString t, QString c, bool isPath_ = false ) : table(std::move(t)), column(std::move(c)), isPath(isPath_) {}
         QString table;
         QString column;
         bool isPath;
     };
-    typedef QList<TableEntry> TableEntryList;
-    typedef QHash< QString , TableEntryList > MetaDataMap;
+    using TableEntryList = QList<TableEntry>;
+    using MetaDataMap = QHash< QString , TableEntryList >;
 
     MetaDataMap metaDataLookup;
     // Reusable table names.
@@ -161,12 +161,12 @@ medDatabaseController* medDatabaseController::instance() {
 }
 
 
-const QSqlDatabase& medDatabaseController::database(void) const
+const QSqlDatabase& medDatabaseController::database() const
 {
     return m_database;
 }
 
-bool medDatabaseController::createConnection(void)
+bool medDatabaseController::createConnection()
 {
     medStorage::mkpath(medStorage::dataLocation() + "/");
 
@@ -202,7 +202,7 @@ bool medDatabaseController::createConnection(void)
     return true;
 }
 
-bool medDatabaseController::closeConnection(void)
+bool medDatabaseController::closeConnection()
 {
     m_database.close();
     QSqlDatabase::removeDatabase("QSQLITE");
@@ -466,7 +466,7 @@ void medDatabaseController::showOpeningError(QObject *sender)
     medMessageController::instance()->showError("Opening item failed.", 3000);
 }
 
-void medDatabaseController::createPatientTable(void)
+void medDatabaseController::createPatientTable()
 {
     QSqlQuery query(this->database());
     query.exec(
@@ -481,7 +481,7 @@ void medDatabaseController::createPatientTable(void)
             );
 }
 
-void medDatabaseController::createStudyTable(void)
+void medDatabaseController::createStudyTable()
 {
     QSqlQuery query(this->database());
 
@@ -497,7 +497,7 @@ void medDatabaseController::createStudyTable(void)
             );
 }
 
-void medDatabaseController::createSeriesTable(void)
+void medDatabaseController::createSeriesTable()
 {
     QSqlQuery query(this->database());
     query.exec(
@@ -532,7 +532,7 @@ void medDatabaseController::createSeriesTable(void)
             );
 }
 
-void medDatabaseController::createImageTable(void)
+void medDatabaseController::createImageTable()
 {
     // Note to the reader who came here looking for the 'size' column:
     // it was removed because it was always filled with a
@@ -743,8 +743,8 @@ medDataIndex medDatabaseController::moveSerie( const medDataIndex& indexSerie, c
 /** Get metadata for specific item. Return uninitialized string if not present. */
 QString medDatabaseController::metaData(const medDataIndex& index,const QString& key) const
 {
-    typedef medDatabaseControllerPrivate::MetaDataMap MetaDataMap;
-    typedef medDatabaseControllerPrivate::TableEntryList TableEntryList;
+    using MetaDataMap = medDatabaseControllerPrivate::MetaDataMap;
+    using TableEntryList = medDatabaseControllerPrivate::TableEntryList;
 
     QSqlQuery query(this->database());
 
@@ -756,21 +756,21 @@ QString medDatabaseController::metaData(const medDataIndex& index,const QString&
 
     QString ret;
     bool isPath = false;
-    for ( TableEntryList::const_iterator entryIt(it.value().begin() );
-        entryIt != it.value().end(); ++entryIt ) {
+    for (TableEntryList::const_iterator entryIt(it.value().begin()); entryIt != it.value().end(); ++entryIt)
+    {
 
         const QString tableName = entryIt->table;
         const QString columnName = entryIt->column;
         isPath = entryIt->isPath;
 
         int id = -1;
-        if ( tableName == d->T_image && index.isValidForImage() ) {
+        if ( tableName == medDatabaseControllerPrivate::T_image && index.isValidForImage() ) {
             id = index.imageId();
-        } else if ( tableName == d->T_series && index.isValidForSeries() ) {
+        } else if ( tableName == medDatabaseControllerPrivate::T_series && index.isValidForSeries() ) {
             id = index.seriesId();
-        } else if ( tableName == d->T_study && index.isValidForStudy() ) {
+        } else if ( tableName == medDatabaseControllerPrivate::T_study && index.isValidForStudy() ) {
             id = index.studyId();
-        } else if ( tableName == d->T_patient && index.isValidForPatient() ) {
+        } else if ( tableName == medDatabaseControllerPrivate::T_patient && index.isValidForPatient() ) {
             id = index.patientId();
         }
         if ( id != -1 ) {
@@ -797,8 +797,8 @@ QString medDatabaseController::metaData(const medDataIndex& index,const QString&
 /** Set metadata for specific item. Return true on success, false otherwise. */
 bool medDatabaseController::setMetaData( const medDataIndex& index, const QString& key, const QString& value )
 {
-    typedef medDatabaseControllerPrivate::MetaDataMap MetaDataMap;
-    typedef medDatabaseControllerPrivate::TableEntryList TableEntryList;
+    using MetaDataMap = medDatabaseControllerPrivate::MetaDataMap;
+    using TableEntryList = medDatabaseControllerPrivate::TableEntryList;
 
     QSqlQuery query(this->database());
 
@@ -816,13 +816,13 @@ bool medDatabaseController::setMetaData( const medDataIndex& index, const QStrin
         const QString columnName = entryIt->column;
 
         int id = -1;
-        if ( tableName == d->T_image && index.isValidForImage() ) {
+        if ( tableName == medDatabaseControllerPrivate::T_image && index.isValidForImage() ) {
             id = index.imageId();
-        } else if ( tableName == d->T_series && index.isValidForSeries() ) {
+        } else if ( tableName == medDatabaseControllerPrivate::T_series && index.isValidForSeries() ) {
             id = index.seriesId();
-        } else if ( tableName == d->T_study && index.isValidForStudy() ) {
+        } else if ( tableName == medDatabaseControllerPrivate::T_study && index.isValidForStudy() ) {
             id = index.studyId();
-        } else if ( tableName == d->T_patient && index.isValidForPatient() ) {
+        } else if ( tableName == medDatabaseControllerPrivate::T_patient && index.isValidForPatient() ) {
             id = index.patientId();
         }
         if ( id != -1 ) {

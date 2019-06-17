@@ -42,13 +42,13 @@ medLayoutChooser::medLayoutChooser(QWidget *parent) : QTableWidget(parent), d(ne
     this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
-medLayoutChooser::~medLayoutChooser(void)
+medLayoutChooser::~medLayoutChooser()
 {
     delete d;
     d = nullptr;
 }
 
-QSize medLayoutChooser::sizeHint(void) const
+QSize medLayoutChooser::sizeHint() const
 {
     return QSize(this->columnCount()*30, this->rowCount()*30);
 }

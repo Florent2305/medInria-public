@@ -32,7 +32,7 @@ public:
     medDataIndex index;
 };
 
-medDatabaseReader::medDatabaseReader ( const medDataIndex& index ) : QObject(), d ( new medDatabaseReaderPrivate )
+medDatabaseReader::medDatabaseReader ( const medDataIndex& index ) : d ( new medDatabaseReaderPrivate )
 {
     d->index = index;
 }

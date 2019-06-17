@@ -26,7 +26,7 @@ public:
     medAbstractDilateImageProcess(QObject *parent): medAbstractMorphomathOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "dilate";}
+    QString outputNameAddon() const override {return "dilate";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractDilateImageProcess, MEDCORE_EXPORT)

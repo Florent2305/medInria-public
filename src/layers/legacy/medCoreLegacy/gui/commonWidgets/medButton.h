@@ -31,9 +31,9 @@ public:
     medButton(QWidget *parent, QString resourceLocation, QString toolTip);
     medButton(QWidget *parent, QPixmap pixmap, QString toolTip);
 
-    ~medButton();
+    ~medButton() override;
 
-    QSize sizeHint() const;
+    QSize sizeHint() const override;
 
     void setIcon(QPixmap icon);
 
@@ -42,7 +42,7 @@ signals:
     void triggered();
 
 protected:
-    void mousePressEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event) override;
 
 private:
     medButtonPrivate * d;

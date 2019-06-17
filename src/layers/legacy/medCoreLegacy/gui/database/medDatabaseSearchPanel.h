@@ -23,14 +23,14 @@ class EditCombo : public QWidget
 {
     Q_OBJECT
 public:
-    EditCombo(QString _text, int _column);
-    ~EditCombo();
+    EditCombo(QString txt, int clmn);
+    ~EditCombo() override;
 signals:
 
     void textChanged(const QString& , int);
 
 protected slots:
-    void onTextChanged(const QString&);
+    void onTextChanged(const QString& text);
 
 private:
     QLineEdit edit;
@@ -43,8 +43,8 @@ class MEDCORELEGACY_EXPORT medDatabaseSearchPanel : public medToolBox
 {
     Q_OBJECT
 public:
-    medDatabaseSearchPanel(QWidget *parent = 0);
-    ~medDatabaseSearchPanel();
+    medDatabaseSearchPanel(QWidget *parent = nullptr);
+    ~medDatabaseSearchPanel() override;
 
     void setColumnNames(const QStringList &columns);
 

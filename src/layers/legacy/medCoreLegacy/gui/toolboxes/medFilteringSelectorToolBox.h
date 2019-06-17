@@ -32,7 +32,7 @@ class MEDCORELEGACY_EXPORT medFilteringSelectorToolBox : public medToolBox
     Q_OBJECT
 public:
     medFilteringSelectorToolBox(QWidget *parent);
-    ~medFilteringSelectorToolBox();
+    ~medFilteringSelectorToolBox() override;
 
     medAbstractData* data();
 
@@ -44,7 +44,7 @@ signals:
 
 public slots:
     void changeCurrentToolBox(int index);
-    void clear();
+    void clear() override;
     void onInputSelected(medAbstractData *data);
 
 protected:

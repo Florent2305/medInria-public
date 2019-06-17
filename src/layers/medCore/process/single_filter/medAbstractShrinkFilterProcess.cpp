@@ -48,10 +48,7 @@ medAbstractShrinkFilterProcess::medAbstractShrinkFilterProcess(QObject *parent):
     d->shrinkFactor3->setValue(2);
 }
 
-medAbstractShrinkFilterProcess::~medAbstractShrinkFilterProcess()
-{
-
-}
+medAbstractShrinkFilterProcess::~medAbstractShrinkFilterProcess() = default;
 
 medIntParameter* medAbstractShrinkFilterProcess::shrinkFactor1()
 {

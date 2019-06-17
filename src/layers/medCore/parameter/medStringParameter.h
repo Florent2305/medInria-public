@@ -23,9 +23,9 @@ class MEDCORE_EXPORT medStringParameter : public medAbstractParameter
 
 public:
     medStringParameter(const QString & name, QObject *parent = nullptr);
-    virtual ~medStringParameter();
+    ~medStringParameter() override;
 
-    virtual medParameterType type() const {return medParameterType::MED_PARAMETER_STRING;}
+    medParameterType type() const override {return medParameterType::MED_PARAMETER_STRING;}
 
     QString value() const;
 
@@ -35,7 +35,7 @@ public:
 public slots:
     void setValue(QString const& value);
 
-    virtual void trigger();
+    void trigger() override;
 
 signals:
     void valueChanged(QString const& value);

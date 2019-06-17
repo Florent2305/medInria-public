@@ -24,22 +24,22 @@ class MEDCORELEGACY_EXPORT medViewParameterGroupL : public medAbstractParameterG
     Q_OBJECT
 
 public:
-    medViewParameterGroupL(QString name = "", QObject *parent = 0, QString workspace = "");
-    virtual ~medViewParameterGroupL();
+    medViewParameterGroupL(QString name = "", QObject *parent = nullptr, QString workspace = "");
+    ~medViewParameterGroupL() override;
 
     void addImpactedView(medAbstractView *view);
     void removeImpactedView(medAbstractView *view);
     QList<medAbstractView*> impactedViews();
 
-    void setLinkAllParameters(bool linkAll);
+    void setLinkAllParameters(bool linkAll) override;
 
 protected:
-    virtual void updatePool();
+    void updatePool() override;
     void updateParameterToLinkList(medAbstractView *view);
 
 private slots:
     void removeImpactedView();
-    void updateGroupIndicators(QColor, QColor);
+    void updateGroupIndicators(QColor oldColor, QColor newColor);
 
 private:
     medViewParameterGroupLPrivate *d;

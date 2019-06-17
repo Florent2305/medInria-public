@@ -14,7 +14,7 @@
 #include <medViewFactory.h>
 
 
-medViewFactory *medViewFactory::instance(void)
+medViewFactory *medViewFactory::instance()
 {
     if(!s_instance)
         s_instance = new medViewFactory;
@@ -25,13 +25,13 @@ medViewFactory *medViewFactory::instance(void)
 
 class medViewFactoryPrivate
 {
-    typedef QHash <QString, viewCreator>        viewIdCreatorHash;
-    typedef QHash <QString, navigatorCreator>   navigatorIdCreatorHash;
-    typedef QHash <QString, interactorCreator>  interactorIdCreatorHash;
-    typedef QHash <QString, addNavigatorCreator>   addNavigatorIdCreatorHash;
-    typedef QHash <QString, addInteractorCreator>  addInteractorIdCreatorHash;
+    using viewIdCreatorHash          = QHash <QString, viewCreator>;
+    using navigatorIdCreatorHash     = QHash <QString, navigatorCreator>;
+    using interactorIdCreatorHash    = QHash <QString, interactorCreator>;
+    using addNavigatorIdCreatorHash  = QHash <QString, addNavigatorCreator>;
+    using addInteractorIdCreatorHash = QHash <QString, addInteractorCreator>;
 
-    typedef QHash <QString, QStringList>        identifierHandledTypeHash;
+    using identifierHandledTypeHash  = QHash <QString, QStringList>;
 
     public:
 
@@ -158,7 +158,7 @@ navigatorCreator medViewFactory::getNavigatorCreator(QString identifier)
 //--------------------------------------------------------------------------
 //  get handler
 
-QStringList medViewFactory::viewsAbleToHandle(const QString dataType) const
+QStringList medViewFactory::viewsAbleToHandle(const QString &dataType) const
 {
     if(d->viewIdentifierHash.isEmpty())
         return QStringList();
@@ -176,7 +176,7 @@ QStringList medViewFactory::viewsAbleToHandle(const QString dataType) const
     return views;
 }
 
-QStringList medViewFactory::navigatorsAbleToHandle(const QString viewType) const
+QStringList medViewFactory::navigatorsAbleToHandle(const QString &viewType) const
 {
     if(d->navigatorIdentifierHash.isEmpty())
         return QStringList();
@@ -195,7 +195,7 @@ QStringList medViewFactory::navigatorsAbleToHandle(const QString viewType) const
     return navigators;
 }
 
-QStringList medViewFactory::interactorsAbleToHandle(const QString viewType, const QString dataType) const
+QStringList medViewFactory::interactorsAbleToHandle(const QString &viewType, const QString &dataType) const
 {
     if(d->interactorIdentifierHash.isEmpty())
         return QStringList();
@@ -214,7 +214,7 @@ QStringList medViewFactory::interactorsAbleToHandle(const QString viewType, cons
     return interactors;
 }
 
-QStringList medViewFactory::additionalNavigatorsAbleToHandle(const QString viewType) const
+QStringList medViewFactory::additionalNavigatorsAbleToHandle(const QString &viewType) const
 {
     if(d->addNavigatorIdentifierHash.isEmpty())
         return QStringList();
@@ -233,7 +233,7 @@ QStringList medViewFactory::additionalNavigatorsAbleToHandle(const QString viewT
     return navigators;
 }
 
-QStringList medViewFactory::additionalInteractorsAbleToHandle(const QString viewType, const QString dataType) const
+QStringList medViewFactory::additionalInteractorsAbleToHandle(const QString &viewType, const QString &dataType) const
 {
     if(d->addInteractorIdentifierHash.isEmpty())
         return QStringList();

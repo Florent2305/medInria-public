@@ -20,9 +20,6 @@ medAbstractViewInteractor::medAbstractViewInteractor(medAbstractView* parent):
 {
 
 }
-medAbstractViewInteractor::~medAbstractViewInteractor()
-{
 
-}
-
+medAbstractViewInteractor::~medAbstractViewInteractor() = default;
 

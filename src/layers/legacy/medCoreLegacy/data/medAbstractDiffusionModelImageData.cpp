@@ -14,13 +14,13 @@
 #include <medAbstractDiffusionModelImageData.h>
 #include <dtkLog/dtkLog.h>
 
-medAbstractDiffusionModelImageData::medAbstractDiffusionModelImageData() : medAbstractImageData()
-{
-}
+medAbstractDiffusionModelImageData::medAbstractDiffusionModelImageData() = default;
 
-const QString medAbstractDiffusionModelImageData::PixelMeaning() const
+ QString const medAbstractDiffusionModelImageData::PixelMeaning() const
 {
     if (hasMetaData(medAbstractImageData::PixelMeaningMetaData))
+    {
         return metadata(medAbstractImageData::PixelMeaningMetaData);
+    }
     return "";
 }

@@ -66,7 +66,7 @@ QWidget* medCompositeParameterL::getWidget()
     return mainWidget;
 }
 
-void medCompositeParameterL::setValues(const QHash<QString, QVariant> value)
+void medCompositeParameterL::setValues(const QHash<QString, QVariant> &value)
 {
     QHash<QString, QVariant>::const_iterator valuesIterator = value.constBegin();
     bool valueUpdated = false;
@@ -250,8 +250,10 @@ void medCompositeParameterL::updateValue(int value)
 void medCompositeParameterL::removeInternWidget(QObject *widget)
 {
     QWidget *w = qobject_cast<QWidget*>(widget);
-    if(!w)
+    if (!w)
+    {
         return;
+    }
 
     this->removeFromInternWidgets(w);
     QHashIterator<QString, QWidget*> i(d->widgets);

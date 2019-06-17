@@ -45,10 +45,7 @@ medDatabaseImporter::medDatabaseImporter ( medAbstractData* medData, const QUuid
 
 //-----------------------------------------------------------------------------------------------------------
 
-medDatabaseImporter::~medDatabaseImporter ( void )
-{
-
-}
+medDatabaseImporter::~medDatabaseImporter() = default;
 
 //-----------------------------------------------------------------------------------------------------------
 
@@ -71,10 +68,14 @@ QString medDatabaseImporter::getPatientID(QString patientName, QString birthDate
         dtkDebug() << DTK_COLOR_FG_RED << query.lastError() << DTK_NO_COLOR;
     }
 
-    if ( query.first() )
-        patientID = query.value ( 0 ).toString();
+    if (query.first())
+    {
+        patientID = query.value(0).toString();
+    }
     else
-        patientID = QUuid::createUuid().toString().replace("{","").replace("}","");
+    {
+        patientID = QUuid::createUuid().toString().replace("{", "").replace("}", "");
+    }
 
     return patientID;
 }
@@ -273,8 +274,10 @@ int medDatabaseImporter::getOrCreateStudy ( const medAbstractData* medData, QSql
 
     QString serieName   = medMetaDataKeys::SeriesDescription.getFirstValue(medData).simplified();
 
-    if( studyName=="EmptyStudy" && serieName=="EmptySerie" )
+    if (studyName == "EmptyStudy" && serieName == "EmptySerie")
+    {
         return studyDbId;
+    }
 
     query.prepare ( "SELECT id FROM study WHERE patient = :patient AND name = :studyName AND uid = :studyUid" );
     query.bindValue ( ":patient", patientDbId );
@@ -331,8 +334,10 @@ int medDatabaseImporter::getOrCreateSeries ( const medAbstractData* medData, QSq
     QString rows           = medMetaDataKeys::Rows.getFirstValue(medData);
     QString columns        = medMetaDataKeys::Columns.getFirstValue(medData);
 
-    if( seriesName=="EmptySerie" )
+    if (seriesName == "EmptySerie")
+    {
         return seriesDbId;
+    }
 
     query.prepare ( "SELECT * FROM series WHERE study = :study AND name = :seriesName AND uid = :seriesUid AND orientation = :orientation AND seriesNumber = :seriesNumber AND sequenceName = :sequenceName AND sliceThickness = :sliceThickness AND rows = :rows AND columns = :columns" );
     query.bindValue ( ":study", studyDbId );
@@ -345,8 +350,10 @@ int medDatabaseImporter::getOrCreateSeries ( const medAbstractData* medData, QSq
     query.bindValue ( ":rows", rows );
     query.bindValue ( ":columns", columns );
 
-    if( seriesName=="EmptySerie" )
+    if (seriesName == "EmptySerie")
+    {
         return seriesDbId;
+    }
 
     if ( !query.exec() )
     {
@@ -508,10 +515,14 @@ void medDatabaseImporter::createMissingImages ( medAbstractData* medData, QSqlDa
                 QString relativeFilePath = fileNames.count()>0 ? fileNames[0] : "" ;
                 query.bindValue ( ":instance_path", indexWithoutImporting() ? "" : relativeFilePath );
 
-                if ( i < thumbPaths.count() )
-                    query.bindValue ( ":thumbnail", thumbPaths[i] );
+                if (i < thumbPaths.count())
+                {
+                    query.bindValue(":thumbnail", thumbPaths[i]);
+                }
                 else
-                    query.bindValue ( ":thumbnail", "" );
+                {
+                    query.bindValue(":thumbnail", "");
+                }
 
                 if ( !query.exec() )
                 {

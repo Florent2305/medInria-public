@@ -30,8 +30,8 @@ class MEDCORELEGACY_EXPORT medMessage : public QWidget
     Q_OBJECT
 
 public:
-     medMessage(QWidget *parent = 0, const QString& text=nullptr, unsigned int timeout=0);
-    ~medMessage();
+     medMessage(QWidget *parent = nullptr, const QString& text=nullptr, unsigned int timeout=0);
+    ~medMessage() override;
     void startTimer();
     void stopTimer();
 
@@ -58,9 +58,8 @@ class medMessageInfo : public medMessage
     Q_OBJECT
 
 public:
-     medMessageInfo(const QString& text, QWidget *parent = 0,
-                                     unsigned int timeout=0);
-    ~medMessageInfo();
+     medMessageInfo(const QString& text, QWidget *parent = nullptr, unsigned int timeout=0);
+    ~medMessageInfo() override;
 };
 
 // /////////////////////////////////////////////////////////////////
@@ -71,9 +70,8 @@ class medMessageError : public medMessage
 {
     Q_OBJECT
 public:
-     medMessageError(const QString& text, QWidget *parent = 0,
-                                      unsigned int timeout=0);
-    ~medMessageError();
+     medMessageError(const QString& text, QWidget *parent = nullptr, unsigned int timeout=0);
+    ~medMessageError() override;
 };
 
 // /////////////////////////////////////////////////////////////////
@@ -86,10 +84,10 @@ class MEDCORELEGACY_EXPORT medMessageProgress : public medMessage
     Q_OBJECT
 
 public:
-     medMessageProgress(const QString& text, QWidget *parent = 0);
-    ~medMessageProgress();
+     medMessageProgress(const QString& text, QWidget *parent = nullptr);
+    ~medMessageProgress() override;
     void associateTimer();
-    void paintEvent ( QPaintEvent * event );
+    void paintEvent ( QPaintEvent * event ) override;
 
 protected:
     QProgressBar *progress;
@@ -126,7 +124,7 @@ signals:
 
 protected:
      medMessageController();
-    ~medMessageController();
+    ~medMessageController() override;
 
 protected:
     static medMessageController *s_instance;

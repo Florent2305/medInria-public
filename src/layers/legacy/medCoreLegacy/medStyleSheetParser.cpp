@@ -25,7 +25,8 @@
 
 #include <dtkLog>
 
-inline void deref(int index, QString & s, const QRegExp & regex, const QHash<QString, QString> & vars, int lineCount) {
+inline void deref(int index, QString & s, const QRegExp & regex, const QHash<QString, QString> & vars, int lineCount)
+{
     QString varName = regex.cap(1).isEmpty() ? regex.cap(2) : regex.cap(1);
     if (vars.contains(varName)) {
         s.replace(index, regex.matchedLength(), vars[varName]);
@@ -35,7 +36,8 @@ inline void deref(int index, QString & s, const QRegExp & regex, const QHash<QSt
     }
 }
 
-medStyleSheetParser::medStyleSheetParser(QString qss) {
+medStyleSheetParser::medStyleSheetParser(QString qss)
+{
     QTextStream stream(&qss);
     QRegExp regexAssign("(^|;)\\s*\\$([a-zA-Z0-9_]+)\\s*=\\s*([^;]+)\\s*;");
     QRegExp regexDeref("\\$([a-zA-Z0-9_]+)|\\$\\{([a-zA-Z0-9_]+)\\}");
@@ -107,6 +109,7 @@ medStyleSheetParser::medStyleSheetParser(QString qss) {
 }
 
 
-QString medStyleSheetParser::result() const {
+QString medStyleSheetParser::result() const
+{
     return output;
 }

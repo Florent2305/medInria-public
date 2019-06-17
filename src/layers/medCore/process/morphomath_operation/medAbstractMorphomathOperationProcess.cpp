@@ -38,10 +38,7 @@ medAbstractMorphomathOperationProcess::medAbstractMorphomathOperationProcess(QOb
     d->kernelRadius->setValue(1);
 }
 
-medAbstractMorphomathOperationProcess::~medAbstractMorphomathOperationProcess()
-{
-
-}
+medAbstractMorphomathOperationProcess::~medAbstractMorphomathOperationProcess() = default;
 
 void medAbstractMorphomathOperationProcess::setInput(medAbstractImageData *data)
 {

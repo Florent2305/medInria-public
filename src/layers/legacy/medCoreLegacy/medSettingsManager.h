@@ -42,7 +42,7 @@ signals:
 
 protected:
     medSettingsManager();
-    ~medSettingsManager();
+    ~medSettingsManager() override;
 
 private:
     static medSettingsManager *s_instance;

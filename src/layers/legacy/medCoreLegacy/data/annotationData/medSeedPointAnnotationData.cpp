@@ -21,32 +21,36 @@ medSeedPointAnnotationData::medSeedPointAnnotationData() :
 {
 }
 
-medSeedPointAnnotationData::~medSeedPointAnnotationData()
-{
-}
-
 void medSeedPointAnnotationData::setCenterWorld( int num, const QVector3D & val )
 {
-    if ( num >= m_centerWorld.size() ) {
+    if ( num >= m_centerWorld.size() )
+    {
         this->setNumberOfSeeds(num+1);
-    } else if ( m_centerWorld[num] == val )
+    } 
+    else if (m_centerWorld[num] == val)
+    {
         return;
+    }
     m_centerWorld[num] = val;
     emit dataModified(this);
 }
 
 void medSeedPointAnnotationData::setSelectedColor( const QColor & val )
 {
-    if ( m_selectedColor == val )
+    if (m_selectedColor == val)
+    {
         return;
+    }
     m_selectedColor = val;
     emit dataModified(this);
 }
 
 void medSeedPointAnnotationData::setColor( QColor val )
 {
-    if ( m_color == val )
+    if (m_color == val)
+    {
         return;
+    }
      m_color = val;
      emit dataModified(this);
 }

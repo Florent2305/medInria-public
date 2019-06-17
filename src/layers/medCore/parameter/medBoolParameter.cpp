@@ -25,10 +25,7 @@ medBoolParameter::medBoolParameter(QString const& name,  QObject *parent)
 
 }
 
-medBoolParameter::~medBoolParameter()
-{
-
-}
+medBoolParameter::~medBoolParameter() = default;
 
 bool medBoolParameter::value() const
 {

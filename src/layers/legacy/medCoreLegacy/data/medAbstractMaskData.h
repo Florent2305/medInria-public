@@ -22,9 +22,9 @@ class MEDCORELEGACY_EXPORT medAbstractMaskData : public medAbstractData
     Q_OBJECT
 
 public:
-             medAbstractMaskData();
-             medAbstractMaskData(const  medAbstractMaskData& other);
-    virtual ~medAbstractMaskData();
+    medAbstractMaskData();
+    medAbstractMaskData(const  medAbstractMaskData& other);
+    ~medAbstractMaskData() override;
 
 
 private:

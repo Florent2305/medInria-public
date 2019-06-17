@@ -29,7 +29,7 @@ class MEDCORE_EXPORT medAbstractDiffusionScalarMapsProcess : public medAbstractP
 
 public:
     medAbstractDiffusionScalarMapsProcess(QObject *parent = nullptr);
-    virtual ~medAbstractDiffusionScalarMapsProcess();
+    ~medAbstractDiffusionScalarMapsProcess() override;
 
     void setInput(medAbstractDiffusionModelImageData* data);
     medAbstractDiffusionModelImageData* input() const;
@@ -38,7 +38,7 @@ public:
 
 protected:
     void setOutput(medAbstractImageData* data);
-    virtual QString outputNameAddon() const {return "scalar map";}
+    QString outputNameAddon() const override {return "scalar map";}
 
 private:
     const QScopedPointer<medAbstractDiffusionScalarMapsProcessPrivate> d;

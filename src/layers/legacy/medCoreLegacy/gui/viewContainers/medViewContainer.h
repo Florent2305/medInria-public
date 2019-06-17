@@ -48,8 +48,8 @@ public:
     };
 
 public:
-    medViewContainer(medViewContainerSplitter* parent = 0);
-    ~medViewContainer();
+    medViewContainer(medViewContainerSplitter* parent = nullptr);
+    ~medViewContainer() override;
 
     medAbstractView* view() const;
     QUuid uuid() const;
@@ -109,16 +109,16 @@ signals:
 
 
 protected:
-    void focusInEvent(QFocusEvent *event);
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dragLeaveEvent(QDragLeaveEvent *event);
-    void dragMoveEvent(QDragMoveEvent *event);
-    void dropEvent(QDropEvent *event);
+    void focusInEvent(QFocusEvent *event) override;
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dragLeaveEvent(QDragLeaveEvent *event) override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
 
     bool dropEventFromDataBase(QDropEvent * event);
     bool dropEventFromFile(QDropEvent * event);
 
-    void closeEvent(QCloseEvent * event);
+    void closeEvent(QCloseEvent * event) override;
 
     void recomputeStyleSheet();
 

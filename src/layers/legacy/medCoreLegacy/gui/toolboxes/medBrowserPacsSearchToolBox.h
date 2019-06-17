@@ -24,8 +24,8 @@ class MEDCORELEGACY_EXPORT medBrowserPacsSearchToolBox : public medToolBox
     Q_OBJECT
 
 public:
-     medBrowserPacsSearchToolBox(QWidget *parent = 0);
-    ~medBrowserPacsSearchToolBox();
+     medBrowserPacsSearchToolBox(QWidget *parent = nullptr);
+    ~medBrowserPacsSearchToolBox() override;
 
 signals:
     void search(QString query);

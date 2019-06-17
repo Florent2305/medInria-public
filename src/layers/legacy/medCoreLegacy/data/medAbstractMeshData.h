@@ -26,9 +26,9 @@ class MEDCORELEGACY_EXPORT medAbstractMeshData : public medAbstractData
     Q_OBJECT
 
 public:
-             medAbstractMeshData();
-             medAbstractMeshData(const  medAbstractMeshData& other);
-    virtual ~medAbstractMeshData();
+     medAbstractMeshData();
+     medAbstractMeshData(const  medAbstractMeshData& other);
+    ~medAbstractMeshData() override;
 
     void *mesh();
 

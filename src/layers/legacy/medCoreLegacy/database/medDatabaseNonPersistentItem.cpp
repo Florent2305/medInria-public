@@ -17,18 +17,18 @@
 #include <medMetaDataKeys.h>
 
 
-medDatabaseNonPersistentItem::medDatabaseNonPersistentItem(void) : QObject(), d(new medDatabaseNonPersistentItemPrivate)
+medDatabaseNonPersistentItem::medDatabaseNonPersistentItem() : d(new medDatabaseNonPersistentItemPrivate)
 {
-    //d->data = nullptr;
+
 }
 
-medDatabaseNonPersistentItem::~medDatabaseNonPersistentItem(void)
+medDatabaseNonPersistentItem::~medDatabaseNonPersistentItem()
 {
     delete d;
     d = nullptr;
 }
 
-const QString& medDatabaseNonPersistentItem::name(void) const
+const QString& medDatabaseNonPersistentItem::name() const
 {
     return d->name;
 }
@@ -58,7 +58,7 @@ void medDatabaseNonPersistentItem::setPatientId(const QString& patientId)
     d->patientId = patientId;
 }
 
-const QString& medDatabaseNonPersistentItem::studyName(void) const
+const QString& medDatabaseNonPersistentItem::studyName() const
 {
     return d->studyName;
 }
@@ -148,7 +148,7 @@ void medDatabaseNonPersistentItem::setIndex(const medDataIndex& index)
     d->index = index;
 }
 
-medAbstractData *medDatabaseNonPersistentItem::data(void)
+medAbstractData *medDatabaseNonPersistentItem::data()
 {
     return d->data;
 }

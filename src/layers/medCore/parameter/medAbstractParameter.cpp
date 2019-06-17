@@ -27,8 +27,8 @@ medAbstractParameter::medAbstractParameter(const QString & id, QObject *parent)
     d->id = id;
 }
 
-medAbstractParameter::~medAbstractParameter()
-{
+medAbstractParameter::~medAbstractParameter() = default;
+
      // no needed to explicitly delete the d pointer because we used a QScopedPointer
      // to hold it.
 
@@ -36,7 +36,7 @@ medAbstractParameter::~medAbstractParameter()
      // the compiler auto create an inlined one which make
      // 'const QScopedPointer<medAbstractParameterPrivate> d;' impossible with a forward
      // declaration of medAbstractParameterPrivate.
-}
+
 
 QString medAbstractParameter::id() const
 {

@@ -47,9 +47,7 @@ medMessage::medMessage( QWidget *parent,
     this->setLayout(layout);
 }
 
-medMessage::~medMessage(void)
-{
-}
+medMessage::~medMessage() = default;
 
 void medMessage::startTimer()
 {
@@ -81,10 +79,7 @@ medMessageInfo::medMessageInfo(
     this->setFixedWidth(200);
 }
 
-medMessageInfo::~medMessageInfo(void)
-{
-
-}
+medMessageInfo::~medMessageInfo() = default;
 
 // /////////////////////////////////////////////////////////////////
 // medMessageError
@@ -98,10 +93,7 @@ medMessageError::medMessageError(
     this->setFixedWidth(350);
 }
 
-medMessageError::~medMessageError(void)
-{
-
-}
+medMessageError::~medMessageError() = default;
 
 // /////////////////////////////////////////////////////////////////
 // medMessageProgress
@@ -119,16 +111,14 @@ medMessageProgress::medMessageProgress(
     this->layout()->addWidget(progress);
 }
 
-medMessageProgress::~medMessageProgress(void)
-{
-}
+medMessageProgress::~medMessageProgress() = default;
 
 void medMessageProgress::setProgress(int value)
 {
     progress->setValue(value);
 }
 
-void medMessageProgress::success(void)
+void medMessageProgress::success()
 {
     progress->setValue(100);
     progress->setProperty("success",true);
@@ -139,7 +129,7 @@ void medMessageProgress::success(void)
     info->setText("Operation succeeded");
 }
 
-void medMessageProgress::failure(void)
+void medMessageProgress::failure()
 {
     progress->setProperty("failure",true);
     progress->style()->unpolish(progress);
@@ -149,7 +139,8 @@ void medMessageProgress::failure(void)
 
     info->setText("Operation failed");
 }
-void medMessageProgress::associateTimer(void)
+
+void medMessageProgress::associateTimer()
 {
     this->timer = new QTimer(this);
     timeout = 2000;
@@ -169,7 +160,7 @@ void medMessageProgress::paintEvent ( QPaintEvent * event)
 // /////////////////////////////////////////////////////////////////
 
 
-medMessageController *medMessageController::instance(void)
+medMessageController *medMessageController::instance()
 {
     if(!s_instance)
         s_instance = new medMessageController;
@@ -182,10 +173,11 @@ void medMessageController::showInfo(const QString& text,unsigned int timeout)
     if ( dynamic_cast<QApplication *>(QCoreApplication::instance()) ) 
     {
         // GUI
-        medMessageInfo *message = new medMessageInfo(
-                text,0,timeout);
+        medMessageInfo *message = new medMessageInfo(text, nullptr, timeout);
         emit addMessage(message);
-    } else {
+    } 
+    else
+    {
         dtkTrace() << text;
     }
 }
@@ -195,25 +187,27 @@ void medMessageController::showError(const QString& text,unsigned int timeout)
     if ( dynamic_cast<QApplication *>(QCoreApplication::instance()) ) 
     {
         // GUI
-        medMessageError *message = new medMessageError(
-                text,0,timeout);
+        medMessageError *message = new medMessageError(text, nullptr, timeout);
         emit addMessage(message);
 
-    } else {
+    } 
+    else 
+    {
         dtkError() << text;
     }
 }
 
 medMessageProgress* medMessageController::showProgress(const QString& text)
 {
-    if (dynamic_cast<QApplication *>(QCoreApplication::instance())) {
+    if (dynamic_cast<QApplication *>(QCoreApplication::instance()))
+    {
         // GUI
         medMessageProgress *message = new medMessageProgress(text);
 
         emit addMessage(message);
         return message;
     } 
-    return 0;
+    return nullptr;
 }
 
 void medMessageController::remove(medMessage *message)
@@ -225,12 +219,8 @@ void medMessageController::remove(medMessage *message)
     }
 }
 
-medMessageController::medMessageController(void) : QObject()
-{
-}
+medMessageController::medMessageController() = default;
 
-medMessageController::~medMessageController(void)
-{
-}
+medMessageController::~medMessageController() = default;
 
 medMessageController *medMessageController::s_instance = nullptr;

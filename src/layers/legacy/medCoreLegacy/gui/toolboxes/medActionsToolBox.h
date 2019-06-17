@@ -24,8 +24,8 @@ class MEDCORELEGACY_EXPORT medActionsToolBox : public medToolBox
 {
     Q_OBJECT
 public:
-    medActionsToolBox(QWidget *parent = 0, bool ok = false); // second parameter used to differentiate if we
-    ~medActionsToolBox();                                    // are looking into db or File System
+    medActionsToolBox(QWidget *parent = nullptr, bool FILE_SYSTEM = false); // second parameter used to differentiate if we
+    ~medActionsToolBox() override;                                    // are looking into db or File System
 
 signals:
 

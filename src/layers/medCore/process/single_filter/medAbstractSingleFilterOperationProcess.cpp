@@ -32,10 +32,7 @@ medAbstractSingleFilterOperationProcess::medAbstractSingleFilterOperationProcess
     d->output = nullptr;
 }
 
-medAbstractSingleFilterOperationProcess::~medAbstractSingleFilterOperationProcess()
-{
-
-}
+medAbstractSingleFilterOperationProcess::~medAbstractSingleFilterOperationProcess() = default;
 
 void medAbstractSingleFilterOperationProcess::setInput(medAbstractImageData *data)
 {

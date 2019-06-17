@@ -29,7 +29,7 @@ class MEDCORE_EXPORT medAbstractMaskImageProcess : public medAbstractProcess
 
 public:
     medAbstractMaskImageProcess(QObject *parent = nullptr);
-    virtual ~medAbstractMaskImageProcess();
+    ~medAbstractMaskImageProcess() override;
 
     void setInput(medAbstractImageData* data);
     medAbstractImageData* input() const;
@@ -41,7 +41,7 @@ public:
 
 protected:
     void setOutput(medAbstractImageData* data);
-    virtual QString outputNameAddon() const {return "masked";}
+    QString outputNameAddon() const override {return "masked";}
 
 private:
     const QScopedPointer<medAbstractMaskImageProcessPrivate> d;

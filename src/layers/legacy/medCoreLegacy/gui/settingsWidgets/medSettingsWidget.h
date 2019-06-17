@@ -30,7 +30,7 @@ class MEDCORELEGACY_EXPORT medSettingsWidget : public QWidget
     Q_OBJECT
 public:
 
-    explicit medSettingsWidget(QWidget *parent = 0);
+    explicit medSettingsWidget(QWidget *parent = nullptr);
 
     virtual QString identifier() const = 0;
     virtual QString name() const = 0;

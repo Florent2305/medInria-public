@@ -32,10 +32,7 @@ medAbstractMaskImageProcess::medAbstractMaskImageProcess(QObject *parent)
     d->mask = nullptr;
 }
 
-medAbstractMaskImageProcess::~medAbstractMaskImageProcess()
-{
-
-}
+medAbstractMaskImageProcess::~medAbstractMaskImageProcess() = default;
 
 void medAbstractMaskImageProcess::setInput(medAbstractImageData *data)
 {

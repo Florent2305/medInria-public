@@ -31,9 +31,9 @@ class MEDCORELEGACY_EXPORT medAbstractDataSourceFactory : public dtkAbstractFact
     Q_OBJECT
 
 public:
-    typedef medAbstractDataSource *(*medAbstractDataSourceCreator)(QWidget*);
+    using medAbstractDataSourceCreator = medAbstractDataSource *(*)(QWidget*);
 
-    typedef QHash<QString, medAbstractDataSourceCreator> medAbstractDataSourceCreatorHash;
+    using medAbstractDataSourceCreatorHash = QHash<QString, medAbstractDataSourceCreator> ;
 
     /** Static accessor to the instance of the factory */
     static medAbstractDataSourceFactory *instance();
@@ -49,7 +49,7 @@ public slots:
     medAbstractDataSource *create(QString type,QWidget* parent = nullptr);
 protected:
     medAbstractDataSourceFactory();
-    ~medAbstractDataSourceFactory();
+    ~medAbstractDataSourceFactory() override;
 
 private:
     static medAbstractDataSourceFactory *s_instance;

@@ -5,7 +5,8 @@
 
 namespace med {
 
-QString smartBaseName(const QString & fileName) {
+QString smartBaseName(const QString & fileName)
+{
     // remove extension after the first dot, or if it ends in a compression extension,
     // the one before. So "test.nii.gz" -> "test" and "test.mha" -> "test"
     QFileInfo info(fileName);
@@ -23,7 +24,8 @@ GPUInfo gpuModel()
 {
     // just fill it once, we are not going to change GPU on the fly
     static GPUInfo gpu;
-    if (gpu.renderer.isEmpty()) {
+    if (gpu.renderer.isEmpty()) 
+    {
         // glGetString requires a valid OpenGL context, the easiest way is to
         // create a bogus QGLWidget and force a render.
         QGLWidget glw;

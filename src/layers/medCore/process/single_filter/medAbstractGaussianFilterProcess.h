@@ -26,7 +26,7 @@ public:
     medAbstractGaussianFilterProcess(QObject *parent);
 
 protected:
-    virtual QString outputNameAddon() const {return "Gaussian filter";}
+    QString outputNameAddon() const override {return "Gaussian filter";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractGaussianFilterProcess, MEDCORE_EXPORT)

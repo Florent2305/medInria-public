@@ -22,8 +22,8 @@ class MEDCORELEGACY_EXPORT medAbstractViewInteractor : public medAbstractInterac
 {
     Q_OBJECT
 public:
-            medAbstractViewInteractor(medAbstractView* parent);
-    virtual ~medAbstractViewInteractor();
+     medAbstractViewInteractor(medAbstractView* parent);
+    ~medAbstractViewInteractor() override;
 
     /**
      * This method is called from medAbstractView::generateThumbnail

@@ -15,9 +15,8 @@
 
 medAbstractProcessLegacy::medAbstractProcessLegacy(medAbstractProcessLegacy * parent)
 {
+
 }
 
-medAbstractProcessLegacy::~medAbstractProcessLegacy()
-{
-}
+medAbstractProcessLegacy::~medAbstractProcessLegacy() = default;
 

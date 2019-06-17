@@ -26,7 +26,7 @@ public:
     medAbstractImageDenoisingProcess(QObject *parent): medAbstractSingleFilterOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "denoised";}
+    QString outputNameAddon() const override {return "denoised";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractImageDenoisingProcess, MEDCORE_EXPORT)

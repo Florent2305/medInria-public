@@ -26,10 +26,7 @@ medStringParameter::medStringParameter(QString const& name,  QObject *parent)
 
 }
 
-medStringParameter::~medStringParameter()
-{
-
-}
+medStringParameter::~medStringParameter() = default;
 
 QString medStringParameter::value() const
 {

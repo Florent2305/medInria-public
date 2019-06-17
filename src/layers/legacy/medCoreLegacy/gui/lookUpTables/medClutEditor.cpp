@@ -18,7 +18,7 @@
 #include <medStorage.h>
 #include <medClutEditor.h>
 
-#include <math.h>
+#include <cmath>
 #include <limits>
 
 #include <medLUTToXMLWriter.h>
@@ -46,9 +46,7 @@ public:
     QPointF lastPos;
 };
 
-medClutEditorVertex::medClutEditorVertex(QPointF value, QPointF coord,
-                                         QColor color, QGraphicsItem * parent)
-: QObject(), QGraphicsItem(parent)
+medClutEditorVertex::medClutEditorVertex(QPointF value, QPointF coord, QColor color, QGraphicsItem * parent): QGraphicsItem(parent)
 {
     d = new medClutEditorVertexPrivate;
     d->value = value;
@@ -69,9 +67,7 @@ medClutEditorVertex::medClutEditorVertex(QPointF value, QPointF coord,
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
-medClutEditorVertex::medClutEditorVertex( const medClutEditorVertex & other,
-                                         QGraphicsItem * parent)
-: QObject(), QGraphicsItem( parent )
+medClutEditorVertex::medClutEditorVertex( const medClutEditorVertex & other, QGraphicsItem * parent): QGraphicsItem( parent )
 {
     if ( parent == nullptr )
         this->setParentItem( other.parentItem() );
@@ -93,7 +89,7 @@ medClutEditorVertex::medClutEditorVertex( const medClutEditorVertex & other,
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
-medClutEditorVertex::~medClutEditorVertex(void)
+medClutEditorVertex::~medClutEditorVertex( )
 {
     delete d;
 }
@@ -169,13 +165,13 @@ void medClutEditorVertex::paint(QPainter *painter,
                           2 * d->innerRadius, 2 * d->innerRadius );
 }
 
-QRectF medClutEditorVertex::boundingRect(void) const
+QRectF medClutEditorVertex::boundingRect( ) const
 {
     return QRectF( QPointF( -d->outerRadius, -d->outerRadius ),
                    QPointF(  d->outerRadius,  d->outerRadius ) );
 }
 
-QColor medClutEditorVertex::color(void) const
+QColor medClutEditorVertex::color( ) const
 {
     return d->color;
 }
@@ -345,9 +341,7 @@ public:
 };
 
 
-medClutEditorTable::medClutEditorTable(const QString & title,
-                                       QGraphicsItem *parent)
-  :QObject(), QGraphicsItem(parent)
+medClutEditorTable::medClutEditorTable(const QString & title, QGraphicsItem *parent): QGraphicsItem(parent)
 {
     d = new medClutEditorTablePrivate;
     d->title = title;
@@ -358,9 +352,7 @@ medClutEditorTable::medClutEditorTable(const QString & title,
     this->setZValue(0);
 }
 
-medClutEditorTable::medClutEditorTable(const medClutEditorTable & table)
-  :QObject(),  QGraphicsItem( static_cast< QGraphicsItem *>( table.parentItem() ) )
-// : medClutEditorTable (table.title(),table.parent())
+medClutEditorTable::medClutEditorTable(const medClutEditorTable & table): QGraphicsItem( static_cast< QGraphicsItem *>( table.parentItem() ) )
 {
     d = new medClutEditorTablePrivate;
     d->title = table.title();
@@ -372,7 +364,7 @@ medClutEditorTable::medClutEditorTable(const medClutEditorTable & table)
     this->setZValue(0);
 }
 
-medClutEditorTable::~medClutEditorTable(void)
+medClutEditorTable::~medClutEditorTable( )
 {
     delete d;
 }
@@ -387,7 +379,7 @@ void medClutEditorTable::setTitle(const QString & title)
     d->title = title;
 }
 
-QRectF medClutEditorTable::boundingRect(void) const
+QRectF medClutEditorTable::boundingRect( ) const
 {
     if ( d->vertices.count() == 0 )
         return QRectF( 0.0, 0.0, 0.0, 0.0 );
@@ -571,7 +563,7 @@ void medClutEditorTable::deleteAllVertices()
 
 void medClutEditorTable::setColorOfSelection( const QColor & color )
 {
-    QColor newColor = QColorDialog::getColor( color, 0 );
+    QColor newColor = QColorDialog::getColor( color, nullptr );
 
     if ( newColor.isValid() )
         foreach( medClutEditorVertex * vertex, d->vertices )
@@ -592,19 +584,6 @@ void medClutEditorTable::setColorOfSelection()
     if ( color.isValid() )
         this->setColorOfSelection( color );
 }
-
-// void medClutEditorTable::onDeleteVertex(medClutEditorVertex *vertex)
-// {
-//     if ( d->vertices.count() > 2 ) {
-//         d->vertices.removeAll( vertex );
-//         delete vertex;
-//         emit vertexRemoved();
-//     }
-//     else
-//         dtkDebug() << "Need at least two nodes, but only "
-//                  << ( d->vertices.count() - 1 ) << " nodes"
-//                  << " would be left after deletion!  Not deleting any node.";
-// }
 
 void medClutEditorTable::scaleWindowWidth( qreal factor )
 {
@@ -925,13 +904,13 @@ medClutEditorHistogram::medClutEditorHistogram(QGraphicsItem *parent)
     this->setZValue(-1000);
 }
 
-medClutEditorHistogram::~medClutEditorHistogram(void)
+medClutEditorHistogram::~medClutEditorHistogram( )
 {
     delete d;
     d = nullptr;
 }
 
-QRectF medClutEditorHistogram::boundingRect(void) const
+QRectF medClutEditorHistogram::boundingRect( ) const
 {
     medClutEditorScene * scene =
     dynamic_cast< medClutEditorScene * >( this->scene() );
@@ -952,15 +931,16 @@ void medClutEditorHistogram::range( qreal & min, qreal & max ) const
     max = this->getRangeMax();
 }
 
-qreal medClutEditorHistogram::getRangeMin(void) const
+qreal medClutEditorHistogram::getRangeMin( ) const
 {
-    return d->values.size() > 0 ? d->values.begin().key() : 0.0;
+    return !d->values.empty() ? d->values.begin().key() : 0.0;
 }
 
-qreal medClutEditorHistogram::getRangeMax(void) const
+qreal medClutEditorHistogram::getRangeMax( ) const
 {
     qreal max = 0.0;
-    if ( d->values.size() > 0 ) {
+    if ( !d->values.empty() ) 
+    {
         QMap<qreal, qreal>::const_iterator end = d->values.end();
         --end;
         max = end.key();
@@ -982,7 +962,7 @@ const QMap< qreal, qreal > & medClutEditorHistogram::values()
 void medClutEditorHistogram::setValues(const QMap<qreal, qreal> & bins)
 {
     d->values.clear();
-    typedef QMap<qreal, qreal>::const_iterator iterator;
+    using iterator = QMap<qreal, qreal>::const_iterator ;
     for ( iterator it = bins.begin(), end = bins.end(); it != end; ++it ) {
         qreal logNum = 1000.0 * log10f( it.value() + 1.0 );
         d->maxLogNum = qMax( logNum, d->maxLogNum );
@@ -1021,7 +1001,7 @@ void medClutEditorHistogram::paint(QPainter *painter,
 
     if ( scene            == nullptr ||
          d->maxLogNum     == 0.0  ||
-         d->values.size() == 0    )
+         d->values.empty())
         return;
 
     if ( d->scaledValues.count() != d->values.count() + 2 ) {
@@ -1090,7 +1070,7 @@ medClutEditorScene::medClutEditorScene( QObject * parent )
     this->setSceneRect( 0.0, 0.0, d->size.width(), d->size.height() );
 }
 
-medClutEditorScene::~medClutEditorScene(void)
+medClutEditorScene::~medClutEditorScene( )
 {
     delete d;
 }
@@ -1259,9 +1239,7 @@ medClutEditorView::medClutEditorView(QWidget *parent)
     this->setDragMode(QGraphicsView::RubberBandDrag);
 }
 
-medClutEditorView::~medClutEditorView(void)
-{
-}
+medClutEditorView::~medClutEditorView() = default;
 
 medClutEditorTable * medClutEditorView::table()
 {
@@ -1503,7 +1481,7 @@ medClutEditor::medClutEditor(QWidget *parent) : QWidget(parent)
 
 }
 
-medClutEditor::~medClutEditor(void)
+medClutEditor::~medClutEditor( )
 {
     delete d->newAction;
     delete d->loadTableAction;
@@ -1530,11 +1508,9 @@ void medClutEditor::setData(medAbstractData *data)
     if ( data == d->dtk_data )
         return;
 
-    if (medAbstractImageData *image =
-        dynamic_cast<medAbstractImageData *>(data)) {
+    if (medAbstractImageData *image = dynamic_cast<medAbstractImageData *>(data)) {
 
-        if ( d->histogram != nullptr )
-            delete d->histogram;
+        delete d->histogram;
 
         d->histogram = new medClutEditorHistogram();
         d->scene->addItem( d->histogram );
@@ -1578,7 +1554,7 @@ void medClutEditor::setView(medAbstractImageView *view, bool force)
     }
 }
 
-void medClutEditor::initializeTable(void)
+void medClutEditor::initializeTable( )
 {
     this->deleteTable();
 
@@ -1612,7 +1588,7 @@ void medClutEditor::initializeTable(void)
     lut->blockSignals(false);
 }
 
-void medClutEditor::deleteTable(void)
+void medClutEditor::deleteTable( )
 {
     medClutEditorTable * table;
     while ( (table = d->scene->table()) ) {
@@ -1621,7 +1597,7 @@ void medClutEditor::deleteTable(void)
     }
 }
 
-void medClutEditor::applyTable(void)
+void medClutEditor::applyTable( )
 {
     // if (medAbstractImageData *image =
     //     dynamic_cast<medAbstractImageData *>(d->dtk_data)) {
@@ -1664,26 +1640,26 @@ void medClutEditor::mousePressEvent(QMouseEvent *event)
     }
 }
 
-void medClutEditor::onNewTableAction(void)
+void medClutEditor::onNewTableAction( )
 {
     this->initializeTable();
     if ( medClutEditorTable * table = d->scene->table() )
         table->triggerVertexChanged();
 }
 
-// void medClutEditor::onColorAction(void)
+// void medClutEditor::onColorAction( )
 // {
 //     if ( medClutEditorTable * table = d->scene->table() )
 //         table->setColorOfSelection();
 // }
 
-// void medClutEditor::onDeleteAction(void)
+// void medClutEditor::onDeleteAction( )
 // {
 //     if ( medClutEditorTable * table = d->scene->table() )
 //         table->deleteSelection();
 // }
 
-void medClutEditor::onVertexMoved(void)
+void medClutEditor::onVertexMoved( )
 {
     if ( d->scene->table() )
     {
@@ -1692,18 +1668,18 @@ void medClutEditor::onVertexMoved(void)
     }
 }
 
-void medClutEditor::onApplyTablesAction(void)
+void medClutEditor::onApplyTablesAction( )
 {
     this->applyTable();
 }
 
-void medClutEditor::onToggleDirectUpdateAction(void)
+void medClutEditor::onToggleDirectUpdateAction( )
 {
     if  ( d->toggleDirectUpdateAction->isChecked() )
         this->applyTable();
 }
 
-void medClutEditor::onLoadTableAction(void)
+void medClutEditor::onLoadTableAction( )
 {
     QStringList titles;
     foreach (medClutEditorTable * table,*d->tables ) {
@@ -1726,7 +1702,7 @@ void medClutEditor::onLoadTableAction(void)
 
 }
 
-void medClutEditor::onSaveTableAction(void)
+void medClutEditor::onSaveTableAction( )
 {
 
     if ( medClutEditorTable * table = d->scene->table() ) {
@@ -1765,7 +1741,7 @@ void medClutEditor::onSaveTableAction(void)
     }
 }
 
-// void medClutEditor::onDeleteTableAction(void)
+// void medClutEditor::onDeleteTableAction( )
 // {
 
 // }

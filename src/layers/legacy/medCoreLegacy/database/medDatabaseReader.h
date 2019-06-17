@@ -28,7 +28,7 @@ class MEDCORELEGACY_EXPORT medDatabaseReader : public QObject
 
 public:
     medDatabaseReader(const medDataIndex& index);
-    ~medDatabaseReader();
+    ~medDatabaseReader() override;
 
     medAbstractData *run();
 

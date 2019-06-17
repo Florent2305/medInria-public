@@ -30,11 +30,11 @@ class MEDCORELEGACY_EXPORT medAbstractNavigator : public dtkAbstractViewNavigato
     Q_OBJECT
 
 public:
-             medAbstractNavigator(medAbstractView* parent);
-    virtual ~medAbstractNavigator();
+     medAbstractNavigator(medAbstractView* parent);
+    ~medAbstractNavigator() override;
 
 public:
-    virtual QString description() const = 0;
+    QString description() const  override = 0;
 
     QWidget* toolBoxWidget();
     QWidget* toolBarWidget();

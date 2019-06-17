@@ -26,10 +26,10 @@ class MEDCORELEGACY_EXPORT medCompositeParameterL : public medAbstractParameterL
     Q_OBJECT
 
 public:
-    medCompositeParameterL(QString name = "Unknow composite parameter", QObject* parent = 0);
-    virtual ~medCompositeParameterL();
+    medCompositeParameterL(QString name = "Unknow composite parameter", QObject* parent = nullptr);
+    ~medCompositeParameterL() override;
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
     void addVariant(QString name, QVariant variant,
                     QVariant min = QVariant(0), QVariant max = QVariant(100), QVariant step = QVariant(1));
@@ -38,10 +38,10 @@ public:
     QList<QPair <QVariant, QVariant> > ranges() const;
     QList<QVariant> steps() const;
 
-    virtual void trigger();
+    void trigger() override;
 
 public slots:
-    virtual void setValues(const QHash<QString, QVariant> );
+    virtual void setValues(const QHash<QString, QVariant> &value);
 
 protected:
     virtual void updateInternWigets();

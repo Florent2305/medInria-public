@@ -32,7 +32,7 @@ class MEDCORELEGACY_EXPORT medDatabaseRemover : public medJobItemL
 
 public:
      medDatabaseRemover(const medDataIndex &index);
-    ~medDatabaseRemover();
+    ~medDatabaseRemover() override;
 
 
 signals:
@@ -44,20 +44,20 @@ signals:
     void removed(const medDataIndex &index);
 
 public slots:
-    void onCancel(QObject*);
+    void onCancel(QObject *obj) override;
 
 protected:
-    virtual void internalRun();
+    void internalRun() override;
 
-    void removeImage( int patientId, int studyId, int seriesId, int imageId);
+    void removeImage(int patientDbId, int studyDbId, int seriesDbId, int imageId);
 
 
-    bool isSeriesEmpty( int seriesId );
-    void removeSeries( int patientId, int studyId, int seriesId );
-    bool isStudyEmpty( int studyId );
-    void removeStudy( int patientId, int studyId );
-    bool isPatientEmpty( int patientId );
-    void removePatient( int patientId );
+    bool isSeriesEmpty( int seriesDbId );
+    void removeSeries(int patientDbId, int studyDbId, int seriesDbId);
+    bool isStudyEmpty( int studyDbId);
+    void removeStudy(int patientDbId, int studyDbId);
+    bool isPatientEmpty( int patientDbId);
+    void removePatient( int patientDbId);
 
     void removeFile( const QString & filename );
 

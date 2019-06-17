@@ -328,7 +328,7 @@ void medAbstractLayeredView::insertLayer(unsigned int layer, medAbstractData *da
 
 medAbstractData * medAbstractLayeredView::layerData(unsigned int layer) const
 {
-    if (layer >= (unsigned int)d->layersDataList.size())
+    if (layer >= static_cast<unsigned int>(d->layersDataList.size()))
     {
         dtkWarn() << "Unable to retrieve data at layer:" <<layer << "from: "<< this->description();
         return nullptr;

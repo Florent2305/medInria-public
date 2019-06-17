@@ -26,8 +26,8 @@ class MEDCORELEGACY_EXPORT medFilteringAbstractToolBox : public medToolBox
     Q_OBJECT
 
 public:
-             medFilteringAbstractToolBox(QWidget *parentToolBox = 0);
-    virtual ~medFilteringAbstractToolBox();
+     medFilteringAbstractToolBox(QWidget *parentToolBox = nullptr);
+    ~medFilteringAbstractToolBox() override;
     void setFilteringToolBox(medFilteringSelectorToolBox *toolbox);
     virtual medAbstractData* processOutput() = 0;
     virtual dtkPlugin* plugin() = 0;

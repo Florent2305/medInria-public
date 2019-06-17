@@ -31,10 +31,10 @@ class MEDCORELEGACY_EXPORT medProgressionStack : public QWidget
     Q_OBJECT
 
 public:
-     medProgressionStack(QWidget *parent = 0);
-    ~medProgressionStack();
+     medProgressionStack(QWidget *parent = nullptr);
+    ~medProgressionStack() override;
 
-    QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 signals:
     void shown();

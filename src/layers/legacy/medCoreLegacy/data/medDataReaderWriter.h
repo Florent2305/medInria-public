@@ -22,8 +22,8 @@
 
 struct MEDCORELEGACY_EXPORT medDataReaderWriter {
 
-    typedef dtkSmartPointer<dtkAbstractDataReader> Reader;
-    typedef dtkSmartPointer<dtkAbstractDataWriter> Writer;
+    using Reader = dtkSmartPointer<dtkAbstractDataReader>;
+    using Writer = dtkSmartPointer<dtkAbstractDataWriter>;
 
     static Reader reader(const QString& path);
     static Writer writer(const QString& path,const medAbstractData* data);

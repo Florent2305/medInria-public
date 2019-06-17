@@ -61,12 +61,12 @@ void medTriggerParameterL::setButtonIconSize(QSize& size)
     }
 }
 
-void medTriggerParameterL::setButtonText(QString value)
+void medTriggerParameterL::setButtonText(QString text)
 {
-    d->text = value;
+    d->text = text;
 
     if(d->pushButton)
-        d->pushButton->setText(value);
+        d->pushButton->setText(text);
 }
 
 QPushButton* medTriggerParameterL::getPushButton()

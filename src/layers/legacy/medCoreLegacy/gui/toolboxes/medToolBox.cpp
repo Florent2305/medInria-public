@@ -63,7 +63,7 @@ medToolBox::medToolBox(QWidget *parent) : QWidget(parent), d(new medToolBoxPriva
     this->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 }
 
-medToolBox::~medToolBox(void)
+medToolBox::~medToolBox()
 {
     delete d;
     d = nullptr;
@@ -125,7 +125,7 @@ void medToolBox::setTitleOffset(const QPoint & titleOffset)
  *
  * @return medToolBoxHeader *
 */
-medToolBoxHeader *medToolBox::header(void) const
+medToolBoxHeader *medToolBox::header() const
 {
     return d->header;
 }
@@ -135,7 +135,7 @@ medToolBoxHeader *medToolBox::header(void) const
  *
  * @return medToolBoxBody *
 */
-medToolBoxBody *medToolBox::body(void) const
+medToolBoxBody *medToolBox::body() const
 {
     return d->body;
 }
@@ -147,7 +147,7 @@ medToolBoxBody *medToolBox::body(void) const
  * for instance when the current patient changed or the view.
  *
 */
-void medToolBox::clear(void)
+void medToolBox::clear()
 {
     d->body->clear();
 }

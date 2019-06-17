@@ -40,14 +40,14 @@ medBrowserPacsSearchToolBox::medBrowserPacsSearchToolBox(QWidget *parent) : medT
     connect(d->button, SIGNAL(clicked()), this, SLOT(onSearch()));
 }
 
-medBrowserPacsSearchToolBox::~medBrowserPacsSearchToolBox(void)
+medBrowserPacsSearchToolBox::~medBrowserPacsSearchToolBox()
 {
     delete d;
 
     d = nullptr;
 }
 
-void medBrowserPacsSearchToolBox::onSearch(void)
+void medBrowserPacsSearchToolBox::onSearch()
 {
     QString name = d->edit->text();
     name.append("*");

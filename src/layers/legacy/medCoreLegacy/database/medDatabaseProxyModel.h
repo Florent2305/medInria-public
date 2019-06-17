@@ -26,16 +26,16 @@ class MEDCORELEGACY_EXPORT medDatabaseProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:
-    medDatabaseProxyModel(QObject *parent = 0);
-    ~medDatabaseProxyModel();
+    medDatabaseProxyModel(QObject *parent = nullptr);
+    ~medDatabaseProxyModel() override;
 
     void setFilterRegExpWithColumn(const QRegExp &regExp, int column);
 
     void clearAllFilters();
 
 protected slots:
-    bool filterAcceptsColumn(int source_column, const QModelIndex &source_parent) const;
-    bool filterAcceptsRow ( int source_row, const QModelIndex & source_parent ) const;
+    bool filterAcceptsColumn(int source_column, const QModelIndex &source_parent) const override;
+    bool filterAcceptsRow ( int source_row, const QModelIndex & source_parent ) const override;
     bool customFilterAcceptsRow ( int source_row, const QModelIndex & source_parent ) const;
 private:
     mutable bool isCheckingChild;

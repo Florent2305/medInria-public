@@ -31,16 +31,16 @@ class MEDCORELEGACY_EXPORT medAbstractData : public dtkAbstractData
 
 public:
     medAbstractData( medAbstractData * parent = nullptr );
-    virtual ~medAbstractData();
+    ~medAbstractData() override;
 
     void setDataIndex(const medDataIndex& index);
     medDataIndex dataIndex() const;
 
     QList< medAttachedData * > attachedData() const;
 
-    medAbstractData *convert(const QString &type);
+    medAbstractData *convert(const QString &type) override;
 
-    virtual QImage& thumbnail();
+    QImage& thumbnail() override;
 
 public slots:
 

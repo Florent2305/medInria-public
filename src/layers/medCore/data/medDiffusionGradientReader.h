@@ -25,12 +25,12 @@ public:
     medDiffusionGradientReader();
     virtual ~medDiffusionGradientReader();
 
-    typedef std::vector <double> VectorType;
-    typedef std::vector <VectorType> GradientsVectorType;
+    using VectorType = std::vector <double>;
+    using GradientsVectorType = std::vector <VectorType>;
 
     void read(QString gradientFileName, QString bvaluesFileName);
     void readGradients(QString gradientFileName);
-    void readBValues(QString bvaluesName);
+    void readBValues(QString bvaluesFileName);
 
     GradientsVectorType &gradients();
     VectorType &bvalues();

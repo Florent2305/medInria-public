@@ -30,9 +30,12 @@ medAbstractTractographyProcess::medAbstractTractographyProcess(QObject *parent)
     d->output = nullptr;
 }
 
-medAbstractTractographyProcess::~medAbstractTractographyProcess()
-{
-}
+medAbstractTractographyProcess::~medAbstractTractographyProcess() = default;
+
+    //Please never use "= default" directly into the .h for this destructor because QScopedPointer unsupported inlined destructor.
+    //And "= default" inlines destructor.
+    //Please refer to QScopedPointer documentation
+
 
 void medAbstractTractographyProcess::setInput(medAbstractDiffusionModelImageData *data)
 {
@@ -57,12 +60,15 @@ void medAbstractTractographyProcess::setOutput(medAbstractFibersData *data)
     newSeriesDescription += " " + this->outputNameAddon();
 
     if (!d->output->hasMetaData(medMetaDataKeys::SeriesDescription.key()))
-        d->output->setMetaData ( medMetaDataKeys::SeriesDescription.key(), newSeriesDescription );
-
+    {
+        d->output->setMetaData(medMetaDataKeys::SeriesDescription.key(), newSeriesDescription);
+    }
     foreach ( QString metaData, d->input->metaDataList() )
     {
         if (!d->output->hasMetaData(metaData))
-            d->output->addMetaData ( metaData, d->input->metaDataValues ( metaData ) );
+        {
+            d->output->addMetaData(metaData, d->input->metaDataValues(metaData));
+        }
     }
 
     foreach ( QString property, d->input->propertyList() )

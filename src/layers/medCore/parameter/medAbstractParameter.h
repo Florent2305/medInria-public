@@ -32,7 +32,7 @@ class MEDCORE_EXPORT medAbstractParameter : public QObject
 
 public:
     medAbstractParameter(QString const& id, QObject* parent = nullptr);
-    virtual ~medAbstractParameter();
+    ~medAbstractParameter() override;
 
     QString id() const;
 

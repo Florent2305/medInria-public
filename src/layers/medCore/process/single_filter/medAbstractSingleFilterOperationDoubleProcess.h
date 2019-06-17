@@ -29,7 +29,7 @@ class MEDCORE_EXPORT  medAbstractSingleFilterOperationDoubleProcess : public med
 
 public:
     medAbstractSingleFilterOperationDoubleProcess(QObject *parent = nullptr);
-    virtual ~medAbstractSingleFilterOperationDoubleProcess();
+    ~medAbstractSingleFilterOperationDoubleProcess() override;
 
     virtual medDoubleParameter* doubleParameter() const;
 

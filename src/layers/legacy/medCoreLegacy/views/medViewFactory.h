@@ -26,11 +26,11 @@
 #include <medAbstractInteractor.h>
 
 
-typedef medAbstractView *(*viewCreator)(QObject *parent);
-typedef medAbstractViewNavigator *(*navigatorCreator)(medAbstractView *parent);
-typedef medAbstractViewInteractor *(*interactorCreator)(medAbstractView *parent);
-typedef medAbstractNavigator *(*addNavigatorCreator)(medAbstractView *parent);
-typedef medAbstractInteractor *(*addInteractorCreator)(medAbstractView *parent);
+using  viewCreator          = medAbstractView *(*)(QObject *parent);
+using  navigatorCreator     = medAbstractViewNavigator *(*)(medAbstractView *parent);
+using  interactorCreator    = medAbstractViewInteractor *(*)(medAbstractView *parent);
+using  addNavigatorCreator  = medAbstractNavigator *(*)(medAbstractView *parent);
+using  addInteractorCreator = medAbstractInteractor *(*)(medAbstractView *parent);
 
 class medViewFactoryPrivate;
 class MEDCORELEGACY_EXPORT medViewFactory : public dtkAbstractFactory
@@ -40,7 +40,7 @@ public:
     static medViewFactory *instance();
 
     template <typename T>
-    T* createView(QString identifier, QObject *parent = 0);
+    T* createView(QString identifier, QObject *parent = nullptr);
 
     template <typename T>
     T* createNavigator(QString identifier, medAbstractView *parent);
@@ -82,16 +82,16 @@ public:
         return registerAdditionalInteractor(identifier, typeHandled, creator);
     }
 
-    virtual QStringList viewsAbleToHandle(const QString dataType) const;
-    virtual QStringList navigatorsAbleToHandle(const QString viewType) const;
-    virtual QStringList interactorsAbleToHandle(const QString viewType, const QString dataType) const;
-    QStringList additionalNavigatorsAbleToHandle(const QString dataType) const;
-    QStringList additionalInteractorsAbleToHandle(const QString viewType, const QString dataType) const;
+    virtual QStringList viewsAbleToHandle(const QString &dataType) const;
+    virtual QStringList navigatorsAbleToHandle(const QString &viewType) const;
+    virtual QStringList interactorsAbleToHandle(const QString &viewType, const QString &dataType) const;
+    QStringList additionalNavigatorsAbleToHandle(const QString &dataType) const;
+    QStringList additionalInteractorsAbleToHandle(const QString &viewType, const QString &dataType) const;
 
 
 protected:
      medViewFactory();
-    ~medViewFactory();
+    ~medViewFactory() override;
 
 private:
      virtual bool registerView(QString identifier, QStringList typeHandled, viewCreator creator);

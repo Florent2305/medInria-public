@@ -29,8 +29,8 @@ class MEDCORELEGACY_EXPORT medRegistrationSelectorToolBox : public medToolBox
     Q_OBJECT
 
 public:
-     medRegistrationSelectorToolBox(QWidget *parent = 0);
-    ~medRegistrationSelectorToolBox();
+     medRegistrationSelectorToolBox(QWidget *parent = nullptr);
+    ~medRegistrationSelectorToolBox() override;
 
     medAbstractData *fixedData();
     medAbstractData *movingData();
@@ -56,7 +56,7 @@ signals:
 public slots:
 
     void changeCurrentToolBox(int index);
-    void clear();
+    void clear() override;
     void onSaveTrans();
     void handleOutput(typeOfOperation type=algorithm,QString algoName="");
     void enableSelectorToolBox(bool enable = true);

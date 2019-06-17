@@ -867,7 +867,8 @@ void medViewContainer::droppedDataReady(medDataIndex index, QUuid uuid)
 
 medViewContainer::DropArea medViewContainer::computeDropArea(int x, int y)
 {
-    int w = this->width(), h = this->height();
+    int w = this->width();
+    int h = this->height();
     if (x >= w || x < 0 || y >= h || y < 0)
         return AREA_OUT;
 
@@ -890,8 +891,10 @@ medViewContainer::DropArea medViewContainer::computeDropArea(int x, int y)
      * ends ("sss" or "eee").
      */
 
-    int ltw = qMin(50,w/4), tth = qMin(50,h/4); // left trigger width, top trigger height
-    int rtw = w - ltw, bth = h - tth;           // right trigger width, bottom trigger height
+    int ltw = qMin(50, w / 4);
+    int tth = qMin(50, h / 4); // left trigger width, top trigger height
+    int rtw = w - ltw;
+    int bth = h - tth;           // right trigger width, bottom trigger height
 
     if(x < ltw && ((y >= tth && y < bth) || (y < tth && y > x) || (y >= bth && (h-y) > x)))
         return AREA_LEFT;

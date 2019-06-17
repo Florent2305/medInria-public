@@ -30,10 +30,7 @@ medAbstractDWIMaskingProcess::medAbstractDWIMaskingProcess(QObject *parent)
     d->output = nullptr;
 }
 
-medAbstractDWIMaskingProcess::~medAbstractDWIMaskingProcess()
-{
-
-}
+medAbstractDWIMaskingProcess::~medAbstractDWIMaskingProcess() = default;
 
 void medAbstractDWIMaskingProcess::setInput(medAbstractImageData *data)
 {

@@ -799,7 +799,7 @@ void medLinkMenu::addPresetItem(QString preset)
     addRemovePresetButton(item);
 }
 
-void medLinkMenu::editPreset(QListWidgetItem* item)
+void medLinkMenu::editPreset(QListWidgetItem *item)
 {
     // It seems that you cannot edit an item if there is a widget asociated
     // removing the widget enables to edit the item
@@ -926,12 +926,12 @@ medListItemWidget::medListItemWidget(QWidget *parent):QWidget(parent)
 
 }
 
-void medListItemWidget::enterEvent(QEvent *)
+void medListItemWidget::enterEvent(QEvent *ev)
 {
     emit enterEvent();
 }
 
-void medListItemWidget::leaveEvent(QEvent *)
+void medListItemWidget::leaveEvent(QEvent *ev)
 {
     emit leaveEvent();
 }

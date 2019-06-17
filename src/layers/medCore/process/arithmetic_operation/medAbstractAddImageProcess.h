@@ -26,7 +26,7 @@ public:
     medAbstractAddImageProcess(QObject *parent): medAbstractArithmeticOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "add image";}
+    QString outputNameAddon() const override {return "add image";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractAddImageProcess, MEDCORE_EXPORT)

@@ -29,7 +29,7 @@ class MEDCORE_EXPORT  medAbstractWindowingFilterProcess : public medAbstractSing
 
 public:
     medAbstractWindowingFilterProcess(QObject *parent = nullptr);
-    virtual ~medAbstractWindowingFilterProcess();
+    ~medAbstractWindowingFilterProcess() override;
 
     virtual medDoubleParameter* minimumIntensityValue();
     virtual medDoubleParameter* maximumIntensityValue();
@@ -37,7 +37,7 @@ public:
     virtual medDoubleParameter* maximumOutputIntensityValue();
 
 protected:
-    virtual QString outputNameAddon() const {return "windowing filter";}
+    QString outputNameAddon() const override {return "windowing filter";}
 
 private:
     const QScopedPointer<medAbstractWindowingFilterProcessPrivate> d;

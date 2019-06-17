@@ -24,8 +24,8 @@ class MEDCORELEGACY_EXPORT medBrowserPacsNodesToolBox : public medToolBox
     Q_OBJECT
 
 public:
-     medBrowserPacsNodesToolBox(QWidget *parent = 0);
-    ~medBrowserPacsNodesToolBox();
+     medBrowserPacsNodesToolBox(QWidget *parent = nullptr);
+    ~medBrowserPacsNodesToolBox() override;
 
     void readSettings();
 
@@ -38,7 +38,7 @@ signals:
 public slots:
     void addNode();
     void remNode();
-    void onEchoResponse(QVector<bool>);
+    void onEchoResponse(QVector<bool> vect);
 
 private:
 

@@ -25,8 +25,8 @@ class MEDCORELEGACY_EXPORT medToolBoxContainer : public QScrollArea
     Q_OBJECT
 
 public:
-     medToolBoxContainer(QWidget *parent = 0);
-    ~medToolBoxContainer();
+     medToolBoxContainer(QWidget *parent = nullptr);
+    ~medToolBoxContainer() override;
 
     void addToolBox(medToolBox *toolBox);
     void removeToolBox(medToolBox *toolBox);

@@ -31,7 +31,7 @@ class MEDCORE_EXPORT medAbstractDiffusionModelEstimationProcess : public medAbst
 
 public:
     medAbstractDiffusionModelEstimationProcess(QObject *parent = nullptr);
-    virtual ~medAbstractDiffusionModelEstimationProcess();
+    ~medAbstractDiffusionModelEstimationProcess() override;
 
     void setInput(medAbstractImageData* data);
     medAbstractImageData* input() const;
@@ -41,8 +41,8 @@ public:
 
     medAbstractDiffusionModelImageData* output() const;
 
-    typedef medDiffusionGradientReader::VectorType VectorType;
-    typedef medDiffusionGradientReader::GradientsVectorType GradientsVectorType;
+    using VectorType = medDiffusionGradientReader::VectorType;
+    using GradientsVectorType = medDiffusionGradientReader::GradientsVectorType;
 
     VectorType bvalues() const;
     GradientsVectorType gradients() const;
@@ -53,7 +53,7 @@ protected:
     void extractGradientsFromInformation();
 
     void setOutput(medAbstractDiffusionModelImageData* data);
-    virtual QString outputNameAddon() const {return "models";}
+    QString outputNameAddon() const override {return "models";}
 
 private:
     const QScopedPointer<medAbstractDiffusionModelEstimationProcessPrivate> d;

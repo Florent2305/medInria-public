@@ -32,10 +32,7 @@ medAbstractArithmeticOperationProcess::medAbstractArithmeticOperationProcess(QOb
     d->output = nullptr;
 }
 
-medAbstractArithmeticOperationProcess::~medAbstractArithmeticOperationProcess()
-{
-
-}
+medAbstractArithmeticOperationProcess::~medAbstractArithmeticOperationProcess() = default;
 
 void medAbstractArithmeticOperationProcess::setInput1(medAbstractImageData *data)
 {

@@ -30,10 +30,7 @@ medDoubleParameter::medDoubleParameter(QString const& name,  QObject *parent)
     d->max = 100.0;
 }
 
-medDoubleParameter::~medDoubleParameter()
-{
-
-}
+medDoubleParameter::~medDoubleParameter() = default;
 
 double medDoubleParameter::value() const
 {

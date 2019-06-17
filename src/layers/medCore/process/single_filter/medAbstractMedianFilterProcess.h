@@ -29,12 +29,12 @@ class MEDCORE_EXPORT medAbstractMedianFilterProcess: public medAbstractSingleFil
 
 public:
     medAbstractMedianFilterProcess(QObject *parent = nullptr);
-    virtual ~medAbstractMedianFilterProcess();
+    ~medAbstractMedianFilterProcess() override;
 
     medIntParameter *radius();
 
 protected:
-    virtual QString outputNameAddon() const {return "median filter";}
+    QString outputNameAddon() const override {return "median filter";}
 
 private:
     const QScopedPointer<medAbstractMedianFilterProcessPrivate> d;

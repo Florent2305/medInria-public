@@ -24,13 +24,13 @@ class MEDCORELEGACY_EXPORT medPoolIndicatorL: public QWidget
 
 public:
     medPoolIndicatorL(QWidget* parent = nullptr);
-    ~medPoolIndicatorL();
+    ~medPoolIndicatorL() override;
 
-    void addColorIndicator(QColor, QString);
-    void removeColorIndicator(QColor);
+    void addColorIndicator(QColor color, QString description);
+    void removeColorIndicator(QColor color);
 
 public slots:
-    void replaceColorIndicator(QColor, QColor);
+    void replaceColorIndicator(QColor oldColor, QColor newColor);
 
 private:
     medPoolIndiactorPrivate *d;

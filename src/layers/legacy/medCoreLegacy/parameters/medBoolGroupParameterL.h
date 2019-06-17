@@ -29,8 +29,8 @@ class MEDCORELEGACY_EXPORT medBoolGroupParameterL : public medAbstractGroupParam
     Q_OBJECT
 
 public:
-    medBoolGroupParameterL(QString name = "Unknow bool group parameter", QObject* parent = 0);
-    virtual ~medBoolGroupParameterL();
+    medBoolGroupParameterL(QString name = "Unknow bool group parameter", QObject* parent = nullptr);
+    ~medBoolGroupParameterL() override;
 
     void setPushButtonDirection(QBoxLayout::Direction direction);
     void setRadioButtonDirection(QBoxLayout::Direction direction);
@@ -43,10 +43,10 @@ public:
     QWidget* getRadioButtonGroup();
     QWidget* getCheckBoxGroup();
 
-    virtual QWidget* getWidget();
-    virtual QList<medAbstractParameterL*> parametersCandidateToPool() const;
+    QWidget* getWidget() override;
+    QList<medAbstractParameterL*> parametersCandidateToPool() const override;
 
-    virtual void trigger();
+    void trigger() override;
 
 private slots:
     void removeInternPushButtonGroup();

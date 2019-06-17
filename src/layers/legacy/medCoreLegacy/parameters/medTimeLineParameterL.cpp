@@ -13,7 +13,7 @@
 
 #include <medTimeLineParameterL.h>
 
-#include <math.h>       // floor
+#include <cmath>       // floor
 
 #include <QtGui>
 #include <QtWidgets>
@@ -54,14 +54,11 @@ public:
 
     ~medTimeLineParameterLPrivate()
     {
-        if(widget)
-            delete widget;
+        delete widget;
 
-        if(frameLabel)
-            delete frameLabel;
+        delete frameLabel;
 
-        if(numberOfFramesLabel)
-            delete numberOfFramesLabel;
+        delete numberOfFramesLabel;
     }
 };
 
@@ -269,7 +266,8 @@ void medTimeLineParameterL::updateTime(double time)
 
     if(frame > d->numberOfFrames)
         d->currentFrame = d->numberOfFrames;
-    else d->currentFrame = frame;
+    else 
+        d->currentFrame = frame;
 
     emit timeChanged(time);
 }
@@ -295,7 +293,7 @@ void medTimeLineParameterL::nextFrame()
 
 void medTimeLineParameterL::setLoop(bool loop)
 {
-    int loopCount = (loop == true)?0:1;
+    int loopCount = loop?0:1;
     d->timeLine->setLoopCount(loopCount);
 }
 

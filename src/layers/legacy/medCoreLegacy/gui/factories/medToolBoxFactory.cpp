@@ -19,14 +19,12 @@
 class medToolBoxFactoryPrivate
 {
 public:
-    typedef QHash<QString,
-        medToolBoxDetails*> medToolBoxCreatorHash;
+    using medToolBoxCreatorHash = QHash<QString, medToolBoxDetails*>;
 
     medToolBoxCreatorHash creators;
-
 };
 
-medToolBoxFactory *medToolBoxFactory::instance(void)
+medToolBoxFactory *medToolBoxFactory::instance()
 {
     if(!s_instance)
         s_instance = new medToolBoxFactory;
@@ -74,7 +72,7 @@ QList<QString> medToolBoxFactory::toolBoxesFromCategory(
         const QString& category)const
 {
     QList<QString> ids;
-    typedef medToolBoxFactoryPrivate::medToolBoxCreatorHash::iterator creator_iterator;
+    using creator_iterator = medToolBoxFactoryPrivate::medToolBoxCreatorHash::iterator;
     creator_iterator i = d->creators.begin();
     while (i != d->creators.end())
     {
@@ -87,14 +85,12 @@ QList<QString> medToolBoxFactory::toolBoxesFromCategory(
     return ids;
 }
 
-medToolBox *medToolBoxFactory::createToolBox(QString identifier,
-                                                         QWidget *parent)
+medToolBox *medToolBoxFactory::createToolBox(QString identifier, QWidget *parent)
 {
     if(!d->creators.contains(identifier))
         return nullptr;
 
-    medToolBox *toolbox =
-            (d->creators[identifier])->creator(parent);
+    medToolBox *toolbox = (d->creators[identifier])->creator(parent);
 
     return toolbox;
 }
@@ -103,8 +99,7 @@ medToolBox *medToolBoxFactory::createToolBox(QString identifier,
  * @brief Gets the name, description, categories and creators
  * for the given toolbox.
  */
-medToolBoxDetails * medToolBoxFactory::toolBoxDetailsFromId(
-        const QString &id) const
+medToolBoxDetails * medToolBoxFactory::toolBoxDetailsFromId( const QString &id) const
 {
     return d->creators.value(id);
 }
@@ -120,7 +115,7 @@ medToolBoxDetails * medToolBoxFactory::toolBoxDetailsFromId(
 QHash<QString, medToolBoxDetails *> medToolBoxFactory::toolBoxDetailsFromCategory(const QString &cat) const
 {
     QHash<QString, medToolBoxDetails *> tbsDetails;
-    typedef medToolBoxFactoryPrivate::medToolBoxCreatorHash::iterator creator_iterator;
+    using creator_iterator = medToolBoxFactoryPrivate::medToolBoxCreatorHash::iterator;
     creator_iterator i = d->creators.begin();
     while (i != d->creators.end())
     {
@@ -133,12 +128,12 @@ QHash<QString, medToolBoxDetails *> medToolBoxFactory::toolBoxDetailsFromCategor
     return tbsDetails;
 }
 
-medToolBoxFactory::medToolBoxFactory(void) : dtkAbstractFactory(), d(new medToolBoxFactoryPrivate)
+medToolBoxFactory::medToolBoxFactory() : d(new medToolBoxFactoryPrivate)
 {
 
 }
 
-medToolBoxFactory::~medToolBoxFactory(void)
+medToolBoxFactory::~medToolBoxFactory()
 {
     //delete details.
     foreach (medToolBoxDetails * detail, d->creators.values())

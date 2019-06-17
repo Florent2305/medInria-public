@@ -20,7 +20,7 @@ public:
     medAbstractDataSourceFactory::medAbstractDataSourceCreatorHash dataSourceCreators;
 };
 
-medAbstractDataSourceFactory *medAbstractDataSourceFactory::instance(void)
+medAbstractDataSourceFactory *medAbstractDataSourceFactory::instance()
 {
     if(!s_instance)
         s_instance = new medAbstractDataSourceFactory;
@@ -38,7 +38,7 @@ bool medAbstractDataSourceFactory::registerDataSource(QString type, medAbstractD
     return false;
 }
 
-QList<QString> medAbstractDataSourceFactory::dataSourcePlugins(void)
+QList<QString> medAbstractDataSourceFactory::dataSourcePlugins()
 {
     return d->dataSourceCreators.keys();
 }
@@ -53,11 +53,11 @@ medAbstractDataSource *medAbstractDataSourceFactory::create(QString type,QWidget
     return conf;
 }
 
-medAbstractDataSourceFactory::medAbstractDataSourceFactory(void) : dtkAbstractFactory(), d(new medAbstractDataSourceFactoryPrivate)
+medAbstractDataSourceFactory::medAbstractDataSourceFactory() : d(new medAbstractDataSourceFactoryPrivate)
 {
 }
 
-medAbstractDataSourceFactory::~medAbstractDataSourceFactory(void)
+medAbstractDataSourceFactory::~medAbstractDataSourceFactory()
 {
     delete d;
     d = nullptr;

@@ -197,7 +197,7 @@ void medDatabasePreviewDynamicScene::previewMouseMoveEvent(QMouseEvent *event, i
     if(d->seriesDescriptionDataIndexPairList.empty())
         return;
 
-    int seriesIndex = event->x() / (width / (double)d->seriesDescriptionDataIndexPairList.size());
+    int seriesIndex = event->x() / (width / static_cast<double>(d->seriesDescriptionDataIndexPairList.size()));
     seriesIndex = qBound(0, seriesIndex, d->seriesDescriptionDataIndexPairList.size()-1);
     this->setImage(d->seriesDescriptionDataIndexPairList.at(seriesIndex).first);
     emit updateLabel(d->seriesDescriptionDataIndexPairList.at(seriesIndex).second);
@@ -263,8 +263,7 @@ void medDatabasePreview::showSeriesPreview(const medDataIndex &index)
     d->currentDataType = medDatabasePreview::SERIES;
     medAbstractDbController * dbc = medDataManager::instance()->controllerForDataSource(index.dataSourceId());
 
-    if (d->staticScene)
-        delete d->staticScene;
+   delete d->staticScene;
     d->staticScene = new medDatabasePreviewStaticScene;
     connect(d->staticScene, SIGNAL(openRequest(medDataIndex)), this, SIGNAL(openRequest(medDataIndex)));
 
@@ -283,10 +282,8 @@ void medDatabasePreview::showStudyPreview(const medDataIndex &index)
     d->currentDataType = medDatabasePreview::STUDY;
     medAbstractDbController * dbc = medDataManager::instance()->controllerForDataSource(index.dataSourceId());
 
-    if (d->staticScene)
-        delete d->staticScene;
-    if (d->dynamicScene)
-        delete d->dynamicScene;
+    delete d->staticScene;
+    delete d->dynamicScene;
 
     d->staticScene = new medDatabasePreviewStaticScene;
     connect(d->staticScene, SIGNAL(openRequest(medDataIndex)), this, SIGNAL(openRequest(medDataIndex)));
@@ -321,8 +318,7 @@ void medDatabasePreview::showPatientPreview(const medDataIndex &index)
     d->currentDataType = medDatabasePreview::PATIENT;
     medAbstractDbController * dbc = medDataManager::instance()->controllerForDataSource(index.dataSourceId());
 
-    if (d->staticScene)
-        delete d->staticScene;
+    delete d->staticScene;
     d->staticScene = new medDatabasePreviewStaticScene;
     connect(d->staticScene, SIGNAL(openRequest(medDataIndex)), this, SIGNAL(openRequest(medDataIndex)));
 

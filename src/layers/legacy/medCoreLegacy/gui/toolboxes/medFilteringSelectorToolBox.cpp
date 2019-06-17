@@ -125,7 +125,7 @@ void medFilteringSelectorToolBox::changeCurrentToolBox ( int index )
         {
             d->currentToolBox->hide();
             d->filterLayout->removeWidget ( d->currentToolBox );
-            d->currentToolBox = 0;
+            d->currentToolBox = nullptr;
             this->setAboutPluginVisibility(false);
         }
         return;

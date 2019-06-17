@@ -28,7 +28,7 @@ class MEDCORE_EXPORT medJobManager: public QObject
 
 private:
     medJobManager(QObject *parent = nullptr);
-    ~medJobManager();
+    ~medJobManager() override;
     static medJobManager *s_instance;
 
 public:
@@ -50,8 +50,8 @@ class medJobRunner: public QObject, public QRunnable
 {
     Q_OBJECT
 public:
-    medJobRunner(medAbstractJob *parent);
-    virtual void run();
+    medJobRunner(medAbstractJob *job);
+    void run() override;
 
 signals:
     void exceptionCaught(QString const& message);

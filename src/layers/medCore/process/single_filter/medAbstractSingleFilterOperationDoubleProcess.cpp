@@ -33,10 +33,7 @@ medAbstractSingleFilterOperationDoubleProcess::medAbstractSingleFilterOperationD
     d->doubleParameter->setValue(1);
 }
 
-medAbstractSingleFilterOperationDoubleProcess::~medAbstractSingleFilterOperationDoubleProcess()
-{
-
-}
+medAbstractSingleFilterOperationDoubleProcess::~medAbstractSingleFilterOperationDoubleProcess() = default;
 
 medDoubleParameter* medAbstractSingleFilterOperationDoubleProcess::doubleParameter() const
 {

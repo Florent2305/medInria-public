@@ -49,10 +49,7 @@ medAbstractWindowingFilterProcess::medAbstractWindowingFilterProcess(QObject *pa
     d->maximumOutputIntensityValue->setDescription("Maximum output intensity range");
 }
 
-medAbstractWindowingFilterProcess::~medAbstractWindowingFilterProcess()
-{
-
-}
+medAbstractWindowingFilterProcess::~medAbstractWindowingFilterProcess() = default;
 
 medDoubleParameter* medAbstractWindowingFilterProcess::minimumIntensityValue()
 {

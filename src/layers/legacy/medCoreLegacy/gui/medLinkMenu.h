@@ -28,8 +28,8 @@ class MEDCORELEGACY_EXPORT medLinkMenu : public QPushButton
     Q_OBJECT
 
 public:
-    medLinkMenu(QWidget * parent = 0);
-    virtual ~medLinkMenu();
+    medLinkMenu(QWidget * parent = nullptr);
+    ~medLinkMenu() override;
     void setAvailableParameters(QStringList parameters);
     void addGroup(medAbstractParameterGroupL * group, bool selected = false);
     void setGroups(QList<medAbstractParameterGroupL *> groups);
@@ -54,26 +54,26 @@ private slots:
     void createNewGroup();
     void updateGroupEditOnFocusIn();
     void updateGroupEditOnFocusOut();
-    void selectGroup(QListWidgetItem *);
-    void selectParam(QListWidgetItem *);
-    void showSubMenu(QListWidgetItem *);
+    void selectGroup(QListWidgetItem *item);
+    void selectParam(QListWidgetItem *item);
+    void showSubMenu(QListWidgetItem *item);
     void showSubMenu();
     void hideSubMenu();
-    void highlightItem(QListWidgetItem*);
+    void highlightItem(QListWidgetItem *item);
     void deleteGroup();
-    void emitGroupColorChangeRequest(QColor);
+    void emitGroupColorChangeRequest(QColor color);
     void saveAsPreset();
     void loadPreset();
-    void applyPreset(QListWidgetItem*);
+    void applyPreset(QListWidgetItem *item);
     void uncheckAllPresets();
     void highlightPreset();
-    void selectItem(QListWidgetItem*);
+    void selectItem(QListWidgetItem *item);
     void deletePreset();
-    void editPreset(QListWidgetItem*);
+    void editPreset(QListWidgetItem *item);
 
 protected:
-    bool eventFilter(QObject *object, QEvent *event);
-    void paintEvent(QPaintEvent *);
+    bool eventFilter(QObject *object, QEvent *event) override;
+    void paintEvent(QPaintEvent *ev) override;
 
 private:
     void updateListsPosition();
@@ -93,11 +93,11 @@ class medListItemWidget : public QWidget
     Q_OBJECT
 
 public:
-    medListItemWidget(QWidget *parent = 0);
+    medListItemWidget(QWidget *parent = nullptr);
 
 public:
-    void enterEvent(QEvent *);
-    void leaveEvent(QEvent *);
+    void enterEvent(QEvent *ev) override;
+    void leaveEvent(QEvent *ev) override;
 
 signals:
     void enterEvent();
@@ -110,7 +110,7 @@ class medGroupWidget : public medListItemWidget
     Q_OBJECT
 
 public:
-    medGroupWidget(QString groupName, QWidget *parent = 0);
+    medGroupWidget(QString groupName, QWidget *parent = nullptr);
     void setColor(QColor color);
 
 signals:
@@ -132,9 +132,9 @@ class medLeftArrow : public QWidget
     Q_OBJECT
 
 public:
-    medLeftArrow(QWidget * parent = 0): QWidget(parent){ this->setFixedSize(15,15);}
+    medLeftArrow(QWidget * parent = nullptr): QWidget(parent){ this->setFixedSize(15,15);}
 
-    void paintEvent(QPaintEvent*);
+    void paintEvent(QPaintEvent *pe) override;
 };
 
 

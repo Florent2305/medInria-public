@@ -26,7 +26,7 @@ public:
     medAbstractDivideFilterProcess(QObject *parent);
 
 protected:
-    virtual QString outputNameAddon() const {return "divide constant";}
+    QString outputNameAddon() const override {return "divide constant";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractDivideFilterProcess, MEDCORE_EXPORT)

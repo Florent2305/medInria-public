@@ -33,7 +33,7 @@ class MEDCORELEGACY_EXPORT medDatabaseNonPersistentController: public medAbstrac
 
 public:
     static medDatabaseNonPersistentController * instance();
-    ~medDatabaseNonPersistentController();
+    ~medDatabaseNonPersistentController() override;
 
     int patientId(bool increment=false);
     int   studyId(bool increment=false);
@@ -46,39 +46,39 @@ public:
 
     void insert(medDataIndex index, medDatabaseNonPersistentItem *item);
 
-    bool isConnected() const;
+    bool isConnected() const override;
 
     QList<medDataIndex> availableItems() const;
-    virtual QString metaData(const medDataIndex& index, const QString& key) const;
+    QString metaData(const medDataIndex& index, const QString& key) const override;
 
-    virtual int dataSourceId() const;
+    int dataSourceId() const override;
 
-    virtual QList<medDataIndex> patients() const;
-    virtual QList<medDataIndex> studies(const medDataIndex& index ) const;
-    virtual QList<medDataIndex> series(const medDataIndex& index ) const;
-    virtual QList<medDataIndex> images(const medDataIndex& index ) const;
+    QList<medDataIndex> patients() const override;
+    QList<medDataIndex> studies(const medDataIndex& index ) const override;
+    QList<medDataIndex> series(const medDataIndex& index ) const override;
+    QList<medDataIndex> images(const medDataIndex& index ) const override;
 
-    virtual QPixmap thumbnail(const medDataIndex &index) const;
+    QPixmap thumbnail(const medDataIndex &index) const override;
 
-    virtual bool isPersistent() const;
+    bool isPersistent() const override;
 
-    virtual bool setMetaData(const medDataIndex& index, const QString& key, const QString& value);
+    bool setMetaData(const medDataIndex& index, const QString& key, const QString& value) override;
 
 public slots:
-    virtual medAbstractData* retrieve(const medDataIndex& index) const;
+     medAbstractData* retrieve(const medDataIndex& index) const override;
 
-    void importData(medAbstractData *data, const QUuid & callerUuid);
-    void importPath(const QString& file, const QUuid & callerUuid, bool indexWithoutCopying);
+    void importData(medAbstractData *data, const QUuid & callerUuid) override;
+    void importPath(const QString& file, const QUuid & callerUuid, bool indexWithoutCopying) override;
 
-    void remove(const medDataIndex& index);
+    void remove(const medDataIndex& index) override;
 
-    QList<medDataIndex> moveStudy(const medDataIndex& indexStudy, const medDataIndex& toPatient);
+    QList<medDataIndex> moveStudy(const medDataIndex& indexStudy, const medDataIndex& toPatient) override;
 
-    medDataIndex moveSerie(const medDataIndex& indexSerie, const medDataIndex& toStudy);
+    medDataIndex moveSerie(const medDataIndex& indexSerie, const medDataIndex& toStudy) override;
 
-    bool contains( const medDataIndex& index) const;
+    bool contains( const medDataIndex& index) const override;
 
-    virtual void removeAll();
+    void removeAll() override;
 
 private:
     medDatabaseNonPersistentController();

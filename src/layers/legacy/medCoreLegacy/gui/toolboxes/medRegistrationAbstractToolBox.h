@@ -25,8 +25,8 @@ class MEDCORELEGACY_EXPORT medRegistrationAbstractToolBox : public medToolBox
     Q_OBJECT
 
 public:
-             medRegistrationAbstractToolBox(QWidget *parentToolBox = 0);
-    virtual ~medRegistrationAbstractToolBox();
+     medRegistrationAbstractToolBox(QWidget *parentToolBox = nullptr);
+    ~medRegistrationAbstractToolBox() override;
 
     virtual void setRegistrationToolBox(medRegistrationSelectorToolBox *toolbox);
 

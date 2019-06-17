@@ -26,8 +26,8 @@ class MEDCORELEGACY_EXPORT medToolBoxBody : public QFrame
     Q_OBJECT
 
 public:
-     medToolBoxBody(QWidget *parent = 0);
-    ~medToolBoxBody();
+     medToolBoxBody(QWidget *parent = nullptr);
+    ~medToolBoxBody() override;
 
      void addWidget(QWidget *widget);
      void removeWidget(QWidget *widget);
@@ -35,7 +35,7 @@ public:
     void setTabWidget(medToolBoxTab * tab);
     void clear();
 
-    void setOrientation(Qt::Orientation);
+    void setOrientation(Qt::Orientation orientation);
 
 private:
     medToolBoxBodyPrivate *d;

@@ -11,7 +11,7 @@
 #
 ################################################################################
 
-cmake_minimum_required(VERSION 2.8.1)
+cmake_minimum_required(VERSION 3.10)
 
 set(TARGET_NAME undoRedoRegistrationPlugin)
 
@@ -84,6 +84,14 @@ target_link_libraries(${TARGET_NAME}
   medRegistration
   )
 
+
+## #############################################################################
+## POLICY
+## #############################################################################
+
+IF(POLICY CMP0020)
+    CMAKE_POLICY(SET CMP0020 NEW)
+ENDIF()
 
 ## #############################################################################
 ## Install rules

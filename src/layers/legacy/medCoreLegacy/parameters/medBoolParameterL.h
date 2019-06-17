@@ -29,8 +29,8 @@ class MEDCORELEGACY_EXPORT medBoolParameterL : public medAbstractBoolParameterL
     Q_OBJECT
 
 public:
-    medBoolParameterL(QString name = "Unknow bool parameter", QObject* parent = 0);
-    virtual ~medBoolParameterL();
+    medBoolParameterL(QString name = "Unknow bool parameter", QObject* parent = nullptr);
+    ~medBoolParameterL() override;
 
     void setIcon(QIcon icon);
     void setIconSize(QSize size);
@@ -39,10 +39,10 @@ public:
     QRadioButton* getRadioButton();
     QCheckBox* getCheckBox();
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
 protected:
-    virtual void updateInternWigets();
+    void updateInternWigets() override;
 
 private slots:
     void removeInternPushButton();

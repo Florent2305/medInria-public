@@ -39,7 +39,7 @@ medAbstractParameterL::medAbstractParameterL(QString name, QObject *parent):
     d->hide = false;
 }
 
-medAbstractParameterL::~medAbstractParameterL(void)
+medAbstractParameterL::~medAbstractParameterL()
 {
     emit aboutToBeDestroyed();
     delete d;

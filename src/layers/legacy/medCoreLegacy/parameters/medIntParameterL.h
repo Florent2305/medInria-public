@@ -28,20 +28,20 @@ class MEDCORELEGACY_EXPORT medIntParameterL : public medAbstractIntParameterL
     Q_OBJECT
 
 public:
-    medIntParameterL(QString name = "Unknow int parameter", QObject* parent = 0);
-    virtual ~medIntParameterL();
+    medIntParameterL(QString name = "Unknow int parameter", QObject* parent = nullptr);
+    ~medIntParameterL() override;
 
     void setRange(int min, int max);
     QSpinBox* getSpinBox();
     QSlider* getSlider();
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
 public slots:
-    void setValue(int value);
+    void setValue(int value) override;
 
 protected:
-    virtual void updateInternWigets();
+    void updateInternWigets() override;
 
 private slots:
     void removeInternSpinBox();

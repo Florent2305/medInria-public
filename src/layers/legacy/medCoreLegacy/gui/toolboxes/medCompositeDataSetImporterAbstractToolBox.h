@@ -26,11 +26,11 @@ class MEDCORELEGACY_EXPORT medCompositeDataSetImporterAbstractToolBox : public m
 {
     Q_OBJECT
 public:
-             medCompositeDataSetImporterAbstractToolBox(QWidget *parent = 0);
-    virtual ~medCompositeDataSetImporterAbstractToolBox();
+     medCompositeDataSetImporterAbstractToolBox(QWidget *parent = nullptr);
+    ~medCompositeDataSetImporterAbstractToolBox() override;
     virtual void setCompositeDataSetImporterToolBox(medCompositeDataSetImporterSelectorToolBox *toolbox);
 
-    virtual QString description() const = 0;
+    QString description() const  override = 0;
 
     virtual medAbstractData *output() const;
 

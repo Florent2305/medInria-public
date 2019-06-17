@@ -28,8 +28,8 @@ class MEDCORELEGACY_EXPORT medAbstractImageViewInteractor : public medAbstractLa
     Q_OBJECT
 
 public:
-             medAbstractImageViewInteractor(medAbstractView* parent);
-    virtual ~medAbstractImageViewInteractor();
+     medAbstractImageViewInteractor(medAbstractView* parent);
+    ~medAbstractImageViewInteractor() override;
 
     virtual medDoubleParameterL* opacityParameter();
     virtual medCompositeParameterL* windowLevelParameter();

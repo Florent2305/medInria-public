@@ -32,14 +32,14 @@ QPixmap * medToolBoxHeaderPrivate::png = nullptr;
 
 medToolBoxHeader::medToolBoxHeader(QWidget *parent) : QFrame(parent), d(new medToolBoxHeaderPrivate)
 {
-    if (!d->png)  d->png = new QPixmap(":icons/information.png");
+    if (!medToolBoxHeaderPrivate::png)  medToolBoxHeaderPrivate::png = new QPixmap(":icons/information.png");
     d->title = "Untitled";
     d->titleOffset = QPoint( 0, 0 );
 //    d->about = nullptr;
     QBoxLayout* layout = new QBoxLayout(QBoxLayout::LeftToRight,this);
     layout->setMargin(0);
 
-    d->about = new medButton(this,*(d->png),
+    d->about = new medButton(this,*(medToolBoxHeaderPrivate::png),
                              medToolBoxHeaderPrivate::tooltip);
     layout->addStretch();
     layout->addWidget(d->about);
@@ -47,7 +47,7 @@ medToolBoxHeader::medToolBoxHeader(QWidget *parent) : QFrame(parent), d(new medT
 
 }
 
-medToolBoxHeader::~medToolBoxHeader(void)
+medToolBoxHeader::~medToolBoxHeader()
 {
     delete d;
 

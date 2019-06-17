@@ -26,15 +26,15 @@ class MEDCORELEGACY_EXPORT medTriggerParameterL : public medAbstractTriggerParam
     Q_OBJECT
 
 public:
-    medTriggerParameterL(QString name = "Unknow trigger parameter", QObject* parent = 0);
-    virtual ~medTriggerParameterL();
+    medTriggerParameterL(QString name = "Unknow trigger parameter", QObject* parent = nullptr);
+    ~medTriggerParameterL() override;
 
     void setButtonIcon(QIcon& icon);
     void setButtonIconSize(QSize& size);
     void setButtonText(QString text);
     QPushButton* getPushButton();
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 private slots:
     void removeInternPushButton();
 

@@ -32,10 +32,10 @@ class MEDCORELEGACY_EXPORT medSettingsWidgetFactory : public dtkAbstractFactory
 public:
 
   //! This function pointer designates functions allocating memory
-  typedef medSettingsWidget*(*medSettingsWidgetCreator)(QWidget *);
+  using medSettingsWidgetCreator = medSettingsWidget*(*)(QWidget *);
 
   //! Type designating the internal has table containing the creator functions.
-  typedef QHash<QString, medSettingDetails*> medSettingsWidgetCreatorHash;
+  using medSettingsWidgetCreatorHash = QHash<QString, medSettingDetails*> ;
 
 public:
 
@@ -70,7 +70,7 @@ public slots:
 protected:
 
   medSettingsWidgetFactory();
-  ~medSettingsWidgetFactory();
+  ~medSettingsWidgetFactory() override;
 
 private:
   static medSettingsWidgetFactory * s_instance; /**< TODO */
@@ -87,7 +87,7 @@ private:
   bool registerSettingsWidget (const QString& type,
                                QString name,
                                QString description,
-                               medSettingsWidgetCreator);
+                               medSettingsWidgetCreator func);
 
 private:
   medSettingsWidgetFactoryPrivate * d; /**< TODO */
@@ -98,12 +98,12 @@ private:
  * and a function to allocate memory.
  *
  */
-struct MEDCORELEGACY_EXPORT medSettingDetails{
+struct MEDCORELEGACY_EXPORT medSettingDetails
+{
     QString name; /** Readable name*/
     QString description; /** (tooltip) short description */
     medSettingsWidgetFactory::medSettingsWidgetCreator creator; /** function pointer allocating memory for the widget*/
-    medSettingDetails(QString name,QString description,
-                     medSettingsWidgetFactory::medSettingsWidgetCreator creator):
+    medSettingDetails(QString &name,QString &description, medSettingsWidgetFactory::medSettingsWidgetCreator &creator):
         name(name),description(description),
         creator(creator){}
 };

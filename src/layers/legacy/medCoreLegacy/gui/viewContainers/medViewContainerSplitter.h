@@ -25,8 +25,8 @@ class MEDCORELEGACY_EXPORT medViewContainerSplitter: public QSplitter
 {
     Q_OBJECT
 public:
-    medViewContainerSplitter(QWidget* parent = 0);
-    virtual ~medViewContainerSplitter();
+    medViewContainerSplitter(QWidget* parent = nullptr);
+    ~medViewContainerSplitter() override;
 
     QList<medViewContainer*> containers();
     void adjustContainersSize();

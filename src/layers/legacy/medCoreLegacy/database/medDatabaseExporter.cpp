@@ -25,14 +25,14 @@ public:
     QString          writer;
 };
 
-medDatabaseExporter::medDatabaseExporter(medAbstractData * data, const QString & filename, const QString & writer) : medJobItemL(), d(new medDatabaseExporterPrivate)
+medDatabaseExporter::medDatabaseExporter(medAbstractData * data, const QString & filename, const QString & writer) : d(new medDatabaseExporterPrivate)
 {
     d->data     = data;
     d->filename = filename;
     d->writer   = writer;
 }
 
-medDatabaseExporter::~medDatabaseExporter(void)
+medDatabaseExporter::~medDatabaseExporter()
 {
     delete d;
 
@@ -45,7 +45,7 @@ medDatabaseExporter::~medDatabaseExporter(void)
  * @param void
  * @todo enrich the signals in the exporter (the writer progress signal is not forwarded to the explorer)
 */
-void medDatabaseExporter::internalRun(void)
+void medDatabaseExporter::internalRun()
 {
     if (!d->data)
     {

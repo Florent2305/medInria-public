@@ -23,13 +23,13 @@ class QVector3D;
 class MEDCORELEGACY_EXPORT medVector3DParameterL : public medAbstractVector3DParameterL
 {
 public:
-    medVector3DParameterL(QString name = "Unknow Vector 3D parameter", QObject* parent = 0);
-    virtual ~medVector3DParameterL();
+    medVector3DParameterL(QString name = "Unknow Vector 3D parameter", QObject* parent = nullptr);
+    ~medVector3DParameterL() override;
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
 protected:
-    virtual void updateInternWigets();
+    void updateInternWigets() override;
 
 private:
     medVector3DParameterLPrivate *d;

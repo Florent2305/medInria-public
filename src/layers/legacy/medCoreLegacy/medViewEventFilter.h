@@ -42,11 +42,11 @@ class MEDCORELEGACY_EXPORT medViewEventFilter : public dtkAbstractObject
     Q_OBJECT
 
 public:
-             medViewEventFilter(dtkAbstractObject * parent = nullptr);
-    virtual ~medViewEventFilter();
+     medViewEventFilter(dtkAbstractObject * parent = nullptr);
+    ~medViewEventFilter() override;
 
-    virtual QString description() const;
-    virtual QString identifier() const;
+    QString description() const override;
+    QString identifier() const override;
 
     void installOnView(medAbstractView * view);
 
@@ -55,7 +55,7 @@ public:
     void removeFromAllViews();
 
 protected:
-    virtual bool eventFilter(QObject *obj, QEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event) override;
 
     virtual bool mousePressEvent( medAbstractView *view, QMouseEvent *mouseEvent );
     virtual bool mouseReleaseEvent( medAbstractView *view, QMouseEvent *mouseEvent );
@@ -68,14 +68,14 @@ protected:
     static QObject * objectToFilter( medAbstractView * view );
 
 protected slots:
-    void onViewDestroyed(QObject*);
+    void onViewDestroyed(QObject *obj);
 
 private:
     static QString s_description();
 
     medSegmentationSelectorToolBox * m_segmentationController;
     QSet<medAbstractView *> m_views;
-    typedef QHash<QObject *, medAbstractView *> FilterObjToViewType;
+    using FilterObjToViewType = QHash<QObject *, medAbstractView *> ;
     FilterObjToViewType m_filterObjToView;
 };
 

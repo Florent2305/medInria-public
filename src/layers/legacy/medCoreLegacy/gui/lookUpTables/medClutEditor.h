@@ -35,18 +35,17 @@ class medClutEditorVertex : public QObject, public QGraphicsItem
 
 public:
     medClutEditorVertex(QPointF value, QPointF coord, QColor color = Qt::white,
-            QGraphicsItem *parent = 0);
+            QGraphicsItem *parent = nullptr);
     medClutEditorVertex( const medClutEditorVertex & other,
-                         QGraphicsItem *parent = 0);
-    ~medClutEditorVertex();
+                         QGraphicsItem *parent = nullptr);
+    ~medClutEditorVertex() override;
 
     const QPointF & value() const;
     void shiftValue( qreal amount, bool forceConstraints = true );
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = 0);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 
-    QRectF boundingRect() const;
+    QRectF boundingRect() const override;
     QColor color() const;
     void setColor(QColor color);
 
@@ -55,7 +54,7 @@ public:
     void forceGeometricalConstraints( const QRectF & limits,
                       bool inManhattan = false );
 
-    void interpolate( medClutEditorVertex * pred, medClutEditorVertex * next );
+    void interpolate( medClutEditorVertex * prev, medClutEditorVertex * next );
 
     void updateCoordinates();
     void updateValue();
@@ -66,10 +65,10 @@ public:
     }
 
 protected:
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
 private :
     void setAlpha();
@@ -89,8 +88,8 @@ class medClutEditorTable : public QObject, public QGraphicsItem
 public:
     //medClutEditorTable(QGraphicsItem *parent = 0);
     medClutEditorTable(const medClutEditorTable & table);
-    medClutEditorTable(const QString & title = "Unknown", QGraphicsItem *parent = 0);
-    ~medClutEditorTable();
+    medClutEditorTable(const QString & title = "Unknown", QGraphicsItem *parent = nullptr);
+    ~medClutEditorTable() override;
 
     const QString & title() const;
     void setTitle(const QString & title);
@@ -111,7 +110,7 @@ public:
     void finalizeMoveSelection();
     void updateCoordinates();
 
-    QRectF boundingRect() const;
+    QRectF boundingRect() const override;
     void range( qreal & min, qreal & max ) const;
 
     void setSelectedAllVertices( bool isSelected );
@@ -127,8 +126,7 @@ public:
     void setTransferFunction(QList<double> &scalars, QList<QColor> &colors );
     void simplifyTransferFunction();
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = 0);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 
     void changeDisplayAlpha( qreal step );
     void resetDisplayAlpha();
@@ -160,8 +158,8 @@ class medClutEditorHistogramPrivate;
 class medClutEditorHistogram : public QGraphicsItem
 {
 public:
-     medClutEditorHistogram(QGraphicsItem *parent = 0);
-    ~medClutEditorHistogram();
+     medClutEditorHistogram(QGraphicsItem *parent = nullptr);
+    ~medClutEditorHistogram() override;
 
     // QSizeF size() const;
     // void setSize( QSizeF s );
@@ -177,13 +175,12 @@ public:
     void adjustScales();
     // QPointF valueToCoordinate( QPointF value ) const;
 
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 
 public:
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = 0);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
 
-    QRectF boundingRect() const;
+    QRectF boundingRect() const override;
 
 private:
     medClutEditorHistogramPrivate * d;
@@ -199,8 +196,8 @@ class medClutEditorScenePrivate;
 class medClutEditorScene : public QGraphicsScene
 {
 public:
-     medClutEditorScene(QObject *parent = 0);
-    ~medClutEditorScene();
+     medClutEditorScene(QObject *parent = nullptr);
+    ~medClutEditorScene() override;
 
     medClutEditorTable * table();
     medClutEditorHistogram * histogram();
@@ -229,18 +226,18 @@ private:
 class medClutEditorView : public QGraphicsView
 {
 public:
-     medClutEditorView(QWidget *parent = 0);
-    ~medClutEditorView();
+     medClutEditorView(QWidget *parent = nullptr);
+    ~medClutEditorView() override;
 
 protected:
     medClutEditorTable * table();
 
-    void resizeEvent	   ( QResizeEvent * event );
-    void wheelEvent 	   ( QWheelEvent  * event );
-    void keyReleaseEvent   ( QKeyEvent    * event );
-    void keyPressEvent     ( QKeyEvent    * event );
-    void mousePressEvent   ( QMouseEvent  * event );
-    void mouseReleaseEvent ( QMouseEvent  * event );
+    void resizeEvent	   ( QResizeEvent * event ) override;
+    void wheelEvent 	   ( QWheelEvent  * event ) override;
+    void keyReleaseEvent   ( QKeyEvent    * event ) override;
+    void keyPressEvent     ( QKeyEvent    * event ) override;
+    void mousePressEvent   ( QMouseEvent  * event ) override;
+    void mouseReleaseEvent ( QMouseEvent  * event ) override;
 };
 
 
@@ -256,8 +253,8 @@ class MEDCORELEGACY_EXPORT medClutEditor : public QWidget
     Q_OBJECT
 
 public:
-     medClutEditor(QWidget *parent = 0);
-    ~medClutEditor();
+     medClutEditor(QWidget *parent = nullptr);
+    ~medClutEditor() override;
 
     void setData(medAbstractData *data);
     void setView(medAbstractImageView *view, bool force = false);
@@ -267,7 +264,7 @@ protected:
     void initializeTable();
     void deleteTable();
 
-    void mousePressEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event) override;
 
 protected slots:
     void onNewTableAction();

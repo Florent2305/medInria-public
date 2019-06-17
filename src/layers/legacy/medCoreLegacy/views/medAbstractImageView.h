@@ -48,10 +48,10 @@ class MEDCORELEGACY_EXPORT medAbstractImageView: public medAbstractLayeredView
     Q_OBJECT
 
 public:
-    medAbstractImageView(QObject * parent = 0);
-    virtual ~medAbstractImageView();
+    medAbstractImageView(QObject * parent = nullptr);
+    ~medAbstractImageView() override;
 
-    virtual void removeData(medAbstractData *data);
+    void removeData(medAbstractData *data) override;
 
     medImageView::Orientation orientation();
 
@@ -64,7 +64,7 @@ public:
     virtual qreal sliceThickness() = 0;
     virtual qreal scale() = 0;
 
-    virtual QWidget* toolBarWidget();
+    QWidget* toolBarWidget() override;
 
     medCompositeParameterL *cameraParameter();
     medAbstractVector3DParameterL *positionBeingViewedParameter();
@@ -84,17 +84,17 @@ signals:
 
 
 protected:
-    virtual medAbstractImageViewInteractor* primaryInteractor(medAbstractData* data);
-    virtual QList<medAbstractInteractor*> extraInteractors(medAbstractData* data);
-    virtual medAbstractImageViewInteractor* primaryInteractor(unsigned int layer);
-    virtual QList<medAbstractInteractor*> extraInteractors(unsigned int layer);
+    medAbstractImageViewInteractor* primaryInteractor(medAbstractData* data) override;
+    QList<medAbstractInteractor*> extraInteractors(medAbstractData* data) override;
+    medAbstractImageViewInteractor* primaryInteractor(unsigned int layer) override;
+    QList<medAbstractInteractor*> extraInteractors(unsigned int layer) override;
 
-    virtual medAbstractImageViewNavigator* primaryNavigator();
-    virtual QList<medAbstractNavigator*> extraNavigators();
+    medAbstractImageViewNavigator* primaryNavigator() override;
+    QList<medAbstractNavigator*> extraNavigators() override;
 
-    virtual bool initialiseInteractors(medAbstractData* data);
-    virtual bool initialiseNavigators();
-    virtual void removeInteractors(medAbstractData *data);
+    bool initialiseInteractors(medAbstractData* data) override;
+    bool initialiseNavigators() override;
+    void removeInteractors(medAbstractData *data) override;
 
 private:
     medAbstractImageViewPrivate *d;

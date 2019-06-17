@@ -24,9 +24,9 @@ class MEDCORELEGACY_EXPORT medAbstractFibersData : public medAbstractData
     Q_OBJECT
 
 public:
-             medAbstractFibersData();
-             medAbstractFibersData(const  medAbstractFibersData& other);
-    virtual ~medAbstractFibersData();
+    medAbstractFibersData();
+    medAbstractFibersData(const  medAbstractFibersData& other);
+    ~medAbstractFibersData() override;
 
     void *fibers();
 

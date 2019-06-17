@@ -24,8 +24,8 @@ class MEDCORELEGACY_EXPORT medBrowserPacsHostToolBox : public medToolBox
     Q_OBJECT
 
 public:
-     medBrowserPacsHostToolBox(QWidget *parent = 0);
-    ~medBrowserPacsHostToolBox();
+     medBrowserPacsHostToolBox(QWidget *parent = nullptr);
+    ~medBrowserPacsHostToolBox() override;
 
     void readSettings();
     void writeSettings();

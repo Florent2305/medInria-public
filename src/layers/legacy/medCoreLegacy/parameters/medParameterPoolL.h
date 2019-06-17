@@ -29,8 +29,8 @@ class MEDCORELEGACY_EXPORT medParameterPoolL : public QObject
     Q_OBJECT
 
 public:
-    medParameterPoolL(QObject* parent = 0);
-    virtual ~medParameterPoolL();
+    medParameterPoolL(QObject* parent = nullptr);
+     ~medParameterPoolL() override;
 
     void append(medAbstractParameterL *parameter);
     void append(QList<medAbstractParameterL *> parameters);
@@ -44,7 +44,7 @@ public:
     QStringList parametersNames();
 
     QString name() const;
-    void setName(QString);
+    void setName(QString name);
 
     QColor color();
     void setColor(QColor color);

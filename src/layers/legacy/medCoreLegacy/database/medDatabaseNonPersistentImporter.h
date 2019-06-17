@@ -41,17 +41,17 @@ public:
     */
     medDatabaseNonPersistentImporter(const QString& file, const QUuid &uuid);
     medDatabaseNonPersistentImporter(medAbstractData* medData, const QUuid& uuid);
-    ~medDatabaseNonPersistentImporter();
+    ~medDatabaseNonPersistentImporter() override;
 
 public:
 
-    QString getPatientID(QString patientName, QString birthDate);
+    QString getPatientID(QString patientName, QString birthDate) override;
 
-    medDataIndex populateDatabaseAndGenerateThumbnails ( medAbstractData* medData, QString pathToStoreThumbnails );
+    medDataIndex populateDatabaseAndGenerateThumbnails ( medAbstractData* medData, QString pathToStoreThumbnails ) override;
 
-    QString ensureUniqueSeriesName ( const QString seriesName );
+    QString ensureUniqueSeriesName ( const QString seriesName ) override;
 
-    bool checkIfExists ( medAbstractData* medData, QString imageName );
+    bool checkIfExists ( medAbstractData* medData, QString imageName ) override;
 
 private:
 

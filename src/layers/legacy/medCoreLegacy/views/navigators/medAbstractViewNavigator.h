@@ -28,7 +28,7 @@ class MEDCORELEGACY_EXPORT medAbstractViewNavigator : public medAbstractNavigato
 
 public:
     medAbstractViewNavigator(medAbstractView* parent);
-    virtual ~medAbstractViewNavigator();
+    ~medAbstractViewNavigator() override;
 
     medDoubleParameterL* zoomParameter();
     medAbstractVector2DParameterL* panParameter();

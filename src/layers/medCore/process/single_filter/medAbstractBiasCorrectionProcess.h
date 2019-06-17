@@ -26,7 +26,7 @@ public:
     medAbstractBiasCorrectionProcess(QObject *parent): medAbstractSingleFilterOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "bias correction filter";}
+    QString outputNameAddon() const override {return "bias correction filter";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractBiasCorrectionProcess, MEDCORE_EXPORT)

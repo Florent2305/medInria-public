@@ -70,125 +70,125 @@ namespace medCore
 
     namespace arithmeticOperation
     {
-        MEDCORE_EXPORT medAbstractArithmeticOperationProcessPluginManager& pluginManager(void);
-        MEDCORE_EXPORT medAbstractArithmeticOperationProcessPluginFactory& pluginFactory(void);
+        MEDCORE_EXPORT medAbstractArithmeticOperationProcessPluginManager& pluginManager( );
+        MEDCORE_EXPORT medAbstractArithmeticOperationProcessPluginFactory& pluginFactory( );
         MEDCORE_EXPORT void initialize(const QString& path);
 
         namespace addImage
         {
-            MEDCORE_EXPORT medAbstractAddImageProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractAddImageProcessPluginFactory& pluginFactory( );
         }
         namespace subtractImage
         {
-            MEDCORE_EXPORT medAbstractSubtractImageProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractSubtractImageProcessPluginFactory& pluginFactory( );
         }
         namespace multiplyImage
         {
-            MEDCORE_EXPORT medAbstractMultiplyImageProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractMultiplyImageProcessPluginFactory& pluginFactory( );
         }
         namespace divideImage
         {
-            MEDCORE_EXPORT medAbstractDivideImageProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractDivideImageProcessPluginFactory& pluginFactory( );
         }
     }
 
     namespace singleFilterOperation
     {
-        MEDCORE_EXPORT medAbstractSingleFilterOperationProcessPluginManager& pluginManager(void);
+        MEDCORE_EXPORT medAbstractSingleFilterOperationProcessPluginManager& pluginManager( );
         MEDCORE_EXPORT void initialize(const QString& path);
 
         namespace addFilter
         {
-            MEDCORE_EXPORT medAbstractAddFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractAddFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace divideFilter
         {
-            MEDCORE_EXPORT medAbstractDivideFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractDivideFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace gaussianFilter
         {
-            MEDCORE_EXPORT medAbstractGaussianFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractGaussianFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace invertFilter
         {
-            MEDCORE_EXPORT medAbstractInvertFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractInvertFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace medianFilter
         {
-            MEDCORE_EXPORT medAbstractMedianFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractMedianFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace multiplyFilter
         {
-            MEDCORE_EXPORT medAbstractMultiplyFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractMultiplyFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace normalizeFilter
         {
-            MEDCORE_EXPORT medAbstractNormalizeFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractNormalizeFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace shrinkFilter
         {
-            MEDCORE_EXPORT medAbstractShrinkFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractShrinkFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace subtractFilter
         {
-            MEDCORE_EXPORT medAbstractSubtractFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractSubtractFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace windowingFilter
         {
-            MEDCORE_EXPORT medAbstractWindowingFilterProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractWindowingFilterProcessPluginFactory& pluginFactory( );
         }
 
         namespace imageDenoising
         {
-            MEDCORE_EXPORT medAbstractImageDenoisingProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractImageDenoisingProcessPluginFactory& pluginFactory( );
         }
 
         namespace relaxometryEstimation
         {
-            MEDCORE_EXPORT medAbstractRelaxometryEstimationProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractRelaxometryEstimationProcessPluginFactory& pluginFactory( );
         }
 
         namespace symmetryAlignment
         {
-            MEDCORE_EXPORT medAbstractSymmetryPlaneAlignmentProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractSymmetryPlaneAlignmentProcessPluginFactory& pluginFactory( );
         }
 
         namespace biasCorrection
         {
-           MEDCORE_EXPORT medAbstractBiasCorrectionProcessPluginFactory& pluginFactory(void);
+           MEDCORE_EXPORT medAbstractBiasCorrectionProcessPluginFactory& pluginFactory( );
         }
     }
 
     namespace morphomathOperation
     {
-        MEDCORE_EXPORT medAbstractMorphomathOperationProcessPluginManager& pluginManager(void);
-        MEDCORE_EXPORT medAbstractMorphomathOperationProcessPluginFactory& pluginFactory(void);
+        MEDCORE_EXPORT medAbstractMorphomathOperationProcessPluginManager& pluginManager( );
+        MEDCORE_EXPORT medAbstractMorphomathOperationProcessPluginFactory& pluginFactory( );
         MEDCORE_EXPORT void initialize(const QString& path);
 
         namespace erodeImage
         {
-            MEDCORE_EXPORT medAbstractErodeImageProcessPluginFactory& pluginFactory(void);   
+            MEDCORE_EXPORT medAbstractErodeImageProcessPluginFactory& pluginFactory( );   
         }
         namespace dilateImage
         {
-            MEDCORE_EXPORT medAbstractDilateImageProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractDilateImageProcessPluginFactory& pluginFactory( );
         }
         namespace openingImage
         {
-            MEDCORE_EXPORT medAbstractOpeningImageProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractOpeningImageProcessPluginFactory& pluginFactory( );
         }
         namespace closingImage
         {
-            MEDCORE_EXPORT medAbstractClosingImageProcessPluginFactory& pluginFactory(void);
+            MEDCORE_EXPORT medAbstractClosingImageProcessPluginFactory& pluginFactory( );
         }
     }
 

@@ -35,7 +35,7 @@ medButton::medButton( QWidget *parent, QString resourceLocation, QString toolTip
     d->icon = new QLabel(this);
     d->icon->setPixmap(QPixmap(resourceLocation));
 
-    QHBoxLayout * layout = new QHBoxLayout(this);
+    auto * layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(d->icon);
     setToolTip(toolTip);
@@ -54,13 +54,13 @@ medButton::medButton( QWidget *parent, QPixmap pixmap, QString toolTip ):
     d->icon = new QLabel(this);
     d->icon->setPixmap(pixmap);
 
-    QHBoxLayout *layout = new QHBoxLayout(this);
+    auto *layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(d->icon);
     setToolTip(toolTip);
 }
 
-medButton::~medButton( void )
+medButton::~medButton()
 {
     delete d;
 }
@@ -69,7 +69,7 @@ medButton::~medButton( void )
  * @brief Returns the pixmap's size.
  * @return QSize
 */
-QSize medButton::sizeHint( void ) const
+QSize medButton::sizeHint() const
 {
     return d->icon->sizeHint();
 }

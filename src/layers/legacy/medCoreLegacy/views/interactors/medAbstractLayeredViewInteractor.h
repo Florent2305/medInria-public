@@ -26,8 +26,8 @@ class MEDCORELEGACY_EXPORT medAbstractLayeredViewInteractor : public medAbstract
     Q_OBJECT
 
 public:
-             medAbstractLayeredViewInteractor(medAbstractView *parent);
-    virtual ~medAbstractLayeredViewInteractor();
+     medAbstractLayeredViewInteractor(medAbstractView *parent);
+    ~medAbstractLayeredViewInteractor() override;
 
 public:
     virtual medAbstractBoolParameterL *visibilityParameter();

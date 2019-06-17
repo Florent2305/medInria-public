@@ -24,8 +24,8 @@ class MEDCORELEGACY_EXPORT medPacsSelector : public QWidget
     Q_OBJECT
 
 public:
-    medPacsSelector(QWidget *parent = 0);
-    ~medPacsSelector();
+    medPacsSelector(QWidget *parent = nullptr);
+    ~medPacsSelector() override;
 
 signals:
     void selectionChanged(QVector<int> list);

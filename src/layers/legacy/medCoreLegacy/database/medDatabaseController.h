@@ -33,7 +33,7 @@ class MEDCORELEGACY_EXPORT medDatabaseController: public medAbstractDbController
 
 public:
     static medDatabaseController* instance();
-    ~medDatabaseController();
+    ~medDatabaseController() override;
 
     const QSqlDatabase& database() const;
 
@@ -57,36 +57,36 @@ public:
 
     bool moveDatabase(QString newLocation);
 
-    bool isConnected() const;
+    bool isConnected() const override;
 
-    virtual QList<medDataIndex> patients() const;
-    virtual QList<medDataIndex> studies(const medDataIndex& index ) const;
-    virtual QList<medDataIndex> series(const medDataIndex& index) const;
-    virtual QList<medDataIndex> images(const medDataIndex& index ) const;
-    virtual QPixmap thumbnail(const medDataIndex& index) const;
+    QList<medDataIndex> patients() const override;
+    QList<medDataIndex> studies(const medDataIndex& index ) const override;
+    QList<medDataIndex> series(const medDataIndex& index) const override;
+    QList<medDataIndex> images(const medDataIndex& index ) const override;
+    QPixmap thumbnail(const medDataIndex& index) const override;
 
-    virtual QString metaData(const medDataIndex& index,const QString& key) const;
-    virtual bool setMetaData(const medDataIndex& index, const QString& key, const QString& value);
+    QString metaData(const medDataIndex& index,const QString& key) const override;
+    bool setMetaData(const medDataIndex& index, const QString& key, const QString& value) override;
 
-    virtual bool isPersistent() const;
+    bool isPersistent() const override;
 
 public slots:
 
-    medAbstractData *retrieve(const medDataIndex &index) const;
+    medAbstractData *retrieve(const medDataIndex &index) const override;
 
-    void importPath(const QString& file, const QUuid& importUuid, bool indexWithoutCopying = false);
-    void importData(medAbstractData *data, const QUuid & importUuid);
+    void importPath(const QString& file, const QUuid& importUuid, bool indexWithoutCopying = false) override;
+    void importData(medAbstractData *data, const QUuid & importUuid) override;
 
-    virtual void remove(const medDataIndex& index);
+    void remove(const medDataIndex& index) override;
 
-    QList<medDataIndex> moveStudy(const medDataIndex& indexStudy, const medDataIndex& toPatient);
-    medDataIndex moveSerie(const medDataIndex& indexSerie, const medDataIndex& toStudy);
+    QList<medDataIndex> moveStudy(const medDataIndex& indexStudy, const medDataIndex& toPatient) override;
+    medDataIndex moveSerie(const medDataIndex& indexSerie, const medDataIndex& toStudy) override;
 
-    virtual int dataSourceId() const;
+    int dataSourceId() const override;
 
-     bool contains(const medDataIndex &index) const;
+     bool contains(const medDataIndex &index) const override;
 
-     virtual void removeAll();
+     void removeAll() override;
 
 protected slots:
     void showOpeningError(QObject *sender);

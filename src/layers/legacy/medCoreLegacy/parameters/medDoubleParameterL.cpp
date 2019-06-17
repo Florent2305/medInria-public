@@ -27,7 +27,7 @@
 class medDoubleSpinBox : public QDoubleSpinBox
 {
 public:
-    virtual QString textFromValue ( double value ) const
+    QString textFromValue ( double value ) const override
     {
         return QString::number(value, 'g', 7);
     }
@@ -228,6 +228,6 @@ int medDoubleParameterL::convertToInt(double value)
 
 void medDoubleParameterL::setIntValue(int value)
 {
-    double dValue = (double)value*d->step + d->min;
+    double dValue = static_cast<double>(value)*d->step + d->min;
     setValue(dValue);
 }

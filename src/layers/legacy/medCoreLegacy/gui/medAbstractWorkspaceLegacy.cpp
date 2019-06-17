@@ -125,7 +125,7 @@ medAbstractWorkspaceLegacy::medAbstractWorkspaceLegacy(QWidget *parent) : QObjec
     d->layerLinkMenu = nullptr;
 }
 
-medAbstractWorkspaceLegacy::~medAbstractWorkspaceLegacy(void)
+medAbstractWorkspaceLegacy::~medAbstractWorkspaceLegacy()
 {
     delete d;
     d = nullptr;
@@ -158,7 +158,7 @@ void medAbstractWorkspaceLegacy::setDatabaseVisibility(bool visibility)
     d->databaseVisibility = visibility;
 }
 
-bool medAbstractWorkspaceLegacy::isDatabaseVisible(void) const
+bool medAbstractWorkspaceLegacy::isDatabaseVisible() const
 {
     return d->databaseVisibility;
 }

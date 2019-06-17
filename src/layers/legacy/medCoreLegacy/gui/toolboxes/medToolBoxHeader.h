@@ -34,8 +34,8 @@ class MEDCORELEGACY_EXPORT medToolBoxHeader : public QFrame
 
 public:
 
-     medToolBoxHeader(QWidget *parent = 0);
-    ~medToolBoxHeader();
+     medToolBoxHeader(QWidget *parent = nullptr);
+    ~medToolBoxHeader() override;
 
     void setTitle(const QString& title);
     QString title() const;
@@ -45,8 +45,8 @@ public:
     medButton* aboutButton();
 
 protected:
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 signals:
     //!  Emitted when a mouse press event is caught.

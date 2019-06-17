@@ -29,9 +29,7 @@ medAbstractProcess::medAbstractProcess(QObject *parent)
 
 }
 
-medAbstractProcess::~medAbstractProcess()
-{
-}
+medAbstractProcess::~medAbstractProcess() = default;
 
 void medAbstractProcess::registerParameter(medAbstractParameter * parameter)
 {

@@ -19,7 +19,4 @@ medAbstractRegistrationProcess::medAbstractRegistrationProcess(medAbstractProces
 
 }
 
-medAbstractRegistrationProcess::~medAbstractRegistrationProcess()
-{
-
-}
+medAbstractRegistrationProcess::~medAbstractRegistrationProcess() = default;

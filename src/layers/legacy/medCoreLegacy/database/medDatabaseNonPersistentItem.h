@@ -29,49 +29,49 @@ class MEDCORELEGACY_EXPORT medDatabaseNonPersistentItem : public QObject
     Q_OBJECT
 
 public:
-     medDatabaseNonPersistentItem(void);
-    ~medDatabaseNonPersistentItem(void);
+     medDatabaseNonPersistentItem();
+    ~medDatabaseNonPersistentItem() override;
 
-    const QString& name(void) const;
-    const QString& birthdate(void) const;
-    const QString& patientId(void) const;
-    const QString& studyName(void) const;
-    const QString& seriesName(void) const;
-    const QString& file(void) const;
-    const QString& studyId(void) const;
-    const QString& studyUid(void) const;
-    const QString& seriesId(void) const;
-    const QString& seriesUid(void) const;
-    const QImage& thumb(void) const;
-    const QString orientation(void) const;
-    const QString seriesNumber(void) const;
-    const QString sequenceName(void) const;
-    const QString sliceThickness(void) const;
-    const QString rows(void) const;
-    const QString columns(void) const;
+    const QString& name() const;
+    const QString& birthdate() const;
+    const QString& patientId() const;
+    const QString& studyName() const;
+    const QString& seriesName() const;
+    const QString& file() const;
+    const QString& studyId() const;
+    const QString& studyUid() const;
+    const QString& seriesId() const;
+    const QString& seriesUid() const;
+    const QImage& thumb() const;
+    const QString orientation() const;
+    const QString seriesNumber() const;
+    const QString sequenceName() const;
+    const QString sliceThickness() const;
+    const QString rows() const;
+    const QString columns() const;
 
-    const medDataIndex& index(void) const;
+    const medDataIndex& index() const;
 
-    medAbstractData *data(void);
+    medAbstractData *data();
 
 
-    void setName(const QString& );
-    void setBirthdate(const QString& );
-    void setPatientId(const QString& );
-    void setStudyName(const QString& );
-    void setSeriesName(const QString& );
-    void setFile(const QString& );
-    void setStudyId(const QString& );
-    void setStudyUid(const QString& );
-    void setSeriesId(const QString& );
-    void setSeriesUid(const QString& );
-    void setThumb(const QImage& );
+    void setName(const QString &name);
+    void setBirthdate(const QString &birthdate);
+    void setPatientId(const QString &patientId);
+    void setStudyName(const QString &studyName);
+    void setSeriesName(const QString &seriesName);
+    void setFile(const QString &file);
+    void setStudyId(const QString &studyId);
+    void setStudyUid(const QString &studyUid);
+    void setSeriesId(const QString &seriesId);
+    void setSeriesUid(const QString &seriesUid);
+    void setThumb(const QImage &thumb);
 
-    void setIndex(const medDataIndex& );
+    void setIndex(const medDataIndex &index);
 
-    void setData(medAbstractData* );
+    void setData(medAbstractData *data);
 
-    bool Match(medAbstractData *);
+    bool Match(medAbstractData *medData);
 
 private:
     friend class medDatabaseNonPersistentControllerImpl;

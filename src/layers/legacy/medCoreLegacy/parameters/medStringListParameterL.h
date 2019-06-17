@@ -31,8 +31,8 @@ public:
     static QIcon createIconFromColor(const QString &colorName);
 
 
-    medStringListParameterL(QString name = "Unknown string list parameter", QObject* parent = 0);
-    virtual ~medStringListParameterL();
+    medStringListParameterL(QString name = "Unknown string list parameter", QObject* parent = nullptr);
+    ~medStringListParameterL() override;
 
     void addItem(QString item, QIcon icon = QIcon());
     void addItems(QStringList items);
@@ -42,10 +42,10 @@ public:
     QStringList items() const;
     QComboBox* getComboBox();
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
 protected:
-    virtual void updateInternWigets();
+    void updateInternWigets() override;
 
 private slots:
     void removeInternComboBox();

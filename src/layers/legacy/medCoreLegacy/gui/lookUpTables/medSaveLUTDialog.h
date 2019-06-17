@@ -20,7 +20,7 @@ class medSaveLUTDialog : public QInputDialog
 {
     Q_OBJECT
 public:
-    medSaveLUTDialog(const QString & name="Unknown",QWidget *parent = 0);
+    medSaveLUTDialog(const QString & name="Unknown",QWidget *parent = nullptr);
 
 signals:
 

@@ -34,7 +34,7 @@ public:
  * @param void
  * @return medPluginManager * a pointer to an instance of the singleton.
 */
-medPluginManager *medPluginManager::instance(void)
+medPluginManager *medPluginManager::instance()
 {
     if(!s_instance)
         s_instance = new medPluginManager;
@@ -68,7 +68,7 @@ void medPluginManager::uninitialize()
  *
  * @param void
 */
-void medPluginManager::readSettings(void)
+void medPluginManager::readSettings()
 {
     QDir plugins_dir;
     QString defaultPath;
@@ -135,7 +135,7 @@ void medPluginManager::onPluginLoaded(const QString& name)
  * Use instance() instead.
  * @param void
 */
-medPluginManager::medPluginManager(void) : dtkPluginManager(), d(new medPluginManagerPrivate)
+medPluginManager::medPluginManager() : d(new medPluginManagerPrivate)
 {
     connect(this, SIGNAL(loaded(const QString&)), this, SLOT(onPluginLoaded(const QString&)));
     connect(this, SIGNAL(loadError(QString)), this, SLOT(onLoadError(QString)));
@@ -146,7 +146,7 @@ medPluginManager::medPluginManager(void) : dtkPluginManager(), d(new medPluginMa
  *
  * @param void
 */
-medPluginManager::~medPluginManager(void)
+medPluginManager::~medPluginManager()
 {
     delete d;
     d = nullptr;

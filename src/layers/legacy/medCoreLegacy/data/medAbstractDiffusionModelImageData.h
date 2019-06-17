@@ -24,7 +24,7 @@ class MEDCORELEGACY_EXPORT medAbstractDiffusionModelImageData : public medAbstra
 public:
     medAbstractDiffusionModelImageData();
 
-    virtual ~medAbstractDiffusionModelImageData() {}
+    ~medAbstractDiffusionModelImageData() override = default;
 
     virtual const QString PixelMeaning() const;
 };

@@ -32,7 +32,7 @@ class MEDCORELEGACY_EXPORT medPluginManager : public dtkPluginManager
 public:
     static medPluginManager *instance();
 
-    void readSettings();
+    void readSettings() override;
     void initialize();
     void uninitialize();
     QStringList handlers(const QString& category);
@@ -44,7 +44,7 @@ public slots:
 
 protected:
      medPluginManager();
-    ~medPluginManager();
+    ~medPluginManager() override;
 
 protected slots:
      void onLoadError(const QString& errorMessage);

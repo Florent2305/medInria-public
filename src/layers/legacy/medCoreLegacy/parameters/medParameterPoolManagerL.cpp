@@ -25,7 +25,7 @@ public:
 
 };
 
-medParameterPoolManagerL *medParameterPoolManagerL::instance(void)
+medParameterPoolManagerL *medParameterPoolManagerL::instance()
 {
     if(!s_instance)
         s_instance = new medParameterPoolManagerL;
@@ -33,7 +33,7 @@ medParameterPoolManagerL *medParameterPoolManagerL::instance(void)
     return s_instance;
 }
 
-medParameterPoolManagerL::medParameterPoolManagerL(void) : d(new medParameterPoolManagerLPrivate)
+medParameterPoolManagerL::medParameterPoolManagerL() : d(new medParameterPoolManagerLPrivate)
 {
 }
 

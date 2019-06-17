@@ -270,7 +270,7 @@ void medActionsToolBox::updateButtons(QString selectedItem)
     }
 
     // insert an explanatory label if no button is being displayed
-    if(actions.size() == 0)
+    if(actions.empty())
     {
         d->noButtonsSelectedWidget->setVisible(true);
         d->buttonsWidget->setVisible(false);

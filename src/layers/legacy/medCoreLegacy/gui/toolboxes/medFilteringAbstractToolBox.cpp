@@ -25,7 +25,7 @@ medFilteringAbstractToolBox::medFilteringAbstractToolBox(QWidget *parent) : medT
     d->parent = nullptr;
 }
 
-medFilteringAbstractToolBox::~medFilteringAbstractToolBox(void)
+medFilteringAbstractToolBox::~medFilteringAbstractToolBox()
 {
     delete d;
 
@@ -37,7 +37,7 @@ void medFilteringAbstractToolBox::setFilteringToolBox(medFilteringSelectorToolBo
     d->parent = toolbox;
 }
 
-medFilteringSelectorToolBox *medFilteringAbstractToolBox::parentToolBox(void)
+medFilteringSelectorToolBox *medFilteringAbstractToolBox::parentToolBox()
 {
     return d->parent;
 }

@@ -28,11 +28,11 @@ class MEDCORELEGACY_EXPORT medDatabaseView : public QTreeView
     Q_OBJECT
 
 public:
-     medDatabaseView(QWidget *parent = 0);
-    ~medDatabaseView();
+     medDatabaseView(QWidget *parent = nullptr);
+    ~medDatabaseView() override;
 
-    void setModel(QAbstractItemModel *model);
-    int sizeHintForColumn(int column) const;
+    void setModel(QAbstractItemModel *model) override;
+    int sizeHintForColumn(int column) const override;
 
 signals:
 
@@ -73,12 +73,12 @@ public slots:
     void onEditRequested();
 
 protected slots:
-    virtual void updateContextMenu(const QPoint&);
-    virtual void onItemDoubleClicked(const QModelIndex& index);
-    virtual void onSelectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    virtual void updateContextMenu(const QPoint &point);
+    virtual void onItemDoubleClicked(const QModelIndex &index);
+    virtual void onSelectionChanged(const QItemSelection &selected, const QItemSelection& deselected);
 
 protected:
-    medAbstractDatabaseItem* getItemFromIndex(const QModelIndex& selected);
+    medAbstractDatabaseItem* getItemFromIndex(const QModelIndex& index);
 
 private:
     medDatabaseViewPrivate *d;

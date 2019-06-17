@@ -28,14 +28,14 @@ class MEDCORELEGACY_EXPORT medDatabasePreviewStaticScene: public QGraphicsScene
     Q_OBJECT
 public:
     medDatabasePreviewStaticScene(QObject *parent = nullptr);
-    virtual ~medDatabasePreviewStaticScene();
+    ~medDatabasePreviewStaticScene() override;
 
     void addImage(const medDataIndex &index);
     void setImage(const medDataIndex &index);
     medDataIndex& currentDataIndex() const;
 
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 signals:
     void openRequest(const medDataIndex& index);
 
@@ -49,9 +49,8 @@ class MEDCORELEGACY_EXPORT medDatabasePreviewDynamicScene: public medDatabasePre
 {
     Q_OBJECT
 public:
-    medDatabasePreviewDynamicScene(const QList<QPair<medDataIndex, QString> > & seriesDescriptionDataIndexList,
-                                   QObject * parent = nullptr);
-    virtual ~medDatabasePreviewDynamicScene();
+    medDatabasePreviewDynamicScene(const QList<QPair<medDataIndex, QString> > & seriesDescriptionDataIndexList, QObject * parent = nullptr);
+    ~medDatabasePreviewDynamicScene() override;
     void previewMouseMoveEvent(QMouseEvent *event, int width);
 
 signals:
@@ -69,7 +68,7 @@ class MEDCORELEGACY_EXPORT medDatabasePreview: public QGraphicsView
     Q_OBJECT
 public :
     medDatabasePreview(QWidget *parent = nullptr);
-    virtual ~medDatabasePreview();
+    ~medDatabasePreview() override;
 
     enum medDataType
     {
@@ -88,10 +87,10 @@ public slots:
     void setLabel(const QString & text);
 
 protected:
-    void resizeEvent(QResizeEvent *event);
-    void enterEvent(QEvent *event);
-    void leaveEvent(QEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    void resizeEvent(QResizeEvent *event) override;
+    void enterEvent(QEvent *event) override;
+    void leaveEvent(QEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
 
 signals:
     void openRequest(const medDataIndex& index);

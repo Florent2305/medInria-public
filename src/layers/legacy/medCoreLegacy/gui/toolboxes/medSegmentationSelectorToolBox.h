@@ -26,8 +26,8 @@ class MEDCORELEGACY_EXPORT medSegmentationSelectorToolBox : public medToolBox
     Q_OBJECT
 
 public:
-     medSegmentationSelectorToolBox(QWidget *parent = 0);
-    ~medSegmentationSelectorToolBox();
+     medSegmentationSelectorToolBox(QWidget *parent = nullptr);
+    ~medSegmentationSelectorToolBox() override;
 
      medSegmentationAbstractToolBox* currentToolBox();
 

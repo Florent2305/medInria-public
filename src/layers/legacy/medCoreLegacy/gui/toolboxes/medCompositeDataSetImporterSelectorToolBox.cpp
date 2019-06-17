@@ -41,12 +41,12 @@ public:
 
 medCompositeDataSetImporterSelectorToolBox::medCompositeDataSetImporterSelectorToolBox(QWidget *parent): medToolBox(parent), d(new medCompositeDataSetImporterSelectorToolBoxPrivate) {
     d->isInitialized = false;
-    d->currentToolBox = 0;
+    d->currentToolBox = nullptr;
     this->setTitle(tr("Composite DataSet Import"));
     this->initialize();
 }
 
-medCompositeDataSetImporterSelectorToolBox::~medCompositeDataSetImporterSelectorToolBox(void)
+medCompositeDataSetImporterSelectorToolBox::~medCompositeDataSetImporterSelectorToolBox()
 {
     delete d;
     d = nullptr;
@@ -181,10 +181,11 @@ bool medCompositeDataSetImporterSelectorToolBox::import()
 }
 
 
-void medCompositeDataSetImporterSelectorToolBox::onCurrentTypeChanged(const int i) {
+void medCompositeDataSetImporterSelectorToolBox::onCurrentTypeChanged(const int type) 
+{
 
     medCompositeDataSetImporterAbstractToolBox* toolbox = nullptr;
-    const QString id = d->type->itemData(i).toString();
+    const QString id = d->type->itemData(type).toString();
 
     if (d->toolBoxes.contains(id))
         toolbox = d->toolBoxes[id];
@@ -204,7 +205,7 @@ void medCompositeDataSetImporterSelectorToolBox::onCurrentTypeChanged(const int 
         if (d->currentToolBox) {
             d->currentToolBox->hide();
             d->customContainerLayout->removeWidget ( d->currentToolBox );
-            d->currentToolBox = 0;
+            d->currentToolBox = nullptr;
         }
         d->reset->hide ();
         d->load->hide ();
@@ -218,7 +219,7 @@ void medCompositeDataSetImporterSelectorToolBox::onCurrentTypeChanged(const int 
     if (d->currentToolBox) {
         d->currentToolBox->hide();
         d->customContainerLayout->removeWidget ( d->currentToolBox );
-        d->currentToolBox = 0;
+        d->currentToolBox = nullptr;
     }
 
     toolbox->show();

@@ -45,10 +45,7 @@ medDatabaseNonPersistentImporter::medDatabaseNonPersistentImporter (medAbstractD
 
 //-----------------------------------------------------------------------------------------------------------
 
-medDatabaseNonPersistentImporter::~medDatabaseNonPersistentImporter ()
-{
-
-}
+medDatabaseNonPersistentImporter::~medDatabaseNonPersistentImporter() = default;
 
 //-----------------------------------------------------------------------------------------------------------
 /**

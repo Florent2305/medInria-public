@@ -31,17 +31,17 @@ class MEDCORELEGACY_EXPORT medDataListParameterL: public medAbstractParameterL
     Q_OBJECT
 
 public:
-    medDataListParameterL(QString name = "Unknown data list parameter", QObject* parent = 0);
-    virtual ~medDataListParameterL();
+    medDataListParameterL(QString name = "Unknown data list parameter", QObject* parent = nullptr);
+    ~medDataListParameterL() override;
 
     void setValues(QList<medDataIndex> values);
     void clear();
 
     QList <medDataIndex> &values() const;
 
-    virtual QWidget* getWidget();
+    QWidget* getWidget() override;
 
-    virtual void trigger();
+    void trigger() override;
 
 signals:
     void valuesChanged (QList <medDataIndex>);

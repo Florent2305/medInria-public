@@ -24,8 +24,10 @@ namespace pluginManager
     {
         for(QString const& realpath : path.split(';'))
         {
-            if(realpath.isEmpty())
+            if (realpath.isEmpty())
+            {
                 break;
+            }
 
             medCore::arithmeticOperation::pluginManager().initialize(realpath);
             medCore::dwiMasking::pluginManager().initialize(realpath);
@@ -57,12 +59,12 @@ namespace arithmeticOperation
         medAbstractArithmeticOperationProcessPluginFactory factory;
     }
 
-    medAbstractArithmeticOperationProcessPluginManager& pluginManager(void)
+    medAbstractArithmeticOperationProcessPluginManager& pluginManager( )
     {
         return _private::manager;
     }
 
-    medAbstractArithmeticOperationProcessPluginFactory& pluginFactory(void)
+    medAbstractArithmeticOperationProcessPluginFactory& pluginFactory( )
     {
         return _private::factory;
     }
@@ -74,7 +76,7 @@ namespace arithmeticOperation
             medAbstractAddImageProcessPluginFactory factory;
         }
 
-        medAbstractAddImageProcessPluginFactory& pluginFactory(void)
+        medAbstractAddImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -85,7 +87,7 @@ namespace arithmeticOperation
         {
             medAbstractSubtractImageProcessPluginFactory factory;
         }
-        medAbstractSubtractImageProcessPluginFactory& pluginFactory(void)
+        medAbstractSubtractImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -96,7 +98,7 @@ namespace arithmeticOperation
         {
             medAbstractMultiplyImageProcessPluginFactory factory;
         }
-        medAbstractMultiplyImageProcessPluginFactory& pluginFactory(void)
+        medAbstractMultiplyImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -108,7 +110,7 @@ namespace arithmeticOperation
             medAbstractDivideImageProcessPluginFactory factory;
         }
 
-        medAbstractDivideImageProcessPluginFactory& pluginFactory(void)
+        medAbstractDivideImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -123,7 +125,7 @@ namespace singleFilterOperation
         medAbstractSingleFilterOperationProcessPluginManager manager;
     }
 
-    medAbstractSingleFilterOperationProcessPluginManager& pluginManager(void)
+    medAbstractSingleFilterOperationProcessPluginManager& pluginManager( )
     {
         return _private::manager;
     }
@@ -135,7 +137,7 @@ namespace singleFilterOperation
             medAbstractAddFilterProcessPluginFactory factory;
         }
 
-        medAbstractAddFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractAddFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -148,7 +150,7 @@ namespace singleFilterOperation
             medAbstractDivideFilterProcessPluginFactory factory;
         }
 
-        medAbstractDivideFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractDivideFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -161,7 +163,7 @@ namespace singleFilterOperation
             medAbstractGaussianFilterProcessPluginFactory factory;
         }
 
-        medAbstractGaussianFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractGaussianFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -174,7 +176,7 @@ namespace singleFilterOperation
             medAbstractInvertFilterProcessPluginFactory factory;
         }
 
-        medAbstractInvertFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractInvertFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -187,7 +189,7 @@ namespace singleFilterOperation
             medAbstractMedianFilterProcessPluginFactory factory;
         }
 
-        medAbstractMedianFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractMedianFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -200,7 +202,7 @@ namespace singleFilterOperation
             medAbstractMultiplyFilterProcessPluginFactory factory;
         }
 
-        medAbstractMultiplyFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractMultiplyFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -213,7 +215,7 @@ namespace singleFilterOperation
             medAbstractNormalizeFilterProcessPluginFactory factory;
         }
 
-        medAbstractNormalizeFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractNormalizeFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -226,7 +228,7 @@ namespace singleFilterOperation
             medAbstractShrinkFilterProcessPluginFactory factory;
         }
 
-        medAbstractShrinkFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractShrinkFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -239,7 +241,7 @@ namespace singleFilterOperation
             medAbstractSubtractFilterProcessPluginFactory factory;
         }
 
-        medAbstractSubtractFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractSubtractFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -252,7 +254,7 @@ namespace singleFilterOperation
             medAbstractWindowingFilterProcessPluginFactory factory;
         }
 
-        medAbstractWindowingFilterProcessPluginFactory& pluginFactory(void)
+        medAbstractWindowingFilterProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -265,7 +267,7 @@ namespace singleFilterOperation
             medAbstractImageDenoisingProcessPluginFactory factory;
         }
 
-        medAbstractImageDenoisingProcessPluginFactory& pluginFactory(void)
+        medAbstractImageDenoisingProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -278,7 +280,7 @@ namespace singleFilterOperation
             medAbstractRelaxometryEstimationProcessPluginFactory factory;
         }
 
-        medAbstractRelaxometryEstimationProcessPluginFactory& pluginFactory(void)
+        medAbstractRelaxometryEstimationProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -291,7 +293,7 @@ namespace singleFilterOperation
             medAbstractSymmetryPlaneAlignmentProcessPluginFactory factory;
         }
 
-        medAbstractSymmetryPlaneAlignmentProcessPluginFactory& pluginFactory(void)
+        medAbstractSymmetryPlaneAlignmentProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -304,7 +306,7 @@ namespace singleFilterOperation
           medAbstractBiasCorrectionProcessPluginFactory factory;
        }
 
-       medAbstractBiasCorrectionProcessPluginFactory& pluginFactory(void)
+       medAbstractBiasCorrectionProcessPluginFactory& pluginFactory( )
        {
           return _private::factory;
        }
@@ -321,12 +323,12 @@ namespace morphomathOperation
         medAbstractMorphomathOperationProcessPluginFactory factory;
     }
 
-    medAbstractMorphomathOperationProcessPluginFactory& pluginFactory(void)
+    medAbstractMorphomathOperationProcessPluginFactory& pluginFactory( )
     {
         return _private::factory;
     }
 
-    medAbstractMorphomathOperationProcessPluginManager& pluginManager(void)
+    medAbstractMorphomathOperationProcessPluginManager& pluginManager( )
     {
         return _private::manager;
     }
@@ -337,7 +339,7 @@ namespace morphomathOperation
         {
             medAbstractErodeImageProcessPluginFactory factory;
         }
-        medAbstractErodeImageProcessPluginFactory& pluginFactory(void)
+        medAbstractErodeImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -350,7 +352,7 @@ namespace morphomathOperation
             medAbstractDilateImageProcessPluginFactory factory;
         }
 
-        medAbstractDilateImageProcessPluginFactory& pluginFactory(void)
+        medAbstractDilateImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -363,7 +365,7 @@ namespace morphomathOperation
             medAbstractOpeningImageProcessPluginFactory factory;
         }
 
-        medAbstractOpeningImageProcessPluginFactory& pluginFactory(void)
+        medAbstractOpeningImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }
@@ -375,7 +377,7 @@ namespace morphomathOperation
         {
             medAbstractClosingImageProcessPluginFactory factory;
         }
-        medAbstractClosingImageProcessPluginFactory& pluginFactory(void)
+        medAbstractClosingImageProcessPluginFactory& pluginFactory( )
         {
             return _private::factory;
         }

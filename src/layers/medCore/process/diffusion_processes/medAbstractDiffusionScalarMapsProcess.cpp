@@ -30,9 +30,7 @@ medAbstractDiffusionScalarMapsProcess::medAbstractDiffusionScalarMapsProcess(QOb
     d->output = nullptr;
 }
 
-medAbstractDiffusionScalarMapsProcess::~medAbstractDiffusionScalarMapsProcess()
-{
-}
+medAbstractDiffusionScalarMapsProcess::~medAbstractDiffusionScalarMapsProcess() = default;
 
 void medAbstractDiffusionScalarMapsProcess::setInput(medAbstractDiffusionModelImageData *data)
 {

@@ -20,11 +20,11 @@
 class medWorkspaceFactoryPrivate
 {
 public:
-    typedef QHash<QString, medWorkspaceFactory::Details*> medWorkspaceCreatorHash;
+    using medWorkspaceCreatorHash = QHash<QString, medWorkspaceFactory::Details*> ;
     medWorkspaceCreatorHash creators;
 };
 
-medWorkspaceFactory* medWorkspaceFactory::instance(void)
+medWorkspaceFactory* medWorkspaceFactory::instance()
 {
     if(!s_instance)
         s_instance = new medWorkspaceFactory;
@@ -49,7 +49,7 @@ bool medWorkspaceFactory::registerWorkspace(QString identifier,
     return false;
 }
 
-QList<QString> medWorkspaceFactory::workspaces(void)
+QList<QString> medWorkspaceFactory::workspaces()
 {
     return d->creators.keys();
 }
@@ -110,12 +110,12 @@ QList<medWorkspaceFactory::Details *> medWorkspaceFactory::workspaceDetailsSorte
     return detailsList;
 }
 
-medWorkspaceFactory::medWorkspaceFactory(void) : dtkAbstractFactory(), d(new medWorkspaceFactoryPrivate)
+medWorkspaceFactory::medWorkspaceFactory() : d(new medWorkspaceFactoryPrivate)
 {
 
 }
 
-medWorkspaceFactory::~medWorkspaceFactory(void)
+medWorkspaceFactory::~medWorkspaceFactory()
 {
     qDeleteAll(d->creators);
     delete d;
@@ -157,7 +157,7 @@ QList<QString> medWorkspaceFactory::workspacesFromCategory(
         const QString& category)const
 {
     QList<QString> ids;
-    typedef medWorkspaceFactoryPrivate::medWorkspaceCreatorHash::iterator creator_iterator;
+    using creator_iterator = medWorkspaceFactoryPrivate::medWorkspaceCreatorHash::iterator ;
     creator_iterator i = d->creators.begin();
     while (i != d->creators.end())
     {

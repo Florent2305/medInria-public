@@ -29,10 +29,8 @@ class MEDCORELEGACY_EXPORT medDatabaseEditItemDialog: public QDialog
     Q_OBJECT
 
 public:
-    medDatabaseEditItemDialog(QList<QString> attributes, QList<QVariant> data, QWidget *parent,
-         bool displayPersistency=false,  bool persistent=false);
-
-    virtual ~medDatabaseEditItemDialog();
+    medDatabaseEditItemDialog(QList<QString> attributes, QList<QVariant> data, QWidget *parent, bool displayPersistency=false,  bool persistent=false);
+    ~medDatabaseEditItemDialog() override;
 
     QVariant value(QString attribute);
 

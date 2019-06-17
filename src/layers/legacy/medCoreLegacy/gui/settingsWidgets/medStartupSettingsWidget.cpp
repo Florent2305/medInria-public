@@ -53,13 +53,9 @@ public:
 
 
 
-medStartupSettingsWidgetPrivate::medStartupSettingsWidgetPrivate()
-{
-}
+medStartupSettingsWidgetPrivate::medStartupSettingsWidgetPrivate() = default;
 
-medStartupSettingsWidgetPrivate::~medStartupSettingsWidgetPrivate()
-{
-}
+medStartupSettingsWidgetPrivate::~medStartupSettingsWidgetPrivate() = default;
 
 medStartupSettingsWidget::medStartupSettingsWidget(QWidget *parent) : medSettingsWidget(parent), d(new medStartupSettingsWidgetPrivate())
 {
@@ -83,7 +79,7 @@ medStartupSettingsWidget::medStartupSettingsWidget(QWidget *parent) : medSetting
     {
         d->defaultStartingArea->addItem(detail->name);
     }
-    QFormLayout *layout = new QFormLayout;
+    auto *layout = new QFormLayout;
     layout->addRow(tr("Fullscreen"), d->startInFullScreen);
     layout->addRow(tr("Generic workspace enabled"), d->genericWorkspaceEnabled);
     layout->addRow(tr("Starting area"), d->defaultStartingArea);

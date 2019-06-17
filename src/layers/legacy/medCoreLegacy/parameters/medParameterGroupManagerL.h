@@ -36,8 +36,8 @@ public:
     void registerNewGroup(medAbstractParameterGroupL* group);
     void unregisterGroup(medAbstractParameterGroupL* group);
 
-    QList<medViewParameterGroupL*> viewGroups(medAbstractView *);
-    QList<medLayerParameterGroupL*> layerGroups(medAbstractLayeredView *, medAbstractData *);
+    QList<medViewParameterGroupL*> viewGroups(medAbstractView *view);
+    QList<medLayerParameterGroupL*> layerGroups(medAbstractLayeredView *view, medAbstractData *layerData);
 
     QList<medViewParameterGroupL*> viewGroups(QString workspace);
     QList<medLayerParameterGroupL*> layerGroups(QString workspace);
@@ -49,7 +49,7 @@ public:
 
 protected:
     medParameterGroupManagerL();
-    ~medParameterGroupManagerL();
+    ~medParameterGroupManagerL() override;
 
 protected:
     static medParameterGroupManagerL *s_instance;

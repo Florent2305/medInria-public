@@ -22,9 +22,9 @@ class MEDCORE_EXPORT medDoubleParameter : public medAbstractParameter
 
 public:
     medDoubleParameter(const QString & name, QObject *parent = nullptr);
-    virtual ~medDoubleParameter();
+    ~medDoubleParameter() override;
 
-    virtual medParameterType type() const {return medParameterType::MED_PARAMETER_DOUBLE;}
+    medParameterType type() const override {return medParameterType::MED_PARAMETER_DOUBLE;}
 
     double value() const;
 
@@ -35,7 +35,7 @@ public:
 public slots:
     void setValue(double value);
 
-    virtual void trigger();
+    void trigger() override;
 
 signals:
     void valueChanged(double value);

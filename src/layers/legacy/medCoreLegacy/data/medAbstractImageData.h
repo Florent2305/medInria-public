@@ -25,12 +25,12 @@ class MEDCORELEGACY_EXPORT medAbstractImageData: public medAbstractData
     Q_OBJECT
 
 public:
-    typedef std::type_info PixId;
-    typedef std::vector < std::vector <double> > MatrixType;
+    using PixId = std::type_info;
+    using MatrixType = std::vector < std::vector <double> >;
 
-             medAbstractImageData();
-             medAbstractImageData(const medAbstractImageData& other);
-    virtual ~medAbstractImageData();
+    medAbstractImageData();
+    medAbstractImageData(const medAbstractImageData& other);
+    ~medAbstractImageData() override;
 
     void *image();
 

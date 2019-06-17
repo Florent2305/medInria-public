@@ -35,8 +35,8 @@ class MEDCORELEGACY_EXPORT medSettingsEditor : public QWidget
 
 public:
 
-    medSettingsEditor(QWidget *parent = 0, bool useAdvancedWidget = false);
-    ~medSettingsEditor();
+    medSettingsEditor(QWidget *parent = nullptr, bool useAdvancedWidget = false);
+    ~medSettingsEditor() override;
 
     virtual void initialize();
     virtual void queryWidgets();

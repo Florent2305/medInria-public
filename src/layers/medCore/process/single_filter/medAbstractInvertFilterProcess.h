@@ -26,7 +26,7 @@ public:
     medAbstractInvertFilterProcess(QObject *parent): medAbstractSingleFilterOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "invert filter";}
+    QString outputNameAddon() const override {return "invert filter";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractInvertFilterProcess, MEDCORE_EXPORT)

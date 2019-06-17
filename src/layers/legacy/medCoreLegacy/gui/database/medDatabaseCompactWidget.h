@@ -30,12 +30,12 @@ class MEDCORELEGACY_EXPORT medDatabaseCompactWidget: public QWidget
     Q_OBJECT
 public :
     medDatabaseCompactWidget(QWidget *parent = nullptr);
-    virtual ~medDatabaseCompactWidget();
+    ~medDatabaseCompactWidget() override;
 
     void setViewAndPreview(medDatabaseView *view, medDatabasePreview *preview);
 
 protected:
-    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *event) override;
 
 
 signals:

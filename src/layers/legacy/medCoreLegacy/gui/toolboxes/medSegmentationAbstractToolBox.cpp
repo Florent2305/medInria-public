@@ -26,14 +26,14 @@ medSegmentationAbstractToolBox::medSegmentationAbstractToolBox(QWidget *parent) 
     d->segmentationToolBox = qobject_cast<medSegmentationSelectorToolBox*>(parent);
 }
 
-medSegmentationAbstractToolBox::~medSegmentationAbstractToolBox(void)
+medSegmentationAbstractToolBox::~medSegmentationAbstractToolBox()
 {
     delete d;
     d = nullptr;
 }
 
 //! Get the segmentationToolbox (usually one instance)
-medSegmentationSelectorToolBox *medSegmentationAbstractToolBox::segmentationToolBox(void)
+medSegmentationSelectorToolBox *medSegmentationAbstractToolBox::segmentationToolBox()
 {
     return d->segmentationToolBox;
 }

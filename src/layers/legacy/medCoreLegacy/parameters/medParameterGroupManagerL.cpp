@@ -38,12 +38,12 @@ medParameterGroupManagerL *medParameterGroupManagerL::instance()
     return s_instance;
 }
 
-medParameterGroupManagerL::medParameterGroupManagerL(void) : d(new medParameterGroupManagerLPrivate)
+medParameterGroupManagerL::medParameterGroupManagerL() : d(new medParameterGroupManagerLPrivate)
 {
     d->currentWorkspace = "";
 }
 
-medParameterGroupManagerL::~medParameterGroupManagerL(void)
+medParameterGroupManagerL::~medParameterGroupManagerL()
 {
     delete d;
     d = nullptr;

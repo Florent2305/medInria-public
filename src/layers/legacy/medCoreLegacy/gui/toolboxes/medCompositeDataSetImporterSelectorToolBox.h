@@ -24,8 +24,8 @@ class MEDCORELEGACY_EXPORT medCompositeDataSetImporterSelectorToolBox : public m
     Q_OBJECT
 
 public:
-     medCompositeDataSetImporterSelectorToolBox(QWidget *parent = 0);
-    ~medCompositeDataSetImporterSelectorToolBox();
+     medCompositeDataSetImporterSelectorToolBox(QWidget *parent = nullptr);
+    ~medCompositeDataSetImporterSelectorToolBox() override;
 
     virtual void initialize();
 

@@ -25,20 +25,20 @@ class MEDCORELEGACY_EXPORT medDatabaseSettingsWidget : public medSettingsWidget
     Q_OBJECT
     MED_SETTINGS_INTERFACE("Database","Database Settings")
 public:
-    medDatabaseSettingsWidget(QWidget *parent = 0);
+    medDatabaseSettingsWidget(QWidget *parent = nullptr);
 
 signals:
 
 public slots:
-    void read();
+    void read() override;
 
 private slots:
     void selectDbDirectory();
 
 protected:
-    bool validate();
+    bool validate() override;
 
-    bool write();
+    bool write() override;
 private:
     medDatabaseSettingsWidgetPrivate *d;
 

@@ -28,10 +28,10 @@ class MEDCORELEGACY_EXPORT medDatabaseExporter : public medJobItemL
 
 public:
      medDatabaseExporter(medAbstractData * data, const QString & filename, const QString & writer);
-    ~medDatabaseExporter();
+    ~medDatabaseExporter() override;
 
 protected:
-    void internalRun();
+    void internalRun() override;
 
 private:
     medDatabaseExporterPrivate *d;

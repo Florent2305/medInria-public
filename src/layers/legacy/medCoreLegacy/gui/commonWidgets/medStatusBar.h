@@ -32,8 +32,8 @@ class MEDCORELEGACY_EXPORT medStatusBar : public QStatusBar
     Q_OBJECT
 public:
 
-    medStatusBar ( QWidget * parent = 0 );
-    ~medStatusBar();
+    medStatusBar ( QWidget * parent = nullptr );
+    ~medStatusBar() override;
 
     void setStatusBarLayout ( QBoxLayout * layout );
     QBoxLayout * statusBarLayout();
@@ -48,7 +48,7 @@ public:
     void hideMessage( );
     void showHiddenMessage();
 
-    void resizeEvent ( QResizeEvent* event );
+    void resizeEvent ( QResizeEvent* event ) override;
 
 public slots:
     void addMessage ( medMessage * message );

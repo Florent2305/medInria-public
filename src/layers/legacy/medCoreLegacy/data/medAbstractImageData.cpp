@@ -27,21 +27,19 @@
 
 const char* medAbstractImageData::PixelMeaningMetaData = "PixelMeaning";
 
-medAbstractImageData::medAbstractImageData(void) : medAbstractData()
+medAbstractImageData::medAbstractImageData()
 {
     dtkDebug() << "constructing medAbstractImageData";
 }
 
-medAbstractImageData::medAbstractImageData(const medAbstractImageData& other): medAbstractData(other)
-{
-}
+medAbstractImageData::medAbstractImageData(const medAbstractImageData& other) = default;
 
-medAbstractImageData::~medAbstractImageData(void)
+medAbstractImageData::~medAbstractImageData()
 {
     dtkDebug() << "deleting medAbstractImageData";
 }
 
-void *medAbstractImageData::image(void)
+void *medAbstractImageData::image()
 {
     return this->data();
 }
@@ -67,42 +65,42 @@ medAbstractImageData::MatrixType medAbstractImageData::orientationMatrix()
     return MatrixType();
 }
 
-int medAbstractImageData::xDimension(void)
+int medAbstractImageData::xDimension()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 
     return 0;
 }
 
-int medAbstractImageData::yDimension(void)
+int medAbstractImageData::yDimension()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 
     return 0;
 }
 
-int medAbstractImageData::zDimension(void)
+int medAbstractImageData::zDimension()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 
     return 0;
 }
 
-int medAbstractImageData::tDimension(void)
+int medAbstractImageData::tDimension()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 	
     return 0;
 }
 
-int medAbstractImageData::minRangeValue(void)
+int medAbstractImageData::minRangeValue()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 
     return 0;
 }
 
-int medAbstractImageData::maxRangeValue(void)
+int medAbstractImageData::maxRangeValue()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 
@@ -117,14 +115,14 @@ int medAbstractImageData::scalarValueCount(int value)
     return 0;
 }
 
-int medAbstractImageData::scalarValueMinCount(void)
+int medAbstractImageData::scalarValueMinCount()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 
     return 0;
 }
 
-int medAbstractImageData::scalarValueMaxCount(void)
+int medAbstractImageData::scalarValueMaxCount()
 {
     DTK_DEFAULT_IMPLEMENTATION;
 

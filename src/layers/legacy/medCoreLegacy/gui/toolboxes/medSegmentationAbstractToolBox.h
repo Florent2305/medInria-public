@@ -27,8 +27,8 @@ class MEDCORELEGACY_EXPORT medSegmentationAbstractToolBox : public medToolBox
     Q_OBJECT
 
 public:
-             medSegmentationAbstractToolBox(QWidget *parent = 0);
-    virtual ~medSegmentationAbstractToolBox();
+     medSegmentationAbstractToolBox(QWidget *parent = nullptr);
+    ~medSegmentationAbstractToolBox() override;
 
     virtual dtkPlugin* plugin() = 0;
 

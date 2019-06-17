@@ -15,10 +15,12 @@
 #include <medAbstractDataFactory.h>
 #include <QFileInfo>
 
-medDataReaderWriter::Reader medDataReaderWriter::reader(const QString& path) {
+medDataReaderWriter::Reader medDataReaderWriter::reader(const QString& path)
+{
     QList<QString> readers = medAbstractDataFactory::instance()->readers();
 
-    if (readers.size()==0) {
+    if (readers.isEmpty())
+    {
 #if 0
         emit showError(tr("No reader plugin"),5000);
         emit failure(this);
@@ -36,7 +38,8 @@ medDataReaderWriter::Reader medDataReaderWriter::reader(const QString& path) {
     if (!dreader.isNull() && dreader->canRead(filename))
         return dreader;
 
-    for (int i=0;i<readers.size();++i) {
+    for (int i=0;i<readers.size();++i)
+    {
         dreader = medAbstractDataFactory::instance()->readerSmartPointer(readers[i]);
         if (dreader->canRead(filename)) {
             dreader->enableDeferredDeletion(false);
@@ -58,7 +61,8 @@ medDataReaderWriter::Writer medDataReaderWriter::writer(const QString& path,cons
     if (!dwriter.isNull() && dwriter->handled().contains(data->identifier()) && dwriter->canWrite(path))
         return dwriter;
 
-    for (int i=0;i<writers.size();++i) {
+    for (int i=0;i<writers.size();++i)
+    {
         dwriter = medAbstractDataFactory::instance()->writerSmartPointer(writers[i]);
         if (dwriter->handled().contains(data->identifier()) && dwriter->canWrite(path)) {
             dwriter->enableDeferredDeletion(false);

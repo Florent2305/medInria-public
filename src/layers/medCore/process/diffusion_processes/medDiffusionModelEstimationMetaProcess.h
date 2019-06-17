@@ -32,18 +32,18 @@ class MEDCORE_EXPORT medDiffusionModelEstimationMetaProcess : public medAbstract
 
 public:
     medDiffusionModelEstimationMetaProcess(QObject *parent = nullptr);
-    virtual ~medDiffusionModelEstimationMetaProcess();
+    ~medDiffusionModelEstimationMetaProcess() override;
 
     void setInput(medAbstractImageData* data);
     medAbstractImageData* input() const;
 
     medAbstractDiffusionModelImageData* output() const;
 
-    virtual medAbstractJob::medJobExitStatus run();
-    virtual void cancel();
+    medAbstractJob::medJobExitStatus run() override;
+    void cancel() override;
 
-    virtual QString caption() const;
-    virtual QString description() const;
+    QString caption() const override;
+    QString description() const override;
 
     QStringList dwiMaskingPlugins() const;
     QStringList modelEstimationPlugins() const;
@@ -60,7 +60,7 @@ public slots:
 
 protected:
     void setOutput(medAbstractDiffusionModelImageData* data);
-    virtual QString outputNameAddon() const {return "models";}
+    QString outputNameAddon() const  override {return "models";}
 
 private:
     const QScopedPointer<medDiffusionModelEstimationMetaProcessPrivate> d;

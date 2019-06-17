@@ -29,16 +29,19 @@ namespace medMetaDataKeys {
     class MEDCORELEGACY_EXPORT Key
     {
     public:
-        typedef std::vector<const Key*> Registery;
+        using Registery = std::vector<const Key*> ;
 
         Key(const char* name, const char* label="",
             QVariant::Type type=QVariant::String, bool isEditable = true): KEY(name), LABEL(label), TYPE(type), ISEDITABLE(isEditable)
         {
-            if(QString(label)=="") LABEL=QString(name);
+            if (QString(label) == "")
+            {
+                LABEL = QString(name);
+            }
             registery.push_back(this);
         }
 
-        ~Key() { }
+        ~Key() = default;
 
         const QString& key() const { return KEY; }
         const QString& label() const { return LABEL; }
@@ -47,9 +50,9 @@ namespace medMetaDataKeys {
 
         bool is_set_in(const medAbstractData *data) const { return data->hasMetaData(KEY) ; }
 
-        const QStringList getValues(const medAbstractData *data) const { return data->metaDataValues(KEY); }
+        QStringList getValues(const medAbstractData *data) const { return data->metaDataValues(KEY); }
 
-        const QString getFirstValue(const medAbstractData *data, const QString defaultValue=QString()) const
+        QString getFirstValue(const medAbstractData *data, const QString defaultValue=QString()) const
         {
             return  data->hasMetaData(KEY) ? data->metaDataValues(KEY)[0] : defaultValue;
         }
@@ -68,8 +71,10 @@ namespace medMetaDataKeys {
             std::vector<const Key*>::iterator it;
             for ( it=registery.begin() ; it < registery.end(); it++ )
             {
-                if( (*it)->key() == name )
+                if ((*it)->key() == name)
+                {
                     return *it;
+                }
             }
             return nullptr;
         }

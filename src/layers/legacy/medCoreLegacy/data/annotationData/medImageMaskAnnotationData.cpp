@@ -15,14 +15,9 @@
 #include <QtWidgets>
 #include <medAbstractImageData.h>
 
-medImageMaskAnnotationData::medImageMaskAnnotationData() :
-    medAnnotationData()
-{
-}
+medImageMaskAnnotationData::medImageMaskAnnotationData() = default;
 
-medImageMaskAnnotationData::~medImageMaskAnnotationData()
-{
-}
+medImageMaskAnnotationData::~medImageMaskAnnotationData() = default;
 
 
 QString medImageMaskAnnotationData::s_description()
@@ -31,7 +26,7 @@ QString medImageMaskAnnotationData::s_description()
     return desc;
 }
 
-QString medImageMaskAnnotationData::description( void ) const
+QString medImageMaskAnnotationData::description( ) const
 {
     return medImageMaskAnnotationData::s_description();
 }
@@ -42,20 +37,20 @@ QString medImageMaskAnnotationData::s_identifier()
     return id;
 }
 
-QString medImageMaskAnnotationData::identifier( void ) const
+QString medImageMaskAnnotationData::identifier( ) const
 {
     return medImageMaskAnnotationData::s_identifier();
 }
 
-void * medImageMaskAnnotationData::data( void )
+void * medImageMaskAnnotationData::data( )
 {
-    return (QObject *)this->maskData();
+    return dynamic_cast<QObject *>(this->maskData());
 }
 
 void medImageMaskAnnotationData::setData( void* data )
 {
     // 
-    QObject * obj = reinterpret_cast<QObject*>(data);
+    auto * obj = reinterpret_cast<QObject*>(data);
     this->setMaskData( qobject_cast<medAbstractImageData *>(obj) );
 }
 

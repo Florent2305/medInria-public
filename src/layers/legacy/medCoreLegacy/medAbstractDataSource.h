@@ -34,8 +34,8 @@ class MEDCORELEGACY_EXPORT medAbstractDataSource : public QObject
     Q_OBJECT
 
 public:
-    medAbstractDataSource(QWidget *parent = 0);
-    ~medAbstractDataSource();
+    medAbstractDataSource(QWidget *parent = nullptr);
+    ~medAbstractDataSource() override;
 
     /**
     * Returns the main view widget

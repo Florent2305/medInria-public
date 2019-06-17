@@ -26,16 +26,16 @@ class MEDCORELEGACY_EXPORT medStartupSettingsWidget : public medSettingsWidget
     MED_SETTINGS_INTERFACE("Start Up", "Startup settings")
 
 public :
-        medStartupSettingsWidget(QWidget *parent = 0);
+        medStartupSettingsWidget(QWidget *parent = nullptr);
 
 signals:
 
 public slots:
-    void read();
+    void read() override;
 
 protected:
-    bool validate();
-    bool write();
+    bool validate() override;
+    bool write() override;
 
 private:
     medStartupSettingsWidgetPrivate *d;

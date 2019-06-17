@@ -39,11 +39,11 @@ class MEDCORELEGACY_EXPORT medAbstractInteractor : public dtkAbstractViewInterac
     Q_OBJECT
 
 public:
-             medAbstractInteractor(medAbstractView* parent);
-    virtual ~medAbstractInteractor();
+     medAbstractInteractor(medAbstractView* parent);
+    ~medAbstractInteractor() override;
 
 public:
-    virtual QString description() const = 0;
+    QString description() const override = 0 ;
 
     virtual void setInputData(medAbstractData *data);
     virtual medAbstractData *inputData() const;

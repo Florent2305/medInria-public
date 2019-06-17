@@ -14,15 +14,8 @@
 #include <medAbstractMaskData.h>
 
 
-medAbstractMaskData::medAbstractMaskData(void) : medAbstractData()
-{
-}
+medAbstractMaskData::medAbstractMaskData(void) = default;
 
-medAbstractMaskData::medAbstractMaskData(const  medAbstractMaskData& other): medAbstractData(other)
-{
-}
+medAbstractMaskData::medAbstractMaskData(const  medAbstractMaskData& other) = default;
 
-medAbstractMaskData::~medAbstractMaskData(void)
-{
-
-}
+medAbstractMaskData::~medAbstractMaskData(void) = default;

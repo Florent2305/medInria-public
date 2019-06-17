@@ -31,7 +31,7 @@ class MEDCORELEGACY_EXPORT medSeedPointAnnotationData : public medAnnotationData
 
 public:
     medSeedPointAnnotationData();
-    virtual ~medSeedPointAnnotationData();
+    ~medSeedPointAnnotationData() override = default;
 
     //! Get / Set the radius of the seed points in pixels in the scene.
     qreal radiusScene() const { return m_radiusScene; }

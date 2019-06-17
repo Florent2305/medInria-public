@@ -145,7 +145,7 @@ medRegistrationSelectorToolBox::medRegistrationSelectorToolBox(QWidget *parent) 
 //    connect(medJobManagerL::instance(),SIGNAL(jobRegistered(medJobItemL*,QString)),this,SLOT(onJobAdded(medJobItemL*,QString)));
 }
 
-medRegistrationSelectorToolBox::~medRegistrationSelectorToolBox(void)
+medRegistrationSelectorToolBox::~medRegistrationSelectorToolBox()
 {
     delete d;
 
@@ -153,13 +153,13 @@ medRegistrationSelectorToolBox::~medRegistrationSelectorToolBox(void)
 }
 
 //! Gets the fixedData.
-medAbstractData *medRegistrationSelectorToolBox::fixedData(void)
+medAbstractData *medRegistrationSelectorToolBox::fixedData()
 {
     return d->fixedData;
 }
 
 //! Gets the movingData.
-medAbstractData *medRegistrationSelectorToolBox::movingData(void)
+medAbstractData *medRegistrationSelectorToolBox::movingData()
 {
     return d->movingData;
 }
@@ -217,7 +217,7 @@ void medRegistrationSelectorToolBox::changeCurrentToolBox(int index)
 
 
 //! Clears the toolbox.
-void medRegistrationSelectorToolBox::clear(void)
+void medRegistrationSelectorToolBox::clear()
 {
 
     //maybe clear the currentToolBox?
@@ -226,7 +226,7 @@ void medRegistrationSelectorToolBox::clear(void)
 }
 
 //! Gets the process.
-medAbstractRegistrationProcess * medRegistrationSelectorToolBox::process(void)
+medAbstractRegistrationProcess * medRegistrationSelectorToolBox::process()
 {
     return d->process;
 }

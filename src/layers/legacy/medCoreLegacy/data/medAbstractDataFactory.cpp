@@ -13,14 +13,12 @@
 
 #include <medAbstractDataFactory.h>
 
-medAbstractDataFactory::medAbstractDataFactory()
-{
-}
+medAbstractDataFactory::medAbstractDataFactory() = default;
 
-medAbstractDataFactory *medAbstractDataFactory::instance(void)
+medAbstractDataFactory *medAbstractDataFactory::instance()
 {
     if(!s_instance)
-    s_instance = new medAbstractDataFactory;
+        s_instance = new medAbstractDataFactory;
 
     return s_instance;
 }

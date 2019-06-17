@@ -13,15 +13,12 @@
 
 #include <medJobItemL.h>
 
-medJobItemL::medJobItemL() : QRunnable()
+medJobItemL::medJobItemL()
 {
     connect(this, SIGNAL(progress(QObject*, int)), this, SLOT(onProgress(QObject*, int)));
 }
 
-medJobItemL::~medJobItemL()
-{
-
-}
+medJobItemL::~medJobItemL() = default;
 
 void medJobItemL::run()
 {
@@ -49,7 +46,7 @@ void medJobItemL::run()
 
 }
 
-void medJobItemL::onCancel( QObject* )
+void medJobItemL::onCancel( QObject* obj)
 {
 
 }

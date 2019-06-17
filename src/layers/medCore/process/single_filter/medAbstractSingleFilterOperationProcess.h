@@ -29,7 +29,7 @@ class MEDCORE_EXPORT  medAbstractSingleFilterOperationProcess : public medAbstra
 
 public:
     medAbstractSingleFilterOperationProcess(QObject *parent = nullptr);
-    virtual ~medAbstractSingleFilterOperationProcess();
+    ~medAbstractSingleFilterOperationProcess() override;
 
     void setInput(medAbstractImageData* data);
     medAbstractImageData* input() const;
@@ -38,7 +38,7 @@ public:
 
 protected:
     void setOutput(medAbstractImageData* data);
-    virtual QString outputNameAddon() const {return "single filter";}
+    QString outputNameAddon() const override {return "single filter";}
 
 private:
     const QScopedPointer<medAbstractSingleFilterOperationProcessPrivate> d;

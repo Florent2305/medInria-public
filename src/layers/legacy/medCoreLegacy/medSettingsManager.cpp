@@ -27,19 +27,19 @@ public:
 * instance - singleton access method, returns a singleViewContainer static instance of the manager
 * @return   medSettingsManager * - the manager
 */
-medSettingsManager * medSettingsManager::instance( void )
+medSettingsManager * medSettingsManager::instance()
 {
     if(!s_instance)
         s_instance = new medSettingsManager;
     return s_instance;
 }
 
-medSettingsManager::medSettingsManager( void ): d(new medSettingsManagerPrivate)
+medSettingsManager::medSettingsManager(): d(new medSettingsManagerPrivate)
 {
 
 }
 
-medSettingsManager::~medSettingsManager( void )
+medSettingsManager::~medSettingsManager()
 {
     delete d;
     d = nullptr;
@@ -48,11 +48,11 @@ medSettingsManager::~medSettingsManager( void )
 /**
 * destroy - should be called on closing the application, to destroy the singleton
 */
-void medSettingsManager::destroy( void )
+void medSettingsManager::destroy()
 {
     if (s_instance) {
         delete s_instance;
-        s_instance = 0;
+        s_instance = nullptr;
     }
 }
 

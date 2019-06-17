@@ -23,15 +23,17 @@
 #include <QAbstractItemModel>
 #include <QFontMetrics>
 
+#include <utility>
+
 class NoFocusDelegate : public QStyledItemDelegate
 {
 public:
-    NoFocusDelegate(medDatabaseView *view, QList<medDataIndex> indexes) : QStyledItemDelegate(), m_view(view), m_indexes(indexes) {}
+    NoFocusDelegate(medDatabaseView *view, QList<medDataIndex> indexes) : m_view(view), m_indexes(std::move(indexes)) {}
 
-    void append(medDataIndex);
+    void append(medDataIndex index);
 
 protected:
-    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
     medDatabaseView *m_view;
     QList<medDataIndex> m_indexes;
 };
@@ -160,7 +162,7 @@ medDatabaseView::medDatabaseView(QWidget *parent) : QTreeView(parent), d(new med
 
 }
 
-medDatabaseView::~medDatabaseView(void)
+medDatabaseView::~medDatabaseView()
 {
     //TreeViews don't take ownership of delegates
     delete this->itemDelegate();
@@ -258,7 +260,7 @@ void medDatabaseView::updateContextMenu(const QPoint& point)
 
 void medDatabaseView::onItemDoubleClicked(const QModelIndex& index)
 {
-    medAbstractDatabaseItem *item = 0;
+    medAbstractDatabaseItem *item = nullptr;
 
     if (QSortFilterProxyModel *proxy = dynamic_cast<QSortFilterProxyModel*>(this->model()))
         item = static_cast<medAbstractDatabaseItem *>(proxy->mapToSource(index).internalPointer());
@@ -270,7 +272,7 @@ void medDatabaseView::onItemDoubleClicked(const QModelIndex& index)
 }
 
 /** Opens the currently selected item. */
-void medDatabaseView::onViewSelectedItemRequested(void)
+void medDatabaseView::onViewSelectedItemRequested()
 {
     if(!this->selectedIndexes().count())
         return;
@@ -292,7 +294,7 @@ void medDatabaseView::onViewSelectedItemRequested(void)
 }
 
 /** Exports the currently selected item. */
-void medDatabaseView::onExportSelectedItemRequested(void)
+void medDatabaseView::onExportSelectedItemRequested()
 {
     if(!this->selectedIndexes().count())
         return;
@@ -379,7 +381,7 @@ medAbstractDatabaseItem* medDatabaseView::getItemFromIndex(const QModelIndex& in
 }
 
 /** Removes the currently selected item. */
-void medDatabaseView::onRemoveSelectedItemRequested( void )
+void medDatabaseView::onRemoveSelectedItemRequested()
 {
     const QString dialogueTitle = this->selectionModel()->selectedRows().count() > 1 ? tr("Remove items") : tr("Remove item");
 
@@ -407,7 +409,7 @@ void medDatabaseView::onRemoveSelectedItemRequested( void )
 }
 
 /** Saves the currently selected item. */
-void medDatabaseView::onSaveSelectedItemRequested(void)
+void medDatabaseView::onSaveSelectedItemRequested()
 {
     QModelIndexList indexes = this->selectedIndexes();
     if(!indexes.count())
@@ -431,7 +433,7 @@ void medDatabaseView::onSaveSelectedItemRequested(void)
 }
 
 /** Creates a new patient */
-void medDatabaseView::onCreatePatientRequested(void)
+void medDatabaseView::onCreatePatientRequested()
 {
     QModelIndexList indexes = this->selectedIndexes();
 
@@ -493,7 +495,7 @@ void medDatabaseView::onCreatePatientRequested(void)
 }
 
 /** Creates a new study */
-void medDatabaseView::onCreateStudyRequested(void)
+void medDatabaseView::onCreateStudyRequested()
 {
     QModelIndexList indexes = this->selectedIndexes();
     if(!indexes.count())
@@ -550,7 +552,7 @@ void medDatabaseView::onCreateStudyRequested(void)
 }
 
 /** Edits selected item */
-void medDatabaseView::onEditRequested(void)
+void medDatabaseView::onEditRequested()
 {
     QModelIndexList indexes = this->selectedIndexes();
     if(!indexes.count())

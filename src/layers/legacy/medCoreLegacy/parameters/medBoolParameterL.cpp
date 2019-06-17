@@ -84,16 +84,16 @@ void medBoolParameterL::setIconSize(QSize size)
     }
 }
 
-void medBoolParameterL::setText(QString value)
+void medBoolParameterL::setText(QString text)
 {
-    d->text = value;
+    d->text = text;
 
     if(d->pushButton)
-        d->pushButton->setText(value);
+        d->pushButton->setText(text);
     if(d->checkBox)
-        d->checkBox->setText(value);
+        d->checkBox->setText(text);
     if(d->radioButton)
-        d->radioButton->setText(value);
+        d->radioButton->setText(text);
 }
 
 QPushButton* medBoolParameterL::getPushButton()

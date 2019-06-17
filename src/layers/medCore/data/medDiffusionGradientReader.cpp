@@ -17,9 +17,7 @@ medDiffusionGradientReader::medDiffusionGradientReader()
     d->gradients.clear();
 }
 
-medDiffusionGradientReader::~medDiffusionGradientReader()
-{
-}
+medDiffusionGradientReader::~medDiffusionGradientReader() = default;
 
 void medDiffusionGradientReader::read(QString gradientFileName, QString bvaluesFileName)
 {
@@ -98,7 +96,7 @@ void medDiffusionGradientReader::readGradients(QString gradientFileName)
             continue;
 
         float a0, a1, a2;
-        sscanf(tmpStr,"%f %f %f",&a0,&a1,&a2);
+        sscanf(tmpStr, "%f %f %f",&a0,&a1,&a2);
         gradTmp[0] = a0;
         gradTmp[1] = a1;
         gradTmp[2] = a2;

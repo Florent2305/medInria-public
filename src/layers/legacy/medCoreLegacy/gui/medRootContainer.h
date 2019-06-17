@@ -13,7 +13,7 @@ private:
 
 public:
     medRootContainer(medTabbedViewContainers* parent);
-    virtual ~medRootContainer();
+    ~medRootContainer() override;
 
     void replaceSplitter(medViewContainerSplitter *pi_poSplitter);
     inline medViewContainerSplitter * getSplitter() const { return m_poSplitter; }

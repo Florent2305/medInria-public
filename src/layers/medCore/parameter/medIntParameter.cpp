@@ -30,10 +30,7 @@ medIntParameter::medIntParameter(QString const& name,  QObject *parent)
     d->max = 100;
 }
 
-medIntParameter::~medIntParameter()
-{
-
-}
+medIntParameter::~medIntParameter() = default;
 
 int medIntParameter::value() const
 {

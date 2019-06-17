@@ -26,10 +26,10 @@ class MEDCORELEGACY_EXPORT medDropSite : public QLabel
     Q_OBJECT
 
 public:
-     medDropSite(QWidget *parent = 0);
-    ~medDropSite();
+     medDropSite(QWidget *parent = nullptr);
+    ~medDropSite() override;
 
-    QSize sizeHint() const;
+    QSize sizeHint() const override;
 
     void setCanAutomaticallyChangeAppereance(bool can);
 
@@ -51,12 +51,12 @@ signals:
     void clicked();
 
 protected:
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dragMoveEvent(QDragMoveEvent *event);
-    void dragLeaveEvent(QDragLeaveEvent *event);
-    void dropEvent(QDropEvent *event);
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent* event);
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dragLeaveEvent(QDragLeaveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent* event) override;
 
 private:
     medDropSitePrivate *d;

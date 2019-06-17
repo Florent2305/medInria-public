@@ -67,7 +67,7 @@ medSegmentationSelectorToolBox::medSegmentationSelectorToolBox(QWidget *parent) 
     this->setTitle("Segmentation");
 }
 
-medSegmentationSelectorToolBox::~medSegmentationSelectorToolBox(void)
+medSegmentationSelectorToolBox::~medSegmentationSelectorToolBox()
 {
     delete d;
     d = nullptr;

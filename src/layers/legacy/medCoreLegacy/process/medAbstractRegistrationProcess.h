@@ -25,12 +25,12 @@ class MEDCORELEGACY_EXPORT medAbstractRegistrationProcess : public medAbstractPr
 
 public:
     medAbstractRegistrationProcess(medAbstractProcessLegacy *parent = nullptr);
-    virtual ~medAbstractRegistrationProcess();
+    ~medAbstractRegistrationProcess() override;
 
 public:
     virtual bool setFixedInput(medAbstractData *data) = 0;
     virtual bool setMovingInput(medAbstractData *data) = 0;
-    virtual bool write(const QString &file) = 0;
-    virtual bool write(const QStringList& files) = 0;
+    bool write(const QString &file) override = 0;
+    bool write(const QStringList& files) override = 0;
 
 };

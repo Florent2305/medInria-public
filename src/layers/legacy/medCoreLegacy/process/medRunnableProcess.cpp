@@ -23,7 +23,7 @@ public:
 };
 
 
-medRunnableProcess::medRunnableProcess(void): medJobItemL(), d (new medRunnableProcessPrivate)
+medRunnableProcess::medRunnableProcess(): d (new medRunnableProcessPrivate)
 {
 }
 
@@ -91,7 +91,8 @@ void medRunnableProcess::onProgressed (int value)
 */
 void medRunnableProcess::onCancel (QObject *sender)
 {
-    if (d->process) {
+    if (d->process)
+    {
         //d->process->onCanceled();
         d->process->cancel();
     }

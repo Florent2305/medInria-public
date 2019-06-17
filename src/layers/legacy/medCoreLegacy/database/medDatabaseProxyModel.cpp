@@ -22,10 +22,7 @@ medDatabaseProxyModel::medDatabaseProxyModel( QObject *parent /*= 0*/ ):
     isCheckingParent = false;
 }
 
-medDatabaseProxyModel::~medDatabaseProxyModel()
-{
-
-}
+medDatabaseProxyModel::~medDatabaseProxyModel() = default;
 
 bool medDatabaseProxyModel::filterAcceptsRow( int source_row, const QModelIndex & source_parent ) const
 {
@@ -36,7 +33,9 @@ bool medDatabaseProxyModel::filterAcceptsRow( int source_row, const QModelIndex 
         currentKey = i.key();
         currentValue = i.value();
         if (!customFilterAcceptsRow(source_row, source_parent))
+        {
             return false;
+        }
         i++;
     }
 
@@ -72,8 +71,10 @@ bool medDatabaseProxyModel::customFilterAcceptsRow( int source_row, const QModel
     if (current.parent().isValid() && !isCheckingChild && !isCheckingParent)
     {
         isCheckingParent = true;
-        if(customFilterAcceptsRow(current.parent().row(), current.parent().parent()))
+        if (customFilterAcceptsRow(current.parent().row(), current.parent().parent()))
+        {
             return true;
+        }
     }
 
     // show the parent if one child is valid
@@ -84,14 +85,18 @@ bool medDatabaseProxyModel::customFilterAcceptsRow( int source_row, const QModel
         while(!atLeastOneValidChild)
         {
             const QModelIndex child(current.child(i, 0  ));
-            if(!child.isValid())
+            if (!child.isValid())
+            {
                 break;
+            }
             isCheckingChild = true;
             atLeastOneValidChild = customFilterAcceptsRow(i, current);
             i++;
         }
         if (atLeastOneValidChild)
+        {
             return true;
+        }
     }
 
     // set back
@@ -100,12 +105,10 @@ bool medDatabaseProxyModel::customFilterAcceptsRow( int source_row, const QModel
 
     // ignoring invalid items
     if (!current.isValid() || !index.isValid())
+    {
         return true;
+    }
 
-    // pattern to data check
-    if (!sourceModel()->data(index).toString().contains(currentValue))
-        return false;
-
-    // if we make it up to here we are good
-    return true;
+    // pattern to data check. If we make it up to here we are good
+    return sourceModel()->data(index).toString().contains(currentValue);
 }

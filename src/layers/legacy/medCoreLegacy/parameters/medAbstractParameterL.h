@@ -29,8 +29,8 @@ class MEDCORELEGACY_EXPORT medAbstractParameterL : public QObject
 
 public:
 
-    medAbstractParameterL(QString name = "unknown parameter", QObject* parent = 0);
-    virtual ~medAbstractParameterL();
+    medAbstractParameterL(QString name = "unknown parameter", QObject* parent = nullptr);
+    ~medAbstractParameterL() override;
 
     QString name() const;
     void setName(QString &name);
@@ -74,10 +74,10 @@ class MEDCORELEGACY_EXPORT medAbstractTriggerParameterL : public medAbstractPara
 {
     Q_OBJECT
 public:
-    medAbstractTriggerParameterL(QString name = "unknown trigger parameter", QObject* parent = 0):
+    medAbstractTriggerParameterL(QString name = "unknown trigger parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
 public slots:
-    virtual void trigger();
+    void trigger() override;
 
 signals:
     void triggered();
@@ -89,12 +89,12 @@ class MEDCORELEGACY_EXPORT medAbstractStringParameterL : public medAbstractParam
 {
     Q_OBJECT
 public:
-    medAbstractStringParameterL(QString name = "unknown  string parameter", QObject* parent = 0):
+    medAbstractStringParameterL(QString name = "unknown  string parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
     virtual QString value() const;
 public slots:
     virtual void setValue(QString value);
-    virtual void trigger();
+    void trigger() override;
 signals:
     void valueChanged(QString);
 protected:
@@ -113,12 +113,12 @@ class MEDCORELEGACY_EXPORT medAbstractIntParameterL : public medAbstractParamete
 {
     Q_OBJECT
 public:
-    medAbstractIntParameterL(QString name = "unknown int parameter", QObject* parent = 0):
+    medAbstractIntParameterL(QString name = "unknown int parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
     virtual int value() const;
 public slots:
     virtual void setValue(int value);
-    virtual void trigger();
+    void trigger() override;
 protected:
     /**
      * @brief updateInternWigets
@@ -138,12 +138,12 @@ class MEDCORELEGACY_EXPORT medAbstractDoubleParameterL : public medAbstractParam
 {
     Q_OBJECT
 public:
-    medAbstractDoubleParameterL(QString name = "unknown double parameter", QObject* parent = 0):
+    medAbstractDoubleParameterL(QString name = "unknown double parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
     virtual double value() const;
 public slots:
     virtual void setValue(double value);
-    virtual void trigger();
+    void trigger() override;
 protected:
     /**
      * @brief updateInternWigets
@@ -162,12 +162,12 @@ class MEDCORELEGACY_EXPORT medAbstractBoolParameterL : public medAbstractParamet
 {
     Q_OBJECT
 public:
-    medAbstractBoolParameterL(QString name = "unknown bool parameter", QObject* parent = 0):
+    medAbstractBoolParameterL(QString name = "unknown bool parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
     virtual bool value() const;
 public slots:
     virtual void setValue(bool value);
-    virtual void trigger();
+    void trigger() override;
 protected:
     /**
      * @brief updateInternWigets
@@ -189,7 +189,7 @@ class MEDCORELEGACY_EXPORT medAbstractGroupParameterL : public medAbstractParame
 {
     Q_OBJECT
 public:
-    medAbstractGroupParameterL(QString name = "unknown group parameter", QObject* parent = 0):
+    medAbstractGroupParameterL(QString name = "unknown group parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
 
     /**
@@ -213,15 +213,15 @@ class MEDCORELEGACY_EXPORT medAbstractVector2DParameterL : public medAbstractPar
     Q_OBJECT
 
 public:
-    medAbstractVector2DParameterL(QString name = "Unknow Vector 2D parameter", QObject* parent = 0):
+    medAbstractVector2DParameterL(QString name = "Unknow Vector 2D parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
-    virtual ~medAbstractVector2DParameterL(){}
+    ~medAbstractVector2DParameterL() override = default;
 
     virtual QVector2D value() const;
 
 public slots:
-    virtual void setValue(const QVector2D &);
-    virtual void trigger();
+    virtual void setValue(const QVector2D &value);
+    void trigger() override;
 
 protected:
     virtual void updateInternWigets() = 0;
@@ -245,15 +245,15 @@ class MEDCORELEGACY_EXPORT medAbstractVector3DParameterL : public medAbstractPar
     Q_OBJECT
 
 public:
-    medAbstractVector3DParameterL(QString name = "Unknow Vector 3D parameter", QObject* parent = 0):
+    medAbstractVector3DParameterL(QString name = "Unknow Vector 3D parameter", QObject* parent = nullptr):
         medAbstractParameterL(name, parent){}
-    virtual ~medAbstractVector3DParameterL(){}
+    ~medAbstractVector3DParameterL() override = default;
 
     virtual QVector3D value() const;
 
 public slots:
-    virtual void setValue(const QVector3D &);
-    virtual void trigger();
+    virtual void setValue(const QVector3D &value);
+    void trigger() override;
 
 protected:
     virtual void updateInternWigets() = 0;
@@ -279,15 +279,15 @@ class MEDCORELEGACY_EXPORT medAbstractVector4DParameterL : public medAbstractPar
     Q_OBJECT
 
 public:
-    medAbstractVector4DParameterL(QString name = "Unknow Vector 3D parameter", QObject* parent = 0):
-        medAbstractParameterL(name, parent){}
-    virtual ~medAbstractVector4DParameterL(){}
+    medAbstractVector4DParameterL(QString name = "Unknow Vector 3D parameter", QObject* parent = nullptr) :
+        medAbstractParameterL(name, parent) {}
+    ~medAbstractVector4DParameterL() override = default;
 
     virtual QVector4D value() const;
 
 public slots:
-    virtual void setValue(const QVector4D &);
-    virtual void trigger();
+    virtual void setValue(const QVector4D &value);
+    void trigger() override;
 
 protected:
     virtual void updateInternWigets() = 0;

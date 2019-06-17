@@ -36,13 +36,13 @@ medPacsSelector::medPacsSelector( QWidget *parent /*= 0*/ ): d(new medToolBoxPac
     readSettings();
 }
 
-medPacsSelector::~medPacsSelector( void )
+medPacsSelector::~medPacsSelector()
 {
     delete d;
     d = nullptr;
 }
 
-void medPacsSelector::readSettings( void )
+void medPacsSelector::readSettings()
 {
 
     QList<QVariant> nodes;

@@ -28,7 +28,7 @@ class MEDCORE_EXPORT medAbstractDWIMaskingProcess : public medAbstractProcess
 
 public:
     medAbstractDWIMaskingProcess(QObject *parent = nullptr);
-    virtual ~medAbstractDWIMaskingProcess();
+    ~medAbstractDWIMaskingProcess() override;
 
     virtual void setInput(medAbstractImageData* data);
     medAbstractImageData* input() const;
@@ -36,7 +36,7 @@ public:
 
 protected:
     void setOutput(medAbstractImageData* data);
-    virtual QString outputNameAddon() const {return "DWI mask";}
+    QString outputNameAddon() const override {return "DWI mask";}
 
 private:
     const QScopedPointer<medAbstractDWIMaskingProcessPrivate> d;

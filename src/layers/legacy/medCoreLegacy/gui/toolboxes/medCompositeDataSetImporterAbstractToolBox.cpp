@@ -27,7 +27,7 @@ medCompositeDataSetImporterAbstractToolBox::medCompositeDataSetImporterAbstractT
     d->parent  = nullptr;
 }
 
-medCompositeDataSetImporterAbstractToolBox::~medCompositeDataSetImporterAbstractToolBox(void)
+medCompositeDataSetImporterAbstractToolBox::~medCompositeDataSetImporterAbstractToolBox()
 {
     delete d;
 
@@ -39,7 +39,7 @@ void medCompositeDataSetImporterAbstractToolBox::setCompositeDataSetImporterTool
     d->parent = toolbox;
 }
 
-medCompositeDataSetImporterSelectorToolBox *medCompositeDataSetImporterAbstractToolBox::parent(void)
+medCompositeDataSetImporterSelectorToolBox *medCompositeDataSetImporterAbstractToolBox::parent()
 {
     return d->parent;
 }

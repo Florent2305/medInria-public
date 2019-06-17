@@ -27,7 +27,7 @@ public:
     // TO DO: when registration transforms are available, add transform output
 
 protected:
-    virtual QString outputNameAddon() const {return "symmetry aligned";}
+    QString outputNameAddon() const override {return "symmetry aligned";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractSymmetryPlaneAlignmentProcess, MEDCORE_EXPORT)

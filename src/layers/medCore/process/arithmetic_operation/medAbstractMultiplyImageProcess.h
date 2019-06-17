@@ -26,7 +26,7 @@ public:
     medAbstractMultiplyImageProcess(QObject *parent): medAbstractArithmeticOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "multiply image";}
+    QString outputNameAddon() const override {return "multiply image";}
 };
 
 DTK_DECLARE_OBJECT        (medAbstractMultiplyImageProcess*)

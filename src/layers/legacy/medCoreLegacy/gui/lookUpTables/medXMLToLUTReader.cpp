@@ -18,7 +18,8 @@
 
 #include <dtkLog>
 
-class medXMLToLUTReaderPrivate{
+class medXMLToLUTReaderPrivate
+{
 public:
     QXmlStreamReader xml;
     QList<medClutEditorTable *> *tables;
@@ -28,8 +29,7 @@ public:
 };
 
 
-medXMLToLUTReader::medXMLToLUTReader (QList<medClutEditorTable*> * tables):
-        d(new medXMLToLUTReaderPrivate)
+medXMLToLUTReader::medXMLToLUTReader (QList<medClutEditorTable*> * tables): d(new medXMLToLUTReaderPrivate)
 {
     d->tables = tables;
 }
@@ -83,10 +83,10 @@ void medXMLToLUTReaderPrivate::readLUT()
 void medXMLToLUTReaderPrivate::readTable()
  {
      Q_ASSERT(xml.isStartElement() && xml.name() == "table");
-     medClutEditorTable * table = new medClutEditorTable(
-             xml.attributes().value("title").toString());
+     medClutEditorTable * table = new medClutEditorTable( xml.attributes().value("title").toString());
 
-     while (xml.readNextStartElement()) {
+     while (xml.readNextStartElement())
+     {
          if (xml.name() == "node")
              readNode(*table);
          else

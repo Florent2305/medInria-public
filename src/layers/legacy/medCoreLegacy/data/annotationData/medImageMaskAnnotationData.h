@@ -35,15 +35,15 @@ class MEDCORELEGACY_EXPORT medImageMaskAnnotationData : public medAnnotationData
 
 public:
     medImageMaskAnnotationData();
-    virtual ~medImageMaskAnnotationData();
+    ~medImageMaskAnnotationData() override;
 
-    QString description() const;
-    QString identifier() const;
+    QString description() const override;
+    QString identifier() const override;
 
-    virtual void *data();
-    virtual void setData(void* data);
+    void *data() override;
+    void setData(void* data) override;
 
-    typedef QList< QPair<double, QColor> > ColorMapType;
+    using ColorMapType = QList< QPair<double, QColor> >;
     const ColorMapType & colorMap();
     void setColorMap(const ColorMapType & colorMap);
 

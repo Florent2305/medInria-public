@@ -26,10 +26,10 @@
 class MEDCORELEGACY_EXPORT medListWidget : public QListWidget
 {
 public:
-    medListWidget(QWidget *parent = 0):QListWidget(parent)
+    medListWidget(QWidget *parent = nullptr):QListWidget(parent)
     {}
 
-    virtual QSize sizeHint() const
+    QSize sizeHint() const override
     {
         int height = 0;
         for(int i=0; i< this->count(); i++)

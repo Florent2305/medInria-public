@@ -15,22 +15,10 @@
 
 #include <medAbstractData.h>
 
-class medAnnotationData::medAnnotationDataPrivate
-{
-public:
-};
 
-medAnnotationData::medAnnotationData()
-    : medAttachedData(),
-    d( new medAnnotationDataPrivate )
-{
-}
+medAnnotationData::medAnnotationData() = default;
 
-medAnnotationData::~medAnnotationData()
-{
-    delete d;
-    d = nullptr;
-}
+medAnnotationData::~medAnnotationData() = default;
 
 
 

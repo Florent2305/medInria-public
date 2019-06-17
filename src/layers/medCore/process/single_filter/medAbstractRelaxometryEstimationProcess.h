@@ -26,7 +26,7 @@ public:
     medAbstractRelaxometryEstimationProcess(QObject *parent): medAbstractSingleFilterOperationProcess(parent) {}
 
 protected:
-    virtual QString outputNameAddon() const {return "relaxometry map";}
+    QString outputNameAddon() const override {return "relaxometry map";}
 };
 
 DTK_DECLARE_PLUGIN_FACTORY(medAbstractRelaxometryEstimationProcess, MEDCORE_EXPORT)

@@ -70,7 +70,7 @@ signals:
 
 protected:
     medJobManagerL();
-    ~medJobManagerL();
+    ~medJobManagerL() override;
 
 protected:
     static medJobManagerL *s_instance;

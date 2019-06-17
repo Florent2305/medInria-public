@@ -36,7 +36,7 @@ class MEDCORELEGACY_EXPORT medRunnableProcess : public medJobItemL
 
 public:
      medRunnableProcess();
-    ~medRunnableProcess();
+    ~medRunnableProcess() override;
 
 
     void setProcess (dtkAbstractProcess *proc);
@@ -45,12 +45,12 @@ public:
 public slots:
     virtual void onSuccess();
     virtual void onFailure();
-    virtual void onProgressed (int);
+    virtual void onProgressed (int value);
 
-    virtual void onCancel (QObject*);
+    void onCancel (QObject* sender) override;
 
 protected:
-    virtual void internalRun();
+    void internalRun() override;
 
 private:
     medRunnableProcessPrivate *d;

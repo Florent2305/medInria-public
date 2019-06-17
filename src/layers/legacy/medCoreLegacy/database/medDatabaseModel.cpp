@@ -149,7 +149,7 @@ medDatabaseModel::medDatabaseModel(QObject *parent, bool justBringStudies) : QAb
     connect(medDataManager::instance(), SIGNAL(metadataModified(medDataIndex,QString,QString)), this, SLOT(update(medDataIndex)), Qt::QueuedConnection);
 }
 
-medDatabaseModel::~medDatabaseModel(void)
+medDatabaseModel::~medDatabaseModel()
 {
     delete d->root;
     delete d;
@@ -434,12 +434,12 @@ bool medDatabaseModel::removeRows(int position, int rows, const QModelIndex& par
 // Drag and drop support
 // /////////////////////////////////////////////////////////////////
 
-QStringList medDatabaseModel::mimeTypes(void) const
+QStringList medDatabaseModel::mimeTypes() const
 {
     return QAbstractItemModel::mimeTypes() << "med/index" << "med/DbItem";
 }
 
-Qt::DropActions medDatabaseModel::supportedDropActions(void) const
+Qt::DropActions medDatabaseModel::supportedDropActions() const
 {
     return Qt::CopyAction | Qt::MoveAction | Qt::LinkAction;
 }
@@ -508,7 +508,7 @@ bool medDatabaseModel::dropMimeData(const QMimeData *data, Qt::DropAction action
 // Initialization
 // /////////////////////////////////////////////////////////////////
 
-void medDatabaseModel::repopulate(void)
+void medDatabaseModel::repopulate()
 {
     beginResetModel();
 
@@ -535,8 +535,8 @@ void medDatabaseModel::repopulate(void)
 
 void medDatabaseModel::populate(medAbstractDatabaseItem *root)
 {
-    typedef QList<int> IntList;
-    typedef QList<medDataIndex> IndexList;
+    using IntList = QList<int>;
+    using IndexList = QList<medDataIndex>;
 
     IntList dataSources;
     dataSources << medDatabaseController::instance()->dataSourceId()

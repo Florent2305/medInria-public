@@ -27,7 +27,7 @@ public:
  * @param void
  * @return medSettingsWidgetFactory * Factory instance
 */
-medSettingsWidgetFactory *medSettingsWidgetFactory::instance(void)
+medSettingsWidgetFactory *medSettingsWidgetFactory::instance()
 {
     if(!s_instance)
         s_instance = new medSettingsWidgetFactory;
@@ -57,7 +57,7 @@ bool medSettingsWidgetFactory::registerSettingsWidget(const QString& type,
  *
  * @return QList<QString>
 */
-QList<QString> medSettingsWidgetFactory::settingsWidgets(void)
+QList<QString> medSettingsWidgetFactory::settingsWidgets()
 {
     return d->creators.keys();
 }
@@ -95,7 +95,7 @@ medSettingDetails * medSettingsWidgetFactory::settingDetailsFromId(
  *
  * @param void
 */
-medSettingsWidgetFactory::medSettingsWidgetFactory(void) : dtkAbstractFactory(), d(new medSettingsWidgetFactoryPrivate)
+medSettingsWidgetFactory::medSettingsWidgetFactory() :  d(new medSettingsWidgetFactoryPrivate)
 {
 
 }
@@ -107,7 +107,7 @@ medSettingsWidgetFactory::medSettingsWidgetFactory(void) : dtkAbstractFactory(),
  *
  * @param void
 */
-medSettingsWidgetFactory::~medSettingsWidgetFactory(void)
+medSettingsWidgetFactory::~medSettingsWidgetFactory()
 {
     qDeleteAll(d->creators);
     d->creators.clear();

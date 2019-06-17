@@ -26,9 +26,7 @@ medBoolParameterGroup::medBoolParameterGroup(QObject *parent)
 {
 }
 
-medBoolParameterGroup::~medBoolParameterGroup()
-{
-}
+medBoolParameterGroup::~medBoolParameterGroup() = default;
 
 void medBoolParameterGroup::addBoolParameter(medBoolParameter *param)
 {

@@ -27,8 +27,8 @@ class MEDCORELEGACY_EXPORT medTimeLineParameterL : public medAbstractGroupParame
     Q_OBJECT
 
 public:
-    medTimeLineParameterL(QString name = "Unknow timeLine parameter", QObject* parent = 0);
-    virtual ~medTimeLineParameterL();
+    medTimeLineParameterL(QString name = "Unknow timeLine parameter", QObject* parent = nullptr);
+    ~medTimeLineParameterL() override;
 
     void clear();
 
@@ -43,7 +43,7 @@ public:
     unsigned int mapTimeToFrame(const double& time);
     double mapFrameToTime(int frame);
 
-    virtual void trigger();
+    void trigger() override;
 
 public slots:
     void setSpeedFactor(int speedFactor);
@@ -59,8 +59,8 @@ public slots:
     void previousFrame();
     void nextFrame();
 
-    virtual QWidget* getWidget();
-    virtual QList<medAbstractParameterL*> parametersCandidateToPool() const;
+    QWidget* getWidget() override;
+    QList<medAbstractParameterL*> parametersCandidateToPool() const override;
 
 signals:
     void playing(bool isPlaying);

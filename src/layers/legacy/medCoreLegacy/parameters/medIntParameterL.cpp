@@ -27,11 +27,8 @@ public:
 
     ~medIntParameterLPrivate()
     {
-        if(spinBox)
-            delete spinBox;
-
-        if(slider)
-            delete slider;
+        delete spinBox;
+        delete slider;
     }
 };
 

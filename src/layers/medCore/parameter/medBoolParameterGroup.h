@@ -25,7 +25,7 @@ class MEDCORE_EXPORT medBoolParameterGroup : public QObject
 
 public:
     medBoolParameterGroup(QObject *parent = nullptr);
-    virtual ~medBoolParameterGroup();
+    ~medBoolParameterGroup() override;
 
     void addBoolParameter(medBoolParameter *param);
     QList <medBoolParameter *> &parameters();

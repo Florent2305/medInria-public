@@ -139,9 +139,11 @@ void medSettingsEditor::onAdvancedClicked()
 void medSettingsEditor::initialize()
 {
     if (d->isInitialized)
+    {
         return;
+    }
 
-    QVBoxLayout * vLayout = new QVBoxLayout(this);
+    auto * vLayout = new QVBoxLayout(this);
     d->stack = new QStackedWidget();
     d->stack->setFocusPolicy(Qt::NoFocus);
     d->tabWidget = new QTabWidget ();
@@ -196,10 +198,12 @@ void medSettingsEditor::initialize()
         this,SLOT(onResetClicked()));
 
     // the row of buttons
-    QHBoxLayout * buttonLayout = new QHBoxLayout();
+    auto * buttonLayout = new QHBoxLayout();
     buttonLayout->addStretch(1);
     if (d->isUsingAdvancedWidget)
-        buttonLayout->addWidget(d->advanced,1);
+    {
+        buttonLayout->addWidget(d->advanced, 1);
+    }
     buttonLayout->addWidget(d->reset,1);
     buttonLayout->addWidget(d->cancel,1);
     buttonLayout->addWidget(d->save,1);

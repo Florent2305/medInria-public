@@ -51,8 +51,8 @@ class MEDCORELEGACY_EXPORT medAbstractWorkspaceLegacy : public QObject
 
 public:
 
-    medAbstractWorkspaceLegacy(QWidget *parent=0);
-    virtual ~medAbstractWorkspaceLegacy();
+    medAbstractWorkspaceLegacy(QWidget *parent = nullptr);
+    ~medAbstractWorkspaceLegacy() override;
 
     virtual QString identifier() const = 0;
     virtual QString name() const = 0;
@@ -61,9 +61,9 @@ public:
 
     QList <medToolBox*> toolBoxes() const;
     medToolBox* selectionToolBox() const;
-    void setDatabaseVisibility(bool);
+    void setDatabaseVisibility(bool visibility);
     bool isDatabaseVisible() const;
-    void setToolBoxesVisibility(bool);
+    void setToolBoxesVisibility(bool value);
     bool areToolBoxesVisible() const;
     virtual void setupTabbedViewContainer() = 0;
     medTabbedViewContainers * tabbedViewContainers() const;
@@ -92,31 +92,31 @@ protected slots:
     void changeCurrentLayer(int row);
     void removeLayer();
 
-    void addViewGroup(QString);
-    void addLayerGroup(QString);
-    void addViewGroup(medViewParameterGroupL*);
-    void addLayerGroup(medLayerParameterGroupL*);
-    void setViewGroups(QList<medViewParameterGroupL*>);
-    void setLayerGroups(QList<medLayerParameterGroupL*>);
+    void addViewGroup(QString group);
+    void addLayerGroup(QString group);
+    void addViewGroup(medViewParameterGroupL *group);
+    void addLayerGroup(medLayerParameterGroupL *group);
+    void setViewGroups(QList<medViewParameterGroupL*> groups);
+    void setLayerGroups(QList<medLayerParameterGroupL*> groups);
 
 private slots:
     void buildTemporaryPool();
 
-    void addViewstoGroup(QString);
-    void removeViewsFromGroup(QString);
+    void addViewstoGroup(QString group);
+    void removeViewsFromGroup(QString group);
 
-    void addLayerstoGroup(QString);
-    void removeLayersFromGroup(QString);
+    void addLayerstoGroup(QString group);
+    void removeLayersFromGroup(QString group);
 
-    void removeViewGroup(QString);
-    void removeLayerGroup(QString);
+    void removeViewGroup(QString group);
+    void removeLayerGroup(QString group);
 
     void changeViewGroupColor(QString group, QColor color);
     void changeLayerGroupColor(QString group, QColor color);
 
 private:
     QWidget* buildViewLinkMenu();
-    QWidget* buildLayerLinkMenu(QList<QListWidgetItem*>);
+    QWidget* buildLayerLinkMenu(QList<QListWidgetItem*> selectedlayers);
 
 private:
     medAbstractWorkspaceLegacyPrivate *d;

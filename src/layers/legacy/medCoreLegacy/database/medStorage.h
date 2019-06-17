@@ -30,7 +30,7 @@ public:
     static QString   dataLocation();
     static QString configLocation();
 
-    static void setDataLocation(QString);
+    static void setDataLocation(QString newLocation);
 
     static bool copyFiles(QStringList sourceList, QStringList destList);
     static bool createDestination(QStringList sourceList, QStringList& destList, QString sourceDir, QString destDir);

@@ -37,9 +37,9 @@ public:
     QStringList pools(medAbstractParameterL *param);
 
 public slots:
-    void linkParameter(medAbstractParameterL*, QString poolId);
-    void unlinkParameter(medAbstractParameterL*);
-    void removePool(QString);
+    void linkParameter(medAbstractParameterL *parameter, QString poolId);
+    void unlinkParameter(medAbstractParameterL *parameter);
+    void removePool(QString poolId);
 
 protected:
     medParameterPoolManagerL();

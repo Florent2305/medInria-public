@@ -25,8 +25,8 @@ class MEDCORELEGACY_EXPORT medAbstractParameterGroupL : public QObject
     Q_OBJECT
 
 public:
-    medAbstractParameterGroupL(QString name = "", QObject *parent = 0, QString workspace = "");
-    virtual ~medAbstractParameterGroupL();
+    medAbstractParameterGroupL(QString name = "", QObject *parent = nullptr, QString workspace = "");
+    ~medAbstractParameterGroupL() override;
 
     void setName(QString name);
     QString name() const;

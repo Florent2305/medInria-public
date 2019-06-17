@@ -28,7 +28,7 @@ class MEDCORE_EXPORT  medAbstractArithmeticOperationProcess : public medAbstract
 
 public:
     medAbstractArithmeticOperationProcess(QObject *parent = nullptr);
-    virtual ~medAbstractArithmeticOperationProcess();
+    ~medAbstractArithmeticOperationProcess() override;
 
     void setInput1(medAbstractImageData* data);
     medAbstractImageData* input1() const;
@@ -40,7 +40,7 @@ public:
 
 protected:
     void setOutput(medAbstractImageData* data);
-    virtual QString outputNameAddon() const {return "arithmetic";}
+    QString outputNameAddon() const override {return "arithmetic";}
 
 private:
     const QScopedPointer<medAbstractArithmeticOperationProcessPrivate> d;

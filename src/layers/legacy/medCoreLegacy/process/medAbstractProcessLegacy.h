@@ -30,11 +30,11 @@ class MEDCORELEGACY_EXPORT medAbstractProcessLegacy : public dtkAbstractProcess
 
 public:
     medAbstractProcessLegacy( medAbstractProcessLegacy * parent = nullptr );
-    virtual ~medAbstractProcessLegacy();
+    ~medAbstractProcessLegacy() override;
 
 public slots:
-    virtual medAbstractData *output() = 0;
-    virtual int update () = 0;
+    medAbstractData *output() override = 0;
+    int update () override = 0;
 
 private:
     using dtkAbstractProcess::onCanceled;

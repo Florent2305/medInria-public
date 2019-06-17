@@ -27,7 +27,7 @@ medAttachedData::medAttachedData( medAttachedData * parentData )
     d->parentData = parentData;
 }
 
-medAttachedData::~medAttachedData( void )
+medAttachedData::~medAttachedData()
 {
     delete d;
 }

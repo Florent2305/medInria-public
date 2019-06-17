@@ -27,7 +27,7 @@ public:
 // medAbstractFibersData
 // /////////////////////////////////////////////////////////////////
 
-medAbstractFibersData::medAbstractFibersData(void) : medAbstractData(), d(new medAbstractFibersDataPrivate)
+medAbstractFibersData::medAbstractFibersData() : d(new medAbstractFibersDataPrivate)
 {
 }
 
@@ -35,13 +35,13 @@ medAbstractFibersData::medAbstractFibersData(const  medAbstractFibersData& other
 {
 }
 
-medAbstractFibersData::~medAbstractFibersData(void)
+medAbstractFibersData::~medAbstractFibersData()
 {
     delete d;
     d = nullptr;
 }
 
-void *medAbstractFibersData::fibers(void)
+void *medAbstractFibersData::fibers()
 {
     return this->data();
 }
