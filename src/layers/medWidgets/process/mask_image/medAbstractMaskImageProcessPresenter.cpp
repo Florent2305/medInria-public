@@ -46,9 +46,7 @@ medAbstractMaskImageProcessPresenter::medAbstractMaskImageProcessPresenter(medAb
             Qt::QueuedConnection);
 }
 
-medAbstractMaskImageProcessPresenter::~medAbstractMaskImageProcessPresenter()
-{
-}
+medAbstractMaskImageProcessPresenter::~medAbstractMaskImageProcessPresenter() = default;
 
 QWidget *medAbstractMaskImageProcessPresenter::buildToolBoxWidget()
 {

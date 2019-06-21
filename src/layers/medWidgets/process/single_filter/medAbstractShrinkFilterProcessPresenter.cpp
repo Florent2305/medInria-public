@@ -47,9 +47,7 @@ medAbstractShrinkFilterProcessPresenter::medAbstractShrinkFilterProcessPresenter
     d->shrinkFactor3 = new medIntParameterPresenter(parent->shrinkFactor3());
 }
 
-medAbstractShrinkFilterProcessPresenter::~medAbstractShrinkFilterProcessPresenter()
-{
-}
+medAbstractShrinkFilterProcessPresenter::~medAbstractShrinkFilterProcessPresenter() = default;
 
 QWidget *medAbstractShrinkFilterProcessPresenter::buildToolBoxWidget()
 {

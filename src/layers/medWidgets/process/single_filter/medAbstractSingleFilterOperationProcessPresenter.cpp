@@ -47,9 +47,7 @@ medAbstractSingleFilterOperationProcessPresenter::medAbstractSingleFilterOperati
             Qt::QueuedConnection);
 }
 
-medAbstractSingleFilterOperationProcessPresenter::~medAbstractSingleFilterOperationProcessPresenter()
-{
-}
+medAbstractSingleFilterOperationProcessPresenter::~medAbstractSingleFilterOperationProcessPresenter() = default;
 
 medIntParameterPresenter *medAbstractSingleFilterOperationProcessPresenter::progressionPresenter()
 {

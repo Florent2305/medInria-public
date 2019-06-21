@@ -52,11 +52,11 @@ public:
 
 medDiffusionSelectorToolBox::medDiffusionSelectorToolBox(QWidget *parent, SelectorType type) : medToolBox(parent), d(new medDiffusionSelectorToolBoxPrivate)
 {
-    d->currentProcess = 0;
-    d->currentProcessPresenter = 0;
-    d->currentToolBox = 0;
-    d->processOutput = 0;
-    d->methodCombo = 0;
+    d->currentProcess = nullptr;
+    d->currentProcessPresenter = nullptr;
+    d->currentToolBox = nullptr;
+    d->processOutput = nullptr;
+    d->methodCombo = nullptr;
     d->selectorType = type;
 
     // /////////////////////////////////////////////////////////////////
@@ -206,7 +206,7 @@ void medDiffusionSelectorToolBox::chooseProcess(int id)
     {
         d->currentToolBox->hide();
         d->mainLayout->removeWidget ( d->currentToolBox );
-        d->currentToolBox = 0;
+        d->currentToolBox = nullptr;
     }
 
     d->currentToolBox = d->currentProcessPresenter->buildToolBoxWidget();
@@ -216,7 +216,7 @@ void medDiffusionSelectorToolBox::chooseProcess(int id)
 medAbstractData *medDiffusionSelectorToolBox::processOutput()
 {
     if (!d->currentProcess)
-        return 0;
+        return nullptr;
 
     switch(d->selectorType)
     {
@@ -318,7 +318,7 @@ void medDiffusionSelectorToolBox::clearInputs()
 
 void medDiffusionSelectorToolBox::clear(void)
 {
-    d->currentToolBox = 0;
+    d->currentToolBox = nullptr;
 
     d->methodCombo->blockSignals (true);
     d->methodCombo->setCurrentIndex (0);

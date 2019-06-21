@@ -35,9 +35,7 @@ medAbstractMedianFilterProcessPresenter::medAbstractMedianFilterProcessPresenter
     d->radius = new medIntParameterPresenter(parent->radius());
 }
 
-medAbstractMedianFilterProcessPresenter::~medAbstractMedianFilterProcessPresenter()
-{
-}
+medAbstractMedianFilterProcessPresenter::~medAbstractMedianFilterProcessPresenter() = default;
 
 QWidget *medAbstractMedianFilterProcessPresenter::buildToolBoxWidget()
 {

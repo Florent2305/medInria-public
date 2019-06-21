@@ -48,9 +48,7 @@ medAbstractMorphomathOperationProcessPresenter::medAbstractMorphomathOperationPr
             Qt::QueuedConnection);
 }
 
-medAbstractMorphomathOperationProcessPresenter::~medAbstractMorphomathOperationProcessPresenter()
-{
-}
+medAbstractMorphomathOperationProcessPresenter::~medAbstractMorphomathOperationProcessPresenter() = default;
 
 QWidget *medAbstractMorphomathOperationProcessPresenter::buildToolBoxWidget()
 {

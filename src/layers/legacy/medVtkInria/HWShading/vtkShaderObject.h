@@ -57,7 +57,7 @@ public:
     vtkDebugMacro(<< this->GetClassName() << " (" << this << "): setting SourceText to " << (_arg?_arg:"(null)") );
     if ( this->SourceText == nullptr && _arg == nullptr) { return;}
     if ( this->SourceText && _arg && (!strcmp(this->SourceText,_arg))) { return;}
-    if (this->SourceText) { delete [] this->SourceText; }
+    delete [] (this->SourceText); 
     if (_arg)
       {
       this->SourceText = new char[strlen(_arg)+1];
@@ -81,7 +81,7 @@ public:
 
 protected:
   vtkShaderObject();
-  ~vtkShaderObject();
+  ~vtkShaderObject() override;
 
   virtual bool CreateGlShader() = 0;
   virtual bool DeleteGlShader();

@@ -41,10 +41,7 @@ medIntParameterPresenter::medIntParameterPresenter(QString const& newParameterId
 
 }
 
-medIntParameterPresenter::~medIntParameterPresenter()
-{
-
-}
+medIntParameterPresenter::~medIntParameterPresenter() = default;
 
 medIntParameter* medIntParameterPresenter::parameter() const
 {

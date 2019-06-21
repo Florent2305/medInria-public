@@ -28,20 +28,20 @@ class MEDVTKINRIA_EXPORT vtkRulerWidget : public vtkInteractorObserver
  public:
   static vtkRulerWidget *New();
   vtkTypeMacro(vtkRulerWidget, vtkInteractorObserver);
-  void PrintSelf(ostream& os, vtkIndent indent) {};
+  void PrintSelf(ostream& os, vtkIndent indent)  override {};
+  vtkRulerWidget(const vtkRulerWidget&) = delete;
+  void operator=(const vtkRulerWidget&) = delete;
 
-  virtual void SetEnabled(int);
+  void SetEnabled(int enabling) override;
 
   void ExecuteCameraUpdateEvent(vtkObject *o, unsigned long event, void *calldata);
 
  protected:
   vtkRulerWidget();
-  ~vtkRulerWidget();
+  ~vtkRulerWidget() override;
 
 
  private:
-  vtkRulerWidget(const vtkRulerWidget&);
-  void operator=(const vtkRulerWidget&);
 
   vtkRulerWidgetObserver *Observer;
   unsigned long StartEventObserverId;

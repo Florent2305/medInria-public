@@ -48,9 +48,7 @@ medAbstractWindowingFilterProcessPresenter::medAbstractWindowingFilterProcessPre
     d->maximumOutputIntensityValue = new medDoubleParameterPresenter(parent->maximumOutputIntensityValue());
 }
 
-medAbstractWindowingFilterProcessPresenter::~medAbstractWindowingFilterProcessPresenter()
-{
-}
+medAbstractWindowingFilterProcessPresenter::~medAbstractWindowingFilterProcessPresenter() = default;
 
 QWidget *medAbstractWindowingFilterProcessPresenter::buildToolBoxWidget()
 {

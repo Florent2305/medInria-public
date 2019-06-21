@@ -45,10 +45,7 @@ medAbstractParameterPresenter::medAbstractParameterPresenter(medAbstractParamete
     d->isEnable = true;
 }
 
-medAbstractParameterPresenter::~medAbstractParameterPresenter()
-{
-
-}
+medAbstractParameterPresenter::~medAbstractParameterPresenter() = default;
 
 void medAbstractParameterPresenter::setVisible(bool visibility)
 {

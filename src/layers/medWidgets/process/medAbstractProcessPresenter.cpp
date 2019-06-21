@@ -39,10 +39,7 @@ medAbstractProcessPresenter::medAbstractProcessPresenter(medAbstractProcess*pare
     d->process = parent;
 }
 
-medAbstractProcessPresenter::~medAbstractProcessPresenter()
-{
-
-}
+medAbstractProcessPresenter::~medAbstractProcessPresenter() = default;
 
 QPushButton* medAbstractProcessPresenter::buildRunButton()
 {

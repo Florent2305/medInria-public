@@ -43,21 +43,19 @@ vtkImageFromBoundsSource::vtkImageFromBoundsSource()
     this->OutputImageBounds[4] =  0.0;
     this->OutputImageBounds[5] = -1.0;
 
-    this->SpacingSet = 0;
+    this->SpacingSet = false;
     this->OriginSet = 0;
-    this->ImageBoundsSet = 0;
+    this->ImageBoundsSet = false;
 
     this->OutValue = 0.0;
-    this->OutValueSet =0;
+    this->OutValueSet = false;
 
     this->OutputScalarType = VTK_UNSIGNED_CHAR;
     this->SetNumberOfInputPorts(0);
 }
 
 //----------------------------------------------------------------------------
-vtkImageFromBoundsSource::~vtkImageFromBoundsSource()
-{
-}
+vtkImageFromBoundsSource::~vtkImageFromBoundsSource() = default;
 
 //----------------------------------------------------------------------------
 void vtkImageFromBoundsSource::PrintSelf(ostream& os, vtkIndent indent)
@@ -89,7 +87,7 @@ void vtkImageFromBoundsSource::SetOutputImageBounds(const double bounds[6])
             this->Modified();
         }
     }
-    this->ImageBoundsSet = 1;
+    this->ImageBoundsSet = true;
 }
 
 //----------------------------------------------------------------------------
@@ -107,13 +105,13 @@ void vtkImageFromBoundsSource::SetOutputImageBounds(double minX, double maxX,
 
 
 //----------------------------------------------------------------------------
-void vtkImageFromBoundsSource::GetOutputImageBounds(double bounds[6])
+void vtkImageFromBoundsSource::GetOutputImageBounds(double extent[6])
 {
     int idx;
 
     for (idx = 0; idx < 6; ++idx)
     {
-        bounds[idx] = this->OutputImageBounds[idx];
+        extent[idx] = this->OutputImageBounds[idx];
     }
 }
 
@@ -142,7 +140,7 @@ int vtkImageFromBoundsSource::RequestInformation (
         if (!this->SpacingSet)
         {
             for (unsigned int i=0; i<3; i++)
-                this->OutputImageSpacing[i] = (this->OutputImageBounds[2*i+1] - this->OutputImageBounds[2*i])/(double)this->OutputImageSize[i];
+                this->OutputImageSpacing[i] = (this->OutputImageBounds[2*i+1] - this->OutputImageBounds[2*i])/static_cast<double>(this->OutputImageSize[i]);
         }
 
         // get the info objects

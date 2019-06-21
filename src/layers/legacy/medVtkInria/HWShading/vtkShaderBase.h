@@ -73,7 +73,7 @@ public:
 
 protected:
     vtkShaderBase();
-    ~vtkShaderBase();
+    ~vtkShaderBase() override;
 
 private:
 

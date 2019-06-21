@@ -54,10 +54,7 @@ medDoubleParameterPresenter::medDoubleParameterPresenter(QString const& newParam
 
 }
 
-medDoubleParameterPresenter::~medDoubleParameterPresenter()
-{
-
-}
+medDoubleParameterPresenter::~medDoubleParameterPresenter() = default;
 
 medDoubleParameter* medDoubleParameterPresenter::parameter() const
 {

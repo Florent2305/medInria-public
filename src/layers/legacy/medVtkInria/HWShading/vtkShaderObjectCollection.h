@@ -39,7 +39,7 @@ public:
    */
   void AddItem(vtkShaderObject* so)
     {
-    this->vtkCollection::AddItem((vtkObject*)so);
+        this->vtkCollection::AddItem(static_cast<vtkObject*>(so));
     };
 
   /**
@@ -60,8 +60,8 @@ public:
     };
 
 protected:
-  vtkShaderObjectCollection() {};
-  ~vtkShaderObjectCollection() {};
+  vtkShaderObjectCollection() = default;
+  ~vtkShaderObjectCollection()  override = default;
 
 private:
   // hide the standard AddItem from the user and the compiler.

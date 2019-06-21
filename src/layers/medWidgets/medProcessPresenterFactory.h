@@ -20,7 +20,7 @@
 template <typename ProcessType, typename PresenterType> class medProcessPresenterFactory
 {
 public:
-    typedef PresenterType *(*creator) (medAbstractProcess *);
+    using creator = PresenterType* (*) (medAbstractProcess *);
 
 public:
     PresenterType *create(medAbstractProcess *process) const;

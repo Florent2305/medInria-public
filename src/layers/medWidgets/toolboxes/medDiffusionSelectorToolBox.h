@@ -36,8 +36,8 @@ public:
         Tractography
     };
 
-     medDiffusionSelectorToolBox(QWidget *parent = 0, SelectorType type = Estimation);
-    ~medDiffusionSelectorToolBox();
+     medDiffusionSelectorToolBox(QWidget *parent = nullptr, SelectorType type = Estimation);
+    ~medDiffusionSelectorToolBox() override;
 
     void addInputImage(medAbstractImageData *data);
     void clearInputs();
@@ -45,7 +45,7 @@ public:
     medAbstractData *processOutput();
 
 public slots:
-    void clear();
+    void clear() override;
     void chooseProcess(int id);
     void updateCurrentProcessInput(int index);
 

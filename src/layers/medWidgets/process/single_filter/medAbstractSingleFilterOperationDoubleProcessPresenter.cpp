@@ -42,9 +42,7 @@ medAbstractSingleFilterOperationDoubleProcessPresenter::medAbstractSingleFilterO
     d->parameterPresenter = new medDoubleParameterPresenter(parent->doubleParameter());
 }
 
-medAbstractSingleFilterOperationDoubleProcessPresenter::~medAbstractSingleFilterOperationDoubleProcessPresenter()
-{
-}
+medAbstractSingleFilterOperationDoubleProcessPresenter::~medAbstractSingleFilterOperationDoubleProcessPresenter() = default;
 
 QWidget *medAbstractSingleFilterOperationDoubleProcessPresenter::buildToolBoxWidget()
 {

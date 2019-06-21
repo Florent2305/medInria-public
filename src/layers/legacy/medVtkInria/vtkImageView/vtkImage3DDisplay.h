@@ -40,9 +40,12 @@ public:
 
     vtkAlgorithmOutput* GetOutputPort();
 
+    vtkImage3DDisplay(const vtkImage3DDisplay&) = delete;
+    void operator=(const vtkImage3DDisplay&) = delete;
+
 protected:
     vtkImage3DDisplay();
-    ~vtkImage3DDisplay();
+    ~vtkImage3DDisplay() override;
 
 private:
     //vtkSmartPointer<vtkImageData>               InputImageOld;
@@ -54,7 +57,4 @@ private:
     bool UseLookupTable;
     vtkSmartPointer<vtkLookupTable>             LookupTable;
     medVtkImageInfo                             m_sVtkImageInfo;
-
-    vtkImage3DDisplay(const vtkImage3DDisplay&);
-    void operator=(const vtkImage3DDisplay&);
 };

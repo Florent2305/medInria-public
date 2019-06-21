@@ -60,15 +60,13 @@ medDiffusionModelEstimationMetaProcessPresenter::medDiffusionModelEstimationMeta
             this, &medDiffusionModelEstimationMetaProcessPresenter::_importOutput,
             Qt::QueuedConnection);
 
-    d->modelEstimationPresenter = 0;
-    d->dwiMaskCalculatorPresenter = 0;
-    d->dwiMaskCalculatorWidget = 0;
-    d->modelEstimationWidget = 0;
+    d->modelEstimationPresenter = nullptr;
+    d->dwiMaskCalculatorPresenter = nullptr;
+    d->dwiMaskCalculatorWidget = nullptr;
+    d->modelEstimationWidget = nullptr;
 }
 
-medDiffusionModelEstimationMetaProcessPresenter::~medDiffusionModelEstimationMetaProcessPresenter()
-{
-}
+medDiffusionModelEstimationMetaProcessPresenter::~medDiffusionModelEstimationMetaProcessPresenter() = default;
 
 medDiffusionModelEstimationMetaProcess *medDiffusionModelEstimationMetaProcessPresenter::process() const
 {

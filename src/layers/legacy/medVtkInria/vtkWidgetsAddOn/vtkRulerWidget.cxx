@@ -37,10 +37,10 @@ public:
 
   vtkRulerWidgetObserver()
   {
-    this->RulerWidget = 0;
+    this->RulerWidget = nullptr;
   }
 
-  virtual void Execute(vtkObject* wdg, unsigned long event, void *calldata)
+  void Execute(vtkObject* wdg, unsigned long event, void *calldata) override
   {
     if (this->RulerWidget)
     {

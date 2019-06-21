@@ -6,8 +6,7 @@ vtkStandardNewMacro(vtkImage3DDisplay);
 
 vtkImage3DDisplay::vtkImage3DDisplay()
 {
-    //this->InputImageOld = 0;
-    this->InputConnection = 0;
+    this->InputConnection = nullptr;
     this->Opacity = 1.0;
     this->Visibility = 1;
     this->ColorWindow = 1e-3 * VTK_DOUBLE_MAX;

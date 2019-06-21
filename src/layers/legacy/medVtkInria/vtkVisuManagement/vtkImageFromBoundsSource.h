@@ -22,7 +22,7 @@ class MEDVTKINRIA_EXPORT vtkImageFromBoundsSource : public vtkImageAlgorithm
 public:
   static vtkImageFromBoundsSource *New();
   vtkTypeMacro(vtkImageFromBoundsSource,vtkImageAlgorithm);
-  void PrintSelf(ostream& os, vtkIndent indent);   
+  void PrintSelf(ostream& os, vtkIndent indent) override;
   
   // Description:
   // Set/Get the extent of the whole output image.
@@ -47,7 +47,7 @@ public:
   {
     for (unsigned int i=0; i<3; i++)
       this->OutputImageSpacing[i] = spacing[i];
-    this->SpacingSet = 1;
+    this->SpacingSet = true;
   }
   const double* GetOutputImageSpacing() const
   {
@@ -69,7 +69,7 @@ public:
   void SetOutValue (const double out)
   {
       this->OutValue = out;
-      this->OutValueSet = 1;
+      this->OutValueSet = true;
   }
 
   vtkGetMacro(OutValue,double);
@@ -98,10 +98,13 @@ public:
     {this->SetOutputScalarType(VTK_CHAR);}
   void SetOutputScalarTypeToUnsignedChar()
     {this->SetOutputScalarType(VTK_UNSIGNED_CHAR);}
+
+  vtkImageFromBoundsSource(const vtkImageFromBoundsSource&) = delete;
+  void operator=(const vtkImageFromBoundsSource&) = delete;
   
 protected:
   vtkImageFromBoundsSource();
-  ~vtkImageFromBoundsSource();
+  ~vtkImageFromBoundsSource() override;
 
   double OutputImageSpacing[3];
   bool SpacingSet;
@@ -120,16 +123,11 @@ protected:
 
   int OutputScalarType;
   
-  virtual int RequestInformation (vtkInformation *, 
-                                  vtkInformationVector **, 
-                                  vtkInformationVector *);
+  int RequestInformation (vtkInformation *, vtkInformationVector **, vtkInformationVector *) override;
 
-  virtual int RequestData(vtkInformation *, 
-                          vtkInformationVector **, vtkInformationVector *);
+  int RequestData(vtkInformation *, vtkInformationVector **, vtkInformationVector *) override;
 
 private:
-  vtkImageFromBoundsSource(const vtkImageFromBoundsSource&);  // Not implemented.
-  void operator=(const vtkImageFromBoundsSource&);  // Not implemented.
 };
 
 

@@ -36,10 +36,7 @@ medBoolParameterPresenter::medBoolParameterPresenter(QString const& newParameter
 
 }
 
-medBoolParameterPresenter::~medBoolParameterPresenter()
-{
-
-}
+medBoolParameterPresenter::~medBoolParameterPresenter() = default;
 
 medBoolParameter* medBoolParameterPresenter::parameter() const
 {

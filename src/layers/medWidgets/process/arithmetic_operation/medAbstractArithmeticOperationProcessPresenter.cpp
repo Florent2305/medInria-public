@@ -45,9 +45,7 @@ medAbstractArithmeticOperationProcessPresenter::medAbstractArithmeticOperationPr
             Qt::QueuedConnection);
 }
 
-medAbstractArithmeticOperationProcessPresenter::~medAbstractArithmeticOperationProcessPresenter()
-{
-}
+medAbstractArithmeticOperationProcessPresenter::~medAbstractArithmeticOperationProcessPresenter() = default;
 
 QWidget *medAbstractArithmeticOperationProcessPresenter::buildToolBoxWidget()
 {

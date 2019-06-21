@@ -68,7 +68,7 @@ public:
 
 protected:
   vtkShaderUniform();
-  ~vtkShaderUniform();
+  ~vtkShaderUniform() override;
 
   //vtkGetMacro(Location, GLint);
 

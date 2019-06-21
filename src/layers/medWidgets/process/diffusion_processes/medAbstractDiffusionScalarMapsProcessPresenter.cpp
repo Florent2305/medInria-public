@@ -41,9 +41,7 @@ medAbstractDiffusionScalarMapsProcessPresenter::medAbstractDiffusionScalarMapsPr
             Qt::QueuedConnection);
 }
 
-medAbstractDiffusionScalarMapsProcessPresenter::~medAbstractDiffusionScalarMapsProcessPresenter()
-{
-}
+medAbstractDiffusionScalarMapsProcessPresenter::~medAbstractDiffusionScalarMapsProcessPresenter() = default;
 
 QWidget *medAbstractDiffusionScalarMapsProcessPresenter::buildToolBoxWidget()
 {

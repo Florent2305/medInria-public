@@ -57,7 +57,7 @@ public:
 
 protected:
   vtkShaderBaseHandle();
-  ~vtkShaderBaseHandle();
+  ~vtkShaderBaseHandle() override;
 
   /**
    * Deletes the shader program or object associated with this->Handle

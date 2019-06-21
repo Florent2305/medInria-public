@@ -37,10 +37,7 @@ medStringParameterPresenter::medStringParameterPresenter(QString const& newParam
 
 }
 
-medStringParameterPresenter::~medStringParameterPresenter()
-{
-
-}
+medStringParameterPresenter::~medStringParameterPresenter() = default;
 
 medStringParameter* medStringParameterPresenter::parameter() const
 {

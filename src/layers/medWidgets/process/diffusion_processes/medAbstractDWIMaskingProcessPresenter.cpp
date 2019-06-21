@@ -39,9 +39,7 @@ medAbstractDWIMaskingProcessPresenter::medAbstractDWIMaskingProcessPresenter(med
             this, &medAbstractDWIMaskingProcessPresenter::_importOutput);
 }
 
-medAbstractDWIMaskingProcessPresenter::~medAbstractDWIMaskingProcessPresenter()
-{
-}
+medAbstractDWIMaskingProcessPresenter::~medAbstractDWIMaskingProcessPresenter() = default;
 
 
 void medAbstractDWIMaskingProcessPresenter::setUseRunControls(bool useRun)

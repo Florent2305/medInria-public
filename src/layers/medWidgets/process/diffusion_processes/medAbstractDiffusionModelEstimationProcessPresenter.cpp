@@ -52,9 +52,7 @@ medAbstractDiffusionModelEstimationProcessPresenter::medAbstractDiffusionModelEs
             Qt::QueuedConnection);
 }
 
-medAbstractDiffusionModelEstimationProcessPresenter::~medAbstractDiffusionModelEstimationProcessPresenter()
-{
-}
+medAbstractDiffusionModelEstimationProcessPresenter::~medAbstractDiffusionModelEstimationProcessPresenter() = default;
 
 void medAbstractDiffusionModelEstimationProcessPresenter::setUseRunControls(bool useRun)
 {
@@ -157,7 +155,7 @@ void medAbstractDiffusionModelEstimationProcessPresenter::_importOutput(medAbstr
 
 void medAbstractDiffusionModelEstimationProcessPresenter::setInputGradientFile()
 {
-    QFileDialog *gradientFileDialog = new QFileDialog(0, tr("Choose a gradient file"));
+    QFileDialog *gradientFileDialog = new QFileDialog(nullptr, tr("Choose a gradient file"));
     gradientFileDialog->setAcceptMode(QFileDialog::AcceptOpen);
 
     QString fileName;
@@ -178,7 +176,7 @@ void medAbstractDiffusionModelEstimationProcessPresenter::setInputGradientFile()
 
 void medAbstractDiffusionModelEstimationProcessPresenter::setInputBValuesFile()
 {
-    QFileDialog *bvaluesFileDialog = new QFileDialog(0, tr("Choose a b-values file"));
+    QFileDialog *bvaluesFileDialog = new QFileDialog(nullptr, tr("Choose a b-values file"));
     bvaluesFileDialog->setAcceptMode(QFileDialog::AcceptOpen);
 
     QString fileName;

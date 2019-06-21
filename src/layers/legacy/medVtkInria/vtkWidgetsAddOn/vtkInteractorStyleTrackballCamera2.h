@@ -29,25 +29,26 @@ class MEDVTKINRIA_EXPORT vtkInteractorStyleTrackballCamera2 : public vtkInteract
   static vtkInteractorStyleTrackballCamera2 *New();
   vtkTypeMacro(vtkInteractorStyleTrackballCamera2,vtkInteractorStyleTrackballCamera);
 
-  virtual void OnLeftButtonDown();
-  virtual void OnMouseWheelForward();
-  virtual void OnMouseWheelBackward();
-  virtual void Rotate();
+  void OnLeftButtonDown()     override;
+  void OnMouseWheelForward()  override;
+  void OnMouseWheelBackward() override;
+  void Rotate()               override;
 
   void Azimuth(double angle);
   void Elevation(double angle);
 
+  vtkInteractorStyleTrackballCamera2(const vtkInteractorStyleTrackballCamera2&) = delete;
+  void operator=(const vtkInteractorStyleTrackballCamera2&) = delete;
+
  protected:
   vtkInteractorStyleTrackballCamera2();
-  ~vtkInteractorStyleTrackballCamera2();
+  ~vtkInteractorStyleTrackballCamera2() override;
 
   double UpAxis[3];
   double RightAxis[3];
   vtkTransform *Transform;
 
  private:
-  vtkInteractorStyleTrackballCamera2(const vtkInteractorStyleTrackballCamera2&);  // Not implemented.
-  void operator=(const vtkInteractorStyleTrackballCamera2&);  // Not implemented.
 };
 
 

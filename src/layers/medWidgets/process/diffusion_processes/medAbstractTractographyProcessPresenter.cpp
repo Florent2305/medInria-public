@@ -42,9 +42,7 @@ medAbstractTractographyProcessPresenter::medAbstractTractographyProcessPresenter
             Qt::QueuedConnection);
 }
 
-medAbstractTractographyProcessPresenter::~medAbstractTractographyProcessPresenter()
-{
-}
+medAbstractTractographyProcessPresenter::~medAbstractTractographyProcessPresenter() = default;
 
 QWidget *medAbstractTractographyProcessPresenter::buildToolBoxWidget()
 {
