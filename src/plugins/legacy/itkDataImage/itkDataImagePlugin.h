@@ -14,6 +14,8 @@
 
 #include <medPluginLegacy.h>
 
+#include <medPluginLegacy.h>
+
 #include <itkDataImagePluginExport.h>
 
 class itkDataImagePluginPrivate;

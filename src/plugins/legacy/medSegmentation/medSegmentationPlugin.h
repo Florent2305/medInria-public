@@ -15,6 +15,8 @@
 #include <medPluginLegacy.h>
 
 #include <medPluginLegacy.h>
+
+#include <medPluginLegacy.h>
 #include <medSegmentationPluginExport.h>
 
 class MEDVIEWSEGMENTATIONPLUGIN_EXPORT medSegmentationPluginPrivate;

@@ -90,7 +90,6 @@ medPluginManager *medPluginManager::instance()
 {
     if (!s_instance)
     {
-    {
         s_instance = new medPluginManager;
 
         qRegisterMetaType<dtkAbstractObject>("dtkAbstractObject");

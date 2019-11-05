@@ -12,6 +12,7 @@
 
 =========================================================================*/
 
+
 #include <medPluginLegacy.h>
 #include <itkDataSHImagePluginExport.h>
 

@@ -14,6 +14,8 @@
 
 #include <medPluginLegacy.h>
 
+#include <medPluginLegacy.h>
+
 #include <itkDataTensorImagePluginExport.h>
 
 class ITKDATATENSORIMAGEPLUGIN_EXPORT itkDataTensorImagePluginPrivate;

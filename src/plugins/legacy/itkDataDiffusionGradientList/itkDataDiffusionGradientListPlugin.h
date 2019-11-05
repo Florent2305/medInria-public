@@ -14,6 +14,8 @@
 
 #include <medPluginLegacy.h>
 
+#include <medPluginLegacy.h>
+
 #include <itkDataDiffusionGradientListPluginExport.h>
 
 class ITKDATADIFFUSIONGRADIENTLISTPLUGIN_EXPORT itkDataDiffusionGradientListPluginPrivate;
