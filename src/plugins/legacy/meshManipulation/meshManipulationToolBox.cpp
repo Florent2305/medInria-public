@@ -478,10 +478,10 @@ void meshManipulationToolBox::importTransform()
     }
 }
 
-dtkPlugin* meshManipulationToolBox::plugin()
+medPluginLegacy* meshManipulationToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin("Mesh Manipulation");
+    medPluginLegacy *plugin = pm->plugin("Mesh Manipulation");
     return plugin;
 }
 

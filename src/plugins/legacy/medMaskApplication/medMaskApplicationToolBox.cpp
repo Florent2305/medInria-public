@@ -82,10 +82,10 @@ bool medMaskApplicationToolBox::registered()
     return medToolBoxFactory::instance()->registerToolBox<medMaskApplicationToolBox>();
 }
 
-dtkPlugin* medMaskApplicationToolBox::plugin()
+medPluginLegacy* medMaskApplicationToolBox::plugin()
 {
     medPluginManager* pm = medPluginManager::instance();
-    dtkPlugin* plugin = pm->plugin ( "Mask Application" );
+    medPluginLegacy* plugin = pm->plugin ( "Mask Application" );
     return plugin;
 }
 

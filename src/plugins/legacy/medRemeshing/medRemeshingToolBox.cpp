@@ -265,10 +265,10 @@ bool medRemeshingToolBox::registered()
     return medToolBoxFactory::instance()->registerToolBox<medRemeshingToolBox>();
 }
 
-dtkPlugin* medRemeshingToolBox::plugin()
+medPluginLegacy* medRemeshingToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin("Remeshing");
+    medPluginLegacy *plugin = pm->plugin("Remeshing");
     return plugin;
 }
 

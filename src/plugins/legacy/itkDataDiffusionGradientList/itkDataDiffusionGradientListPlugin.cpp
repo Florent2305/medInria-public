@@ -41,7 +41,7 @@ public:
 // itkDataDiffusionGradientListPlugin
 // /////////////////////////////////////////////////////////////////
 
-itkDataDiffusionGradientListPlugin::itkDataDiffusionGradientListPlugin(QObject *parent) : dtkPlugin(parent), d(new itkDataDiffusionGradientListPluginPrivate)
+itkDataDiffusionGradientListPlugin::itkDataDiffusionGradientListPlugin(QObject *parent) : medPluginLegacy(parent), d(new itkDataDiffusionGradientListPluginPrivate)
 {
 
 }

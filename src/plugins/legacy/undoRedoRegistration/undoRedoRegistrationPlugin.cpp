@@ -34,7 +34,7 @@ const char * undoRedoRegistrationPluginPrivate::s_Name = "undoRedoRegistration";
 // undoRedoRegistrationPlugin
 // /////////////////////////////////////////////////////////////////
 
-undoRedoRegistrationPlugin::undoRedoRegistrationPlugin(QObject *parent) : dtkPlugin(parent), d(new undoRedoRegistrationPluginPrivate)
+undoRedoRegistrationPlugin::undoRedoRegistrationPlugin(QObject *parent) : medPluginLegacy(parent), d(new undoRedoRegistrationPluginPrivate)
 {
     
 }

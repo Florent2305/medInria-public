@@ -117,7 +117,7 @@ public:
     void computeCentroid(Mask2dIterator itmask, unsigned int *coord);
     Mask2dType::Pointer translateImageByVec(Mask2dType::Pointer img, int *vec);
 
-    dtkPlugin* plugin();
+    medPluginLegacy* plugin();
 
     medAbstractData* processOutput();
 

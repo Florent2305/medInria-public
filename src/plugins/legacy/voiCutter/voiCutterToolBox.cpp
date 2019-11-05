@@ -266,10 +266,10 @@ void voiCutterToolBox::onViewClosed()
     activateButtons(false);
 }
 
-dtkPlugin* voiCutterToolBox::plugin()
+medPluginLegacy* voiCutterToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin("VOI Cutter");
+    medPluginLegacy *plugin = pm->plugin("VOI Cutter");
     return plugin;
 }
 

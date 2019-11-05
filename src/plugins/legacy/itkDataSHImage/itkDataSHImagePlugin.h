@@ -12,12 +12,12 @@
 
 =========================================================================*/
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 #include <itkDataSHImagePluginExport.h>
 
 class ITKDATASHIMAGEPLUGIN_EXPORT itkDataSHImagePluginPrivate;
 
-class ITKDATASHIMAGEPLUGIN_EXPORT itkDataSHImagePlugin : public dtkPlugin
+class ITKDATASHIMAGEPLUGIN_EXPORT itkDataSHImagePlugin : public medPluginLegacy
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "fr.inria.itkDataSHImagePlugin" FILE "itkDataSHImagePlugin.json")

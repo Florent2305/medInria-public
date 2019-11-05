@@ -12,13 +12,13 @@ PURPOSE.
 
 =========================================================================*/
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 
 #include "vtkDataMeshPluginExport.h"
 
 class VTKDATAMESHPLUGIN_EXPORT vtkDataMeshPluginPrivate;
 
-class VTKDATAMESHPLUGIN_EXPORT vtkDataMeshPlugin : public dtkPlugin
+class VTKDATAMESHPLUGIN_EXPORT vtkDataMeshPlugin : public medPluginLegacy
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "fr.inria.vtkDataMeshPlugin" FILE "vtkDataMeshPlugin.json")

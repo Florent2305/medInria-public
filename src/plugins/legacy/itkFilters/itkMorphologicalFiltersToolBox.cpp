@@ -207,9 +207,9 @@ void itkMorphologicalFiltersToolBox::roundSpinBox(bool param)
     }
 }
 
-dtkPlugin* itkMorphologicalFiltersToolBox::plugin()
+medPluginLegacy* itkMorphologicalFiltersToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin ( "ITK Filters" );
+    medPluginLegacy *plugin = pm->plugin ( "ITK Filters" );
     return plugin;
 }

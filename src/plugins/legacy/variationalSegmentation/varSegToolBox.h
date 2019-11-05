@@ -43,7 +43,7 @@ class VarSegToolBox : public medAbstractSelectableToolBox
     static QString s_description();
     static QString s_identifier();
     static QString s_name();
-    dtkPlugin* plugin();
+    medPluginLegacy* plugin();
     medAbstractData *processOutput();
     void endSegmentation();
 

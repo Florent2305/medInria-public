@@ -273,10 +273,10 @@ bool polygonRoiToolBox::registered()
     return medToolBoxFactory::instance()->registerToolBox<polygonRoiToolBox>();
 }
 
-dtkPlugin* polygonRoiToolBox::plugin()
+medPluginLegacy* polygonRoiToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin ( "Polygon ROI" );
+    medPluginLegacy *plugin = pm->plugin ( "Polygon ROI" );
     return plugin;
 }
 

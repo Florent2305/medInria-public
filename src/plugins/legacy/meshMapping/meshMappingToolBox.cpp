@@ -82,10 +82,10 @@ bool meshMappingToolBox::registered()
     return medToolBoxFactory::instance()->registerToolBox<meshMappingToolBox>();
 }
 
-dtkPlugin* meshMappingToolBox::plugin()
+medPluginLegacy* meshMappingToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin("Mesh Mapping");
+    medPluginLegacy *plugin = pm->plugin("Mesh Mapping");
     return plugin;
 }
 

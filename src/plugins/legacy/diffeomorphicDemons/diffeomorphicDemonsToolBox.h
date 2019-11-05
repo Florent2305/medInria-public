@@ -26,7 +26,7 @@ public:
      diffeomorphicDemonsToolBox(QWidget *parentToolBox = nullptr);
     ~diffeomorphicDemonsToolBox();
 
-    dtkPlugin * plugin() override;
+    medPluginLegacy * plugin() override;
     static bool registered();
     medAbstractData* processOutput();
 

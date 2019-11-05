@@ -13,16 +13,16 @@
 
 #pragma once
 
-#include <dtkCore/dtkPlugin.h>
+#include <dtkCore/medPluginLegacy.h>
 
 #include <%1PluginExport.h>
 
 class %2PLUGIN_EXPORT %1PluginPrivate;
 
-class %2PLUGIN_EXPORT %1Plugin : public dtkPlugin
+class %2PLUGIN_EXPORT %1Plugin : public medPluginLegacy
 {
     Q_OBJECT
-    Q_INTERFACES(dtkPlugin)
+    Q_INTERFACES(medPluginLegacy)
     
 public:
     %1Plugin(QObject *parent = 0);

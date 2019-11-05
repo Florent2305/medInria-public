@@ -17,7 +17,7 @@
 #include <medAbstractDataFactory.h>
 #include <dtkCoreSupport/dtkAbstractProcessFactory.h>
 #include <dtkCoreSupport/dtkAbstractViewFactory.h>
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 #include <dtkGuiSupport/dtkAboutPlugin.h>
 
 #include <QtGui>
@@ -48,7 +48,7 @@ void medPluginWidgetPrivate::resetPluginsTree()
     //get the list of plugins
     medPluginManager* mpm = medPluginManager::instance();
 
-    for(dtkPlugin* plugin : mpm->plugins())
+    for(medPluginLegacy* plugin: mpm->plugins())
     {
         QTreeWidgetItem * item = new QTreeWidgetItem(pluginsTree);
         item->setText(0,plugin->name());
@@ -240,7 +240,7 @@ void medPluginWidget::onPluginTreeItemActivated(QTreeWidgetItem *item, int colum
 {
     Q_UNUSED (column);
     QDialog * dial = new QDialog(this);
-    dtkPlugin * plugin = medPluginManager::instance()->plugin(item->text(0));
+    medPluginLegacy * plugin = medPluginManager::instance()->plugin(item->text(0));
     QString windowTitle = tr("medInria: about ");
     windowTitle += plugin->name();
     dial->setWindowTitle(windowTitle);

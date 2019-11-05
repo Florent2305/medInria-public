@@ -1144,10 +1144,10 @@ void itkFiltersToolBox::onViewClosed()
     d->histogram->setChecked(false);
 }
 
-dtkPlugin* itkFiltersToolBox::plugin()
+medPluginLegacy* itkFiltersToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin ( "ITK Filters" );
+    medPluginLegacy *plugin = pm->plugin ( "ITK Filters" );
     return plugin;
 }
 

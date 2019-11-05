@@ -33,7 +33,7 @@ public:
     medCropToolBox(QWidget *parent = nullptr);
     virtual ~medCropToolBox();
 
-    virtual dtkPlugin* plugin();
+    virtual medPluginLegacy* plugin();
     virtual medAbstractData* processOutput();
 
     void handleInteractionEvent();

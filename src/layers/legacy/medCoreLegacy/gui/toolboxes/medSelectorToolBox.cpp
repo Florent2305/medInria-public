@@ -133,7 +133,7 @@ void medSelectorToolBox::changeCurrentToolBox(const QString &identifier)
         d->currentToolBox = toolbox;
         d->currentToolBox->header()->hide();
 
-        dtkPlugin *plugin = d->currentToolBox->plugin();
+        medPluginLegacy *plugin = d->currentToolBox->plugin();
         this->setAboutPluginButton(plugin);
         this->setAboutPluginVisibility(true);
 

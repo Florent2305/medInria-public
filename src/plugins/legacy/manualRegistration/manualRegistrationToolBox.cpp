@@ -160,10 +160,10 @@ bool manualRegistrationToolBox::registered()
             registerToolBox<manualRegistrationToolBox>();
 }
 
-dtkPlugin* manualRegistrationToolBox::plugin()
+medPluginLegacy* manualRegistrationToolBox::plugin()
 {
     medPluginManager* pm = medPluginManager::instance();
-    dtkPlugin* plugin = pm->plugin ( "Manual Registration" );
+    medPluginLegacy* plugin = pm->plugin ( "Manual Registration" );
     return plugin;
 }
 

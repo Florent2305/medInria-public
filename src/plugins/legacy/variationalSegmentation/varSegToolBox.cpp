@@ -134,10 +134,10 @@ QString VarSegToolBox::s_name()
     return "Variational Segmentation";
 }
 
-dtkPlugin* VarSegToolBox::plugin()
+medPluginLegacy* VarSegToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin("Variational Segmentation");
+    medPluginLegacy *plugin = pm->plugin("Variational Segmentation");
     return plugin;
 }
 

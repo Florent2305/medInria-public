@@ -12,7 +12,7 @@
 
 =========================================================================*/
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 
 #include <medPluginLegacy.h>
 #include <medSegmentationPluginExport.h>

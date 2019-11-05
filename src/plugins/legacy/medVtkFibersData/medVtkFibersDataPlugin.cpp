@@ -45,7 +45,7 @@ public:
 // medVtkFibersDataPlugin
 // /////////////////////////////////////////////////////////////////
 
-medVtkFibersDataPlugin::medVtkFibersDataPlugin(QObject *parent) : dtkPlugin(parent), d(new medVtkFibersDataPluginPrivate)
+medVtkFibersDataPlugin::medVtkFibersDataPlugin(QObject *parent) : medPluginLegacy(parent), d(new medVtkFibersDataPluginPrivate)
 {
 
 }

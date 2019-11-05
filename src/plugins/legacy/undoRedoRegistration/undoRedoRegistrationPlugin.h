@@ -12,13 +12,13 @@ PURPOSE.
 
 =========================================================================*/
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 
 #include <undoRedoRegistrationPluginExport.h>
 
 class UNDOREDOREGISTRATIONPLUGIN_EXPORT undoRedoRegistrationPluginPrivate;
 
-class UNDOREDOREGISTRATIONPLUGIN_EXPORT undoRedoRegistrationPlugin : public dtkPlugin
+class UNDOREDOREGISTRATIONPLUGIN_EXPORT undoRedoRegistrationPlugin : public medPluginLegacy
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "fr.inria.undoRedoRegistrationPlugin" FILE "undoRedoRegistrationPlugin.json")

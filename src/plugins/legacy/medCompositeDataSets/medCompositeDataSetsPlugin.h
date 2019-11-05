@@ -13,15 +13,15 @@
 
 #pragma once
 
-#include <dtkCore/dtkPlugin.h>
+#include <dtkCore/medPluginLegacy.h>
 
 #include <medCompositeDataSetsPluginExport.h>
 #include <medCompositeDataSetsBase.h>
 
-class MEDCOMPOSITEDATASETSPLUGIN_EXPORT medCompositeDataSetsPlugin : public dtkPlugin {
+class MEDCOMPOSITEDATASETSPLUGIN_EXPORT medCompositeDataSetsPlugin : public medPluginLegacy {
 
     Q_OBJECT
-    Q_INTERFACES(dtkPlugin)
+    Q_INTERFACES(medPluginLegacy)
 
 public:
 

@@ -51,7 +51,7 @@ public:
 // vtkDataMeshPlugin
 // /////////////////////////////////////////////////////////////////
 
-vtkDataMeshPlugin::vtkDataMeshPlugin(QObject *parent) : dtkPlugin(parent), d(new vtkDataMeshPluginPrivate)
+vtkDataMeshPlugin::vtkDataMeshPlugin(QObject *parent) : medPluginLegacy(parent), d(new vtkDataMeshPluginPrivate)
 {
 
 }

@@ -14,7 +14,7 @@
 #include <QTest>
 
 #include <medSplashScreen.h>
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 #include <medPluginManager.h>
 #include <medSettingsManager.h>
 
@@ -79,7 +79,7 @@ void medSplashScreen::clearMessage()
 ////////////////////////////////////////////////////////////////////////////
 void medSplashScreen::showMessage(const QString& message)
 {
-    const dtkPlugin* plugin = medPluginManager::instance()->plugin(message);
+    const medPluginLegacy* plugin = medPluginManager::instance()->plugin(message);
     if (plugin)
     {
         d->message = QString("Loading: ") + plugin->name();

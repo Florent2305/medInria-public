@@ -20,7 +20,7 @@
 // qtdcmDataSourcePlugin
 // /////////////////////////////////////////////////////////////////
 
-qtdcmDataSourcePlugin::qtdcmDataSourcePlugin ( QObject *parent ) : dtkPlugin ( parent )
+qtdcmDataSourcePlugin::qtdcmDataSourcePlugin ( QObject *parent ) : medPluginLegacy( parent ), d ( new qtdcmDataSourcePluginPrivate )
 {
 
 }

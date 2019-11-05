@@ -45,7 +45,7 @@ public:
     
     void launchTheCutting(MODE m);
 
-    dtkPlugin* plugin();
+    medPluginLegacy* plugin();
     medAbstractData *processOutput();
 
 public slots:

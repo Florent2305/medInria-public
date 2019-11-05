@@ -13,17 +13,17 @@
 
 #pragma once
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <dtkCoreSupport/medPluginLegacy.h>
 
 #include <ITKProcessExamplePluginExport.h>
 
 class ITKPROCESSEXAMPLEPLUGIN_EXPORT ITKProcessExamplePluginPrivate;
 
-class ITKPROCESSEXAMPLEPLUGIN_EXPORT ITKProcessExamplePlugin : public dtkPlugin
+class ITKPROCESSEXAMPLEPLUGIN_EXPORT ITKProcessExamplePlugin : public medPluginLegacy
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "fr.inria.ITKProcessExamplePlugin" FILE "ITKProcessExamplePlugin.json")
-    Q_INTERFACES(dtkPlugin)
+    Q_INTERFACES(medPluginLegacy)
 
 public:
      ITKProcessExamplePlugin(QObject *parent = 0);

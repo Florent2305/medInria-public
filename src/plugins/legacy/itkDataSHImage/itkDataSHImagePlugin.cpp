@@ -42,7 +42,7 @@ public:
 // itkDataSHImagePlugin
 // /////////////////////////////////////////////////////////////////
 
-itkDataSHImagePlugin::itkDataSHImagePlugin(QObject *parent): dtkPlugin(parent),d(new itkDataSHImagePluginPrivate) { }
+itkDataSHImagePlugin::itkDataSHImagePlugin(QObject *parent): medPluginLegacy(parent), d(new itkDataSHImagePluginPrivate) { }
 
 itkDataSHImagePlugin::~itkDataSHImagePlugin() {
     delete d;

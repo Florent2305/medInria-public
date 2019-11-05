@@ -41,7 +41,7 @@ public:
     resliceToolBox(QWidget *parentToolBox = nullptr);
     ~resliceToolBox();
     static bool registered();
-    dtkPlugin* plugin();
+    medPluginLegacy* plugin();
     medAbstractData *processOutput();
     void changeButtonValue(QString buttonName, double value);
 

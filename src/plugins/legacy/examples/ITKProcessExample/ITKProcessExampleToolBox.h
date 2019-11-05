@@ -28,7 +28,7 @@ public:
 
     static bool registered();
     medAbstractData* processOutput();
-    dtkPlugin* plugin();
+    medPluginLegacy* plugin();
     void update(medAbstractData *data);
 
 signals:

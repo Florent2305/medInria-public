@@ -174,10 +174,10 @@ bool medN4BiasCorrectionToolBox::registered()
     registerToolBox<medN4BiasCorrectionToolBox>();
 }
 
-dtkPlugin* medN4BiasCorrectionToolBox::plugin()
+medPluginLegacy* medN4BiasCorrectionToolBox::plugin()
 {
     medPluginManager *pm = medPluginManager::instance();
-    dtkPlugin *plugin = pm->plugin ( "N4 Bias Correction" );
+    medPluginLegacy *plugin = pm->plugin ( "N4 Bias Correction" );
     return plugin;
 }
 

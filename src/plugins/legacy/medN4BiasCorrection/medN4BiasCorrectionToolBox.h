@@ -44,7 +44,7 @@ public:
     medAbstractData *processOutput();
     
     static bool registered();
-    dtkPlugin * plugin();
+    medPluginLegacy * plugin();
     std::vector<int> extractValue(QString text);
 
 public slots:

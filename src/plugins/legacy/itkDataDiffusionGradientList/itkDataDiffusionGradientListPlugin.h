@@ -12,13 +12,13 @@
 
 =========================================================================*/
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 
 #include <itkDataDiffusionGradientListPluginExport.h>
 
 class ITKDATADIFFUSIONGRADIENTLISTPLUGIN_EXPORT itkDataDiffusionGradientListPluginPrivate;
 
-class ITKDATADIFFUSIONGRADIENTLISTPLUGIN_EXPORT itkDataDiffusionGradientListPlugin : public dtkPlugin
+class ITKDATADIFFUSIONGRADIENTLISTPLUGIN_EXPORT itkDataDiffusionGradientListPlugin : public medPluginLegacy
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "fr.inria.itkDataDiffusionGradientListPlugin" FILE "itkDataDiffusionGradientListPlugin.json")

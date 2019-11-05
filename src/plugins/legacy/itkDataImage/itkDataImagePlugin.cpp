@@ -94,7 +94,7 @@ public:
 // itkDataImagePlugin
 // /////////////////////////////////////////////////////////////////
 
-itkDataImagePlugin::itkDataImagePlugin(QObject *parent) : dtkPlugin(parent), d(new itkDataImagePluginPrivate)
+itkDataImagePlugin::itkDataImagePlugin(QObject *parent) : medPluginLegacy(parent), d(new itkDataImagePluginPrivate)
 {
 
 }

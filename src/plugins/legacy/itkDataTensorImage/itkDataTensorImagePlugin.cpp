@@ -54,7 +54,7 @@ public:
 // itkDataTensorImagePlugin
 // /////////////////////////////////////////////////////////////////
 
-itkDataTensorImagePlugin::itkDataTensorImagePlugin(QObject *parent) : dtkPlugin(parent), d(new itkDataTensorImagePluginPrivate)
+itkDataTensorImagePlugin::itkDataTensorImagePlugin(QObject *parent) : medPluginLegacy(parent), d(new itkDataTensorImagePluginPrivate)
 {
 
 }

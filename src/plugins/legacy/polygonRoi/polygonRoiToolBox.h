@@ -64,7 +64,7 @@ public:
     ~polygonRoiToolBox();
 
     static bool registered();
-    dtkPlugin* plugin();
+    medPluginLegacy* plugin();
     medAbstractData *processOutput();
     void setCurrentView(medAbstractView *view);
 

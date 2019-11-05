@@ -110,10 +110,10 @@ bool medBinaryOperationToolBox::registered()
     registerToolBox<medBinaryOperationToolBox>();
 }
 
-dtkPlugin* medBinaryOperationToolBox::plugin()
+medPluginLegacy* medBinaryOperationToolBox::plugin()
 {
     medPluginManager* pm = medPluginManager::instance();
-    dtkPlugin* plugin = pm->plugin ( "Binary Operation" );
+    medPluginLegacy* plugin = pm->plugin ( "Binary Operation" );
     return plugin;
 }
 

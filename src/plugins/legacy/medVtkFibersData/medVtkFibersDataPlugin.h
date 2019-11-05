@@ -12,12 +12,12 @@ PURPOSE.
 
 =========================================================================*/
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 #include <medVtkFibersDataPluginExport.h>
 
 class medVtkFibersDataPluginPrivate;
 
-class MEDVTKFIBERSDATAPLUGIN_EXPORT medVtkFibersDataPlugin : public dtkPlugin
+class MEDVTKFIBERSDATAPLUGIN_EXPORT medVtkFibersDataPlugin : public medPluginLegacy
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "fr.inria.medVtkFibersDataPlugin" FILE "medVtkFibersDataPlugin.json")

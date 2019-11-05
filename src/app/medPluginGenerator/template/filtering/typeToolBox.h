@@ -32,7 +32,7 @@ public:
     medAbstractData *processOutput();
     
     static bool registered();
-    dtkPlugin * plugin();
+    medPluginLegacy * plugin();
 
     void update(medAbstractData *data);
     

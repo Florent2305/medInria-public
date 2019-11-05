@@ -150,7 +150,7 @@ medCropToolBox::~medCropToolBox()
     delete d;
 }
 
-dtkPlugin* medCropToolBox::plugin()
+medPluginLegacy* medCropToolBox::plugin()
 {
     return medPluginManager::instance()->plugin("Reformat");
 }

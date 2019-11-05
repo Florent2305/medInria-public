@@ -32,10 +32,8 @@ public:
 // medVtkViewPlugin
 // /////////////////////////////////////////////////////////////////
 
-medVtkViewPlugin::medVtkViewPlugin(QObject *parent) :
-    dtkPlugin(parent), d(new medVtkViewPluginPrivate)
+medVtkViewPlugin::medVtkViewPlugin(QObject *parent) : medPluginLegacy(parent), d(new medVtkViewPluginPrivate)
 {
-
 }
 
 medVtkViewPlugin::~medVtkViewPlugin()

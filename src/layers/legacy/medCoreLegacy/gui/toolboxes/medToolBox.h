@@ -27,7 +27,7 @@ class medToolBoxTab;
 class medToolBoxPrivate;
 class medToolBoxBody;
 class medToolBoxHeader;
-class dtkPlugin;
+class medPluginLegacy;
 
 /**
  * @brief Toolbox that includes a title bar and a widget container.
@@ -56,7 +56,7 @@ public:
     void setAboutPluginVisibility(bool enable);
     bool aboutPluginVisibility();
 
-    void setAboutPluginButton(dtkPlugin * plugin);
+    void setAboutPluginButton(medPluginLegacy * plugin);
 
     virtual QString identifier() const {return QString();}
     virtual QString name() const {return QString();}

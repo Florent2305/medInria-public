@@ -157,10 +157,10 @@ bool resliceToolBox::registered()
     return medToolBoxFactory::instance()->registerToolBox<resliceToolBox>();
 }
 
-dtkPlugin* resliceToolBox::plugin()
+medPluginLegacy* resliceToolBox::plugin()
 {
     medPluginManager* pm = medPluginManager::instance();
-    dtkPlugin* plugin = pm->plugin ( "Reformat" );
+    medPluginLegacy* plugin = pm->plugin ( "Reformat" );
     return plugin;
 }
 

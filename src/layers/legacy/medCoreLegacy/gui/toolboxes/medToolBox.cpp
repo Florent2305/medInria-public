@@ -19,7 +19,7 @@
 #include <medToolBoxHeader.h>
 #include <medToolBoxBody.h>
 
-#include <dtkCoreSupport/dtkPlugin>
+#include <medPluginLegacy.h>
 #include <dtkGuiSupport/dtkAboutPlugin.h>
 
 class medToolBoxPrivate
@@ -32,7 +32,7 @@ public:
     QStringList validDataTypes;
     bool isContextVisible;
     bool aboutPluginVisibility;
-    dtkPlugin* plugin;
+    medPluginLegacy* plugin;
     medAbstractWorkspaceLegacy *workspace;
 
 public:
@@ -228,7 +228,7 @@ bool medToolBox::aboutPluginVisibility()
  *
  * @param plugin The dtkPlugin this button will give info about.
  */
-void medToolBox::setAboutPluginButton(dtkPlugin *plugin)
+void medToolBox::setAboutPluginButton(medPluginLegacy *plugin)
 {
     medButton* aboutButton = d->header->aboutButton();
     if (aboutButton)

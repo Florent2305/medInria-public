@@ -46,7 +46,7 @@ public:
     medAbstractData *processOutput();
 
     static bool registered();
-    dtkPlugin *plugin();
+    medPluginLegacy *plugin();
 
     void displayNewNumberOfCells(dtkSmartPointer<medAbstractData> output);
     void displayChanges(dtkSmartPointer<medAbstractData> output);
