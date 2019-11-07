@@ -241,7 +241,7 @@ void medPluginWidget::onPluginTreeItemActivated(QTreeWidgetItem *item, int colum
     Q_UNUSED (column);
     QDialog * dial = new QDialog(this);
     medPluginLegacy * plugin = medPluginManager::instance()->plugin(item->text(0));
-    QString windowTitle = tr("medInria: about ");
+    QString windowTitle = qApp->applicationName()+tr(": about ");
     windowTitle += plugin->name();
     dial->setWindowTitle(windowTitle);
     dtkAboutPlugin * apWidget = new dtkAboutPlugin(plugin,dial);
