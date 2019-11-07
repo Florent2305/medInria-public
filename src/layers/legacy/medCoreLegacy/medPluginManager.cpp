@@ -16,6 +16,194 @@
 
 #include <dtkCoreSupport/dtkAbstractData.h>
 
+#define CATEGORY "category"
+#define LAZY "lazy"
+#define NAME "name"
+
+// /////////////////////////////////////////////////////////////////
+// medPluginManagerPrivate
+// /////////////////////////////////////////////////////////////////
+
+class medPluginManagerPrivate
+{
+public:
+    bool check(const QString& path);
+
+public:
+    QHash<QString, QVariant> names;
+    QHash<QString, QVariant> versions;
+    QHash<QString, QVariantList> dependencies;
+
+    QHash<QString, QStringList> handlers;
+    QStringList loadErrors;
+
+public:
+    QString path;
+
+    QHash<QString, QPluginLoader *> loaders;
+
+    bool verboseLoading;
+    int argc;
+    char *argv;
+};
+
+
+
+
+
+
+
+
+
+
+
+void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
+{
+    QDir dir;
+    QStringList pluginsPaths;
+    dir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
+    dir.setNameFilters(m_oExtensions);
+
+    for (QString dirPath: pluginDirs)
+    {
+        dir.setPath(dirPath);
+        if (dir.cd(dirPath))
+        {
+            for (QFileInfo dirEntry: dir.entryInfoList())
+            {
+                pluginsPaths.push_back(dirEntry.absoluteFilePath());
+            }
+        }
+        else
+        {
+            //TODO WARNING
+        }
+    }
+
+    for (QString path: pluginsPaths)
+    {
+        int iCategory = 0;
+        QPluginLoader *pLoader = new QPluginLoader(path);
+        QJsonObject metaData = pLoader->metaData();
+        if (!metaData.empty() && metaData.contains("MetaData") && metaData.value("MetaData").toObject().contains(CATEGORY) && metaData.value("MetaData").toObject().value(CATEGORY).isDouble())
+        {
+            iCategory = metaData.value("MetaData").toObject().value(CATEGORY).toInt();
+            if (iCategory > 0 && iCategory < 7)
+            {
+                m_lPlugins.push_back(std::make_tuple(iCategory, path, pLoader, QString(), nullptr));
+            }
+            else
+            {
+                //TODO ERROR BAD CAT
+            }
+        }
+        else
+        {
+            //TODO ERROR IT IS NOT A VALID PLUGIN BECAUSE METADATA ARE MALFORMED
+        }
+    }
+       
+    //for (auto eCat : eCategory)
+    for (int iCatNum=1; iCatNum <7; ++iCatNum)
+    {
+        auto it = m_lPlugins.begin();
+        auto itEnd = m_lPlugins.end();
+        for (; it != itEnd; ++it)
+        {
+            if (std::get<0>(*it) == iCatNum)
+            {
+                QPluginLoader *pLoader = std::get<2>(*it);
+                QString name;
+                medPluginLegacy* medPlugin = nullptr;
+                bool bLazy = false;
+
+                QJsonObject metaData = pLoader->metaData();
+                if (metaData.value("MetaData").toObject().contains(LAZY) &&
+                    metaData.value("MetaData").toObject().value(LAZY).isBool())
+                {
+                    bLazy = metaData.value("MetaData").toObject().value(LAZY).toBool();
+                }
+
+
+                if (metaData.value("MetaData").toObject().contains(NAME) &&
+                    metaData.value("MetaData").toObject().value(NAME).isString())
+                {
+                    name = metaData.value("MetaData").toObject().value(NAME).toString();
+                }
+
+                if (!bLazy)
+                {
+                    pLoader->setLoadHints(QLibrary::ExportExternalSymbolsHint); //EPLICATIONNNNNNNNN
+                    QObject* pInstance = pLoader->instance();
+                    if (pInstance)
+                    {
+                        medPlugin = dynamic_cast<medPluginLegacy*>(pInstance);
+                    }
+                    else
+                    {
+                        //pLoader->errorString()
+                    }
+                }
+
+                if (!name.isEmpty() && ((!bLazy && medPlugin) || bLazy))
+                {
+                    *it = std::make_tuple(iCatNum, std::get<1>(*it), pLoader, name, medPlugin);
+
+                    d->loaders.insert(std::get<1>(*it), pLoader);
+                    emit loaded(name);
+                }
+                else
+                {
+                    delete(pLoader);
+                    it = m_lPlugins.erase(it);
+                    //TODO SEND ERROR
+                }
+            }
+        }
+    }
+}
+
+
+/*void medPluginManager::loadPlugin(QString const & pi_roPluginPath)
+{
+
+}*/
+
+
+
+void medPluginManager::setValidFileExtensions(QStringList const &pi_roExts)
+{
+    m_oExtensions = pi_roExts;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // /////////////////////////////////////////////////////////////////
 // Helper functions
 // /////////////////////////////////////////////////////////////////
@@ -51,40 +239,9 @@ QStringList medPluginManagerPathSplitter(QString path)
     return pathList;
 }
 
-// /////////////////////////////////////////////////////////////////
-// medPluginManagerPrivate
-// /////////////////////////////////////////////////////////////////
 
-class medPluginManagerPrivate
-{
-public:
-    bool check(const QString& path);
 
-public:
-    QHash<QString, QVariant> names;
-    QHash<QString, QVariant> versions;
-    QHash<QString, QVariantList> dependencies;
 
-    QHash<QString, QStringList> handlers;
-    QStringList loadErrors;
-
-public:
-    QString path;
-
-    QHash<QString, QPluginLoader *> loaders;
-
-    bool verboseLoading;
-    int argc;
-    char *argv;
-};
-
-/**
- * @brief Gets an instance of the Plugin Manager.
- *
- *
- * @param void
- * @return medPluginManager * a pointer to an instance of the singleton.
-*/
 
 medPluginManager *medPluginManager::instance()
 {
@@ -150,10 +307,10 @@ void medPluginManager::initialize()
 {
     if (d->path.isNull())
         this->readSettings();
-
+    setValidFileExtensions(QStringList(QString("*.dll")));
     QStringList pathList = medPluginManagerPathSplitter(d->path);
-
-    const QString appDir = qApp->applicationDirPath();
+    loadPluginFromDirectories(pathList);
+    /*const QString appDir = qApp->applicationDirPath();
 
     for(QString path: pathList)
     {
@@ -174,7 +331,7 @@ void medPluginManager::initialize()
         {
             qWarning() << "Failed to load plugins from path " << path << ". Could not cd to directory.";
         }
-    }
+    }*/
 
     emit allPluginsLoaded();
 }
@@ -219,7 +376,7 @@ void medPluginManager::scan(const QString& path)
  * \param name The name of the plugin, without platform specific prefix (.e.g lib) and suffix (e.g. .so or .dylib or .dll)
  */
 
-void medPluginManager::load(const QString& name)
+/*void medPluginManager::load(const QString& name)
 {
     if (d->path.isNull())
     {
@@ -245,7 +402,7 @@ void medPluginManager::load(const QString& name)
             qWarning() << "Failed to load plugins from path " << path << ". Could not cd to directory.";
         }
     }
-}
+}*/
 
 //! Unload a specific plugin designated by its name.
 /*! The path is retrieved through the plugin manager settings.
@@ -347,7 +504,7 @@ QString medPluginManager::path() const
     \param      path : Path to plugin file to be loaded.
 */
 
-void medPluginManager::loadPlugin(const QString& path)
+/*void medPluginManager::loadPlugin(const QString& path)
 {
     if (!d->check(path))
     {
@@ -419,7 +576,7 @@ void medPluginManager::loadPlugin(const QString& path)
     }
 
     emit loaded(plugin->name());
-}
+}*/
 
 //! Unloads the plugin previously loaded from the given filename.
 /*! Derived classes may override to prevent certain plugins being
@@ -533,7 +690,7 @@ QStringList medPluginManager::handlers(const QString& category)
 */
 void medPluginManager::onPluginLoaded(const QString& name)
 {
-    qDebug() << " Loading plugin: " << name;
+    /*qDebug() << " Loading plugin: " << name;
 
     medPluginLegacy *plug = plugin(name);
 
@@ -546,7 +703,7 @@ void medPluginManager::onPluginLoaded(const QString& name)
 
     for(QString category : categories)
     {
-        d->handlers[category] << plug->types();
+        d->handlers[category] << plug->types();*/
     }
 }
 

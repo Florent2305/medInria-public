@@ -1,5 +1,7 @@
 {
             "name" : "itkDataImagePlugin",
          "version" : "0.0.1", 	
-    "dependencies" : []
+    "dependencies" : [],
+	      "category" : 1,
+	          "lazy" : false
 }

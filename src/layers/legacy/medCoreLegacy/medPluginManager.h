@@ -15,10 +15,21 @@
 #include <QtCore>
 #include <medCoreLegacyExport.h>
 
+#include <list>
+#include <tuple>
+
 class medPluginLegacy;
 class medPluginManagerPrivate;
 
-
+using eCategory = enum
+{
+    CAT_IODATA = 1,
+    CAT_DB,
+    CAT_FEATURE,
+    CAT_AREA,
+    CAT_WORKSPACE,
+    CAT_PROCESS
+};
 
 /**
  * @brief Load and unload plugins for medInria.
@@ -31,7 +42,54 @@ class MEDCORELEGACY_EXPORT medPluginManager : public QObject
 public:
     static medPluginManager *instance();
 
+    void loadPluginFromDirectories(QStringList pluginDirs);//scanPlugins scanForPlugins scanPluginsDirs
+   // void loadPlugin(QString const & pi_roPluginPath); //createPluginLoader
 
+
+
+    void setValidFileExtensions(QStringList const &pi_roExts);
+private:
+
+    QStringList m_oExtensions;
+    std::list<std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> > m_lPlugins;
+
+
+
+
+
+    //void registerPlugins();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public:
     void initializeApplication();
     void initialize();
     void uninitialize();
@@ -39,7 +97,7 @@ public:
 
 
     void   scan(const QString& path);
-    void   load(const QString& name);
+    //void   load(const QString& name);
     void unload(const QString& name);
 
     void  readSettings();
@@ -60,7 +118,7 @@ public:
     QStringList loadErrors();
 
 public slots:
-    void   loadPlugin(const QString& path);
+    //void   loadPlugin(const QString& path);
     void unloadPlugin(const QString& path);
     void onPluginLoaded(const QString& name);
 

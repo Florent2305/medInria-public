@@ -1,5 +1,7 @@
 {
             "name" : "medN4BiasCorrectionPlugin",
          "version" : "0.0.1", 	
-    "dependencies" : []
+    "dependencies" : [],
+	      "category" : 6,
+	          "lazy" : false
 }
