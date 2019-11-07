@@ -54,7 +54,11 @@ private:
     std::list<std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> > m_lPlugins;
 
 
-
+    int getCategoryFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);
+    QString getPathFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);
+    QPluginLoader* getPluginLoaderFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);
+    QString getNameFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);
+    medPluginLegacy* getMedPluginFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);
 
 
     //void registerPlugins();
@@ -96,7 +100,7 @@ public:
     void uninitializeApplication();
 
 
-    void   scan(const QString& path);
+    //void   scan(const QString& path);
     //void   load(const QString& name);
     void unload(const QString& name);
 
@@ -113,7 +117,7 @@ public:
 
     void setPath(const QString& path);
 
-    QStringList handlers(const QString& category);
+    //QStringList handlers(const QString& category);
 
     QStringList loadErrors();
 
