@@ -25,16 +25,21 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
     QDir dir;
     QStringList pluginsPaths;
     dir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
-    dir.setNameFilters(m_oExtensions);
 
     for (QString dirPath: pluginDirs)
     {
         dir.setPath(dirPath);
         if (dir.cd(dirPath))
         {
-            for (QFileInfo dirEntry: dir.entryInfoList())
+            // Recursive search of files in dirPath
+            QDirIterator it(dirPath, QDir::Files|QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
+            while (it.hasNext())
             {
-                pluginsPaths.push_back(dirEntry.absoluteFilePath());
+                QString currentPath = it.next(); // First next is first file
+                if (m_oExtensions.contains(QString(".")+QFileInfo(currentPath).completeSuffix()))
+                {
+                    pluginsPaths.push_back(currentPath);
+                }
             }
         }
         else
@@ -46,16 +51,9 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
     for (QString path: pluginsPaths)
     {
         int iCategory = 0;
-        QPluginLoader *pLoader = nullptr;
 
-        if (QFileInfo(path).isDir())
-        {
-            pLoader = new QPluginLoader(QFileInfo(path).baseName() + ".so");
-        }
-        else
-        {
-            pLoader = new QPluginLoader(path);
-        }
+        QPluginLoader *pLoader = new QPluginLoader(path);
+
         QJsonObject metaData = pLoader->metaData();
         if (!metaData.empty() && metaData.contains("MetaData") && metaData.value("MetaData").toObject().contains(CATEGORY) && metaData.value("MetaData").toObject().value(CATEGORY).isDouble())
         {
@@ -232,7 +230,9 @@ void medPluginManager::initialize()
         this->readSettings();
     }
 
-    setValidFileExtensions(QStringList(QString("*.dll")) << QString("*.so"));
+    setValidFileExtensions(QStringList(QString(".so"))
+                           << QString("*.dll")
+                           << QString("*.dylib"));
 
     QStringList pathList = medPluginManagerPathSplitter(path());
     loadPluginFromDirectories(pathList);
