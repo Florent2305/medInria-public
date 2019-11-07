@@ -20,7 +20,7 @@
 
 class medPluginLegacy;
 
-using eCategory = enum
+enum eCategory
 {
     CAT_IODATA = 1,
     CAT_DB,
@@ -31,7 +31,7 @@ using eCategory = enum
 };
 
 /**
- * @brief Load and unload plugins for medInria.
+ * @brief Load and unload plugins for the application
  *
 */
 class MEDCORELEGACY_EXPORT medPluginManager : public QObject
@@ -80,9 +80,9 @@ protected slots:
 
 signals:
      void allPluginsLoaded();
-     void   loaded(const QString& plugin);
+     void loaded(const QString& plugin);
      void unloaded(const QString& plugin);
-     void   loadError(const QString& errorMessage);
+     void loadError(const QString& errorMessage);
 
 private:
     static medPluginManager *s_instance;
@@ -90,7 +90,7 @@ private:
     QString pathSettings;
     bool bVerboseLoading;
     QStringList m_oExtensions;
-    std::list<std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> > m_lPlugins;
+    QList<std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> > m_lPlugins;
 
     int getCategoryFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);
     QString getPathFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);

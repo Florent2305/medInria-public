@@ -2,6 +2,6 @@
             "name" : "medSegmentationPlugin",
          "version" : "0.0.1", 	
     "dependencies" : [],
-	      "category" : 6,
-	          "lazy" : true
+        "category" : 6,
+            "lazy" : false
 }

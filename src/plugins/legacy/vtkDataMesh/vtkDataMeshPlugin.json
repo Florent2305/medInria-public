@@ -2,6 +2,6 @@
             "name" : "vtkDataMeshPlugin",
          "version" : "0.0.1", 	
     "dependencies" : [],
-	      "category" : 1,
-	          "lazy" : false
+        "category" : 1,
+            "lazy" : false
 }

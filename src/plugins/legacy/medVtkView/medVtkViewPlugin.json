@@ -2,6 +2,6 @@
             "name" : "medVtkViewPlugin",
          "version" : "0.0.1", 	
     "dependencies" : [],
-	      "category" : 3,
-	          "lazy" : false
+        "category" : 3,
+            "lazy" : false
 }

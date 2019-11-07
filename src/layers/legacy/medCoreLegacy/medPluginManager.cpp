@@ -39,7 +39,7 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
         }
         else
         {
-            //TODO WARNING
+            loadError(dirPath + " is not a valid path.");
         }
     }
 
@@ -66,7 +66,7 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
             }
             else
             {
-                //TODO ERROR BAD CAT
+                loadError(QFileInfo(path).fileName() + " configuration file is set with a wrong category.");
             }
         }
         else
@@ -75,15 +75,15 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
         }
     }
 
-    for (int iCatNum=1; iCatNum <7; ++iCatNum)
+    for (int iCatNum = 1; iCatNum < 7; ++iCatNum)
     {
         auto it = m_lPlugins.begin();
         auto itEnd = m_lPlugins.end();
         for (; it != itEnd; ++it)
         {
-            if (std::get<0>(*it) == iCatNum)
+            if (getCategoryFromTuple(*it) == iCatNum)
             {
-                QPluginLoader *pLoader = std::get<2>(*it);
+                QPluginLoader *pLoader = getPluginLoaderFromTuple(*it);
                 QString name;
                 medPluginLegacy* medPlugin = nullptr;
                 bool bLazy = false;
@@ -95,7 +95,6 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
                     bLazy = metaData.value("MetaData").toObject().value(LAZY).toBool();
                 }
 
-
                 if (metaData.value("MetaData").toObject().contains(NAME) &&
                     metaData.value("MetaData").toObject().value(NAME).isString())
                 {
@@ -104,7 +103,11 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
 
                 if (!bLazy)
                 {
-                    pLoader->setLoadHints(QLibrary::ExportExternalSymbolsHint); //EPLICATIONNNNNNNNN
+                    //You can give some hints on how the symbols are resolved. Usually, the symbols are not resolved at load time,
+                    //but resolved lazily, (that is, when resolve() is called). If you set the loadHints to ResolveAllSymbolsHint,
+                    //then all symbols will be resolved at load time if the platform supports it.
+                    //Setting ExportExternalSymbolsHint will make the external symbols in the library available for resolution in subsequent loaded libraries.
+                    pLoader->setLoadHints(QLibrary::ExportExternalSymbolsHint);
                     QObject* pInstance = pLoader->instance();
                     if (pInstance)
                     {
@@ -112,21 +115,21 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
                     }
                     else
                     {
-                        //pLoader->errorString()
+                        loadError(getPathFromTuple(*it) + " error. " + pLoader->errorString());
                     }
                 }
 
                 if (!name.isEmpty() && ((!bLazy && medPlugin) || bLazy))
                 {
-                    *it = std::make_tuple(iCatNum, std::get<1>(*it), pLoader, name, medPlugin);
+                    *it = std::make_tuple(iCatNum, getPathFromTuple(*it), pLoader, name, medPlugin);
 
                     emit loaded(name);
                 }
                 else
                 {
+                    loadError(getPathFromTuple(*it) + " plugin not kept. " + pLoader->errorString());
                     delete(pLoader);
                     it = m_lPlugins.erase(it);
-                    //TODO SEND ERROR
                 }
             }
         }
@@ -257,43 +260,6 @@ void medPluginManager::uninitializeApplication()
     delete qApp;
 }
 
-//! Unload a specific plugin designated by its name.
-/*! The path is retrieved through the plugin manager settings.
- *
- * \param name The name of the plugin, without platform specific prefix (.e.g lib) and suffix (e.g. .so or .dylib or .dll)
- */
-
-void medPluginManager::unload(const QString& name)
-{
-    if (path().isNull())
-    {
-        this->readSettings();
-    }
-
-    QStringList pathList = medPluginManagerPathSplitter(path());
-
-    const QString appDir = qApp->applicationDirPath();
-
-    for(QString path: pathList)
-    {
-        QDir dir(appDir);
-
-        if (dir.cd(path))
-        {
-            dir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
-
-            for(QFileInfo entry: dir.entryInfoList())
-                if (entry.fileName().contains(name))
-                    if (this->plugin(name))
-                        this->unloadPlugin(entry.absoluteFilePath());
-        }
-        else
-        {
-            qWarning() << "Failed to load plugins from path " << path << ". Could not cd to directory.";
-        }
-    }
-}
-
 void medPluginManager::writeSettings()
 {
 
@@ -376,7 +342,7 @@ void medPluginManager::unloadPlugin(const QString& path)
 {
     medPluginLegacy *plugin = nullptr;
     QPluginLoader *loader = nullptr;
-    auto it = m_lPlugins.begin();
+    int cpt = 0;
 
     for (auto line: m_lPlugins)
     {
@@ -384,15 +350,16 @@ void medPluginManager::unloadPlugin(const QString& path)
         {
             plugin = getMedPluginFromTuple(line);
             loader = getPluginLoaderFromTuple(line);
+            break;
         }
-        it++;
+        cpt++;
     }
 
     if (!plugin)
     {
         if (bVerboseLoading)
         {
-            qDebug() << "medPluginManager - Unable to retrieve " << plugin->name() << " plugin";
+            qDebug() << "Unable to retrieve " << QFileInfo(path).fileName() << " plugin";
         }
 
         return;
@@ -412,21 +379,58 @@ void medPluginManager::unloadPlugin(const QString& path)
     {
         if (bVerboseLoading)
         {
-            qDebug() << "medPluginManager - Unable to unload plugin: " << loader->errorString();
+            qDebug() << "Unable to unload plugin. " << loader->errorString();
         }
 
         return;
     }
 
     delete loader;
+    m_lPlugins.removeAt(cpt);
+}
 
-    m_lPlugins.erase(it);
- }
-
-/**
- * @brief 
+//! Unload a specific plugin designated by its name.
+/*! The path is retrieved through the plugin manager settings.
  *
+ * \param name The name of the plugin, without platform specific prefix (.e.g lib) and suffix (e.g. .so or .dylib or .dll)
  */
+void medPluginManager::unload(const QString& name)
+{
+    if (path().isNull())
+    {
+        this->readSettings();
+    }
+
+    QStringList pathList = medPluginManagerPathSplitter(path());
+
+    const QString appDir = qApp->applicationDirPath();
+
+    for(QString path: pathList)
+    {
+        QDir dir(appDir);
+
+        if (dir.cd(path))
+        {
+            dir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
+
+            for(QFileInfo entry: dir.entryInfoList())
+            {
+                if (entry.fileName().contains(name))
+                {
+                    if (this->plugin(name))
+                    {
+                        this->unloadPlugin(entry.absoluteFilePath());
+                    }
+                }
+            }
+        }
+        else
+        {
+            qWarning() << "Failed to load plugins from path " << path << ". Could not cd to directory.";
+        }
+    }
+}
+
 void medPluginManager::readSettings()
 {
     QDir plugins_dir;
@@ -495,7 +499,12 @@ medPluginManager::medPluginManager()
 
 medPluginManager *medPluginManager::s_instance = nullptr;
 
-
+/**
+ * @brief onLoadError displays an error message into several log systems.
+ * It displays the error QString message in the classic logs (terminal and .log file),
+ * and also in the 'Failed Plugin' widget on homepage.
+ * @param errorMessage
+ */
 void medPluginManager::onLoadError(const QString &errorMessage)
 {
     qDebug() << "Error from Plugin Manager: " << qPrintable(errorMessage);
