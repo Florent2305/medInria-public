@@ -36,7 +36,7 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
             while (it.hasNext())
             {
                 QString currentPath = it.next(); // First next is first file
-                if (m_oExtensions.contains(QString(".")+QFileInfo(currentPath).completeSuffix()))
+                if(QLibrary::isLibrary(currentPath))
                 {
                     pluginsPaths.push_back(currentPath);
                 }
@@ -134,11 +134,6 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
     }
 }
 
-void medPluginManager::setValidFileExtensions(QStringList const &pi_roExts)
-{
-    m_oExtensions = pi_roExts;
-}
-
 int medPluginManager::getCategoryFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple)
 {
     return std::get<0>(tuple);
@@ -163,10 +158,6 @@ medPluginLegacy* medPluginManager::getMedPluginFromTuple(std::tuple<int, QString
 {
     return std::get<4>(tuple);
 }
-
-// /////////////////////////////////////////////////////////////////
-// Helper functions
-// /////////////////////////////////////////////////////////////////
 
 QStringList medPluginManagerPathSplitter(QString path)
 {
@@ -214,20 +205,12 @@ medPluginManager *medPluginManager::instance()
     return s_instance;
 }
 
-// /////////////////////////////////////////////////////////////////
-// medPluginManager
-// /////////////////////////////////////////////////////////////////
-
 void medPluginManager::initialize()
 {
     if (path().isNull())
     {
         this->readSettings();
     }
-
-    setValidFileExtensions(QStringList(QString(".so"))
-                           << QString("*.dll")
-                           << QString("*.dylib"));
 
     QStringList pathList = medPluginManagerPathSplitter(path());
     loadPluginFromDirectories(pathList);
@@ -333,13 +316,13 @@ void medPluginManager::unloadPlugin(const QString& path)
 
     if (!plugin)
     {
-        qDebug() << "Unable to retrieve " << QFileInfo(path).fileName() << " plugin";
+        qDebug() << "Unable to retrieve " << QFileInfo(path).fileName() << " plugin.";
         return;
     }
 
     if (!plugin->uninitialize())
     {
-        qDebug() << "Unable to uninitialize " << plugin->name() << " plugin";
+        qDebug() << "Unable to uninitialize " << plugin->name() << " plugin.";
         return;
     }
 
