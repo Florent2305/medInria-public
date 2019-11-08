@@ -22,6 +22,13 @@
 
 void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
 {
+    QStringList pluginsPaths = getValidPluginPathList(pluginDirs);
+    savePluginAndMetadata(pluginsPaths);
+    loadPluginsByCategory();
+}
+
+QStringList medPluginManager::getValidPluginPathList(QStringList pluginDirs)
+{
     QDir dir;
     QStringList pluginsPaths;
     dir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
@@ -47,7 +54,11 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
             loadError(dirPath + " is not a valid path.");
         }
     }
+    return pluginsPaths;
+}
 
+void medPluginManager::savePluginAndMetadata(QStringList pluginsPaths)
+{
     for (QString path: pluginsPaths)
     {
         int iCategory = 0;
@@ -72,7 +83,10 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
             loadError(QFileInfo(path).fileName() + " is not valid, metadata are malformed.");
         }
     }
+}
 
+void medPluginManager::loadPluginsByCategory()
+{
     for (int iCatNum = 1; iCatNum < 7; ++iCatNum)
     {
         auto it = m_lPlugins.begin();

@@ -42,6 +42,9 @@ public:
     static medPluginManager *instance();
 
     void loadPluginFromDirectories(QStringList pluginDirs);
+    QStringList getValidPluginPathList(QStringList pluginDirs);
+    void savePluginAndMetadata(QStringList pluginsPaths);
+    void loadPluginsByCategory();
 
     void initialize();
     void uninitialize();
