@@ -218,11 +218,6 @@ medPluginManager *medPluginManager::instance()
 // medPluginManager
 // /////////////////////////////////////////////////////////////////
 
-void medPluginManager::initializeApplication()
-{
-
-}
-
 void medPluginManager::initialize()
 {
     if (path().isNull())
@@ -247,22 +242,10 @@ void medPluginManager::initialize()
 */
 void medPluginManager::uninitialize()
 {
-    this->writeSettings();
-
     for (auto line: m_lPlugins)
     {
         unloadPlugin(getPathFromTuple(line));
     }
-}
-
-void medPluginManager::uninitializeApplication()
-{
-    delete qApp;
-}
-
-void medPluginManager::writeSettings()
-{
-
 }
 
 void medPluginManager::printPlugins()
@@ -273,20 +256,13 @@ void medPluginManager::printPlugins()
     }
 }
 
-void medPluginManager::setVerboseLoading(bool value)
-{
-    bVerboseLoading = true;
-}
-
-bool medPluginManager::verboseLoading() const
-{
-    return bVerboseLoading;
-}
-
 medPluginLegacy *medPluginManager::plugin(const QString& name)
 {
     for (auto line: m_lPlugins)
     {
+        // TODO Homepage->Plugins, double click on a plugin: the asked name
+        //is the plugin name, not the getNameFromTuple. But plugin(name) is used
+        // in medPluginManager with getNameFromTuple.
         /*medPluginLegacy* plugin = getMedPluginFromTuple(line);
         if (plugin)
         {
@@ -357,31 +333,19 @@ void medPluginManager::unloadPlugin(const QString& path)
 
     if (!plugin)
     {
-        if (bVerboseLoading)
-        {
-            qDebug() << "Unable to retrieve " << QFileInfo(path).fileName() << " plugin";
-        }
-
+        qDebug() << "Unable to retrieve " << QFileInfo(path).fileName() << " plugin";
         return;
     }
 
     if (!plugin->uninitialize())
     {
-        if (bVerboseLoading)
-        {
-            qDebug() << "Unable to uninitialize " << plugin->name() << " plugin";
-        }
-
+        qDebug() << "Unable to uninitialize " << plugin->name() << " plugin";
         return;
     }
 
     if (!loader->unload())
     {
-        if (bVerboseLoading)
-        {
-            qDebug() << "Unable to unload plugin. " << loader->errorString();
-        }
-
+        qDebug() << "Unable to unload plugin. " << loader->errorString();
         return;
     }
 
@@ -491,8 +455,6 @@ void medPluginManager::onPluginLoaded(const QString& name)
 */
 medPluginManager::medPluginManager()
 {
-    bVerboseLoading = false;
-
     connect(this, SIGNAL(loaded(const QString&)), this, SLOT(onPluginLoaded(const QString&)));
     connect(this, SIGNAL(loadError(QString)), this, SLOT(onLoadError(QString)));
 }
