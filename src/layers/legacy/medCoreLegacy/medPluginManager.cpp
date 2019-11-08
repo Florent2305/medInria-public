@@ -22,6 +22,13 @@
 
 void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
 {
+    QStringList pluginsPaths = getValidPluginPathList(pluginDirs);
+    savePluginAndMetadata(pluginsPaths);
+    loadPluginsByCategory();
+}
+
+QStringList medPluginManager::getValidPluginPathList(QStringList pluginDirs)
+{
     QDir dir;
     QStringList pluginsPaths;
     dir.setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
@@ -36,7 +43,7 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
             while (it.hasNext())
             {
                 QString currentPath = it.next(); // First next is first file
-                if (m_oExtensions.contains(QString(".")+QFileInfo(currentPath).completeSuffix()))
+                if(QLibrary::isLibrary(currentPath))
                 {
                     pluginsPaths.push_back(currentPath);
                 }
@@ -47,7 +54,11 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
             loadError(dirPath + " is not a valid path.");
         }
     }
+    return pluginsPaths;
+}
 
+void medPluginManager::savePluginAndMetadata(QStringList pluginsPaths)
+{
     for (QString path: pluginsPaths)
     {
         int iCategory = 0;
@@ -72,7 +83,10 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
             loadError(QFileInfo(path).fileName() + " is not valid, metadata are malformed.");
         }
     }
+}
 
+void medPluginManager::loadPluginsByCategory()
+{
     for (int iCatNum = 1; iCatNum < 7; ++iCatNum)
     {
         auto it = m_lPlugins.begin();
@@ -134,11 +148,6 @@ void medPluginManager::loadPluginFromDirectories(QStringList pluginDirs)
     }
 }
 
-void medPluginManager::setValidFileExtensions(QStringList const &pi_roExts)
-{
-    m_oExtensions = pi_roExts;
-}
-
 int medPluginManager::getCategoryFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple)
 {
     return std::get<0>(tuple);
@@ -163,10 +172,6 @@ medPluginLegacy* medPluginManager::getMedPluginFromTuple(std::tuple<int, QString
 {
     return std::get<4>(tuple);
 }
-
-// /////////////////////////////////////////////////////////////////
-// Helper functions
-// /////////////////////////////////////////////////////////////////
 
 QStringList medPluginManagerPathSplitter(QString path)
 {
@@ -214,25 +219,12 @@ medPluginManager *medPluginManager::instance()
     return s_instance;
 }
 
-// /////////////////////////////////////////////////////////////////
-// medPluginManager
-// /////////////////////////////////////////////////////////////////
-
-void medPluginManager::initializeApplication()
-{
-
-}
-
 void medPluginManager::initialize()
 {
     if (path().isNull())
     {
         this->readSettings();
     }
-
-    setValidFileExtensions(QStringList(QString(".so"))
-                           << QString("*.dll")
-                           << QString("*.dylib"));
 
     QStringList pathList = medPluginManagerPathSplitter(path());
     loadPluginFromDirectories(pathList);
@@ -247,22 +239,10 @@ void medPluginManager::initialize()
 */
 void medPluginManager::uninitialize()
 {
-    this->writeSettings();
-
     for (auto line: m_lPlugins)
     {
         unloadPlugin(getPathFromTuple(line));
     }
-}
-
-void medPluginManager::uninitializeApplication()
-{
-    delete qApp;
-}
-
-void medPluginManager::writeSettings()
-{
-
 }
 
 void medPluginManager::printPlugins()
@@ -273,20 +253,13 @@ void medPluginManager::printPlugins()
     }
 }
 
-void medPluginManager::setVerboseLoading(bool value)
-{
-    bVerboseLoading = true;
-}
-
-bool medPluginManager::verboseLoading() const
-{
-    return bVerboseLoading;
-}
-
 medPluginLegacy *medPluginManager::plugin(const QString& name)
 {
     for (auto line: m_lPlugins)
     {
+        // TODO Homepage->Plugins, double click on a plugin: the asked name
+        //is the plugin name, not the getNameFromTuple. But plugin(name) is used
+        // in medPluginManager with getNameFromTuple.
         /*medPluginLegacy* plugin = getMedPluginFromTuple(line);
         if (plugin)
         {
@@ -357,31 +330,19 @@ void medPluginManager::unloadPlugin(const QString& path)
 
     if (!plugin)
     {
-        if (bVerboseLoading)
-        {
-            qDebug() << "Unable to retrieve " << QFileInfo(path).fileName() << " plugin";
-        }
-
+        qDebug() << "Unable to retrieve " << QFileInfo(path).fileName() << " plugin.";
         return;
     }
 
     if (!plugin->uninitialize())
     {
-        if (bVerboseLoading)
-        {
-            qDebug() << "Unable to uninitialize " << plugin->name() << " plugin";
-        }
-
+        qDebug() << "Unable to uninitialize " << plugin->name() << " plugin.";
         return;
     }
 
     if (!loader->unload())
     {
-        if (bVerboseLoading)
-        {
-            qDebug() << "Unable to unload plugin. " << loader->errorString();
-        }
-
+        qDebug() << "Unable to unload plugin. " << loader->errorString();
         return;
     }
 
@@ -490,8 +451,6 @@ void medPluginManager::onPluginLoaded(const QString& name)
 */
 medPluginManager::medPluginManager()
 {
-    bVerboseLoading = false;
-
     connect(this, SIGNAL(loaded(const QString&)), this, SLOT(onPluginLoaded(const QString&)));
     connect(this, SIGNAL(loadError(QString)), this, SLOT(onLoadError(QString)));
 }

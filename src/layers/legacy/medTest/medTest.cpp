@@ -31,7 +31,6 @@ namespace medTest
 
     void initializePlugins ()
     {
-        medPluginManager::instance()->setVerboseLoading (true);
         QString paths;
         QVERIFY(medTest::envString ("MEDINRIA_PLUGINS_DIR_LEGACY", paths)); // returns if env. variable is not defined
         medPluginManager::instance()->initialize();

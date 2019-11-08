@@ -42,24 +42,19 @@ class MEDCORELEGACY_EXPORT medPluginManager : public QObject
 public:
     static medPluginManager *instance();
 
-    void loadPluginFromDirectories(QStringList pluginDirs);//scanPlugins scanForPlugins scanPluginsDirs
+    void loadPluginFromDirectories(QStringList pluginDirs);
+    QStringList getValidPluginPathList(QStringList pluginDirs);
+    void savePluginAndMetadata(QStringList pluginsPaths);
+    void loadPluginsByCategory();
 
-    void setValidFileExtensions(QStringList const &pi_roExts);
-
-    void initializeApplication();
     void initialize();
     void uninitialize();
-    void uninitializeApplication();
 
     void unload(const QString& name);
 
-    void  readSettings();
-    void writeSettings();
+    void readSettings();
 
     void printPlugins();
-
-    void setVerboseLoading(bool value);
-    bool verboseLoading() const;
 
     medPluginLegacy   *plugin(const QString& name);
     QList<medPluginLegacy *> plugins();
@@ -89,8 +84,6 @@ private:
     static medPluginManager *s_instance;
     QStringList loadErrorsList;
     QString pathSettings;
-    bool bVerboseLoading;
-    QStringList m_oExtensions;
     QList<std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> > m_lPlugins;
 
     int getCategoryFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple);
