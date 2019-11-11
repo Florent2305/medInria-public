@@ -33,13 +33,13 @@ namespace medTest
     {
         QString paths;
         QVERIFY(medTest::envString ("MEDINRIA_PLUGINS_DIR_LEGACY", paths)); // returns if env. variable is not defined
-        medPluginManager::instance()->initialize();
+        //medPluginManager::instance()->initialize();
         medPluginManager::instance()->printPlugins();
     }
 
     void uninitializePlugins ()
     {
-        medPluginManager::instance()->uninitialize();
+        //medPluginManager::instance()->uninitialize();
     }
 
     void initializeResources (const QString &var)
