@@ -205,7 +205,9 @@ int main(int argc,char* argv[])
     }
     // END OF DATABASE INITIALISATION
 
-    medPluginManager::instance()->initialize();
+    auto pluginPathsList = medPluginManager::instance()->medPluginManagerPathSplitter(medPluginManager::readSettings());
+    medPluginManager::instance()->loadPluginFromDirectories(pluginPathsList);
+    
 
     //Use Qt::WA_DeleteOnClose attribute to be sure to always have only one closeEvent.
     medMainWindow *mainwindow = new medMainWindow;
@@ -273,7 +275,7 @@ int main(int argc,char* argv[])
     //  Start main loop.
     const int status = application.exec();
 
-    medPluginManager::instance()->uninitialize();
+    //medPluginManager::instance()->uninitialize();
 
     return status;
 }
