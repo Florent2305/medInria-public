@@ -55,6 +55,7 @@ public:
 
     void loadPluginFromDirectories(QStringList pluginDirs);
     void unload(const QString& name);
+    void unload();
 
 
 
