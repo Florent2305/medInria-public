@@ -165,7 +165,6 @@ void medPluginManager::savePluginAndMetadata(QStringList pluginsPaths)
             {
                 sPluginEntry newLine = { static_cast<eCategory>(iCategory), path, pLoader, QString(), nullptr };
                 m_lPlugins.push_back(newLine);
-                //m_lPlugins.push_back(std::make_tuple(iCategory, path, pLoader, QString(), nullptr));
             }
             else
             {
@@ -181,6 +180,45 @@ void medPluginManager::savePluginAndMetadata(QStringList pluginsPaths)
 
 void medPluginManager::loadPluginsByCategory()
 {
+    unsigned int uiNbCores = std::thread::hardware_concurrency();
+
+    if (uiNbCores < 4)
+        uiNbCores /= 2;
+
+
+
+
+
+
+    std::atomic<unsigned int> index = 0;
+    std::mutex iomutex;
+    std::vector<std::thread> threads(uiNbCores);
+    for (unsigned i = 0; i < uiNbCores; ++i)
+    {
+        threads[i] = std::thread([&iomutex, i] {
+            {
+                // Use a lexical scope and lock_guard to safely lock the mutex only for
+                // the duration of std::cout usage.
+                std::lock_guard<std::mutex> iolock(iomutex);
+                std::cout << "Thread #" << i << " is running\n";
+            }
+
+            // Simulate important work done by the tread by sleeping for a bit...
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        });
+    }
+
+    for (auto& t : threads) {
+        t.join();
+    }
+
+
+
+
+
+
+
+
     for (int iCatNum = 1; iCatNum < 7; ++iCatNum)
     {
         auto it = m_lPlugins.begin();
@@ -242,32 +280,6 @@ void medPluginManager::loadPluginsByCategory()
         }
     }
 }
-/*
-int medPluginManager::getCategoryFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple)
-{
-    return std::get<0>(tuple);
-}
-
-QString medPluginManager::getPathFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple)
-{
-    return std::get<1>(tuple);
-}
-
-QPluginLoader* medPluginManager::getPluginLoaderFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple)
-{
-    return std::get<2>(tuple);
-}
-
-QString medPluginManager::getNameFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple)
-{
-    return std::get<3>(tuple);
-}
-
-medPluginLegacy* medPluginManager::getMedPluginFromTuple(std::tuple<int, QString, QPluginLoader*, QString, medPluginLegacy*> tuple)
-{
-    return std::get<4>(tuple);
-}
-*/
 
 
 
@@ -315,16 +327,6 @@ QList<medPluginLegacy *> medPluginManager::plugins()
 
     return list;
 }
-/*
-void medPluginManager::setPath(const QString& path)
-{
-    pathSettings = path;
-}
-
-QString medPluginManager::path() const
-{
-    return pathSettings;
-}*/
 
 //! Unloads the plugin previously loaded from the given filename.
 /*! Derived classes may override to prevent certain plugins being
@@ -381,6 +383,11 @@ void medPluginManager::unloadPlugin(const QString& path)
 void medPluginManager::unload(const QString& name)
 {
   //TODO
+}
+
+void medPluginManager::unload()
+{
+    //TODO
 }
 
 /**
