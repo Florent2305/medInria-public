@@ -2,7 +2,7 @@
 
  medInria
 
- Copyright (c) INRIA 2013 - 2018. All rights reserved.
+ Copyright (c) INRIA 2013 - 2020. All rights reserved.
  See LICENSE.txt for details.
 
   This software is distributed WITHOUT ANY WARRANTY; without even
@@ -123,8 +123,8 @@ public:
     static QAtomicPointer<QMutex> mutex;
 };
 
-QList<itk::DCMTKImageIO::Pointer> * itkDCMTKDataImageReaderPrivate::ioPointers = NULL;
-QList<QThread*> * itkDCMTKDataImageReaderPrivate::ioThreads = NULL;
+QList<itk::DCMTKImageIO::Pointer> * itkDCMTKDataImageReaderPrivate::ioPointers = nullptr;
+QList<QThread*> * itkDCMTKDataImageReaderPrivate::ioThreads = nullptr;
 QAtomicPointer<QMutex> itkDCMTKDataImageReaderPrivate::mutex;
 
 itkDCMTKDataImageReaderPrivate::itkDCMTKDataImageReaderPrivate()

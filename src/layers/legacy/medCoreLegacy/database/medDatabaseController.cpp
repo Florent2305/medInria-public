@@ -2,7 +2,7 @@
 
  medInria
 
- Copyright (c) INRIA 2013 - 2019. All rights reserved.
+ Copyright (c) INRIA 2013 - 2020. All rights reserved.
  See LICENSE.txt for details.
 
   This software is distributed WITHOUT ANY WARRANTY; without even
@@ -129,7 +129,7 @@ void medDatabaseControllerPrivate::buildMetaDataLookup()
         TableEntryList() << TableEntry(T_series, "acquisitionTime") );
 }
 
-medDatabaseController * medDatabaseController::s_instance = NULL;
+medDatabaseController * medDatabaseController::s_instance = nullptr;
 
 medDatabaseController* medDatabaseController::instance() {
     if ( ! s_instance) {
@@ -137,7 +137,6 @@ medDatabaseController* medDatabaseController::instance() {
     }
     return s_instance;
 }
-
 
 const QSqlDatabase& medDatabaseController::database(void) const
 {
@@ -561,7 +560,7 @@ bool medDatabaseController::updateFromNoVersionToVersion1()
         {
             imagePaths[q.value(0).toInt()] += q.value(0).toString();
         }
-        foreach(int id, imagePaths.keys())
+        for(int id : imagePaths.keys())
         {
             q.prepare("UPDATE series SET path==:paths,isIndexed='true' WHERE id==:seriesId");
             q.bindValue(":paths", imagePaths[id].join(";"));
@@ -687,7 +686,7 @@ QList<medDataIndex> medDatabaseController::moveStudy( const medDataIndex& indexS
 
             // and update patient id in series indexes
             QList<medDataIndex> seriesIndexList = series(indexStudy);
-            foreach(medDataIndex newSeriesIndex, seriesIndexList)
+            for(medDataIndex newSeriesIndex : seriesIndexList)
             {
                 newSeriesIndex.setPatientId(toPatient.patientId());
                 newIndexList << newSeriesIndex;

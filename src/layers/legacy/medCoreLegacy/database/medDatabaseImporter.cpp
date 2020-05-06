@@ -2,7 +2,7 @@
 
  medInria
 
- Copyright (c) INRIA 2013 - 2019. All rights reserved.
+ Copyright (c) INRIA 2013 - 2020. All rights reserved.
  See LICENSE.txt for details.
 
   This software is distributed WITHOUT ANY WARRANTY; without even
@@ -13,8 +13,6 @@
 
 #include <dtkCoreSupport/dtkAbstractDataReader.h>
 #include <dtkCoreSupport/dtkAbstractDataWriter.h>
-#include <dtkCoreSupport/dtkGlobal.h>
-#include <dtkLog/dtkLog.h>
 
 #include <medAbstractData.h>
 #include <medAbstractDataFactory.h>
@@ -42,13 +40,6 @@ medDatabaseImporter::medDatabaseImporter ( medAbstractData* medData, const QUuid
 
 //-----------------------------------------------------------------------------------------------------------
 
-medDatabaseImporter::~medDatabaseImporter ( void )
-{
-
-}
-
-//-----------------------------------------------------------------------------------------------------------
-
 /**
  * Retrieves patientID. Checks if patient is already in the database
  * if so, returns his Id, otherwise creates a new guid
@@ -65,7 +56,7 @@ QString medDatabaseImporter::getPatientID(QString patientName, QString birthDate
 
     if ( !query.exec() )
     {
-        dtkDebug() << DTK_COLOR_FG_RED << query.lastError() << DTK_NO_COLOR;
+        qDebug() << DTK_COLOR_FG_RED << query.lastError() << DTK_NO_COLOR;
     }
 
     if ( query.first() )
@@ -160,7 +151,6 @@ int medDatabaseImporter::getOrCreateStudy ( const medAbstractData* medData, QSql
     QString studyName   = medMetaDataKeys::StudyDescription.getFirstValue(medData).simplified();
     QString studyUid    = medMetaDataKeys::StudyInstanceUID.getFirstValue(medData);
     QString studyId    = medMetaDataKeys::StudyID.getFirstValue(medData);
-
     QString seriesName   = medMetaDataKeys::SeriesDescription.getFirstValue(medData).simplified();
 
     if( studyName=="EmptyStudy" && seriesName=="EmptySeries" )
@@ -173,7 +163,7 @@ int medDatabaseImporter::getOrCreateStudy ( const medAbstractData* medData, QSql
 
     if ( !query.exec() )
     {
-        dtkDebug() << DTK_COLOR_FG_RED << query.lastError() << DTK_NO_COLOR;
+        qDebug() << DTK_COLOR_FG_RED << query.lastError() << DTK_NO_COLOR;
     }
 
     if ( query.first() )
@@ -349,7 +339,7 @@ QString medDatabaseImporter::ensureUniqueSeriesName ( const QString seriesName )
 
     if ( !query.exec() )
     {
-        dtkDebug() << DTK_COLOR_FG_RED << query.lastError() << DTK_NO_COLOR;
+        qDebug() << DTK_COLOR_FG_RED << query.lastError() << DTK_NO_COLOR;
     }
 
     QStringList seriesNames;
