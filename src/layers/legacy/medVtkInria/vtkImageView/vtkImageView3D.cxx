@@ -711,6 +711,12 @@ void vtkImageView3D::SetOpacity(double opacity, int layer)
         {
             imageDisplay->SetOpacity(opacity);
         }
+        if (layer == 0)
+        {
+            this->ActorX->SetOpacity(opacity);
+            this->ActorY->SetOpacity(opacity);
+            this->ActorZ->SetOpacity(opacity);
+        }
     }
 }
 
