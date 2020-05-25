@@ -12,7 +12,35 @@
 =========================================================================*/
 #include "medLogger.h"
 #include <QTextStream>
+#include <string>
 
+#if defined(WIN32)
+std::wstring convertUTF8toLocalUtfString(char const * pi_pchStringToConvert)
+{
+    std::wstring wsRes;
+
+    WCHAR * pwcTmp = nullptr;
+
+    int iWCharBuffSize = MultiByteToWideChar(CP_UTF8, 0, pi_pchStringToConvert, -1, nullptr, 0);
+    if (iWCharBuffSize > 0)
+    {
+        pwcTmp = new WCHAR[iWCharBuffSize + 1];
+        if (MultiByteToWideChar(CP_UTF8, 0, pi_pchStringToConvert, -1, pwcTmp, iWCharBuffSize + 1) == iWCharBuffSize)
+        {
+            wsRes = pwcTmp;
+        }
+        delete[] pwcTmp;
+        pwcTmp = nullptr;
+    }
+
+    return wsRes;
+}
+#else
+std::string convertUTF8toLocalUtfString(char const * pi_pchStringToConvert)
+{
+    retun std::string(pi_pchStringToConvert);
+}
+#endif
 class medLoggerPrivate
 {
 public:
@@ -21,6 +49,9 @@ public:
 
     static const qint64 maxLogSize = 5000000;
     static const qint64 minLogSize = 1000000;
+
+
+    medLoggerPrivate() : logFile(convertUTF8toLocalUtfString(dtkLogPath(qApp).toUtf8().data()), std::ios::app) {}
 };
 
 medLogger* medLoggerPrivate::singleton = nullptr;
