@@ -210,10 +210,10 @@ LCCLogDemonsToolBox::~LCCLogDemonsToolBox()
     d = nullptr;
 }
 
-dtkPlugin * LCCLogDemonsToolBox::plugin()
+medPluginLegacy * LCCLogDemonsToolBox::plugin()
 {
 	medPluginManager* pm = medPluginManager::instance();
-	dtkPlugin* plugin = pm->plugin("LCC Log Demons");
+    medPluginLegacy* plugin = pm->plugin("LCC Log Demons");
 	return plugin;
 }
 

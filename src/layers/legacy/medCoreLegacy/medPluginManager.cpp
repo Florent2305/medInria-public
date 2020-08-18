@@ -405,7 +405,6 @@ void medPluginManager::onPluginLoaded(const QString& name)
     {
         plug->initialize();
     }
-    }
 }
 
 /**

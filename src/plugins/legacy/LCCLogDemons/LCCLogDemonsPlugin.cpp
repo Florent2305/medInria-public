@@ -34,7 +34,7 @@ const char * LCCLogDemonsPluginPrivate::s_Name = "LCCLogDemons";
 // LCCLogDemonsPlugin
 // /////////////////////////////////////////////////////////////////
 
-LCCLogDemonsPlugin::LCCLogDemonsPlugin(QObject *parent) : dtkPlugin(parent), d(new LCCLogDemonsPluginPrivate)
+LCCLogDemonsPlugin::LCCLogDemonsPlugin(QObject *parent) : medPluginLegacy(parent), d(new LCCLogDemonsPluginPrivate)
 {
     
 }

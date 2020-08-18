@@ -3,4 +3,6 @@
          "concept" : "medAbstractDWIMaskingProcess",
          "version" : "3.0.0", 	
     "dependencies" : []
+        "category" : 6,
+            "lazy" : false
 }

@@ -29,7 +29,7 @@ public:
     LCCLogDemonsToolBox(QWidget *parent = 0);
     ~LCCLogDemonsToolBox();
 
-	dtkPlugin * plugin() override;
+	medPluginLegacy * plugin() override;
 	medAbstractData * processOutput() override;
 
     static bool registered();
