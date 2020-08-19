@@ -21,7 +21,7 @@
 // itkINRDataImageReaderPlugin
 // /////////////////////////////////////////////////////////////////
 
-itkINRDataImageReaderPlugin::itkINRDataImageReaderPlugin(QObject *parent) : dtkPlugin(parent)
+itkINRDataImageReaderPlugin::itkINRDataImageReaderPlugin(QObject *parent) : medPluginLegacy(parent)
 {
 }
 

@@ -1,7 +1,7 @@
 {
             "name" : "LCCLogDemonsPlugin",
          "version" : "3.0.0", 	
-    "dependencies" : []
+    "dependencies" : [],
         "category" : 6,
             "lazy" : false
 }

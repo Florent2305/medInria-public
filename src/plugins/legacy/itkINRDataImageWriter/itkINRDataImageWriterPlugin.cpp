@@ -21,7 +21,7 @@
 // itkINRDataImageWriterPlugin
 // /////////////////////////////////////////////////////////////////
 
-itkINRDataImageWriterPlugin::itkINRDataImageWriterPlugin(QObject *parent) : dtkPlugin(parent)
+itkINRDataImageWriterPlugin::itkINRDataImageWriterPlugin(QObject *parent) : medPluginLegacy(parent)
 {
 }
 

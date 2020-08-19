@@ -1,7 +1,7 @@
 {
             "name" : "itkINRDataImageReaderPlugin",
          "version" : "3.0.0", 	
-    "dependencies" : []
+    "dependencies" : [],
         "category" : 1,
             "lazy" : false
 }

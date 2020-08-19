@@ -13,10 +13,10 @@
 
 =========================================================================*/
 
-#include <dtkCoreSupport/dtkPlugin.h>
+#include <medPluginLegacy.h>
 #include "itkINRDataImageReaderPluginExport.h"
 
-class ITKINRDATAIMAGEREADERPLUGIN_EXPORT itkINRDataImageReaderPlugin : public dtkPlugin
+class ITKINRDATAIMAGEREADERPLUGIN_EXPORT itkINRDataImageReaderPlugin : public medPluginLegacy
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "fr.inria.itkINRDataImageReaderPlugin" FILE "itkINRDataImageReaderPlugin.json")
