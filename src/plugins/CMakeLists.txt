@@ -48,6 +48,7 @@ set(PLUGIN_LIST
   legacy/itkFilters                                                      ON
   legacy/itkINRDataImageReader                                           ON
   legacy/itkINRDataImageWriter                                           ON
+  legacy/itkProcessRegistrationOptimus                                   ON
   legacy/LCCLogDemons                                                    ON  
   legacy/manualRegistration                                              ON
   legacy/medAlgorithmPaint                                               ON
