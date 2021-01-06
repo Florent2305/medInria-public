@@ -41,7 +41,7 @@ if (NOT USE_SYSTEM_${ep})
 ## #############################################################################
 
 set(git_url ${GITLAB_INRIA_PREFIX}dtk/dtk-imaging.git)
-set(git_tag master)
+set(git_tag "master")
 
 ## #############################################################################
 ## Add specific cmake arguments for configuration step of the project
