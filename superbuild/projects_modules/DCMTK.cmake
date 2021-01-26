@@ -92,6 +92,16 @@ set(cmake_args
   -DDCMTK_FORCE_FPIC_ON_UNIX:BOOL=ON
   )
 
+  
+  set(current_build_type  ${CMAKE_BUILD_TYPE_externals_projects})
+  if(${CMAKE_BUILD_TYPE_externals_projects} STREQUAL RelWithDebInfo)
+    set(cmake_cache_args
+      -DCMAKE_POLICY_DEFAULT_CMP0091:STRING=NEW
+      -DCMAKE_MSVC_RUNTIME_LIBRARY:STRING=MultiThreadedDebugDLL
+      )
+    set(current_build_type Debug)
+  endif()
+  
 ## #############################################################################
 ## Add external-project
 ## #############################################################################
@@ -113,6 +123,7 @@ ExternalProject_Add(${ep}
   CMAKE_ARGS ${cmake_args}
   DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""
+  BUILD_COMMAND ${CMAKE_COMMAND} --build ${build_path} --config ${current_build_type}
   BUILD_ALWAYS 1
   )
 

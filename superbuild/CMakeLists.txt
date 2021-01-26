@@ -85,8 +85,33 @@ endif()
 ## #############################################################################
 
 unset(CMAKE_BUILD_TYPE CACHE)
-set(CMAKE_BUILD_TYPE_externals_projects Release CACHE STRING "Build type configuration for externals projects libraries.")
+set(CMAKE_BUILD_TYPE_externals_projects RelWithDebInfo CACHE STRING "Build type configuration for externals projects libraries.")
 set(CMAKE_BUILD_TYPE_medInria Debug CACHE STRING "Build type configuration specific to medInria.")
+
+
+if (WIN32 AND MSVC)
+    if(${CMAKE_BUILD_TYPE_medInria} STREQUAL RelWithDebInfo OR ${CMAKE_BUILD_TYPE_medInria} STREQUAL Debug)
+      # /MTd will be used
+      if(NOT ${CMAKE_BUILD_TYPE_externals_projects}  STREQUAL RelWithDebInfo AND NOT ${CMAKE_BUILD_TYPE_externals_projects} STREQUAL Debug)
+        message(FATAL_ERROR "medInria build type ${CMAKE_BUILD_TYPE_medInria} INCOMPATIBLE with" 
+                            "extprojs build type ${CMAKE_BUILD_TYPE_externals_projects}\n"
+                            "Please use  Debug|RelWithDebInfo  for CMAKE_BUILD_TYPE_externals_projects")                              
+      endif()
+    else()
+      # /MT will be used
+      if(NOT ${CMAKE_BUILD_TYPE_externals_projects} STREQUAL Release AND NOT ${CMAKE_BUILD_TYPE_externals_projects} STREQUAL RelWithDebInfo)
+        message(FATAL_ERROR "medInria build type  ${CMAKE_BUILD_TYPE_medInria}  is INCOMPATIBLE with " 
+                            "externals projects build type  ${CMAKE_BUILD_TYPE_externals_projects}\n"
+                            "Please use  Release|RelWithDebInfo  for CMAKE_BUILD_TYPE_externals_projects")          
+      endif()
+    endif()
+    #We can't just use CMAKE_MSVC_RUNTIME_LIBRARY in external-projects calls with the good policy like:
+    #  set(cmake_cache_args
+    #    -DCMAKE_POLICY_DEFAULT_CMP0091:STRING=NEW
+    #    -DCMAKE_MSVC_RUNTIME_LIBRARY:STRING=MultiThreadedDebugDLL)
+    #Because some external project like VTK impose and override /MT for Release or /MTd for Debug
+    #Then we can't create Release target but with /MTd 
+endif()
 
 ## #############################################################################
 ## medInria dirs.

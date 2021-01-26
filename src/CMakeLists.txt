@@ -76,6 +76,9 @@ find_package(Qt5 REQUIRED COMPONENTS
   Xml
   )
 
+set(CMAKE_MAP_IMPORTED_CONFIG_DEBUG ${EP_BUILD_TYPE})
+message("-------------------------------------------------------------------------------------   ${EP_BUILD_TYPE}   --------------------------------")
+
 find_package(dtk REQUIRED)
 include_directories(${dtk_INCLUDE_DIRS})
 
