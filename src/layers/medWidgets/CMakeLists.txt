@@ -21,6 +21,7 @@ set(TARGET_NAME medWidgets)
 
 list_source_files(${TARGET_NAME}
   ${CMAKE_CURRENT_SOURCE_DIR}
+  medWidget
   process
   process/arithmetic_operation
   process/diffusion_processes

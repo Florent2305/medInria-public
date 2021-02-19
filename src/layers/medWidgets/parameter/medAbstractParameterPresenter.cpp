@@ -22,6 +22,7 @@
 #include <medIntParameterPresenter.h>
 #include <medDoubleParameterPresenter.h>
 #include <medStringParameterPresenter.h>
+#include <medStringListParameterPresenter.h>
 
 class medAbstractParameterPresenterPrivate
 {
@@ -95,6 +96,8 @@ medAbstractParameterPresenter* medAbstractParameterPresenter::buildFromParameter
         presenter = new medDoubleParameterPresenter(qobject_cast<medDoubleParameter*>(parameter));
     case medParameterType::MED_PARAMETER_STRING :
         presenter = new medStringParameterPresenter(qobject_cast<medStringParameter*>(parameter));
+    case medParameterType::MED_PARAMETER_STRING_LIST:
+        presenter = new medStringListParameterPresenter(qobject_cast<medStringListParameter*>(parameter));
     default:
         dtkDebug() << "Unable to build presenter for parameter of type" << parameter->type();
     }

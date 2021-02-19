@@ -18,6 +18,8 @@
 #include <QSpinBox>
 #include <QProgressBar>
 
+#include <medSlider.h>
+
 class medIntParameterPresenterPrivate
 {
 public:
@@ -103,4 +105,20 @@ QProgressBar* medIntParameterPresenter::buildProgressBar()
             progressBar, &QProgressBar::setRange);
 
     return progressBar;
+}
+
+medSlider* medIntParameterPresenter::getSlider()
+{
+    medSlider *slider = new medSlider;
+
+    slider->setRange(d->parameter->minimum(), d->parameter->maximum());
+    slider->setValue(d->parameter->value());
+    slider->setToolTip(d->parameter->description());
+    slider->setStyleSheet("QSlider::handle:horizontal {width: 15px;}");
+
+    connect(slider,       &medSlider::valueChanged,       d->parameter,   &medIntParameter::setValue);
+    connect(d->parameter, &medIntParameter::rangeChanged, slider,         &medSlider::setRange);
+    connect(d->parameter, &medIntParameter::valueChanged, slider,         &medSlider::setValue);
+
+    return slider;
 }

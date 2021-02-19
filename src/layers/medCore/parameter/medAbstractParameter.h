@@ -21,7 +21,8 @@ enum medParameterType
     MED_PARAMETER_INT,
     MED_PARAMETER_DOUBLE,
     MED_PARAMETER_BOOL,
-    MED_PARAMETER_STRING
+    MED_PARAMETER_STRING,
+    MED_PARAMETER_STRING_LIST
 };
 
 class medAbstractParameterPrivate;

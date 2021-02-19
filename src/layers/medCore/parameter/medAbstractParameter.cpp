@@ -32,7 +32,7 @@ medAbstractParameter::~medAbstractParameter()
      // no needed to explicitly delete the d pointer because we used a QScopedPointer
      // to hold it.
 
-     // However we still have to explictly write the destructor, even if empty, otherwise,
+     // However we still have to explicitly write the destructor, even if empty, otherwise,
      // the compiler auto create an inlined one which make
      // 'const QScopedPointer<medAbstractParameterPrivate> d;' impossible with a forward
      // declaration of medAbstractParameterPrivate.
