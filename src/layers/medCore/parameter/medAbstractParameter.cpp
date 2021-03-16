@@ -19,12 +19,15 @@ public:
     QString id;
     QString description;
     QString caption;
+    int guiDefaultRepresentationIndex;
 };
 
 medAbstractParameter::medAbstractParameter(const QString & id, QObject *parent)
     : QObject(parent), d(new medAbstractParameterPrivate)
 {
     d->id = id;
+    d->caption = id; //use id as default caption.
+    d->guiDefaultRepresentationIndex = 0;
 }
 
 medAbstractParameter::~medAbstractParameter()
@@ -59,6 +62,16 @@ void medAbstractParameter::setCaption(const QString & caption)
 {
     d->caption = caption;
     emit captionChanged(d->caption);
+}
+
+int medAbstractParameter::defaultRepresentation() const
+{
+    return d->guiDefaultRepresentationIndex;
+}
+
+void medAbstractParameter::setDefaultRepresentation(int representationIndex)
+{
+    d->guiDefaultRepresentationIndex = representationIndex;
 }
 
 QString medAbstractParameter::caption() const

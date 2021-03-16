@@ -35,7 +35,7 @@ public:
     virtual QWidget *buildWidget();
     QSpinBox *buildSpinBox();
     QProgressBar *buildProgressBar();
-    medSlider * getSlider();
+    medSlider * buildSlider();
 
 
     void setSingleStep(int step);

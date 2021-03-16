@@ -23,7 +23,7 @@ public:
 medStringParameter::medStringParameter(QString const& name,  QObject *parent)
     : medAbstractParameter(name, parent), d(new medStringParameterPrivate)
 {
-
+    d->poValidator = nullptr;
 }
 
 medStringParameter::~medStringParameter()

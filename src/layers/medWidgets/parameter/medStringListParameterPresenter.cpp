@@ -39,7 +39,14 @@ medStringListParameter * medStringListParameterPresenter::parameter() const
 
 QWidget * medStringListParameterPresenter::buildWidget()
 {
-    return buildComboBox();
+    QWidget *poWidgetRes = nullptr;
+    switch (d->parameter->defaultRepresentation())
+    {
+    case 0:
+    default:
+        poWidgetRes = this->buildComboBox(); break;
+    }
+    return poWidgetRes;
 }
 
 QComboBox * medStringListParameterPresenter::buildComboBox()

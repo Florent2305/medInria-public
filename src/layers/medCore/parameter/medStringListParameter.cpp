@@ -26,6 +26,7 @@ public:
 medStringListParameter::medStringListParameter(QString name, QObject* parent): medStringParameter(name, parent), d(new medStringListParameterPrivate)
 {
     d->iCurrent = 0;
+    d->poValidator = nullptr;
 }
 
 

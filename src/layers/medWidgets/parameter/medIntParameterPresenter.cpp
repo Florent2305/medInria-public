@@ -65,7 +65,18 @@ int medIntParameterPresenter::singleStep() const
 
 QWidget* medIntParameterPresenter::buildWidget()
 {
-    return this->buildSpinBox();
+    QWidget *poWidgetRes = nullptr;
+    switch (d->parameter->defaultRepresentation())
+    {
+    case 1:
+        poWidgetRes = this->buildProgressBar(); break;
+    case 2:
+        poWidgetRes = this->buildSlider(); break;
+    case 0:
+    default:
+        poWidgetRes = this->buildSpinBox(); break;
+    }
+    return poWidgetRes;
 }
 
 QSpinBox* medIntParameterPresenter::buildSpinBox()
@@ -107,7 +118,7 @@ QProgressBar* medIntParameterPresenter::buildProgressBar()
     return progressBar;
 }
 
-medSlider* medIntParameterPresenter::getSlider()
+medSlider* medIntParameterPresenter::buildSlider()
 {
     medSlider *slider = new medSlider;
 

@@ -14,6 +14,7 @@
 #include <medAbstractParameterPresenter.h>
 
 #include <QWidget>
+#include <QLabel>
 
 #include <dtkLog>
 
@@ -49,6 +50,13 @@ medAbstractParameterPresenter::medAbstractParameterPresenter(medAbstractParamete
 medAbstractParameterPresenter::~medAbstractParameterPresenter()
 {
 
+}
+
+QWidget * medAbstractParameterPresenter::buildLabel()
+{
+    QLabel *poLabelRes = new QLabel(d->parameter->caption());
+    _connectWidget(poLabelRes);
+    return poLabelRes;
 }
 
 void medAbstractParameterPresenter::setVisible(bool visibility)
@@ -89,15 +97,15 @@ medAbstractParameterPresenter* medAbstractParameterPresenter::buildFromParameter
     switch(parameter->type())
     {
     case medParameterType::MED_PARAMETER_BOOL :
-        presenter = new medBoolParameterPresenter(qobject_cast<medBoolParameter*>(parameter));
+        presenter = new medBoolParameterPresenter(qobject_cast<medBoolParameter*>(parameter)); break;
     case medParameterType::MED_PARAMETER_INT :
-        presenter = new medIntParameterPresenter(qobject_cast<medIntParameter*>(parameter));
+        presenter = new medIntParameterPresenter(qobject_cast<medIntParameter*>(parameter)); break;
     case medParameterType::MED_PARAMETER_DOUBLE :
-        presenter = new medDoubleParameterPresenter(qobject_cast<medDoubleParameter*>(parameter));
+        presenter = new medDoubleParameterPresenter(qobject_cast<medDoubleParameter*>(parameter)); break;
     case medParameterType::MED_PARAMETER_STRING :
-        presenter = new medStringParameterPresenter(qobject_cast<medStringParameter*>(parameter));
+        presenter = new medStringParameterPresenter(qobject_cast<medStringParameter*>(parameter)); break;
     case medParameterType::MED_PARAMETER_STRING_LIST:
-        presenter = new medStringListParameterPresenter(qobject_cast<medStringListParameter*>(parameter));
+        presenter = new medStringListParameterPresenter(qobject_cast<medStringListParameter*>(parameter)); break;
     default:
         dtkDebug() << "Unable to build presenter for parameter of type" << parameter->type();
     }

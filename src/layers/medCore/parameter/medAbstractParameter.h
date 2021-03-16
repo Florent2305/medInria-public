@@ -42,6 +42,9 @@ public:
     QString caption() const;
     void setCaption(QString const& caption);
 
+    int defaultRepresentation() const;
+    void setDefaultRepresentation(int representationIndex);
+
     bool match(medAbstractParameter const* other) const;
 
 signals:
