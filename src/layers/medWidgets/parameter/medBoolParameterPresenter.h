@@ -14,7 +14,6 @@
 
 #include <medAbstractParameterPresenter.h>
 #include <medBoolParameter.h>
-#include <iostream>
 
 class QWidget;
 class QCheckBox;
@@ -38,10 +37,10 @@ public:
     void setIcon(QIcon icon);
     void setIconSize(QSize const & size);
 
-    virtual QWidget *buildWidget();
-    QPushButton * buildPushButton();
-    QRadioButton * buildRadioButton();
-    QCheckBox *buildCheckBox();
+    virtual QWidget * buildWidget();
+    QPushButton *     buildPushButton();
+    QRadioButton *    buildRadioButton();
+    QCheckBox *       buildCheckBox();
 
 
 private:

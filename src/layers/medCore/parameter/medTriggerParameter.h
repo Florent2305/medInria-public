@@ -26,7 +26,11 @@ class MEDCORE_EXPORT medTriggerParameter : public medAbstractParameter
 
 public:
     medTriggerParameter(QString name = "Unknown trigger parameter", QObject* parent = nullptr);
-    virtual ~medTriggerParameter();
+    ~medTriggerParameter() override;
+
+    medParameterType type() const override { return medParameterType::MED_PARAMETER_TRIGGER; }
+
+    void trigger() override;
 
 signals:
     void pushed(bool);

@@ -27,3 +27,8 @@ medTriggerParameter::~medTriggerParameter()
 {
 }
 
+void medTriggerParameter::trigger()
+{
+
+}
+

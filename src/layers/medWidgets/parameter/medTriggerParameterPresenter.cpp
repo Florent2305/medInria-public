@@ -85,3 +85,8 @@ QPushButton* medTriggerParameterPresenter::buildPushButton()
 
     return poButtonRes;
 }
+
+medAbstractParameter * medTriggerParameterPresenter::parameter() const
+{
+    return d->parameter;
+}

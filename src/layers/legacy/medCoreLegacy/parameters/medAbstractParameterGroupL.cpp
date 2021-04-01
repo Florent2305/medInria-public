@@ -15,10 +15,7 @@
 #include <medAbstractParameterGroupL.h>
 
 #include <QtCore>
-
-#include <medAbstractView.h>
-#include <medAbstractLayeredView.h>
-#include <medAbstractParameterL.h>
+#include <QColor>
 #include <medParameterGroupManagerL.h>
 
 class medAbstractParameterGroupLPrivate

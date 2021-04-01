@@ -22,7 +22,9 @@ enum medParameterType
     MED_PARAMETER_DOUBLE,
     MED_PARAMETER_BOOL,
     MED_PARAMETER_STRING,
-    MED_PARAMETER_STRING_LIST
+    MED_PARAMETER_STRING_LIST,
+    MED_PARAMETER_TRIGGER, //TODO FLO to put into abstractPresenter
+    MED_PARAMETER_TIMELINE //TODO FLO to put into abstractPresenter
 };
 
 class medAbstractParameterPrivate;

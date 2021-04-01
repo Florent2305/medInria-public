@@ -27,15 +27,15 @@ class MEDWIDGETS_EXPORT medTriggerParameterPresenter : public medAbstractParamet
 
 public:
     medTriggerParameterPresenter(medTriggerParameter *parent);
-    virtual ~medTriggerParameterPresenter();
+    ~medTriggerParameterPresenter() override;
 
     void setIcon(QIcon& icon);
     void setIconSize(QSize& size);
 
-    virtual QWidget* buildWidget();
+    QWidget* buildWidget() override;
     QPushButton* buildPushButton();
 
-
+    medAbstractParameter *parameter() const override;
 private:
     medTriggerParameterPresenterPrivate* d;
 };
