@@ -30,6 +30,7 @@ public:
     virtual ~medAbstractParameterPresenter();
 
     virtual QWidget *buildWidget() = 0;
+    virtual QWidget *buildLabel();
     virtual medAbstractParameter *parameter() const = 0;
 
     void setVisible(bool visibility);

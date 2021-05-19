@@ -37,7 +37,6 @@
 #include <medStringListParameterL.h>
 #include <medToolBox.h>
 #include <medToolBoxHeader.h>
-#include <medTriggerParameterL.h>
 #include <medViewContainerManager.h>
 #include <medViewContainerSplitter.h>
 #include <medViewFactory.h>

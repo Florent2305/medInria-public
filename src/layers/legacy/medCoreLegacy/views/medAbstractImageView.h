@@ -30,7 +30,6 @@ class medAbstractNavigator;
 
 class medDoubleParameterL;
 class medCompositeParameterL;
-class medTriggerParameterL;
 class medAbstractVector3DParameterL;
 
 class medAbstractImageViewPrivate;

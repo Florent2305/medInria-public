@@ -81,5 +81,4 @@ private slots:
 
 private:
     medTimeLineParameterLPrivate* d;
-
 };

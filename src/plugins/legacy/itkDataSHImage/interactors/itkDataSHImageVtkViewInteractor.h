@@ -14,11 +14,16 @@
 
 #include <medAbstractImageViewInteractor.h>
 #include <itkDataSHImagePluginExport.h>
+#include <QList>
 
 class itkDataSHImageVtkViewInteractorPrivate;
 
+class medAbstractParameter;
+class medIntParameter;
+class medBoolParameter;
+class medStringListParameter;
 class medAbstractData;
-class dtkAbstractView;
+class medAbstractImageView;
 
 /**
  * @class itkDataSHImageVtkViewInteractor
@@ -67,8 +72,24 @@ public:
     virtual QWidget* buildLayerWidget();
     virtual QWidget* buildToolBoxWidget();
     virtual QWidget* buildToolBarWidget();
-    virtual QList<medAbstractParameterL*> linkableParameters();
-    virtual QList<medBoolParameterL*> mouseInteractionParameters();
+    QList<medAbstractParameterL*> linkableParameters() override;
+    QList<medBoolParameterL*> mouseInteractionParameters() override;
+
+    medIntParameter*        slicing();
+    medStringListParameter* tesselationType();
+    medStringListParameter* tesselationBasis();
+    medIntParameter*        sampleRate();
+    medBoolParameter*       flipX();
+    medBoolParameter*       flipY();
+    medBoolParameter*       flipZ();
+    medBoolParameter*       enhance();
+    medIntParameter*        glyphResolution();
+    medIntParameter*        minorScaling();
+    medIntParameter*        majorScaling();
+
+    QList<medAbstractParameter*> parameters();
+
+    medAbstractImageView* getView();
 
     void removeData();
 

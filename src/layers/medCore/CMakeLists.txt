@@ -29,6 +29,9 @@ list_source_files(${TARGET_NAME}
   process/mask_image
   process/single_filter
   parameter
+  parameter/tools
+  view
+  view/tools
   job
   )
 
@@ -75,3 +78,4 @@ target_link_libraries(${TARGET_NAME}
 set_lib_install_rules(${TARGET_NAME}
   ${${TARGET_NAME}_HEADERS}
   )
+  

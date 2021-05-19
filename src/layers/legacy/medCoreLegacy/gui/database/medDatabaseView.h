@@ -18,7 +18,7 @@
 #include <medCoreLegacyExport.h>
 
 class medDataIndex;
-class medDatabaseModel;
+//class medDatabaseModel;
 class medDatabaseViewPrivate;
 class medAbstractDatabaseItem;
 
