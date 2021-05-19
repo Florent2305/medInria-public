@@ -51,13 +51,13 @@ medVariantListParameter* medCompositeParameterPresenter::parameter() const
 
 QWidget* medCompositeParameterPresenter::buildWidget()
 {
-    medCompositeParameterWidgetPrivate *poWidgetRes = new medCompositeParameterWidgetPrivate();
+    medVariantListParameterWidgetPrivate *poWidgetRes = new medVariantListParameterWidgetPrivate();
 
-    connect(d->parameter, &medVariantListParameter::valueChanged,   poWidgetRes, &medCompositeParameterWidgetPrivate::changeValue);
-    connect(d->parameter, &medVariantListParameter::variantAdded,   poWidgetRes, &medCompositeParameterWidgetPrivate::addVariant);
-    connect(d->parameter, &medVariantListParameter::variantRemoved, poWidgetRes, &medCompositeParameterWidgetPrivate::removeVariant);
+    connect(d->parameter, &medVariantListParameter::valueChanged,   poWidgetRes, &medVariantListParameterWidgetPrivate::changeValue);
+    connect(d->parameter, &medVariantListParameter::variantAdded,   poWidgetRes, &medVariantListParameterWidgetPrivate::addVariant);
+    connect(d->parameter, &medVariantListParameter::variantRemoved, poWidgetRes, &medVariantListParameterWidgetPrivate::removeVariant);
     
-    connect(poWidgetRes, &medCompositeParameterWidgetPrivate::valueChanged, d->parameter, &medVariantListParameter::setValue);
+    connect(poWidgetRes, &medVariantListParameterWidgetPrivate::valueChanged, d->parameter, &medVariantListParameter::setValue);
 
     return poWidgetRes; 
 }

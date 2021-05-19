@@ -24,12 +24,12 @@
 //class medCompositeParameterPresenterPrivate;
 
 
-class medCompositeParameterWidgetPrivate : public QWidget
+class medVariantListParameterWidgetPrivate : public QWidget
 {
     Q_OBJECT
 public:
-    medCompositeParameterWidgetPrivate(QWidget *parent = nullptr, const char *name = nullptr);
-    ~medCompositeParameterWidgetPrivate();
+    medVariantListParameterWidgetPrivate(QWidget *parent = nullptr, const char *name = nullptr);
+    ~medVariantListParameterWidgetPrivate();
 
 public slots:
 

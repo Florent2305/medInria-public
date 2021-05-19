@@ -22,7 +22,7 @@
 #include <QDebug>
 
 
-medCompositeParameterWidgetPrivate::medCompositeParameterWidgetPrivate(QWidget * parent, const char * name)
+medVariantListParameterWidgetPrivate::medVariantListParameterWidgetPrivate(QWidget * parent, const char * name)
 {
     layout.setParent(this);
 
@@ -34,11 +34,11 @@ medCompositeParameterWidgetPrivate::medCompositeParameterWidgetPrivate(QWidget *
     }
 }
 
-medCompositeParameterWidgetPrivate::~medCompositeParameterWidgetPrivate()
+medVariantListParameterWidgetPrivate::~medVariantListParameterWidgetPrivate()
 {
 }
 
-void medCompositeParameterWidgetPrivate::changeValue(QString const & key, QVariant const & Value)
+void medVariantListParameterWidgetPrivate::changeValue(QString const & key, QVariant const & Value)
 {
 
     blockInternWidgetsSignals(true);
@@ -56,7 +56,7 @@ void medCompositeParameterWidgetPrivate::changeValue(QString const & key, QVaria
     blockInternWidgetsSignals(false);
 }
 
-void medCompositeParameterWidgetPrivate::addVariant(QString const & key, QVariant const & Value)
+void medVariantListParameterWidgetPrivate::addVariant(QString const & key, QVariant const & Value)
 {
     blockInternWidgetsSignals(true);
     if (!widgets.contains(key))
@@ -107,7 +107,7 @@ void medCompositeParameterWidgetPrivate::addVariant(QString const & key, QVarian
             break;
         }
         default:
-            qWarning() << "medCompositeParameterWidgetPrivate::addVariant don't accept " << Value.typeName() << "\n";
+            qWarning() << "medVariantListParameterWidgetPrivate::addVariant don't accept " << Value.typeName() << "\n";
             break;
         }
     }
@@ -115,7 +115,7 @@ void medCompositeParameterWidgetPrivate::addVariant(QString const & key, QVarian
     blockInternWidgetsSignals(false);
 }
 
-void medCompositeParameterWidgetPrivate::removeVariant(QString const & key)
+void medVariantListParameterWidgetPrivate::removeVariant(QString const & key)
 {
     QWidget * widget = widgets[key];
     widget->setParent(nullptr);
@@ -124,7 +124,7 @@ void medCompositeParameterWidgetPrivate::removeVariant(QString const & key)
 }
 
 
-inline void medCompositeParameterWidgetPrivate::blockInternWidgetsSignals(bool block) const
+inline void medVariantListParameterWidgetPrivate::blockInternWidgetsSignals(bool block) const
 {
     for (QWidget* widget : widgets)
     {
