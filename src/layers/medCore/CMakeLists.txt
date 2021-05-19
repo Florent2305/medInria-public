@@ -29,6 +29,9 @@ list_source_files(${TARGET_NAME}
   process/mask_image
   process/single_filter
   parameter
+  parameter/tools
+  view
+  view/tools
   job
   )
 

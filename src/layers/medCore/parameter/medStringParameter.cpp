@@ -24,6 +24,7 @@ medStringParameter::medStringParameter(QString const& name,  QObject *parent)
     : medAbstractParameter(name, parent), d(new medStringParameterPrivate)
 {
     d->poValidator = nullptr;
+    connect(this, &medStringParameter::valueChanged, this, &medStringParameter::triggered);
 }
 
 medStringParameter::~medStringParameter()
@@ -34,6 +35,18 @@ medStringParameter::~medStringParameter()
 QString medStringParameter::value() const
 {
     return d->value;
+}
+
+bool medStringParameter::copyValueTo(medAbstractParameter & dest)
+{
+    bool bRes = typeid(dest) == typeid(*this);
+
+    if (bRes)
+    {
+        setValue(dynamic_cast<medStringParameter*>(&dest)->value());
+    }
+
+    return bRes;
 }
 
 bool medStringParameter::setValue( QString const& value)

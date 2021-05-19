@@ -28,6 +28,8 @@ public:
 
     bool value() const;
 
+    bool copyValueTo(medAbstractParameter &dest) override;
+
 public slots:
     void setValue(bool value);
 

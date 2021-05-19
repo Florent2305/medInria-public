@@ -30,7 +30,11 @@ public:
     medVector3DParameter(QString name = "Unknown Vector 3D parameter", QObject* parent = nullptr);
     virtual ~medVector3DParameter();
 
-    virtual QVector3D value() const;
+    medParameterType type() const override { return medParameterType::MED_PARAMETER_VECTOR3D; }
+
+    QVector3D value() const;
+
+    bool copyValueTo(medAbstractParameter &dest) override;
 
     virtual void toXMLNode(QDomDocument *doc, QDomElement *currentNode);
 

@@ -31,8 +31,11 @@ public:
     medVector2DParameter(QString name = "Unknown Vector 2D parameter", QObject* parent = nullptr);
     virtual ~medVector2DParameter();
 
+    medParameterType type() const override { return medParameterType::MED_PARAMETER_VECTOR2D; }
 
-    virtual QVector2D value() const;
+    QVector2D value() const;
+
+    bool copyValueTo(medAbstractParameter &dest) override;
 
     virtual void toXMLNode(QDomDocument *doc, QDomElement *currentNode);
 

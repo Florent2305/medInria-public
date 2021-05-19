@@ -28,6 +28,8 @@ public:
 
     virtual QString value() const;
 
+    bool copyValueTo(medAbstractParameter &dest) override;
+
     virtual void setValidator(QValidator *pi_poValidator);
     virtual QValidator *getValidator() const;
 

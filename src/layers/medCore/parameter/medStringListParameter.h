@@ -41,6 +41,8 @@ public:
     QString value() const override;
     int getIndex() const;
 
+    bool copyValueTo(medAbstractParameter &dest) override;
+
     void setValidator(QValidator *pi_poValidator) override;
     QValidator *getValidator() const override;
 

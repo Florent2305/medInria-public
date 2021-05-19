@@ -31,6 +31,7 @@ public:
     medParameterType type() const override { return medParameterType::MED_PARAMETER_TRIGGER; }
 
     void trigger() override;
+    bool copyValueTo(medAbstractParameter &dest) override { return false; };
 
 signals:
     void pushed(bool);

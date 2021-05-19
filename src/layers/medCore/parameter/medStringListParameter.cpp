@@ -27,6 +27,7 @@ medStringListParameter::medStringListParameter(QString name, QObject* parent): m
 {
     d->iCurrent = 0;
     d->poValidator = nullptr;
+    connect(this, &medStringListParameter::valueChanged, this, &medStringListParameter::triggered);
 }
 
 
@@ -105,6 +106,18 @@ QString medStringListParameter::value() const
 int medStringListParameter::getIndex() const
 {
     return d->iCurrent;
+}
+
+bool medStringListParameter::copyValueTo(medAbstractParameter & dest)
+{
+    bool bRes = typeid(dest) == typeid(*this);
+
+    if (bRes)
+    {
+        dynamic_cast<medStringListParameter*>(&dest)->setValue(value());
+    }
+
+    return bRes;
 }
 
 bool medStringListParameter::setValue(QString const & value)

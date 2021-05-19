@@ -124,7 +124,8 @@ medTimeLineParameter::medTimeLineParameter(QString name, QObject *parent):
     connect(d->speedFactorParameter, SIGNAL(valueChanged(int)), this, SLOT(setSpeedFactor(int)));
     connect(d->currentTimeParameter, SIGNAL(valueChanged(double)), this, SLOT(updateTime(double)));
     connect(d->loopParameter, SIGNAL(valueChanged(bool)), this, SLOT(setLoop(bool)));
-    //connect(d->currentTimeParameter, SIGNAL(valueChanged(double)), this, SLOT(updateFrameLabel()));
+    connect(this, &medTimeLineParameter::timeChanged, this, &medTimeLineParameter::triggered);
+
 
     d->loopParameter->setValue(true);
 }
@@ -183,6 +184,18 @@ unsigned int medTimeLineParameter::mapTimeToFrame(const double &time)
 double medTimeLineParameter::mapFrameToTime (int frame)
 {
     return frame * d->timeBetweenFrames;
+}
+
+bool medTimeLineParameter::copyValueTo(medAbstractParameter & dest)
+{
+    bool bRes = typeid(dest) == typeid(*this);
+
+    if (bRes)
+    {
+        dynamic_cast<medTimeLineParameter*>(&dest)->setFrame(frame());
+    }
+
+    return bRes;
 }
 
 void medTimeLineParameter::setSpeedFactor(int speedFactor)

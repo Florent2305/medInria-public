@@ -25,6 +25,7 @@ public:
 medVector3DParameter::medVector3DParameter(QString name, QObject *parent)
     : medAbstractParameter(name, parent)
 {
+    connect(this, &medVector3DParameter::valueChanged, this, &medVector3DParameter::triggered);
 }
 
 medVector3DParameter::~medVector3DParameter()
@@ -44,6 +45,18 @@ void medVector3DParameter::setValue(const QVector3D &value)
 QVector3D medVector3DParameter::value() const
 {
     return d->value;
+}
+
+bool medVector3DParameter::copyValueTo(medAbstractParameter & dest)
+{
+    bool bRes = typeid(dest) == typeid(*this);
+
+    if (bRes)
+    {
+        dynamic_cast<medVector3DParameter*>(&dest)->setValue(value());
+    }
+
+    return bRes;
 }
 
 void medVector3DParameter::trigger()

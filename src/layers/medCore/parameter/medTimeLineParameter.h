@@ -33,6 +33,8 @@ public:
     medTimeLineParameter(QString name = "Unknown timeLine parameter", QObject* parent = nullptr);
     ~medTimeLineParameter() override;
 
+    medParameterType type() const override { return medParameterType::MED_PARAMETER_TIMELINE; }
+
     void clear();
 
     int          speedFactor() const;
@@ -45,6 +47,8 @@ public:
 
     unsigned int mapTimeToFrame(const double& time);
     double       mapFrameToTime(int frame);
+
+    bool copyValueTo(medAbstractParameter &dest) override;
 
     void trigger() override;
 

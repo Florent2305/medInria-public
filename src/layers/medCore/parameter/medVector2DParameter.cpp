@@ -25,6 +25,7 @@ public:
 medVector2DParameter::medVector2DParameter(QString name, QObject *parent)
     : medAbstractParameter(name, parent)
 {
+    connect(this, &medVector2DParameter::valueChanged, this, &medVector2DParameter::triggered);
 }
 
 medVector2DParameter::~medVector2DParameter()
@@ -43,6 +44,18 @@ void medVector2DParameter::setValue(const QVector2D &value)
 QVector2D medVector2DParameter::value() const
 {
     return d->value;
+}
+
+bool medVector2DParameter::copyValueTo(medAbstractParameter & dest)
+{
+    bool bRes = typeid(dest) == typeid(*this);
+
+    if (bRes)
+    {
+        dynamic_cast<medVector2DParameter*>(&dest)->setValue(value());
+    }
+
+    return bRes;
 }
 
 void medVector2DParameter::trigger()
