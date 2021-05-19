@@ -24,10 +24,14 @@
 
 #include <medAbstractData.h>
 #include <medAbstractParameterL.h>
-#include <medStringListParameterL.h>
-#include <medIntParameterL.h>
-#include <medBoolParameterL.h>
-#include <medDoubleParameterL.h>
+#include <medStringListParameter.h>
+#include <medIntParameter.h>
+#include <medBoolParameter.h>
+#include <medDoubleParameter.h>
+
+#include <medDoubleParameterL.h>                      // /!\ WARNING USED line 527
+#include <itkDataSHImageVtkViewInteractorPresenter.h> // /!\ WARNING USED temporarily while waiting for an architectural change 
+
 #include <medAbstractImageView.h>
 #include <medViewFactory.h>
 #include <medVtkViewBackend.h>
@@ -40,6 +44,7 @@
 #include <QSlider>
 #include <QLabel>
 #include <QFormLayout>
+#include <QList>
 
 class itkDataSHImageVtkViewInteractorPrivate {
 public:
@@ -51,17 +56,29 @@ public:
     vtkRenderWindow *render;
     vtkMatrix4x4 *orientationMatrix;
 
-    QList <medAbstractParameterL*> parameters;
+    QList <medAbstractParameter*> parameters;
     vtkSphericalHarmonicManager* manager;
     double                       imageBounds[6];
 
     int minorScaling;
     int majorScalingExponent;
 
-    medIntParameterL *slicingParameter;
+    medIntParameter        *slicingParameter;
+    medStringListParameter *tesselationTypeParam;
+    medStringListParameter *tesselationBasisParam;
+    medIntParameter        *sampleRateParam;
+    medBoolParameter       *flipXParam;
+    medBoolParameter       *flipYParam;
+    medBoolParameter       *flipZParam;
+    medBoolParameter       *enhanceParam;
+    medIntParameter        *glyphResolutionParam;
+    medIntParameter        *minorScalingParam;
+    medIntParameter        *majorScalingParam;
 
     typedef vtkSmartPointer <vtkProperty>  PropertySmartPointer;
     PropertySmartPointer actorProperty;
+
+    itkDataSHImageVtkViewInteractorPresenter* presenter;
 
     //  The filters will convert from itk SH image format to vtkStructuredPoint (format handled by the SH manager)
 
@@ -165,7 +182,8 @@ itkDataSHImageVtkViewInteractor::itkDataSHImageVtkViewInteractor(medAbstractView
     connect(d->view->positionBeingViewedParameter(), SIGNAL(valueChanged(QVector3D)),
             this,    SLOT(setPosition(QVector3D)));
 
-    d->slicingParameter = new medIntParameterL("Slicing", this);
+    d->slicingParameter = new medIntParameter("Slicing", this);
+    d->presenter = nullptr;
 }
 
 itkDataSHImageVtkViewInteractor::~itkDataSHImageVtkViewInteractor()
@@ -244,72 +262,72 @@ void itkDataSHImageVtkViewInteractor::setupParameters()
 {
     QStringList tesselationTypeList;
     tesselationTypeList << "Icosahedron" << "Octahedron" << "Tetrahedron";
-    medStringListParameterL *tesselationTypeParam = new medStringListParameterL("Tesselation Type", this);
-    tesselationTypeParam->addItems(tesselationTypeList);
+    d->tesselationTypeParam = new medStringListParameter("Tesselation Type", this);
+    d->tesselationTypeParam->addItems(tesselationTypeList);
 
     //  Combobox to control the spherical Harmonics basis
 
     QStringList tesselationBasisList;
     tesselationBasisList << "SHMatrix" << "SHMatrixMaxThesis" << "SHMatrixTournier" << "SHMatrixRshBasis";
-    medStringListParameterL * tesselationBasisParam = new medStringListParameterL("Tesselation Basis", this);
-    tesselationBasisParam->addItems(tesselationBasisList);
+    d->tesselationBasisParam = new medStringListParameter("Tesselation Basis", this);
+    d->tesselationBasisParam->addItems(tesselationBasisList);
 
     //  Control sample rate
 
-    medIntParameterL *sampleRateParam = new medIntParameterL("Sample Rate", this);
-    sampleRateParam->setRange(1,10);
-    sampleRateParam->setValue(1);
+    d->sampleRateParam = new medIntParameter("Sample Rate", this);
+    d->sampleRateParam->setRange(1,10);
+    d->sampleRateParam->setValue(1);
+
 
     //  flipX, flipY, flipZ and Enhance checkboxes
 
-    medBoolParameterL *flipXParam = new medBoolParameterL("FlipX", this);
-    medBoolParameterL *flipYParam = new medBoolParameterL("FlipY", this);
-    medBoolParameterL *flipZParam = new medBoolParameterL("FlipZ", this);
+    d->flipXParam   = new medBoolParameter("FlipX", this);
+    d->flipYParam   = new medBoolParameter("FlipY", this);
+    d->flipZParam   = new medBoolParameter("FlipZ", this);
 
-    medBoolParameterL *enhanceParam = new medBoolParameterL("Enhance", this);
+    d->enhanceParam = new medBoolParameter("Enhance", this);
 
     //  Control glyph resolution
 
-    medIntParameterL *glyphResolutionParam = new medIntParameterL("Resolution", this);
-    glyphResolutionParam->setRange(0,10);
-    glyphResolutionParam->setValue(2);
+    d->glyphResolutionParam = new medIntParameter("Resolution", this);
+    d->glyphResolutionParam->setRange(0,10);
+    d->glyphResolutionParam->setValue(2);
 
     //  We need to calculate one single number for the scale, out of the minor and major scales
     //  scale = minor*10^(major)
 
     //  Minor scaling
-
-    medIntParameterL *minorScalingParam = new medIntParameterL("Scale", this);
-    minorScalingParam->setRange(0,9);
-    minorScalingParam->setValue(3);
+    d->minorScalingParam = new medIntParameter("Scale", this);
+    d->minorScalingParam->setRange(0,9);
+    d->minorScalingParam->setValue(3);
 
     //  Major scaling
 
-    medIntParameterL *majorScalingParam = new medIntParameterL("x10^", this);
-    majorScalingParam->setRange(-10,10);
-    majorScalingParam->setValue(0);
+    d->majorScalingParam = new medIntParameter("x10^", this);
+    d->majorScalingParam->setRange(-10,10);
+    d->majorScalingParam->setValue(0);
 
-    d->parameters.append(tesselationTypeParam);
-    d->parameters.append(tesselationBasisParam);
-    d->parameters.append(sampleRateParam);
-    d->parameters.append(flipXParam);
-    d->parameters.append(flipYParam);
-    d->parameters.append(flipZParam);
-    d->parameters.append(enhanceParam);
-    d->parameters.append(glyphResolutionParam);
-    d->parameters.append(minorScalingParam);
-    d->parameters.append(majorScalingParam);
+    d->parameters.append(d->tesselationTypeParam);
+    d->parameters.append(d->tesselationBasisParam);
+    d->parameters.append(d->sampleRateParam);
+    d->parameters.append(d->flipXParam);
+    d->parameters.append(d->flipYParam);
+    d->parameters.append(d->flipZParam);
+    d->parameters.append(d->enhanceParam);
+    d->parameters.append(d->glyphResolutionParam);
+    d->parameters.append(d->minorScalingParam);
+    d->parameters.append(d->majorScalingParam);
 
-    connect(tesselationTypeParam, SIGNAL(valueChanged(QString)), this, SLOT(setTesselationType(QString)));
-    connect(tesselationBasisParam, SIGNAL(valueChanged(QString)), this, SLOT(setTesselationBasis(QString)));
-    connect(sampleRateParam, SIGNAL(valueChanged(int)), this, SLOT(setSampleRate(int)));
-    connect(flipXParam, SIGNAL(valueChanged(bool)), this, SLOT(setFlipX(bool)));
-    connect(flipYParam, SIGNAL(valueChanged(bool)), this, SLOT(setFlipY(bool)));
-    connect(flipZParam, SIGNAL(valueChanged(bool)), this, SLOT(setFlipZ(bool)));
-    connect(enhanceParam, SIGNAL(valueChanged(bool)), this, SLOT(setNormalization(bool)));
-    connect(glyphResolutionParam, SIGNAL(valueChanged(int)), this, SLOT(setGlyphResolution(int)));
-    connect(minorScalingParam, SIGNAL(valueChanged(int)), this, SLOT(setMinorScaling(int)));
-    connect(majorScalingParam, SIGNAL(valueChanged(int)), this, SLOT(setMajorScaling(int)));
+    connect(d->tesselationTypeParam, SIGNAL(valueChanged(QString)), this, SLOT(setTesselationType(QString)));
+    connect(d->tesselationBasisParam, SIGNAL(valueChanged(QString)), this, SLOT(setTesselationBasis(QString)));
+    connect(d->sampleRateParam, SIGNAL(valueChanged(int)), this, SLOT(setSampleRate(int)));
+    connect(d->flipXParam, SIGNAL(valueChanged(bool)), this, SLOT(setFlipX(bool)));
+    connect(d->flipYParam, SIGNAL(valueChanged(bool)), this, SLOT(setFlipY(bool)));
+    connect(d->flipZParam, SIGNAL(valueChanged(bool)), this, SLOT(setFlipZ(bool)));
+    connect(d->enhanceParam, SIGNAL(valueChanged(bool)), this, SLOT(setNormalization(bool)));
+    connect(d->glyphResolutionParam, SIGNAL(valueChanged(int)), this, SLOT(setGlyphResolution(int)));
+    connect(d->minorScalingParam, SIGNAL(valueChanged(int)), this, SLOT(setMinorScaling(int)));
+    connect(d->majorScalingParam, SIGNAL(valueChanged(int)), this, SLOT(setMajorScaling(int)));
 
     if(d->view->layer(d->data) == 0)
     {
@@ -509,33 +527,40 @@ void itkDataSHImageVtkViewInteractor::moveToSlice(int slice)
 
 QWidget* itkDataSHImageVtkViewInteractor::buildLayerWidget()
 {
-    QSlider *slider = opacityParameter()->getSlider();
-    slider->setOrientation(Qt::Horizontal);
-    return slider;
+    if (d->presenter == nullptr)
+    {
+        d->presenter = new itkDataSHImageVtkViewInteractorPresenter(this);
+    }
+    return d->presenter->buildLayerWidget();
 }
 
 QWidget* itkDataSHImageVtkViewInteractor::buildToolBoxWidget()
 {
-    QWidget *toolbox = new QWidget;
-    QFormLayout *layout = new QFormLayout(toolbox);
-    for(medAbstractParameterL *parameter : d->parameters)
+    if (d->presenter == nullptr)
     {
-        layout->addRow(parameter->getLabel(), parameter->getWidget());
+        d->presenter = new itkDataSHImageVtkViewInteractorPresenter(this);
     }
-    return toolbox;
+
+    return d->presenter->buildToolBoxWidget();
 }
 
 QWidget* itkDataSHImageVtkViewInteractor::buildToolBarWidget()
 {
-    d->slicingParameter->getSlider()->setOrientation(Qt::Horizontal);
-    return d->slicingParameter->getSlider();
+
+    if (d->presenter == nullptr)
+    {
+        d->presenter = new itkDataSHImageVtkViewInteractorPresenter(this);
+    }
+
+    return d->presenter->buildToolBarWidget();
 }
 
 QList<medAbstractParameterL*> itkDataSHImageVtkViewInteractor::linkableParameters()
 {
-    QList <medAbstractParameterL*> linkableParams = d->parameters;
-    linkableParams << this->visibilityParameter() << this->opacityParameter();
-    return linkableParams;
+    //QList <medAbstractParameterL*> linkableParams = d->parameters;
+    //linkableParams << this->visibilityParameter() << this->opacityParameter();
+    //return linkableParams;
+    return QList<medAbstractParameterL*>();
 }
 
 QList<medBoolParameterL*> itkDataSHImageVtkViewInteractor::mouseInteractionParameters()
@@ -551,11 +576,13 @@ void itkDataSHImageVtkViewInteractor::update()
 
 void itkDataSHImageVtkViewInteractor::updateWidgets()
 {
-    if(!d->view->is2D())
-        d->slicingParameter->getSlider()->setEnabled(false);
-    else
+    if (d->presenter == nullptr)
     {
-        d->slicingParameter->getSlider()->setEnabled(true);
+        d->presenter = new itkDataSHImageVtkViewInteractorPresenter(this);
+    }
+    d->presenter->updateWidgets();
+    if(!d->view->is2D())
+    {
         this->updateSlicingParam();
     }
 }
@@ -570,4 +597,22 @@ void itkDataSHImageVtkViewInteractor::updateSlicingParam()
     d->slicingParameter->blockSignals(false);
 
     d->slicingParameter->setValue(d->view2d->GetSlice());
+}
+
+medIntParameter*        itkDataSHImageVtkViewInteractor::slicing()          { return d->slicingParameter; }
+medStringListParameter* itkDataSHImageVtkViewInteractor::tesselationType()  { return d->tesselationTypeParam;}
+medStringListParameter* itkDataSHImageVtkViewInteractor::tesselationBasis() { return d->tesselationBasisParam;}
+medIntParameter*        itkDataSHImageVtkViewInteractor::sampleRate()       { return d->sampleRateParam;}
+medBoolParameter*       itkDataSHImageVtkViewInteractor::flipX()            { return d->flipXParam;}
+medBoolParameter*       itkDataSHImageVtkViewInteractor::flipY()            { return d->flipYParam;}
+medBoolParameter*       itkDataSHImageVtkViewInteractor::flipZ()            { return d->flipZParam;}
+medBoolParameter*       itkDataSHImageVtkViewInteractor::enhance()          { return d->enhanceParam;}
+medIntParameter*        itkDataSHImageVtkViewInteractor::glyphResolution()  { return d->glyphResolutionParam;}
+medIntParameter*        itkDataSHImageVtkViewInteractor::minorScaling()     { return d->minorScalingParam;}
+medIntParameter*        itkDataSHImageVtkViewInteractor::majorScaling()     { return d->majorScalingParam;}
+QList <medAbstractParameter*> itkDataSHImageVtkViewInteractor::parameters() { return d->parameters; }
+
+medAbstractImageView * itkDataSHImageVtkViewInteractor::getView()
+{
+    return d->view;
 }
