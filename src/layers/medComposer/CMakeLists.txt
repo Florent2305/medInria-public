@@ -75,8 +75,6 @@ target_link_libraries(${TARGET_NAME}
   dtkLog
   dtkComposer
   dtkCore
-  # Legacy
-  medCoreLegacy
   )
 
 

@@ -14,13 +14,13 @@
 
 #include <QtCore>
 
-#include <medCoreLegacyExport.h>
+#include <medCoreExport.h>
 #include <medJobItemL.h>
 
 class medAbstractData;
 class medDatabaseExporterPrivate;
 
-class MEDCORELEGACY_EXPORT medDatabaseExporter : public medJobItemL
+class MEDCORE_EXPORT medDatabaseExporter : public medJobItemL
 {
     Q_OBJECT
 

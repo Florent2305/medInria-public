@@ -13,7 +13,6 @@
 =========================================================================*/
 
 #include <medAbstractParameter.h>
-#include <medCoreLegacyExport.h>
 
 class QWidget;
 

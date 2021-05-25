@@ -14,11 +14,11 @@
 
 #include <QtCore>
 
-#include <medCoreLegacyExport.h>
+#include <medCoreExport.h>
 
 class medSettingsManagerPrivate;
 
-class MEDCORELEGACY_EXPORT medSettingsManager : public QObject
+class MEDCORE_EXPORT medSettingsManager : public QObject
 {
     Q_OBJECT
 

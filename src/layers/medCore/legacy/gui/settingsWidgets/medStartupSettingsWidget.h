@@ -14,14 +14,13 @@
 
 =========================================================================*/
 
-#include <medCoreLegacyExport.h>
 #include <medSettingsWidget.h>
 
 #include <QWidget>
 
 class medStartupSettingsWidgetPrivate;
 
-class MEDCORELEGACY_EXPORT medStartupSettingsWidget : public medSettingsWidget
+class MEDCORE_EXPORT medStartupSettingsWidget : public medSettingsWidget
 {
     Q_OBJECT
     MED_SETTINGS_INTERFACE("Start Up", "Startup settings")

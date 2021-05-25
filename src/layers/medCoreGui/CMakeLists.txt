@@ -66,7 +66,6 @@ target_link_libraries(${TARGET_NAME}
   dtkCore
   dtkLog
   # Legacy
-  medCoreLegacy
   dtkCoreSupport
   dtkGuiSupport
   )

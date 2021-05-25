@@ -142,7 +142,6 @@ target_link_libraries(${TARGET_NAME}
   medCore
   medComposer
   medWidgets
-  medCoreLegacy
   medPacs
   )
 

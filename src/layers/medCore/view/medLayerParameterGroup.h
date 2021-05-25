@@ -14,7 +14,6 @@
 
 #include <medAbstractParameterGroup.h>
 #include <medAbstractData.h>
-#include <medCoreLegacyExport.h>
 
 class medLayerParameterGroupPrivate;
 

@@ -15,7 +15,7 @@
 #include <QtGui>
 #include <QtWidgets>
 
-#include <medCoreLegacyExport.h>
+#include <medCoreExport.h>
 
 
 class medToolBoxHeaderPrivate;
@@ -27,7 +27,7 @@ class medButton;
  * This is a QFrame that draws a rectangle, a title, and reacts to mousePressEvent()s.
  *
 */
-class MEDCORELEGACY_EXPORT medToolBoxHeader : public QFrame
+class MEDCORE_EXPORT medToolBoxHeader : public QFrame
 {
     Q_OBJECT
 

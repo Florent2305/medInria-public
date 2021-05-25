@@ -105,7 +105,7 @@ target_link_libraries(${TARGET_NAME}
   medImageIO
   dtkCoreSupport
   dtkLog
-  medCoreLegacy)
+  medCore)
 
 ## #################################################################
 ## Install rules
