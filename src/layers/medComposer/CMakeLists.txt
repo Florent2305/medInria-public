@@ -71,7 +71,7 @@ target_link_libraries(${TARGET_NAME}
   Qt5::Gui
   Qt5::Widgets
   medCore
-  medWidgets
+  medCoreGui
   dtkLog
   dtkComposer
   dtkCore

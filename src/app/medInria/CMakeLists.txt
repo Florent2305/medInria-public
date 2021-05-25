@@ -140,8 +140,8 @@ target_link_libraries(${TARGET_NAME}
   dtkVrSupport
   dtkComposer
   medCore
+  medCoreGui
   medComposer
-  medWidgets
   medPacs
   )
 
