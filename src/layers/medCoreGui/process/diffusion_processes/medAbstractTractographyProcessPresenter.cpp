@@ -33,7 +33,7 @@ public:
 };
 
 medAbstractTractographyProcessPresenter::medAbstractTractographyProcessPresenter(medAbstractTractographyProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractTractographyProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractTractographyProcessPresenterPrivate)
 {
     d->process = parent;
 

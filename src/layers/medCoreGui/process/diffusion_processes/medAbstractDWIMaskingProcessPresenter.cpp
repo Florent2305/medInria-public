@@ -31,7 +31,7 @@ public:
 };
 
 medAbstractDWIMaskingProcessPresenter::medAbstractDWIMaskingProcessPresenter(medAbstractDWIMaskingProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractDWIMaskingProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractDWIMaskingProcessPresenterPrivate)
 {
     d->process = parent;
 

@@ -35,7 +35,7 @@ public:
 };
 
 medAbstractArithmeticOperationProcessPresenter::medAbstractArithmeticOperationProcessPresenter(medAbstractArithmeticOperationProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractArithmeticOperationProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractArithmeticOperationProcessPresenterPrivate)
 {
     d->process = parent;
     d->progressionPresenter = new medIntParameterPresenter(d->process->progression());

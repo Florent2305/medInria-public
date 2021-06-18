@@ -24,7 +24,7 @@ public:
 };
 
 medAbstractDiffusionScalarMapsProcess::medAbstractDiffusionScalarMapsProcess(QObject *parent)
-    : medAbstractProcess(parent), d(new medAbstractDiffusionScalarMapsProcessPrivate)
+    : medAbstractProcessDTK2(parent), d(new medAbstractDiffusionScalarMapsProcessPrivate)
 {
     d->input = nullptr;
     d->output = nullptr;

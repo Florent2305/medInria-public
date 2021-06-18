@@ -24,7 +24,7 @@ class medViewContainerSplitter;
 class medAbstractData;
 
 class medAbstractMaskImageProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractMaskImageProcessPresenter : public medAbstractProcessPresenter
+class MEDCOREGUI_EXPORT medAbstractMaskImageProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 

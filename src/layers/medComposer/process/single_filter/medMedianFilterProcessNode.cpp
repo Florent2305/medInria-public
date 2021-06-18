@@ -23,12 +23,12 @@ medMedianFilterProcessNode::medMedianFilterProcessNode()
 
 QWidget* medMedianFilterProcessNode::editor()
 {
-    medAbstractProcess* process = this->object();
+    medAbstractProcessDTK2* process = this->object();
     if (!process)
     {
         return nullptr;
     }
-    medAbstractProcessPresenter* presenter = medWidgets::singleFilterOperation::medianFilter::presenterFactory().create(process);
+    medAbstractProcessDTK2Presenter* presenter = medWidgets::singleFilterOperation::medianFilter::presenterFactory().create(process);
     return presenter->buildToolBoxWidget();
 }
 

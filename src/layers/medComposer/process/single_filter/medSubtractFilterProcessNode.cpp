@@ -23,11 +23,11 @@ medSubtractFilterProcessNode::medSubtractFilterProcessNode()
 
 QWidget* medSubtractFilterProcessNode::editor()
 {
-    medAbstractProcess* process = this->object();
+    medAbstractProcessDTK2* process = this->object();
     if (!process)
     {
         return nullptr;
     }
-    medAbstractProcessPresenter* presenter = medWidgets::singleFilterOperation::subtractFilter::presenterFactory().create(process);
+    medAbstractProcessDTK2Presenter* presenter = medWidgets::singleFilterOperation::subtractFilter::presenterFactory().create(process);
     return presenter->buildToolBoxWidget();
 }

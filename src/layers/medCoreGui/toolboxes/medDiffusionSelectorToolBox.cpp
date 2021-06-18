@@ -36,8 +36,8 @@ class medDiffusionSelectorToolBoxPrivate
 public:
     medDiffusionSelectorToolBox::SelectorType selectorType;
 
-    medAbstractProcess *currentProcess;
-    medAbstractProcessPresenter *currentProcessPresenter;
+    medAbstractProcessDTK2 *currentProcess;
+    medAbstractProcessDTK2Presenter *currentProcessPresenter;
 
     QComboBox *methodCombo;
     QVBoxLayout *mainLayout;
@@ -108,7 +108,7 @@ medDiffusionSelectorToolBox::medDiffusionSelectorToolBox(QWidget *parent, Select
             labelTitle = tr("Scalar maps");
             for(QString pluginKey : medCore::diffusionScalarMaps::pluginFactory().keys())
             {
-                medAbstractProcess *process = medCore::diffusionScalarMaps::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::diffusionScalarMaps::pluginFactory().create(pluginKey);
                 d->methodCombo->addItem(process->caption(),pluginKey);
             }
             break;
@@ -118,7 +118,7 @@ medDiffusionSelectorToolBox::medDiffusionSelectorToolBox(QWidget *parent, Select
             labelTitle = tr("Tractography algorithm");
             for(QString pluginKey : medCore::tractography::pluginFactory().keys())
             {
-                medAbstractProcess *process = medCore::tractography::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::tractography::pluginFactory().create(pluginKey);
                 d->methodCombo->addItem(process->caption(),pluginKey);
             }
             break;

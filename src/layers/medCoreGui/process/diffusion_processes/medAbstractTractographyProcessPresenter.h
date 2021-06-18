@@ -25,7 +25,7 @@ class medAbstractFibersData;
 class medAbstractData;
 
 class medAbstractTractographyProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractTractographyProcessPresenter : public medAbstractProcessPresenter
+class MEDCOREGUI_EXPORT medAbstractTractographyProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 

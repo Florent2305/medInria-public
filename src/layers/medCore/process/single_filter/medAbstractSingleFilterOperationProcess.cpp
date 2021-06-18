@@ -23,7 +23,7 @@ public:
     medAbstractImageData *output;
 };
 
-medAbstractSingleFilterOperationProcess::medAbstractSingleFilterOperationProcess(QObject *parent): medAbstractProcess(parent),
+medAbstractSingleFilterOperationProcess::medAbstractSingleFilterOperationProcess(QObject *parent): medAbstractProcessDTK2(parent),
     d(new medAbstractSingleFilterOperationProcessPrivate)
 {
     d->input = nullptr;

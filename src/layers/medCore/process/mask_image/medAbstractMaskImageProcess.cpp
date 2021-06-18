@@ -25,7 +25,7 @@ public:
 };
 
 medAbstractMaskImageProcess::medAbstractMaskImageProcess(QObject *parent)
-    : medAbstractProcess(parent), d(new medAbstractMaskImageProcessPrivate)
+    : medAbstractProcessDTK2(parent), d(new medAbstractMaskImageProcessPrivate)
 {
     d->input = nullptr;
     d->output = nullptr;

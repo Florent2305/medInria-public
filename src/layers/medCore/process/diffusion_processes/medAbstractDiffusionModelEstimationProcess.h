@@ -23,7 +23,7 @@ class medBoolParameter;
 class medAbstractDiffusionModelImageData;
 
 class medAbstractDiffusionModelEstimationProcessPrivate;
-class MEDCORE_EXPORT medAbstractDiffusionModelEstimationProcess : public medAbstractProcess
+class MEDCORE_EXPORT medAbstractDiffusionModelEstimationProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

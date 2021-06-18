@@ -37,7 +37,7 @@ public:
 };
 
 medAbstractSingleFilterOperationProcessPresenter::medAbstractSingleFilterOperationProcessPresenter(medAbstractSingleFilterOperationProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractSingleFilterOperationProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractSingleFilterOperationProcessPresenterPrivate)
 {
     d->process = parent;
     d->progressionPresenter = new medIntParameterPresenter(d->process->progression());

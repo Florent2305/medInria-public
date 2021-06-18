@@ -21,7 +21,7 @@
 class medAbstractImageData;
 class medAbstractArithmeticOperationProcessPrivate;
 
-class MEDCORE_EXPORT  medAbstractArithmeticOperationProcess : public medAbstractProcess
+class MEDCORE_EXPORT  medAbstractArithmeticOperationProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

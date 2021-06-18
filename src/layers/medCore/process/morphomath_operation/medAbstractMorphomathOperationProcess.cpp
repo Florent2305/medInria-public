@@ -27,7 +27,7 @@ public:
 };
 
 medAbstractMorphomathOperationProcess::medAbstractMorphomathOperationProcess(QObject *parent)
-    : medAbstractProcess(parent), d(new medAbstractMorphomathOperationProcessPrivate)
+    : medAbstractProcessDTK2(parent), d(new medAbstractMorphomathOperationProcessPrivate)
 {
     d->input = nullptr;
     d->output = nullptr;

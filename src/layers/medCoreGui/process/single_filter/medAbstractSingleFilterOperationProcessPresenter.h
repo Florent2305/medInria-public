@@ -24,7 +24,7 @@ class medAbstractData;
 class medIntParameterPresenter;
 
 class medAbstractSingleFilterOperationProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractSingleFilterOperationProcessPresenter : public medAbstractProcessPresenter
+class MEDCOREGUI_EXPORT medAbstractSingleFilterOperationProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 

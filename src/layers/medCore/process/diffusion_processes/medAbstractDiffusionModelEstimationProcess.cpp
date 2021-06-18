@@ -31,7 +31,7 @@ public:
 };
 
 medAbstractDiffusionModelEstimationProcess::medAbstractDiffusionModelEstimationProcess(QObject *parent)
-    : medAbstractProcess(parent), d(new medAbstractDiffusionModelEstimationProcessPrivate)
+    : medAbstractProcessDTK2(parent), d(new medAbstractDiffusionModelEstimationProcessPrivate)
 {
     d->input = nullptr;
     d->output = nullptr;

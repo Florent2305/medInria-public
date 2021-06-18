@@ -24,7 +24,7 @@ public:
 };
 
 medAbstractDWIMaskingProcess::medAbstractDWIMaskingProcess(QObject *parent)
-    : medAbstractProcess(parent), d(new medAbstractDWIMaskingProcessPrivate)
+    : medAbstractProcessDTK2(parent), d(new medAbstractDWIMaskingProcessPrivate)
 {
     d->input = nullptr;
     d->output = nullptr;

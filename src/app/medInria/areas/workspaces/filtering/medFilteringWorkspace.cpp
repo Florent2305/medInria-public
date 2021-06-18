@@ -56,7 +56,7 @@ public:
     medAbstractBiasCorrectionProcessPresenterFactory* biasCorrectionFactoryPresenter;
 
     QString pluginKey;
-    medAbstractProcess* myProcess;
+    medAbstractProcessDTK2* myProcess;
 
     SingleFiltersGathering()
     {
@@ -83,7 +83,7 @@ public:
         myProcess = 0;
     }
 
-    medAbstractProcess* getProcess()
+    medAbstractProcessDTK2* getProcess()
     {
         if(gaussianFactory)
             myProcess = gaussianFactory->create(pluginKey);
@@ -115,7 +115,7 @@ public:
         return myProcess;
     }
 
-    medAbstractProcessPresenter* getPresenter()
+    medAbstractProcessDTK2Presenter* getPresenter()
     {
         if(gaussianFactoryPresenter)
             return gaussianFactoryPresenter->create(myProcess);
@@ -163,7 +163,7 @@ public:
     medAbstractClosingImageProcessPresenterFactory* closeFactoryPresenter;
 
     QString pluginKey;
-    medAbstractProcess* myProcess;
+    medAbstractProcessDTK2* myProcess;
 
     MorphomathGathering()
     {
@@ -180,7 +180,7 @@ public:
         myProcess = 0;
     }
 
-    medAbstractProcess* getProcess()
+    medAbstractProcessDTK2* getProcess()
     {
         if (erodeFactory)
             myProcess = erodeFactory->create(pluginKey);
@@ -197,7 +197,7 @@ public:
         return myProcess;
     }
 
-    medAbstractProcessPresenter* getPresenter()
+    medAbstractProcessDTK2Presenter* getPresenter()
     {
         if (erodeFactoryPresenter)
             return erodeFactoryPresenter->create(myProcess);
@@ -242,7 +242,7 @@ public:
     medAbstractMaskImageProcessPresenterFactory* maskFactoryPresenter;
 
     QString pluginKey;
-    medAbstractProcess* myProcess;
+    medAbstractProcessDTK2* myProcess;
 
     ArithmeticGathering()
     {
@@ -271,7 +271,7 @@ public:
         myProcess = 0;
     }
 
-    medAbstractProcess* getProcess()
+    medAbstractProcessDTK2* getProcess()
     {
         if (addFactory)
             myProcess = addFactory->create(pluginKey);
@@ -306,7 +306,7 @@ public:
         return myProcess;
     }
 
-    medAbstractProcessPresenter* getPresenter()
+    medAbstractProcessDTK2Presenter* getPresenter()
     {
         if (addFactoryPresenter)
             return addFactoryPresenter->create(myProcess);
@@ -344,8 +344,8 @@ public:
 
 struct  stProcessAndToolBox
 {
-    medAbstractProcess *process;
-    medAbstractProcessPresenter *presenter;
+    medAbstractProcessDTK2 *process;
+    medAbstractProcessDTK2Presenter *presenter;
     QWidget *toolBox;
 };
 
@@ -462,7 +462,7 @@ void medFilteringWorkspace::setProcessType(int index)
             QStringList plugins = medCore::morphomathOperation::erodeImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::morphomathOperation::erodeImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::morphomathOperation::erodeImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -478,7 +478,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::morphomathOperation::dilateImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::morphomathOperation::dilateImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::morphomathOperation::dilateImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -494,7 +494,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::morphomathOperation::openingImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::morphomathOperation::openingImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::morphomathOperation::openingImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -510,7 +510,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::morphomathOperation::closingImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::morphomathOperation::closingImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::morphomathOperation::closingImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -530,7 +530,7 @@ void medFilteringWorkspace::setProcessType(int index)
             QStringList plugins = medCore::singleFilterOperation::gaussianFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::gaussianFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::gaussianFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -546,7 +546,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::medianFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::medianFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::medianFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -562,7 +562,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::normalizeFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::normalizeFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::normalizeFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -578,7 +578,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::shrinkFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::shrinkFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::shrinkFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -594,7 +594,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::windowingFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::windowingFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::windowingFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -610,7 +610,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::imageDenoising::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::imageDenoising::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::imageDenoising::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -626,7 +626,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::relaxometryEstimation::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::relaxometryEstimation::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::relaxometryEstimation::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -642,7 +642,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::symmetryAlignment::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::symmetryAlignment::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::symmetryAlignment::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -658,7 +658,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::biasCorrection::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-               medAbstractProcess *process = medCore::singleFilterOperation::biasCorrection::pluginFactory().create(pluginKey);
+               medAbstractProcessDTK2 *process = medCore::singleFilterOperation::biasCorrection::pluginFactory().create(pluginKey);
                if (process)
                {
                   d->processSelectorComboBox->addItem(process->caption(), pluginKey);
@@ -680,7 +680,7 @@ void medFilteringWorkspace::setProcessType(int index)
             QStringList plugins = medCore::singleFilterOperation::addFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::addFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::addFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -696,7 +696,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::subtractFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::subtractFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::subtractFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -712,7 +712,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::multiplyFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::multiplyFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::multiplyFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -728,7 +728,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::divideFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::divideFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::divideFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -744,7 +744,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::arithmeticOperation::addImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::arithmeticOperation::addImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::arithmeticOperation::addImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -760,7 +760,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::arithmeticOperation::subtractImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::arithmeticOperation::subtractImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::arithmeticOperation::subtractImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -776,7 +776,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::arithmeticOperation::multiplyImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::arithmeticOperation::multiplyImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::arithmeticOperation::multiplyImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -792,7 +792,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::arithmeticOperation::divideImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::arithmeticOperation::divideImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::arithmeticOperation::divideImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -808,7 +808,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::singleFilterOperation::invertFilter::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::singleFilterOperation::invertFilter::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::singleFilterOperation::invertFilter::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -824,7 +824,7 @@ void medFilteringWorkspace::setProcessType(int index)
             plugins = medCore::maskImage::pluginFactory().keys();
             for(QString pluginKey : plugins)
             {
-                medAbstractProcess *process = medCore::maskImage::pluginFactory().create(pluginKey);
+                medAbstractProcessDTK2 *process = medCore::maskImage::pluginFactory().create(pluginKey);
                 if (process)
                 {
                     d->processSelectorComboBox->addItem(process->caption(),pluginKey);
@@ -855,8 +855,8 @@ void medFilteringWorkspace::setProcessSelection(int index)
 */
 void medFilteringWorkspace::createFilterEnvironment()
 {
-    medAbstractProcess *poProcess = nullptr;
-    medAbstractProcessPresenter *poPresenter = nullptr;
+    medAbstractProcessDTK2 *poProcess = nullptr;
+    medAbstractProcessDTK2Presenter *poPresenter = nullptr;
     int index = d->iProcessSelection;
 
     if (index == 0)

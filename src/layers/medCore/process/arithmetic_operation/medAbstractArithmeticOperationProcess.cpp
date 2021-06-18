@@ -24,7 +24,7 @@ public:
     medAbstractImageData *output;
 };
 
-medAbstractArithmeticOperationProcess::medAbstractArithmeticOperationProcess(QObject *parent): medAbstractProcess(parent),
+medAbstractArithmeticOperationProcess::medAbstractArithmeticOperationProcess(QObject *parent): medAbstractProcessDTK2(parent),
     d(new medAbstractArithmeticOperationProcessPrivate)
 {
     d->input1 = nullptr;

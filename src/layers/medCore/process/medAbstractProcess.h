@@ -20,12 +20,12 @@
 class medAbstractParameter;
 class medAbstractProcessPrivate;
 
-class MEDCORE_EXPORT medAbstractProcess: public medAbstractJob
+class MEDCORE_EXPORT medAbstractProcessDTK2: public medAbstractJob
 {
     Q_OBJECT
 public:
-    medAbstractProcess(QObject *parent = nullptr);
-    virtual ~medAbstractProcess();
+    medAbstractProcessDTK2(QObject *parent = nullptr);
+    virtual ~medAbstractProcessDTK2();
 
     virtual QString description() const = 0;
 
@@ -45,6 +45,6 @@ private:
 // Why is this here?
 // Because unfortunately, the current implementation prevents us from having processes *in workspaces* that are not attached to a abstraction
 // Because we can't predict all types of abstractions, we need to provide a generic abstraction that can be used by plugin designers
-DTK_DECLARE_PLUGIN        (medAbstractProcess, MEDCORE_EXPORT)
-DTK_DECLARE_PLUGIN_MANAGER(medAbstractProcess, MEDCORE_EXPORT)
-DTK_DECLARE_PLUGIN_FACTORY(medAbstractProcess, MEDCORE_EXPORT)
+DTK_DECLARE_PLUGIN        (medAbstractProcessDTK2, MEDCORE_EXPORT)
+DTK_DECLARE_PLUGIN_MANAGER(medAbstractProcessDTK2, MEDCORE_EXPORT)
+DTK_DECLARE_PLUGIN_FACTORY(medAbstractProcessDTK2, MEDCORE_EXPORT)

@@ -21,7 +21,7 @@ class medAbstractImageData;
 class medAbstractDiffusionModelImageData;
 class medAbstractDiffusionScalarMapsProcessPrivate;
 
-class MEDCORE_EXPORT medAbstractDiffusionScalarMapsProcess : public medAbstractProcess
+class MEDCORE_EXPORT medAbstractDiffusionScalarMapsProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

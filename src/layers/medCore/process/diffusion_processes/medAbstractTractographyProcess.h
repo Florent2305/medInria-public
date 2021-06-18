@@ -21,7 +21,7 @@ class medAbstractFibersData;
 class medAbstractDiffusionModelImageData;
 class medAbstractTractographyProcessPrivate;
 
-class MEDCORE_EXPORT medAbstractTractographyProcess : public medAbstractProcess
+class MEDCORE_EXPORT medAbstractTractographyProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

@@ -59,7 +59,7 @@ namespace medCore
         MEDCORE_EXPORT void initialize(const QString& path = QString());
     }
 
-    DTK_DECLARE_CONCEPT(medAbstractProcess,MEDCORE_EXPORT,generic)
+    DTK_DECLARE_CONCEPT(medAbstractProcessDTK2,MEDCORE_EXPORT,generic)
     DTK_DECLARE_CONCEPT(medAbstractDWIMaskingProcess,MEDCORE_EXPORT,dwiMasking)
     DTK_DECLARE_CONCEPT(medAbstractDiffusionModelEstimationProcess,MEDCORE_EXPORT,diffusionModelEstimation)
     DTK_DECLARE_CONCEPT(medAbstractDiffusionScalarMapsProcess,MEDCORE_EXPORT,diffusionScalarMaps)

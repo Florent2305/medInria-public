@@ -41,7 +41,7 @@ public:
 };
 
 medAbstractDiffusionModelEstimationProcessPresenter::medAbstractDiffusionModelEstimationProcessPresenter(medAbstractDiffusionModelEstimationProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractDiffusionModelEstimationProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractDiffusionModelEstimationProcessPresenterPrivate)
 {
     d->process = parent;
     d->useRunControls = true;

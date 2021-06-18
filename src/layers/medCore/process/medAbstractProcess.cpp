@@ -22,28 +22,28 @@ public:
     QMap<QString, medAbstractParameter*> parameters;
 };
 
-medAbstractProcess::medAbstractProcess(QObject *parent)
+medAbstractProcessDTK2::medAbstractProcessDTK2(QObject *parent)
     : medAbstractJob(parent), d(new medAbstractProcessPrivate)
 {
 
 }
 
-medAbstractProcess::~medAbstractProcess()
+medAbstractProcessDTK2::~medAbstractProcessDTK2()
 {
 }
 
-void medAbstractProcess::registerParameter(medAbstractParameter * parameter)
+void medAbstractProcessDTK2::registerParameter(medAbstractParameter * parameter)
 {
     parameter->setParent(this);
     d->parameters.insert(parameter->id(), parameter);
 }
 
-medAbstractParameter* medAbstractProcess::parameter(QString const& id) const
+medAbstractParameter* medAbstractProcessDTK2::parameter(QString const& id) const
 {
     return d->parameters[id];
 }
 
-QList<medAbstractParameter*> medAbstractProcess::parameters() const
+QList<medAbstractParameter*> medAbstractProcessDTK2::parameters() const
 {
     return d->parameters.values();
 }

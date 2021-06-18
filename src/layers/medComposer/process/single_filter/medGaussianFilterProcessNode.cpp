@@ -23,11 +23,11 @@ medGaussianFilterProcessNode::medGaussianFilterProcessNode()
 
 QWidget* medGaussianFilterProcessNode::editor()
 {
-    medAbstractProcess* process = this->object();
+    medAbstractProcessDTK2* process = this->object();
     if (!process)
     {
         return nullptr;
     }
-    medAbstractProcessPresenter* presenter = medWidgets::singleFilterOperation::gaussianFilter::presenterFactory().create(process);
+    medAbstractProcessDTK2Presenter* presenter = medWidgets::singleFilterOperation::gaussianFilter::presenterFactory().create(process);
     return presenter->buildToolBoxWidget();
 }

@@ -51,7 +51,7 @@ public:
 };
 
 medDiffusionModelEstimationMetaProcessPresenter::medDiffusionModelEstimationMetaProcessPresenter(medDiffusionModelEstimationMetaProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medDiffusionModelEstimationMetaProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medDiffusionModelEstimationMetaProcessPresenterPrivate)
 {
     d->process = parent;
     d->progressionPresenter = new medIntParameterPresenter(d->process->progression());

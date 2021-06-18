@@ -24,7 +24,7 @@ class medViewContainerSplitter;
 class medAbstractData;
 
 class medAbstractDiffusionModelEstimationProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractDiffusionModelEstimationProcessPresenter : public medAbstractProcessPresenter
+class MEDCOREGUI_EXPORT medAbstractDiffusionModelEstimationProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 

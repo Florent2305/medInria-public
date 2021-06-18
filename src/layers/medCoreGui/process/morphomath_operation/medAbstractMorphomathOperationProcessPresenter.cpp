@@ -37,7 +37,7 @@ public:
 };
 
 medAbstractMorphomathOperationProcessPresenter::medAbstractMorphomathOperationProcessPresenter(medAbstractMorphomathOperationProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractMorphomathOperationProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractMorphomathOperationProcessPresenterPrivate)
 {
     d->process = parent;
     d->kernelRadiusPresenter = new medIntParameterPresenter(d->process->kernelRadius());

@@ -20,14 +20,14 @@
 
 #include <dtkLog>
 
-class medAbstractProcessPresenterPrivate
+class medAbstractProcessDTK2PresenterPrivate
 {
 public:
-    medAbstractProcess *process;
+    medAbstractProcessDTK2 *process;
 };
 
-medAbstractProcessPresenter::medAbstractProcessPresenter(medAbstractProcess*parent)
-    : QObject(parent), d(new medAbstractProcessPresenterPrivate)
+medAbstractProcessDTK2Presenter::medAbstractProcessDTK2Presenter(medAbstractProcessDTK2*parent)
+    : QObject(parent), d(new medAbstractProcessDTK2PresenterPrivate)
 {
     if(parent == nullptr)
     {
@@ -37,39 +37,39 @@ medAbstractProcessPresenter::medAbstractProcessPresenter(medAbstractProcess*pare
     d->process = parent;
 }
 
-medAbstractProcessPresenter::~medAbstractProcessPresenter()
+medAbstractProcessDTK2Presenter::~medAbstractProcessDTK2Presenter()
 {
 
 }
 
-QPushButton* medAbstractProcessPresenter::buildRunButton()
+QPushButton* medAbstractProcessDTK2Presenter::buildRunButton()
 {
     QPushButton *runButton = new QPushButton(tr("Run"));
     runButton->setDisabled(d->process->isRunning());
     connect(runButton, &QPushButton::clicked,
-            this, &medAbstractProcessPresenter::_runProcessFromThread);
-    connect(d->process, &medAbstractProcess::running,
+            this, &medAbstractProcessDTK2Presenter::_runProcessFromThread);
+    connect(d->process, &medAbstractProcessDTK2::running,
             runButton, &QPushButton::setDisabled,
             Qt::QueuedConnection);
 
     return runButton;
 }
 
-QPushButton* medAbstractProcessPresenter::buildCancelButton()
+QPushButton* medAbstractProcessDTK2Presenter::buildCancelButton()
 {
     QPushButton *cancelButton = new QPushButton(tr("Cancel"));
     cancelButton->setEnabled(d->process->isRunning());
     connect(cancelButton, &QPushButton::clicked,
-            d->process, &medAbstractProcess::cancel,
+            d->process, &medAbstractProcessDTK2::cancel,
             Qt::QueuedConnection);
-    connect(d->process, &medAbstractProcess::running,
+    connect(d->process, &medAbstractProcessDTK2::running,
             cancelButton, &QPushButton::setEnabled,
             Qt::QueuedConnection);
 
     return cancelButton;
 }
 
-void medAbstractProcessPresenter::_runProcessFromThread()
+void medAbstractProcessDTK2Presenter::_runProcessFromThread()
 {
     medJobManager::instance()->startJobInThread(d->process);
 }

@@ -24,7 +24,7 @@ class medAbstractDiffusionModelEstimationProcess;
 class medAbstractDWIMaskingProcess;
 class medDiffusionModelEstimationMetaProcessPrivate;
 
-class MEDCORE_EXPORT medDiffusionModelEstimationMetaProcess : public medAbstractProcess
+class MEDCORE_EXPORT medDiffusionModelEstimationMetaProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

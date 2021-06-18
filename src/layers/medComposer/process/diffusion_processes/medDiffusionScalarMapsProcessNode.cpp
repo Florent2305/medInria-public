@@ -57,11 +57,11 @@ void medDiffusionScalarMapsProcessNode::run()
 
 QWidget* medDiffusionScalarMapsProcessNode::editor()
 {
-    medAbstractProcess* process = this->object();
+    medAbstractProcessDTK2* process = this->object();
     if (!process)
     {
         return nullptr;
     }
-    medAbstractProcessPresenter* presenter = medWidgets::diffusionScalarMaps::presenterFactory().create(process);
+    medAbstractProcessDTK2Presenter* presenter = medWidgets::diffusionScalarMaps::presenterFactory().create(process);
     return presenter->buildToolBoxWidget();
 }

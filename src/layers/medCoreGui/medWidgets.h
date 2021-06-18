@@ -57,7 +57,7 @@ namespace medWidgets
 
     namespace generic
     {
-        MEDCOREGUI_EXPORT medAbstractProcessPresenterFactory& presenterFactory();
+        MEDCOREGUI_EXPORT medAbstractProcessDTK2PresenterFactory& presenterFactory();
     }
 
     namespace morphomathOperation

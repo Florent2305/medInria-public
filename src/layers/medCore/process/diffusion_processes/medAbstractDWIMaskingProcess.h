@@ -19,7 +19,7 @@
 class medAbstractImageData;
 
 class medAbstractDWIMaskingProcessPrivate;
-class MEDCORE_EXPORT medAbstractDWIMaskingProcess : public medAbstractProcess
+class MEDCORE_EXPORT medAbstractDWIMaskingProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

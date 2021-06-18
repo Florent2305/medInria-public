@@ -40,7 +40,7 @@ namespace pluginManager
     }
 }
 
-DTK_DEFINE_CONCEPT(medAbstractProcess,generic,medCore)
+DTK_DEFINE_CONCEPT(medAbstractProcessDTK2,generic,medCore)
 DTK_DEFINE_CONCEPT(medAbstractDWIMaskingProcess,dwiMasking,medCore)
 DTK_DEFINE_CONCEPT(medAbstractDiffusionModelEstimationProcess,diffusionModelEstimation,medCore)
 DTK_DEFINE_CONCEPT(medAbstractDiffusionScalarMapsProcess,diffusionScalarMaps,medCore)

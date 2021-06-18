@@ -32,7 +32,7 @@ public:
 };
 
 medAbstractDiffusionScalarMapsProcessPresenter::medAbstractDiffusionScalarMapsProcessPresenter(medAbstractDiffusionScalarMapsProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractDiffusionScalarMapsProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractDiffusionScalarMapsProcessPresenterPrivate)
 {
     d->process = parent;
 

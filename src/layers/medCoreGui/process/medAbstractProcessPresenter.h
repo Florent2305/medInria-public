@@ -22,16 +22,16 @@ class QWidget;
 class QPushButton;
 class medViewContainerSplitter;
 
-class medAbstractProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractProcessPresenter : public QObject
+class medAbstractProcessDTK2PresenterPrivate;
+class MEDCOREGUI_EXPORT medAbstractProcessDTK2Presenter : public QObject
 {
     Q_OBJECT
 
 public:
-    medAbstractProcessPresenter(medAbstractProcess *parent = nullptr);
-    virtual ~medAbstractProcessPresenter();
+    medAbstractProcessDTK2Presenter(medAbstractProcessDTK2 *parent = nullptr);
+    virtual ~medAbstractProcessDTK2Presenter();
 
-    virtual medAbstractProcess *process() const = 0;
+    virtual medAbstractProcessDTK2 *process() const = 0;
 
     virtual QWidget *buildToolBoxWidget() = 0;
     virtual medViewContainerSplitter *buildViewContainerSplitter() = 0;
@@ -43,6 +43,6 @@ protected slots:
     void _runProcessFromThread();
 
 private:
-    const QScopedPointer<medAbstractProcessPresenterPrivate> d;
+    const QScopedPointer<medAbstractProcessDTK2PresenterPrivate> d;
 };
-MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractProcess, MEDCOREGUI_EXPORT)
+MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractProcessDTK2, MEDCOREGUI_EXPORT)

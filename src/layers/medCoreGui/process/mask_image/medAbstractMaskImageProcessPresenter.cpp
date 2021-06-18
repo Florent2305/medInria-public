@@ -36,7 +36,7 @@ public:
 };
 
 medAbstractMaskImageProcessPresenter::medAbstractMaskImageProcessPresenter(medAbstractMaskImageProcess *parent)
-    : medAbstractProcessPresenter(parent), d(new medAbstractMaskImageProcessPresenterPrivate)
+    : medAbstractProcessDTK2Presenter(parent), d(new medAbstractMaskImageProcessPresenterPrivate)
 {
     d->process = parent;
     d->progressionPresenter = new medIntParameterPresenter(d->process->progression());

@@ -31,10 +31,10 @@ namespace generic
 {
     namespace _private
     {
-        medAbstractProcessPresenterFactory factory;
+        medAbstractProcessDTK2PresenterFactory factory;
     }
 
-    medAbstractProcessPresenterFactory& presenterFactory()
+    medAbstractProcessDTK2PresenterFactory& presenterFactory()
     {
         return _private::factory;
     }

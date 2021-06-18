@@ -19,10 +19,10 @@
 template <typename ProcessType, typename PresenterType> class medProcessPresenterFactory
 {
 public:
-    typedef PresenterType *(*creator) (medAbstractProcess *);
+    typedef PresenterType *(*creator) (medAbstractProcessDTK2 *);
 
 public:
-    PresenterType *create(medAbstractProcess *process) const;
+    PresenterType *create(medAbstractProcessDTK2 *process) const;
 
 public:
 public:
@@ -46,7 +46,7 @@ private:
 // MED_DECLARE_PROCESS_PRESENTER_CREATOR
 // ///////////////////////////////////////////////////////////////////
 #define MED_DECLARE_PROCESS_PRESENTER_CREATOR(ProcessAbstractType, ProcessType) \
-inline ProcessAbstractType##Presenter* ProcessType##PresenterCreator(medAbstractProcess* abstractProcess) \
+inline ProcessAbstractType##Presenter* ProcessType##PresenterCreator(medAbstractProcessDTK2* abstractProcess) \
 { \
     ProcessAbstractType##Presenter *presenter = nullptr; \
     if(ProcessType *process = qobject_cast<ProcessType *>(abstractProcess)) \

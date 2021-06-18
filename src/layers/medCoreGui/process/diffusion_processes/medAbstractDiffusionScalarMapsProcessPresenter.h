@@ -25,7 +25,7 @@ class medAbstractImageData;
 class medAbstractData;
 
 class medAbstractDiffusionScalarMapsProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractDiffusionScalarMapsProcessPresenter : public medAbstractProcessPresenter
+class MEDCOREGUI_EXPORT medAbstractDiffusionScalarMapsProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 

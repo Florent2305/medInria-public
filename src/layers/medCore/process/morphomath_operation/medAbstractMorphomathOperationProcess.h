@@ -21,7 +21,7 @@ class medAbstractImageData;
 class medIntParameter;
 
 class medAbstractMorphomathOperationProcessPrivate;
-class MEDCORE_EXPORT medAbstractMorphomathOperationProcess : public medAbstractProcess
+class MEDCORE_EXPORT medAbstractMorphomathOperationProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

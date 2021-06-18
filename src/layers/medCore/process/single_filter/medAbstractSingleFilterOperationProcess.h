@@ -21,7 +21,7 @@ class medAbstractImageData;
 class medDoubleParameter;
 class medAbstractSingleFilterOperationProcessPrivate;
 
-class MEDCORE_EXPORT  medAbstractSingleFilterOperationProcess : public medAbstractProcess
+class MEDCORE_EXPORT  medAbstractSingleFilterOperationProcess : public medAbstractProcessDTK2
 {
     Q_OBJECT
 

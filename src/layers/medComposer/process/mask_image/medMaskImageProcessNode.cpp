@@ -61,11 +61,11 @@ void medMaskImageProcessNode::run()
 
 QWidget* medMaskImageProcessNode::editor()
 {
-    medAbstractProcess* process = this->object();
+    medAbstractProcessDTK2* process = this->object();
     if (!process)
     {
         return nullptr;
     }
-    medAbstractProcessPresenter* presenter = medWidgets::maskImage::presenterFactory().create(process);
+    medAbstractProcessDTK2Presenter* presenter = medWidgets::maskImage::presenterFactory().create(process);
     return presenter->buildToolBoxWidget();
 }

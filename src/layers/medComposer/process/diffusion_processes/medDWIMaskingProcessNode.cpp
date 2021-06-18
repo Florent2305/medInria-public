@@ -57,11 +57,11 @@ void medDWIMaskingProcessNode::run()
 
 QWidget* medDWIMaskingProcessNode::editor()
 {
-    medAbstractProcess* process = this->object();
+    medAbstractProcessDTK2* process = this->object();
     if (!process)
     {
         return nullptr;
     }
-    medAbstractProcessPresenter* presenter = medWidgets::dwiMasking::presenterFactory().create(process);
+    medAbstractProcessDTK2Presenter* presenter = medWidgets::dwiMasking::presenterFactory().create(process);
     return presenter->buildToolBoxWidget();
 }
