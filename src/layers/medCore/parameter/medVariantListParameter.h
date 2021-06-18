@@ -27,7 +27,7 @@ public:
     medVariantListParameter(QString name = "Unknown composite parameter", QObject* parent = nullptr);
     ~medVariantListParameter();
 
-    medParameterType type() const override { return medParameterType::MED_PARAMETER_COMPOSITE; }
+    medParameterType type() const override { return medParameterType::MED_PARAMETER_VARIANT_LIST; }
 
     void addVariant(QString name, QVariant variant, QVariant min = QVariant(0), QVariant max = QVariant(100), QVariant step = QVariant(1));
     void delVariant(QString name);

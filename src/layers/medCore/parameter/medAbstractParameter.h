@@ -24,9 +24,10 @@ enum medParameterType
     MED_PARAMETER_BOOL,
     MED_PARAMETER_STRING,
     MED_PARAMETER_STRING_LIST,
-    MED_PARAMETER_TRIGGER, //TODO FLO to put into abstractPresenter
-    MED_PARAMETER_TIMELINE, //TODO FLO to put into abstractPresenter
-    MED_PARAMETER_COMPOSITE, //TODO FLO to put into abstractPresenter
+    MED_PARAMETER_TRIGGER,
+    MED_PARAMETER_TIMELINE,
+    MED_PARAMETER_VARIANT_LIST,
+    MED_PARAMETER_DATA, //TODO need presenter
     MED_PARAMETER_VECTOR2D, //No presenter available, not needed
     MED_PARAMETER_VECTOR3D, //No presenter available, not needed
     MED_PARAMETER_DATA_LIST, //No presenter available, not needed

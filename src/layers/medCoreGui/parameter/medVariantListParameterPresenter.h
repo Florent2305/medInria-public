@@ -16,21 +16,17 @@
 #include <medVariantListParameter.h>
 
 class QWidget;
-//class QCheckBox;
-//class QRadioButton;
-//class QPushButton;
-//class QAbstractButton;
 class medCompositeParameterPresenterPrivate;
 
 
-class MEDCOREGUI_EXPORT medCompositeParameterPresenter : public medAbstractParameterPresenter
+class MEDCOREGUI_EXPORT medVariantListParameterPresenter : public medAbstractParameterPresenter
 {
     Q_OBJECT
 
 public:
-    medCompositeParameterPresenter(medVariantListParameter *parent);
-    medCompositeParameterPresenter(const QString & newParameterId);
-    virtual ~medCompositeParameterPresenter();
+    medVariantListParameterPresenter(medVariantListParameter *parent);
+    medVariantListParameterPresenter(const QString & newParameterId);
+    virtual ~medVariantListParameterPresenter();
 
     virtual medVariantListParameter *parameter() const;
 

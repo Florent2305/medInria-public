@@ -133,3 +133,8 @@ QWidget * medTimeLineParameterPresenter::buildWidget()
 
     return pWidgetRes;
 }
+
+medAbstractParameter * medTimeLineParameterPresenter::parameter() const
+{
+    return d->parameter;
+}

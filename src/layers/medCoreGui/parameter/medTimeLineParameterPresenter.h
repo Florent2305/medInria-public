@@ -25,12 +25,11 @@ class MEDCOREGUI_EXPORT medTimeLineParameterPresenter : public medAbstractParame
 
 public:
     medTimeLineParameterPresenter(medTimeLineParameter *parent);
-    virtual ~medTimeLineParameterPresenter();
+    ~medTimeLineParameterPresenter() override;
 
-    virtual QWidget *buildWidget();
+    QWidget *buildWidget() override;
 
-
-    private:
+    medAbstractParameter *parameter()const override;
 
     private:
         const QScopedPointer<medTimeLineParameterPresenterPrivate> d;

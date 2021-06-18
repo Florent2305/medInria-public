@@ -24,6 +24,9 @@
 #include <medDoubleParameterPresenter.h>
 #include <medStringParameterPresenter.h>
 #include <medStringListParameterPresenter.h>
+#include <medTimeLineParameterPresenter.h>
+#include <medTriggerParameterPresenter.h>
+#include <medVariantListParameterPresenter.h>
 
 class medAbstractParameterPresenterPrivate
 {
@@ -96,6 +99,8 @@ medAbstractParameterPresenter* medAbstractParameterPresenter::buildFromParameter
     medAbstractParameterPresenter *presenter = nullptr;
     switch(parameter->type())
     {
+    case medParameterType::MED_PARAMETER_TRIGGER:
+        presenter = new medTriggerParameterPresenter(qobject_cast<medTriggerParameter*>(parameter)); break;
     case medParameterType::MED_PARAMETER_BOOL :
         presenter = new medBoolParameterPresenter(qobject_cast<medBoolParameter*>(parameter)); break;
     case medParameterType::MED_PARAMETER_INT :
@@ -106,6 +111,10 @@ medAbstractParameterPresenter* medAbstractParameterPresenter::buildFromParameter
         presenter = new medStringParameterPresenter(qobject_cast<medStringParameter*>(parameter)); break;
     case medParameterType::MED_PARAMETER_STRING_LIST:
         presenter = new medStringListParameterPresenter(qobject_cast<medStringListParameter*>(parameter)); break;
+    case medParameterType::MED_PARAMETER_TIMELINE:
+        presenter = new medTimeLineParameterPresenter(qobject_cast<medTimeLineParameter*>(parameter)); break;
+    case medParameterType::MED_PARAMETER_VARIANT_LIST:
+        presenter = new medVariantListParameterPresenter(qobject_cast<medVariantListParameter*>(parameter)); break;
     default:
         dtkDebug() << "Unable to build presenter for parameter of type" << parameter->type();
     }

@@ -28,28 +28,28 @@ public:
     medVariantListParameter* parameter;
 };
 
-medCompositeParameterPresenter::medCompositeParameterPresenter(medVariantListParameter* parameter)
+medVariantListParameterPresenter::medVariantListParameterPresenter(medVariantListParameter* parameter)
     :medAbstractParameterPresenter(parameter), d(new medCompositeParameterPresenterPrivate)
 {
     d->parameter = parameter;
 }
 
-medCompositeParameterPresenter::medCompositeParameterPresenter(QString const& newParameterId)
-    : medCompositeParameterPresenter(new medVariantListParameter(newParameterId))
+medVariantListParameterPresenter::medVariantListParameterPresenter(QString const& newParameterId)
+    : medVariantListParameterPresenter(new medVariantListParameter(newParameterId))
 {
 }
 
-medCompositeParameterPresenter::~medCompositeParameterPresenter()
+medVariantListParameterPresenter::~medVariantListParameterPresenter()
 {
 }
 
-medVariantListParameter* medCompositeParameterPresenter::parameter() const
+medVariantListParameter* medVariantListParameterPresenter::parameter() const
 {
     return d->parameter;
 }
 
 
-QWidget* medCompositeParameterPresenter::buildWidget()
+QWidget* medVariantListParameterPresenter::buildWidget()
 {
     medVariantListParameterWidgetPrivate *poWidgetRes = new medVariantListParameterWidgetPrivate();
 
