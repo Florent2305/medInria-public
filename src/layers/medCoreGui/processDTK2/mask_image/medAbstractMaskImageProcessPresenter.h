@@ -12,8 +12,8 @@
 
 =========================================================================*/
 
-#include <medAbstractProcessPresenter.h>
-#include <medAbstractDiffusionModelEstimationProcess.h>
+#include <medAbstractProcessPresenterDTK2.h>
+#include <medAbstractMaskImageProcess.h>
 #include <medProcessPresenterFactory.h>
 #include <medCoreGuiExport.h>
 
@@ -23,34 +23,27 @@ class QPushButton;
 class medViewContainerSplitter;
 class medAbstractData;
 
-class medAbstractDiffusionModelEstimationProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractDiffusionModelEstimationProcessPresenter : public medAbstractProcessDTK2Presenter
+class medAbstractMaskImageProcessPresenterPrivate;
+class MEDCOREGUI_EXPORT medAbstractMaskImageProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 
 public:
-    medAbstractDiffusionModelEstimationProcessPresenter(medAbstractDiffusionModelEstimationProcess *parent = nullptr);
-    virtual ~medAbstractDiffusionModelEstimationProcessPresenter();
+    medAbstractMaskImageProcessPresenter(medAbstractMaskImageProcess *parent = nullptr);
+    virtual ~medAbstractMaskImageProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();
     virtual medViewContainerSplitter *buildViewContainerSplitter();
 
-    void setUseRunControls(bool useRun);
-    bool useRunControls();
-
-private:
-    const QScopedPointer<medAbstractDiffusionModelEstimationProcessPresenterPrivate> d;
+    const QScopedPointer<medAbstractMaskImageProcessPresenterPrivate> d;
 
 private slots:
     void _importOutput(medAbstractJob::medJobExitStatus jobExitStatus);
-
     void _setInputFromContainer(medAbstractData *data);
-
-    void setInputGradientFile();
-    void setInputBValuesFile();
+    void _setMaskFromContainer(medAbstractData *data);
 
 signals:
     void _outputImported(medAbstractData *);
 };
 
-MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractDiffusionModelEstimationProcess, MEDCOREGUI_EXPORT)
+MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractMaskImageProcess, MEDCOREGUI_EXPORT)

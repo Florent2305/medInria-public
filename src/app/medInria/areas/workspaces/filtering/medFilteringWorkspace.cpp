@@ -18,8 +18,8 @@
 #include <medCore.h>
 #include <medWidgets.h>
 #include <medProcessPresenterFactory.h>
-#include <medAbstractProcess.h>
-#include <medAbstractProcessPresenter.h>
+#include <medAbstractProcessDTK2.h>
+#include <medAbstractProcessPresenterDTK2.h>
 
 #include <medJobManager.h>
 

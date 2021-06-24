@@ -12,39 +12,38 @@
 
 =========================================================================*/
 
-#include <medAbstractProcessPresenter.h>
-#include <medAbstractDiffusionScalarMapsProcess.h>
-#include <medProcessPresenterFactory.h>
+#include <medAbstractProcessPresenterDTK2.h>
+#include <medAbstractSingleFilterOperationProcess.h>
 #include <medCoreGuiExport.h>
 
 class QWidget;
 class QPushButton;
 
 class medViewContainerSplitter;
-class medAbstractImageData;
 class medAbstractData;
+class medIntParameterPresenter;
 
-class medAbstractDiffusionScalarMapsProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractDiffusionScalarMapsProcessPresenter : public medAbstractProcessDTK2Presenter
+class medAbstractSingleFilterOperationProcessPresenterPrivate;
+class MEDCOREGUI_EXPORT medAbstractSingleFilterOperationProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 
 public:
-    medAbstractDiffusionScalarMapsProcessPresenter(medAbstractDiffusionScalarMapsProcess *parent = nullptr);
-    virtual ~medAbstractDiffusionScalarMapsProcessPresenter();
+    medAbstractSingleFilterOperationProcessPresenter(medAbstractSingleFilterOperationProcess *parent = nullptr);
+    virtual ~medAbstractSingleFilterOperationProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();
     virtual medViewContainerSplitter *buildViewContainerSplitter();
 
-    const QScopedPointer<medAbstractDiffusionScalarMapsProcessPresenterPrivate> d;
+    medIntParameterPresenter *progressionPresenter();
+private:
+    const QScopedPointer<medAbstractSingleFilterOperationProcessPresenterPrivate> d;
 
 private slots:
     void _importOutput(medAbstractJob::medJobExitStatus jobExitStatus);
-
     void _setInputFromContainer(medAbstractData *data);
 
 signals:
     void _outputImported(medAbstractData *);
 };
 
-MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractDiffusionScalarMapsProcess, MEDCOREGUI_EXPORT)

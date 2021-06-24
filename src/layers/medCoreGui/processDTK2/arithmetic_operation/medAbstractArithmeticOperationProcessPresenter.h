@@ -13,7 +13,7 @@
 =========================================================================*/
 
 #include <medAbstractArithmeticOperationProcess.h>
-#include <medAbstractProcessPresenter.h>
+#include <medAbstractProcessPresenterDTK2.h>
 #include <medProcessPresenterFactory.h>
 #include <medCoreGuiExport.h>
 

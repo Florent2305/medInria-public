@@ -14,7 +14,7 @@
 
 #include <QObject>
 
-#include <medAbstractProcess.h>
+#include <medAbstractProcessDTK2.h>
 #include <medProcessPresenterFactory.h>
 #include <medCoreGuiExport.h>
 

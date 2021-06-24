@@ -17,7 +17,6 @@
 #include <itkBSplineInterpolateImageFunction.h>
 
 #include <medAbstractDataFactory.h>
-#include <medAbstractProcess.h>
 #include <medMetaDataKeys.h>
 #include <medUtilities.h>
 #include <medUtilitiesITK.h>

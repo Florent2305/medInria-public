@@ -35,8 +35,8 @@ public:
 
     void setVisible(bool visibility);
     bool isVisible() const;
-    void setEnable(bool enabled);
-    bool isEnable() const;
+    void setEnabled(bool enabled);
+    bool isEnabled() const;
 
 public:
     static medAbstractParameterPresenter* buildFromParameter(medAbstractParameter* parameter);

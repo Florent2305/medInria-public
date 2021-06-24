@@ -12,7 +12,7 @@
 
 =========================================================================*/
 
-#include <medAbstractProcess.h>
+#include <medAbstractProcessDTK2.h>
 
 #include <medAbstractArithmeticOperationProcess.h>
 #include <medAbstractAddImageProcess.h>

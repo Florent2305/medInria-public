@@ -14,7 +14,7 @@
 #include <dtkCoreSupport/dtkAbstractProcessFactory.h>
 #include <dtkCoreSupport/dtkSmartPointer.h>
 
-#include <medAbstractProcess.h>
+#include <medAbstractProcessDTK2.h>
 #include <medAbstractDataFactory.h>
 #include <medN4BiasCorrection.h>
 #include <medN4BiasCorrection_p.h>

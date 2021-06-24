@@ -22,12 +22,12 @@ set(TARGET_NAME medCoreGui)
 list_source_files(${TARGET_NAME}
   ${CMAKE_CURRENT_SOURCE_DIR}
   medWidget
-  process
-  process/arithmetic_operation
-  process/diffusion_processes
-  process/morphomath_operation
-  process/mask_image
-  process/single_filter
+  processDTK2
+  processDTK2/arithmetic_operation
+  processDTK2/diffusion_processes
+  processDTK2/morphomath_operation
+  processDTK2/mask_image
+  processDTK2/single_filter
   parameter
   toolboxes
   )
@@ -77,3 +77,4 @@ target_link_libraries(${TARGET_NAME}
 set_lib_install_rules(${TARGET_NAME}
   ${${TARGET_NAME}_HEADERS}
   )
+  

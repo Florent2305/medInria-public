@@ -12,7 +12,7 @@
 
 =========================================================================*/
 
-#include <medAbstractProcessPresenter.h>
+#include <medAbstractProcessPresenterDTK2.h>
 #include <medAbstractDWIMaskingProcess.h>
 #include <medProcessPresenterFactory.h>
 #include <medCoreGuiExport.h>

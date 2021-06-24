@@ -12,7 +12,7 @@
 =========================================================================*/
 
 #include <medAbstractParameter.h>
-#include <medAbstractProcess.h>
+#include <medAbstractProcessDTK2.h>
 
 #include <QMap>
 

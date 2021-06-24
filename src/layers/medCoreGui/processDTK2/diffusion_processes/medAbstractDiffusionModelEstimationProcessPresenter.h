@@ -12,8 +12,8 @@
 
 =========================================================================*/
 
-#include <medAbstractMorphomathOperationProcess.h>
-#include <medAbstractProcessPresenter.h>
+#include <medAbstractProcessPresenterDTK2.h>
+#include <medAbstractDiffusionModelEstimationProcess.h>
 #include <medProcessPresenterFactory.h>
 #include <medCoreGuiExport.h>
 
@@ -23,28 +23,34 @@ class QPushButton;
 class medViewContainerSplitter;
 class medAbstractData;
 
-class medAbstractMorphomathOperationProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractMorphomathOperationProcessPresenter : public medAbstractProcessDTK2Presenter
+class medAbstractDiffusionModelEstimationProcessPresenterPrivate;
+class MEDCOREGUI_EXPORT medAbstractDiffusionModelEstimationProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 
 public:
-    medAbstractMorphomathOperationProcessPresenter(medAbstractMorphomathOperationProcess *parent = nullptr);
-    virtual ~medAbstractMorphomathOperationProcessPresenter();
+    medAbstractDiffusionModelEstimationProcessPresenter(medAbstractDiffusionModelEstimationProcess *parent = nullptr);
+    virtual ~medAbstractDiffusionModelEstimationProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();
     virtual medViewContainerSplitter *buildViewContainerSplitter();
 
-    virtual medAbstractMorphomathOperationProcess* process() const;
+    void setUseRunControls(bool useRun);
+    bool useRunControls();
 
-    const QScopedPointer<medAbstractMorphomathOperationProcessPresenterPrivate> d;
+private:
+    const QScopedPointer<medAbstractDiffusionModelEstimationProcessPresenterPrivate> d;
 
 private slots:
     void _importOutput(medAbstractJob::medJobExitStatus jobExitStatus);
+
     void _setInputFromContainer(medAbstractData *data);
+
+    void setInputGradientFile();
+    void setInputBValuesFile();
 
 signals:
     void _outputImported(medAbstractData *);
 };
-MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractMorphomathOperationProcess, MEDCOREGUI_EXPORT)
-MED_DECLARE_PROCESS_PRESENTER_CREATOR(medAbstractMorphomathOperationProcess, medAbstractMorphomathOperationProcess)
+
+MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractDiffusionModelEstimationProcess, MEDCOREGUI_EXPORT)

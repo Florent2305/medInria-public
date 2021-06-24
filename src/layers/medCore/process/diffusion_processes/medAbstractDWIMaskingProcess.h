@@ -12,7 +12,7 @@
 
 =========================================================================*/
 
-#include <medAbstractProcess.h>
+#include <medAbstractProcessDTK2.h>
 #include <medCoreExport.h>
 #include <dtkCore>
 

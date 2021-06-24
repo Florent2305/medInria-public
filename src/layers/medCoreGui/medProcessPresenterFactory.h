@@ -14,7 +14,7 @@
 
 #include <QStringList>
 #include <QHash>
-#include <medAbstractProcess.h>
+#include <medAbstractProcessDTK2.h>
 
 template <typename ProcessType, typename PresenterType> class medProcessPresenterFactory
 {

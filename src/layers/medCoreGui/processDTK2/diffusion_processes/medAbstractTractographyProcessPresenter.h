@@ -12,8 +12,8 @@
 
 =========================================================================*/
 
-#include <medAbstractProcessPresenter.h>
-#include <medDiffusionModelEstimationMetaProcess.h>
+#include <medAbstractProcessPresenterDTK2.h>
+#include <medAbstractTractographyProcess.h>
 #include <medProcessPresenterFactory.h>
 #include <medCoreGuiExport.h>
 
@@ -21,32 +21,30 @@ class QWidget;
 class QPushButton;
 
 class medViewContainerSplitter;
+class medAbstractFibersData;
 class medAbstractData;
 
-class medDiffusionModelEstimationMetaProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medDiffusionModelEstimationMetaProcessPresenter : public medAbstractProcessDTK2Presenter
+class medAbstractTractographyProcessPresenterPrivate;
+class MEDCOREGUI_EXPORT medAbstractTractographyProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 
 public:
-    medDiffusionModelEstimationMetaProcessPresenter(medDiffusionModelEstimationMetaProcess *parent = nullptr);
-    virtual ~medDiffusionModelEstimationMetaProcessPresenter();
+    medAbstractTractographyProcessPresenter(medAbstractTractographyProcess *parent = nullptr);
+    virtual ~medAbstractTractographyProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();
     virtual medViewContainerSplitter *buildViewContainerSplitter();
 
-    virtual medDiffusionModelEstimationMetaProcess *process() const;
-
-    const QScopedPointer<medDiffusionModelEstimationMetaProcessPresenterPrivate> d;
+    const QScopedPointer<medAbstractTractographyProcessPresenterPrivate> d;
 
 private slots:
     void _importOutput(medAbstractJob::medJobExitStatus jobExitStatus);
 
     void _setInputFromContainer(medAbstractData *data);
 
-    void chooseDWIMaskingPlugin(int processIndex);
-    void chooseEstimationPlugin(int processIndex);
-
 signals:
     void _outputImported(medAbstractData *);
 };
+
+MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractTractographyProcess, MEDCOREGUI_EXPORT)

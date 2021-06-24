@@ -32,7 +32,7 @@ class medAbstractParameterPresenterPrivate
 {
 public:
     bool visibility;
-    bool isEnable;
+    bool isEnabled;
     medAbstractParameter *parameter;
 };
 
@@ -47,7 +47,7 @@ medAbstractParameterPresenter::medAbstractParameterPresenter(medAbstractParamete
 
     d->parameter = parent;
     d->visibility = true;
-    d->isEnable = true;
+    d->isEnabled = true;
 }
 
 medAbstractParameterPresenter::~medAbstractParameterPresenter()
@@ -73,15 +73,15 @@ bool medAbstractParameterPresenter::isVisible() const
     return d->visibility;
 }
 
-void medAbstractParameterPresenter::setEnable(bool enabled)
+void medAbstractParameterPresenter::setEnabled(bool enabled)
 {
-    d->isEnable = enabled;
-    emit _isEnabledChanged(d->isEnable);
+    d->isEnabled = enabled;
+    emit _isEnabledChanged(d->isEnabled);
 }
 
-bool medAbstractParameterPresenter::isEnable() const
+bool medAbstractParameterPresenter::isEnabled() const
 {
-    return d->isEnable;
+    return d->isEnabled;
 }
 
 void medAbstractParameterPresenter::_connectWidget(QWidget *widget)

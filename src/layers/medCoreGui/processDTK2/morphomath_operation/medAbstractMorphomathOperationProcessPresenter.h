@@ -12,8 +12,9 @@
 
 =========================================================================*/
 
-#include <medAbstractProcessPresenter.h>
-#include <medAbstractSingleFilterOperationProcess.h>
+#include <medAbstractMorphomathOperationProcess.h>
+#include <medAbstractProcessPresenterDTK2.h>
+#include <medProcessPresenterFactory.h>
 #include <medCoreGuiExport.h>
 
 class QWidget;
@@ -21,23 +22,22 @@ class QPushButton;
 
 class medViewContainerSplitter;
 class medAbstractData;
-class medIntParameterPresenter;
 
-class medAbstractSingleFilterOperationProcessPresenterPrivate;
-class MEDCOREGUI_EXPORT medAbstractSingleFilterOperationProcessPresenter : public medAbstractProcessDTK2Presenter
+class medAbstractMorphomathOperationProcessPresenterPrivate;
+class MEDCOREGUI_EXPORT medAbstractMorphomathOperationProcessPresenter : public medAbstractProcessDTK2Presenter
 {
     Q_OBJECT
 
 public:
-    medAbstractSingleFilterOperationProcessPresenter(medAbstractSingleFilterOperationProcess *parent = nullptr);
-    virtual ~medAbstractSingleFilterOperationProcessPresenter();
+    medAbstractMorphomathOperationProcessPresenter(medAbstractMorphomathOperationProcess *parent = nullptr);
+    virtual ~medAbstractMorphomathOperationProcessPresenter();
 
     virtual QWidget *buildToolBoxWidget();
     virtual medViewContainerSplitter *buildViewContainerSplitter();
 
-    medIntParameterPresenter *progressionPresenter();
-private:
-    const QScopedPointer<medAbstractSingleFilterOperationProcessPresenterPrivate> d;
+    virtual medAbstractMorphomathOperationProcess* process() const;
+
+    const QScopedPointer<medAbstractMorphomathOperationProcessPresenterPrivate> d;
 
 private slots:
     void _importOutput(medAbstractJob::medJobExitStatus jobExitStatus);
@@ -46,4 +46,5 @@ private slots:
 signals:
     void _outputImported(medAbstractData *);
 };
-
+MED_DECLARE_PROCESS_PRESENTER_FACTORY(medAbstractMorphomathOperationProcess, MEDCOREGUI_EXPORT)
+MED_DECLARE_PROCESS_PRESENTER_CREATOR(medAbstractMorphomathOperationProcess, medAbstractMorphomathOperationProcess)
