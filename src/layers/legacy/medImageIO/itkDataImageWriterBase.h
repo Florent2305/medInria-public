@@ -42,7 +42,6 @@ protected:
     itk::ImageIOBase::Pointer io;
     QHash<QString, std::string> medKeyToItkKey;
 
-    void encapsulateSharedMetaData(itk::MetaDataDictionary& dict);
     std::string convertMedKeyToItkKey(QString medKey);
 
 private:

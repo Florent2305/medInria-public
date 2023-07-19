@@ -41,6 +41,8 @@
 
 #include<medNotifWindow.h>
 
+#include<medMetaDataKeys.h>
+
 void forceShow(medMainWindow &mainwindow)
 {
     // Idea and code taken from the OpenCOR project, Thanks Allan for the code!
@@ -235,6 +237,7 @@ int main(int argc, char *argv[])
         //
         //const int status1 = application.exec();
         //return status1;
+        auto metaDataKeys = medMetaDataKeys::instance();
 
         medSourcesLoader::instance(&application);     
         //medDataManager::instance()->setDatabaseLocation();

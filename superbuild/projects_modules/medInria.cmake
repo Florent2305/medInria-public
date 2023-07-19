@@ -74,7 +74,6 @@ set(cmake_args
   -DCMAKE_C_FLAGS=${${ep}_c_flags}
   -DCMAKE_CXX_FLAGS=${${ep}_cxx_flags}
   -DCMAKE_SHARED_LINKER_FLAGS=${${ep}_shared_linker_flags}  
-  -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS=${BUILD_SHARED_LIBS_${ep}}
   -DUSE_DTKIMAGING:BOOL=${USE_DTKIMAGING}
   -DUSE_OSPRay:BOOL=${USE_OSPRay}
@@ -96,6 +95,7 @@ set(cmake_cache_args
   -DQt5_DIR:PATH=${Qt5_DIR}
   -DLogDemons_DIR:PATH=${LogDemons_DIR}
   -DBoost_INCLUDE_DIR:PATH=${Boost_INCLUDE_DIR}
+  -DCMAKE_INSTALL_PREFIX:PATH=${EP_INSTALL_PREFIX}  
   )
 
 
@@ -115,17 +115,21 @@ endif()
 ## Add external-project
 ## #############################################################################
 
+message("--------- ${EP_INSTALL_PREFIX} ---")
+message("--BIN---- ${medInria_BINARY_DIR} ---")
+
 ExternalProject_Add(${ep}
   SOURCE_DIR ${medInria_SOURCE_DIR}
   BINARY_DIR ${medInria_BINARY_DIR}
   STAMP_DIR ${medinria_Stamp_DIR}
+  INSTALL_DIR ${EP_INSTALL_PREFIX}  
+  
   UPDATE_COMMAND ""
   CMAKE_GENERATOR ${gen}
   CMAKE_GENERATOR_PLATFORM ${CMAKE_GENERATOR_PLATFORM}
   CMAKE_ARGS ${cmake_args}
   CMAKE_CACHE_ARGS ${cmake_cache_args}
   DEPENDS ${${ep}_dependencies}
-  INSTALL_COMMAND ""
   BUILD_ALWAYS 1
   )
 
@@ -150,7 +154,7 @@ if (WIN32)
   
   set(CONFIG_MODE $<$<CONFIG:debug>:Debug>$<$<CONFIG:release>:Release>$<$<CONFIG:MinSizeRel>:MinSizeRel>$<$<CONFIG:RelWithDebInfo>:RelWithDebInfo>)
   
-  set(MED_BIN_BASE ${MED_BIN_BASE}\\${CONFIG_MODE}\\bin)  
+  set(MED_BIN_BASE ${MED_BIN_BASE}\\medInria\\bin)  
   
   add_custom_command(TARGET ${ep}
         POST_BUILD
@@ -159,10 +163,12 @@ if (WIN32)
         COMMAND for %%I in ( ${DTK_BIN_BASE}\\bin\\${CONFIG_MODE}\\*.dll ) do (if EXIST ${MED_BIN_BASE}\\%%~nxI (del /S ${MED_BIN_BASE}\\%%~nxI & mklink /H ${MED_BIN_BASE}\\%%~nxI %%~fI) else mklink /H ${MED_BIN_BASE}\\%%~nxI %%~fI) 
         COMMAND for %%I in ( ${DCM_BIN_BASE}\\bin\\${CONFIG_MODE}\\*.dll ) do (if EXIST ${MED_BIN_BASE}\\%%~nxI (del /S ${MED_BIN_BASE}\\%%~nxI & mklink /H ${MED_BIN_BASE}\\%%~nxI %%~fI) else mklink /H ${MED_BIN_BASE}\\%%~nxI %%~fI) 
         COMMAND for %%I in ( ${QT5_BIN_BASE}\\bin\\*.dll                 ) do (if EXIST ${MED_BIN_BASE}\\%%~nxI (del /S ${MED_BIN_BASE}\\%%~nxI & mklink /H ${MED_BIN_BASE}\\%%~nxI %%~fI) else mklink /H ${MED_BIN_BASE}\\%%~nxI %%~fI) 
+        #COMMAND ${CMAKE_COMMAND} -E copy ${medInria_SOURCE_DIR}/cmake/dtkConfig.cmake.in ${EP_INSTALL_PREFIX}/dependencies/dtk/lib/cmake/dtk/dtkConfig.cmake
     )
 endif()
 
-
+#file(MAKE_DIRECTORY ${EP_INSTALL_PREFIX}/dependencies/dtk/lib/cmake/dtk)
+#file(COPY_FILE ${medInria_SOURCE_DIR}/cmake/dtkConfig.cmake.in ${EP_INSTALL_PREFIX}/dependencies/dtk/lib/cmake/dtk/dtkConfig.cmake)
 
 endif() #NOT USE_SYSTEM_ep
 

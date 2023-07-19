@@ -63,8 +63,7 @@ set(cmake_args
   -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE_externals_projects}
   -DCMAKE_C_FLAGS:STRING=${${ep}_c_flags}
   -DCMAKE_CXX_FLAGS:STRING=${${ep}_cxx_flags}   
-  -DCMAKE_SHARED_LINKER_FLAGS:STRING=${${ep}_shared_linker_flags}  
-  -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
+  -DCMAKE_SHARED_LINKER_FLAGS:STRING=${${ep}_shared_linker_flags}
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DDTK_BUILD_COMPOSER=ON                                                                                                                                                                                                                                                                                        
   -DDTK_BUILD_DISTRIBUTED=ON                                                                                                                                                                                                                                                                                        
@@ -82,6 +81,7 @@ set(cmake_args
   
 set(cmake_cache_args
   -DQt5_DIR:FILEPATH=${Qt5_DIR}
+  -DCMAKE_INSTALL_PREFIX:PATH=${EP_INSTALL_PREFIX}/dependencies/${ep}
   )
 
 ## #############################################################################
@@ -90,12 +90,15 @@ set(cmake_cache_args
 
 epComputPath(${ep})
 
+message("--------- ${EP_INSTALL_PREFIX}/dependencies/${ep} ---")
+
 ExternalProject_Add(${ep}
   PREFIX ${EP_PATH_SOURCE}
   SOURCE_DIR ${EP_PATH_SOURCE}/${ep}
   BINARY_DIR ${build_path}
   TMP_DIR ${tmp_path}
   STAMP_DIR ${stamp_path}
+  INSTALL_DIR ${EP_INSTALL_PREFIX}/dependencies/${ep}
   
   GIT_REPOSITORY ${git_url}
   GIT_TAG ${git_tag}
@@ -104,7 +107,6 @@ ExternalProject_Add(${ep}
   CMAKE_ARGS ${cmake_args}
   CMAKE_CACHE_ARGS ${cmake_cache_args}
   DEPENDS ${${ep}_dependencies}
-  INSTALL_COMMAND ""
   BUILD_ALWAYS ${EP_BUILD_ALWAYS}
   )
 

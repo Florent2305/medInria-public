@@ -15,6 +15,7 @@
 
 #include <medAbstractData.h>
 #include <medAbstractDataFactory.h>
+#include <medMetaDataKeys.h>
 
 #include <itkPhilipsRECImageIO.h>
 #include <itkPhilipsPAR.h>
@@ -196,6 +197,13 @@ itkPhilipsRECDataImageReader::applyCorrection(FloatImageType::PointType correcto
     ImageType* img = (ImageType *) (data()->data());
     img->SetDirection(direction);
     img->SetOrigin(origin);
+
+    data()->setMetaData(medMetaDataKeys::key("Origin"),
+                          QString::number(origin[0]) +
+                          QString(" ") +
+                          QString::number(origin[1]) +
+                          QString(" ") +
+                          QString::number(origin[2]));
 }
 
 itkPhilipsRECDataImageReader::FloatImageType::PointType itkPhilipsRECDataImageReader::ExtractPARRECImageOrigin (

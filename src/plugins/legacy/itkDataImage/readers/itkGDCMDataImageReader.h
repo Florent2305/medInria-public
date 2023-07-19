@@ -45,6 +45,7 @@ public:
     itkGDCMDataImageReader();
     virtual ~itkGDCMDataImageReader();
 
+    static void dicomDictionnaryToKeys();
     
     virtual QString identifier()  const;
     virtual QString description() const;

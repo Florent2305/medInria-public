@@ -240,14 +240,7 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}4Config.cmake.in)
     #    @ONLY IMMEDIATE
     #    )
 	
-    get_property(GENERATOR_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
-    if(${GENERATOR_MULTI_CONFIG})
-    	configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}4Config.cmake.in "${CMAKE_CURRENT_BINARY_DIR}/Debug/lib/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake" INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
-    	configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}4Config.cmake.in "${CMAKE_CURRENT_BINARY_DIR}/Release/lib/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake" INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
-    	configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}4Config.cmake.in "${CMAKE_CURRENT_BINARY_DIR}/MinSizeRel/lib/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake" INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
-    	configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}4Config.cmake.in "${CMAKE_CURRENT_BINARY_DIR}/RelWithDebInfo/lib/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake" INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
-    else()
-    	configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}4Config.cmake.in "${CMAKE_CURRENT_BINARY_DIR}/lib/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake" INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
-    endif()
+    configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}4Config.cmake.in "${CMAKE_BINARY_DIR}/medInria/lib/cmake/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake" INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
+
 endif()
 

@@ -864,7 +864,7 @@ std::map<std::string, std::vector<std::string>> DCMTKImageIO::GetMetaData() cons
     std::map<std::string, std::vector<std::string>> metaDataMap;
 
     const itk::MetaDataDictionary & dictionary = this->GetMetaDataDictionary();
-
+    
     using MetaDataStringType = itk::MetaDataObject<std::string>;
     auto itr = dictionary.Begin();
     auto end = dictionary.End();
@@ -875,9 +875,13 @@ std::map<std::string, std::vector<std::string>> DCMTKImageIO::GetMetaData() cons
 
         MetaDataVectorStringType::Pointer entryvalue = dynamic_cast<MetaDataVectorStringType*>(entry.GetPointer());
 
+        //auto A = entryvalue->GetMetaDataObjectTypeInfo();
+        auto B = entryvalue->GetMetaDataObjectTypeName();
+
         if (entryvalue)
         {
-            metaDataMap[itr->first] = entryvalue->GetMetaDataObjectValue();
+            auto C = entryvalue->GetMetaDataObjectValue();
+            metaDataMap[itr->first] = C;
         }
         ++itr;
     }

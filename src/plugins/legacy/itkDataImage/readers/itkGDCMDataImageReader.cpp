@@ -28,6 +28,7 @@
 #include <gdcmReader.h>
 #include <gdcmDirectionCosines.h>
 #include <gdcmStringFilter.h>
+#include <gdcmGlobal.h>
 
 #include <medMetaDataKeys.h>
 
@@ -36,16 +37,20 @@
 const char itkGDCMDataImageReader::ID[] = "itkGDCMDataImageReader";
 
 template<typename TYPE>
-void Read3DImage(medAbstractData* medData,itk::GDCMImageIO::Pointer io,const itkGDCMDataImageReader::FileList& filelist) {
+void Read3DImage(medAbstractData* medData,itk::GDCMImageIO::Pointer io,const itkGDCMDataImageReader::FileList& filelist)
+{
     typename itk::ImageSeriesReader<itk::Image<TYPE,3> >::Pointer reader = itk::ImageSeriesReader<itk::Image<TYPE,3> >::New();
     reader->SetImageIO(io);
     reader->SetFileNames(filelist);
-    medData->setData(reader->GetOutput());
+    reader->Update();
+    auto *pOut = reader->GetOutput();
+    medData->setData(pOut);
     reader->Update();
 }
 
 template <typename TYPE>
-void Read4DImage(medAbstractData* medData, itk::GDCMImageIO::Pointer io, itkGDCMDataImageReader::FileListMapType map) {
+void Read4DImage(medAbstractData* medData, itk::GDCMImageIO::Pointer io, itkGDCMDataImageReader::FileListMapType map)
+{
     typedef itk::Image<TYPE,4>                   ImageType;
     typedef itk::Image<TYPE,3>                   SubImageType;
     typedef itk::ImageSeriesReader<SubImageType> SeriesReaderType;
@@ -141,6 +146,7 @@ itkGDCMDataImageReaderPrivate::itkGDCMDataImageReaderPrivate()
 itkGDCMDataImageReader::itkGDCMDataImageReader() : medAbstractDataReader(), d(new itkGDCMDataImageReaderPrivate)
 {
     this->m_Scanner.AddTag( gdcm::Tag(0x0010,0x0010) );
+    this->m_Scanner.AddTag( gdcm::Tag(0x0010,0x0020) );
     this->m_Scanner.AddTag( gdcm::Tag(0x0008,0x0130) );
     this->m_Scanner.AddTag( gdcm::Tag(0x0008,0x103e) );
     this->m_Scanner.AddTag( gdcm::Tag(0x0020,0x000d) );
@@ -154,7 +160,6 @@ itkGDCMDataImageReader::itkGDCMDataImageReader() : medAbstractDataReader(), d(ne
 
     this->m_Scanner.AddTag( gdcm::Tag(0x0020,0x0032) );
     this->m_Scanner.AddTag( gdcm::Tag(0x0020,0x0037) );
-
 }
 
 
@@ -162,6 +167,27 @@ itkGDCMDataImageReader::~itkGDCMDataImageReader()
 {
     delete d;
     d = 0;
+}
+
+void itkGDCMDataImageReader::dicomDictionnaryToKeys()
+{
+    const gdcm::Global& g = gdcm::Global::GetInstance();
+    const gdcm::Dicts &dicts = g.GetDicts();
+    const gdcm::Dict &pubdict = dicts.GetPublicDict();
+    int x = 0;
+    for (auto it = pubdict.Begin(); it != pubdict.End(); ++it)
+    {
+        QString nameTagDcm  = (*it).second.GetKeyword();
+        QString labelTagDcm = (*it).second.GetName();
+        auto    dcmGroup    = (*it).first.GetGroup();
+        auto    dcmElem     = (*it).first.GetElement();
+                           
+        auto    tagGroup    = QString("%1").arg(dcmGroup, 4, 16, QLatin1Char('0'));
+        auto    tagElem     = QString("%1").arg(dcmElem, 4, 16, QLatin1Char('0'));
+        x++;
+        medMetaDataKeys::addKeyByTagToChapter(tagGroup + ':' + tagElem, labelTagDcm, nameTagDcm, "dicom");
+    }
+    qDebug() << x;
 }
 
 
@@ -359,37 +385,72 @@ bool itkGDCMDataImageReader::readInformation(const QStringList &paths)
         QStringList columns;
         QStringList filePaths;
 
-        patientName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0010, 0x0010));
-        patientID << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0010, 0x0020));
-        studyName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0008, 0x0130));
-        seriesName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0008, 0x103e));
-        studyId << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x000d));
-        seriesId << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x000e));
-        orientation << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x0037));
-        seriesNumber << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x0011));
-        sequenceName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0018, 0x0024));
-        sliceThickness << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0018, 0x0050));
-        rows << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0028, 0x0010));
-        columns << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0028, 0x0011));
+        char paName[256];
+        d->io->GetPatientName(paName);
+        patientName << paName;
+        // patientName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0010, 0x0010));
+        // patientID << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0010, 0x0020));
+        // studyName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0008, 0x0130));
+        // seriesName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0008, 0x103e));
+        // studyId << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x000d));
+        // seriesId << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x000e));
+        // orientation << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x0037));
+        // seriesNumber << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0020, 0x0011));
+        // sequenceName << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0018, 0x0024));
+        // sliceThickness << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0018, 0x0050));
+        // rows << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0028, 0x0010));
+        // columns << this->m_Scanner.GetValue(firstfilename.c_str(), gdcm::Tag(0x0028, 0x0011));
+           
+         auto dictMeta = d->io->GetMetaDataDictionary();
+         auto keysMeta = dictMeta.GetKeys();
+         
+         for (auto keyMeta : keysMeta)
+         {
+             auto valMeta = dictMeta.Get(keyMeta);
+         }
 
-        medData->setMetaData(medMetaDataKeys::PatientName.key(), patientName);
-        medData->setMetaData(medMetaDataKeys::PatientID.key(), patientName);
-        medData->setMetaData(medMetaDataKeys::StudyDescription.key(), studyName);
-        medData->setMetaData(medMetaDataKeys::SeriesDescription.key(), seriesName);
-        medData->setMetaData(medMetaDataKeys::StudyID.key(), studyId);
-        medData->setMetaData(medMetaDataKeys::SeriesID.key(), seriesId);
-        medData->setMetaData(medMetaDataKeys::Orientation.key(), orientation);
-        medData->setMetaData(medMetaDataKeys::SeriesNumber.key(), seriesNumber);
-        medData->setMetaData(medMetaDataKeys::SequenceName.key(), sequenceName);
-        medData->setMetaData(medMetaDataKeys::SliceThickness.key(), sliceThickness);
-        medData->setMetaData(medMetaDataKeys::Rows.key(), rows);
-        medData->setMetaData(medMetaDataKeys::Columns.key(), columns);
+         if (medAbstractData *medData = dynamic_cast<medAbstractData*>(this->data()))
+         {
+
+             // copy over the dicom dictionary into metadata
+             typedef itk::MetaDataObject <std::vector<std::string> >  MetaDataVectorStringType;
+             typedef std::vector<std::string>                         StringVectorType;
+
+             const itk::MetaDataDictionary& dictionary = d->io->GetMetaDataDictionary();
+             itk::MetaDataDictionary::ConstIterator it = dictionary.Begin();
+             while (it != dictionary.End())
+             {
+                 if (MetaDataVectorStringType* metaData = dynamic_cast<MetaDataVectorStringType*>(it->second.GetPointer()))
+                 {
+                     const StringVectorType &values = metaData->GetMetaDataObjectValue();
+                     for (unsigned int i = 0; i < values.size(); i++)
+                     {
+                         medData->addMetaData(it->first.c_str(), values[i].c_str());
+                     }
+                 }
+                 ++it;
+             }
+         }
+
+
+        // medData->setMetaData(medMetaDataKeys::key("PatientName"), patientName);
+        // medData->setMetaData(medMetaDataKeys::key("PatientID"), patientName);
+        // medData->setMetaData(medMetaDataKeys::key("StudyDescription"), studyName);
+        // medData->setMetaData(medMetaDataKeys::key("SeriesDescription"), seriesName);
+        // medData->setMetaData(medMetaDataKeys::key("StudyID"), studyId);
+        // medData->setMetaData(medMetaDataKeys::key("SeriesID"), seriesId);
+        // medData->setMetaData(medMetaDataKeys::key("Orientation"), orientation);
+        // medData->setMetaData(medMetaDataKeys::key("SeriesNumber"), seriesNumber);
+        // medData->setMetaData(medMetaDataKeys::key("SequenceName"), sequenceName);
+        // medData->setMetaData(medMetaDataKeys::key("SliceThickness"), sliceThickness);
+        // medData->setMetaData(medMetaDataKeys::key("Rows"), rows);
+        // medData->setMetaData(medMetaDataKeys::key("Columns"), columns);
 
         FileList orderedfilelist = this->unfoldMap(map);
         for (unsigned int i=0; i<orderedfilelist.size(); i++)
             filePaths << orderedfilelist[i].c_str();
 
-        medData->addMetaData(medMetaDataKeys::FilePaths.key(),filePaths);
+        medData->addMetaData(medMetaDataKeys::key("FilePaths"),filePaths);
     }
 
     return true;
@@ -414,7 +475,8 @@ bool itkGDCMDataImageReader::read (const QStringList &paths)
 
     FileListMapType map = this->sort(filenames);
 
-    if (!map.size()) {
+    if (!map.size())
+    {
         dtkDebug() << "No image can be build from file list (empty map)";
         return false;
     }
@@ -422,8 +484,10 @@ bool itkGDCMDataImageReader::read (const QStringList &paths)
     itk::DataImageReaderCommand::Pointer command = itk::DataImageReaderCommand::New();
     command->SetDataImageReader(this);
     d->io->AddObserver(itk::ProgressEvent(),command);
-
-    if (medAbstractData *medData = dynamic_cast<medAbstractData*>(this->data())) {
+    
+    medAbstractData *medData = dynamic_cast<medAbstractData*>(this->data());
+    if (medData != nullptr)
+    {
         QStringList qfilelist = medData->metaDataValues("FilePaths");
         FileList filelist;
         for (int i=0;i<qfilelist.size();i++)
@@ -478,22 +542,26 @@ bool itkGDCMDataImageReader::read (const QStringList &paths)
 
         // copy over the dicom dictionary into metadata
         typedef itk::MetaDataObject <std::vector<std::string> >  MetaDataVectorStringType;
-        typedef std::vector<std::string>                        StringVectorType;
+        typedef std::vector<std::string>                         StringVectorType;
 
         const itk::MetaDataDictionary& dictionary = d->io->GetMetaDataDictionary();
         itk::MetaDataDictionary::ConstIterator it = dictionary.Begin();
-        while(it!=dictionary.End()) {
-            if( MetaDataVectorStringType* metaData = dynamic_cast<MetaDataVectorStringType*>( it->second.GetPointer() ) ) {
+        while(it!=dictionary.End())
+        {
+            if( MetaDataVectorStringType* metaData = dynamic_cast<MetaDataVectorStringType*>( it->second.GetPointer() ) ) 
+            {
                 const StringVectorType &values = metaData->GetMetaDataObjectValue();
-                for (unsigned int i=0; i<values.size(); i++)
-                    medData->addMetaData( it->first.c_str(), values[i].c_str());
+                for (unsigned int i = 0; i < values.size(); i++)
+                {
+                    medData->addMetaData(it->first.c_str(), values[i].c_str());
+                }
             }
             ++it;
         }
     }
 
 
-    d->io->RemoveAllObservers ();
+    d->io->RemoveAllObservers();
 
     return true;
 }

@@ -29,7 +29,7 @@ add_definitions(-D${TARGET_NAME_UP}_VERSION="${${TARGET_NAME}_VERSION}")
 ## #############################################################################
 
 find_package(dtk REQUIRED)
-#include_directories(${dtk_INCLUDE_DIRS})
+include_directories(${dtk_INCLUDE_DIRS})
 
 set(ITK_IMAGES_DEPENDENCIES
     ITKIOMeta
@@ -126,7 +126,8 @@ add_library(${TARGET_NAME} SHARED
 
 target_include_directories(${TARGET_NAME}
   PRIVATE ${${TARGET_NAME}_INCLUDE_DIRS}
-  PRIVATE ${dtk_INCLUDE_DIRS}
+  PRIVATE ${dtk_INCLUDE_DIRS} 
+  PRIVATE ${DCMTK_INCLUDE_DIRS}
   )
 
 ## #############################################################################
@@ -142,7 +143,8 @@ target_link_libraries(${TARGET_NAME}
   medCore
   medImageIO
   medLog
-  medVtkInria
+  medVtkInria  
+  ${DCMTK_LIBRARIES}
   )
 
 ## #############################################################################

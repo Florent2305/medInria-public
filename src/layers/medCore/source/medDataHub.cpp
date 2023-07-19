@@ -131,7 +131,7 @@ medAbstractData * medDataHub::variantToMedAbstractData(QVariant &data, const med
 			QString name = hruUri.right(hruUri.size() - hruUri.lastIndexOf("\r\n") - 2);
 			QStringList hruUriAsList = hruUri.split("\r\n", QString::SkipEmptyParts);
 			pDataRes->setExpectedName(name);
-			pDataRes->setMetaData(medMetaDataKeys::SeriesDescription.key(), name);
+			pDataRes->setMetaData(medMetaDataKeys::key("SeriesDescription"), name);
 
 			//Todo remove the next asap
 			QString studyDesc;
@@ -139,7 +139,7 @@ medAbstractData * medDataHub::variantToMedAbstractData(QVariant &data, const med
 			{
 				studyDesc = hruUriAsList.at(hruUriAsList.size() - 2);
 			}
-			pDataRes->setMetaData(medMetaDataKeys::StudyDescription.key(), studyDesc);
+			pDataRes->setMetaData(medMetaDataKeys::key("StudyDescription"), studyDesc);
 			//end todo
 		}
 		else
@@ -508,7 +508,7 @@ QString fileSysPathToIndex(const QString &path)
     return pathTmp;
 }
 
-QString indexToFileSysPath(QString &index)
+QString indexToFileSysPath(QString const &index)
 {
     QString pathRes;
 
@@ -847,7 +847,7 @@ QUuid medDataHub::writeResultsHackV3(medAbstractData &data, bool originSrc)
             }
         }
 
-        pi_writingPolicyData.baseName = data.metadata(medMetaDataKeys::SeriesDescription.key());
+        pi_writingPolicyData.baseName = data.metadata(medMetaDataKeys::key("SeriesDescription"));
 
         writeResults(pi_sourceId, pi_pData, pi_UriOfRelatedData, pi_sugestedPath, pi_writingPolicyData, nullptr);
     }

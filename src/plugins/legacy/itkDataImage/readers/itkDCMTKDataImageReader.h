@@ -35,6 +35,7 @@ public:
 
     virtual QStringList handled() const;
     static bool registered();
+    static void dicomDictionnaryToKeys();
 
     friend class itk::SliceReadCommand;
 

@@ -73,6 +73,7 @@ medSourcesSettingsHandlerWidget::medSourcesSettingsHandlerWidget(medSourcesSetti
     connect(m_setDefaultButton, &QPushButton::clicked, pi_parent, &medSourcesSettings::setAsDefault); // Change default source
     connect(m_hiddenButton,     &QPushButton::clicked, pi_parent, &medSourcesSettings::setAsInvisible); // Change visibility of source
     connect(m_removeButton,     &QPushButton::clicked, pi_parent, &medSourcesSettings::removeSource); // Ask to remove source
+    connect(m_connectButton,    &QPushButton::clicked, pi_parent, &medSourcesSettings::updateSourceConnection);
 }
 
 /**
@@ -108,7 +109,6 @@ void medSourcesSettingsHandlerWidget::sourceChange(medAbstractSource * pi_pSourc
         updateDefaultButton();
         m_removeButton->setDisabled(p_default);
 
-        m_qtConnections[0] = connect(pi_pSource, &medAbstractSource::connectionStatus, this, &medSourcesSettingsHandlerWidget::sourceConnectStatusChange);
         m_qtConnections[0] = connect(pi_pSource, &medAbstractSource::connectionStatus, this, &medSourcesSettingsHandlerWidget::sourceConnectStatusChange);
     }
     else
