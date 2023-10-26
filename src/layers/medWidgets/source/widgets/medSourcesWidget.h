@@ -53,6 +53,10 @@ signals:
 private:
     void onCustomContextMenu(QPoint const &point, QMenu *pi_pMenu);
     QModelIndex indexFromMenu(QMenu *pi_pMenu);
+
+    void exportData(medDataHub *hub, medDataIndex index, QList<medDataIndex> selectedIndexList);
+
+    void clickedOrSelectedItems(medSourceContextMenu* pi_pMenu, QModelIndexList &po_sourceItemList, QModelIndex &po_indexClicked);
     
 
 private:
@@ -60,4 +64,6 @@ private:
     QMap<QString, QWidget*>   m_treeMap; // sourceInstanceId, SubTreeWidget
     QMap<QString, QLayout*>   m_titleMap;  // sourceInstanceId, source instance names
     QMap<QMenu*,  QTreeView*> m_TreeviewByMenuMap;
+    QModelIndex m_rightClikedIndex;
 };
+

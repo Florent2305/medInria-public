@@ -1282,6 +1282,19 @@ bool medDataHub::pushData(medDataIndex const & index)
 
 
 
+//QStringList  medDataHub::getPossibleWriters(medDataIndex index)
+QList<medDataExporter::writerInfo> medDataHub::getWriterInfoList(medDataIndex index)
+{
+    QStringList writersIds;
+    if (index.isValid())
+    {
+        medAbstractData * pData = nullptr;
+        pData = getData(index);
+        writersIds =  medDataExporter::getAvailableWriters(pData);
+    }
+
+    return medDataExporter::getWriterInfoList(writersIds);
+}
 
 void medDataHub::addRequest(QString sourceId, int requestId, asyncRequest & rqst)
 {

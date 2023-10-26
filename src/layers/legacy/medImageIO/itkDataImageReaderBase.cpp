@@ -223,7 +223,7 @@ bool itkDataImageReaderBase::readInformation (const QString& path)
     {
         this->setData(medData);
         medData->addMetaData ("FilePath", QStringList() << path);
-        extractMetaData();
+        extractMetaData(this->io->GetMetaDataDictionary());
         return true;
     }
     else
@@ -256,15 +256,17 @@ bool itkDataImageReaderBase::read_image(const QString& path,const char* type)
     typename Image::Pointer im = TReader->GetOutput();
     medData->setData(im);
 
-    extractMetaData();
+    extractMetaData(im->GetMetaDataDictionary());
 
     return true;
 }
 
-void itkDataImageReaderBase::extractMetaData()
+void itkDataImageReaderBase::extractMetaData(itk::MetaDataDictionary &metaDataDictionary)
 {
-    itk::Object* itkImage = static_cast<itk::Object*>(data()->data());
-    itk::MetaDataDictionary& metaDataDictionary = itkImage->GetMetaDataDictionary();
+
+    QFileInfo fileInfo(this->io->GetFileName());
+    QString fileExt = fileInfo.completeSuffix();
+
     std::vector<std::string> keys = metaDataDictionary.GetKeys();
 
     for (unsigned int i = 0; i < keys.size(); i++)
@@ -273,8 +275,8 @@ void itkDataImageReaderBase::extractMetaData()
         std::string value;
         itk::ExposeMetaData(metaDataDictionary, keys[i], value);
 
-        medMetaDataKeys::addKeyToChapter(key, "itk");
-        QString metaDataKey = medMetaDataKeys::pivot(key, "itk");
+        medMetaDataKeys::addKeyToChapter(key, "itk_" + fileExt);
+        QString metaDataKey = medMetaDataKeys::pivot(key, "itk_" + fileExt);
         data()->setMetaData(metaDataKey, QString::fromStdString(value));
     }
 }

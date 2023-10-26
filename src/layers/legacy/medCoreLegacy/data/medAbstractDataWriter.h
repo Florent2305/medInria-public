@@ -31,7 +31,7 @@ public:
     virtual void setData(dtkAbstractData* data);
 
     QList<medAbstractData*> getDataList();
-
+    virtual bool writeMetaData(const QString& file);
 private:
     QList<medAbstractData*> dataList;
 };

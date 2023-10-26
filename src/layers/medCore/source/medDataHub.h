@@ -29,6 +29,8 @@
 
 #include <dtkCoreSupport/dtkSmartPointer.h>
 
+#include <medDataExporter.h>
+
 class medDataStorage;
 
 #define REQUEST_TIME_OUT 120
@@ -63,6 +65,9 @@ public:
 	bool fetchData(medDataIndex const & index);
 	bool pushData(medDataIndex const & index);
 
+    //QMap<QString, QStringList> getPossibleWriters(medDataIndex index);
+
+    QList<medDataExporter::writerInfo> getWriterInfoList(medDataIndex index = medDataIndex());
 
     medAbstractData * loadDataFromPath(QString const path, QUuid uuid = QUuid());
     //bool hasData(medDataIndex const & index);

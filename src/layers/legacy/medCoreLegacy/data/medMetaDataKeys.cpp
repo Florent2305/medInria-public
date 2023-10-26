@@ -94,7 +94,7 @@ QString medMetaDataKeys::pivot(QString keyName, QString chapter)
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 medMetaDataKeys::medMetaDataKeys()
 {
-    m_saveSheduler.setSingleShot(true);
+    m_saveSheduler.setSingleShot(false);
     m_saveSheduler.callOnTimeout(this, &medMetaDataKeys::delegateWriting);
 }
 
@@ -553,6 +553,9 @@ Key2 medMetaDataKeys::keyFromNameInternal(QString &keyName, QString chapter)
      }
      m_mutex.unlock();
      m_saveSheduler.start(5000);
+
+     bool bActive = m_saveSheduler.isActive();
+     QTimer::singleShot(5000, this, &medMetaDataKeys::delegateWriting);
  }
 
  void medMetaDataKeys::delegateWriting()

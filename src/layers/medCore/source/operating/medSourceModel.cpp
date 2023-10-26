@@ -439,12 +439,11 @@ QMimeData * medSourceModel::mimeData(const QModelIndexList & indexes) const
 
 bool medSourceModel::dropMimeData(const QMimeData * data, Qt::DropAction action, int row, int column, const QModelIndex & parent)
 {
-
     bool bRes = false;
 
     if (data->hasFormat("med/index2"))
     {
-        auto indexList = medDataIndex::readMimeDataMulti(data);
+            auto indexList = medDataIndex::readMimeDataMulti(data);
 
         for (auto & index : indexList)
         {
@@ -458,13 +457,16 @@ bool medSourceModel::dropMimeData(const QMimeData * data, Qt::DropAction action,
                 default:
                     break;
             }
+            bRes = true;
         }
     }
-    else if (data->hasFormat("text/uri-list"))
+
+    if (data->hasFormat("text/uri-list"))
     {
         for (const QUrl & url : data->urls())
         {
             addDataFromFile(url.toLocalFile(), nullptr, parent);
+            bRes = true;
         }
     }
 

@@ -53,6 +53,17 @@
 
 medDataExporter::medDataExporter(QObject *parent)
 {
+    QStringList writers = medAbstractDataFactory::instance()->writers();
+
+    for (int i = 0; i < writers.size(); i++)
+    {
+        auto *dataWriter  = dynamic_cast<medAbstractDataWriter*>(medAbstractDataFactory::instance()->writer(writers[i]));
+        
+        auto dataTypeList = dataWriter->handled();
+        auto fileExtList  = dataWriter->supportedFileExtensions();
+
+        m_writerIdsDataTypesExtsMaps[writers[i]] = { dataTypeList, fileExtList };
+    }
 }
 
 medDataExporter::~medDataExporter()
@@ -73,6 +84,8 @@ bool medDataExporter::convertSingleDataOnfly(medAbstractData * data, QString &pa
             path = path + fileExtList[0];
         }
         bRes = dataWriters[0]->write(path);
+        dataWriters[0]->writeMetaData(path);
+
     }
 
     return bRes;
@@ -112,6 +125,7 @@ bool medDataExporter::convertSingleDataOnfly(medAbstractData * data, QString & p
                         bRes = writers[i]->write(pathTmp);
                         if (bRes)
                         {
+                            writers[i]->writeMetaData(path);
                             bContinue = false;
                             path = pathTmp;
                         }
@@ -123,6 +137,61 @@ bool medDataExporter::convertSingleDataOnfly(medAbstractData * data, QString & p
     }
 
     return bRes;
+}
+
+QStringList medDataExporter::getAvailableWriters(medAbstractData * data)
+{
+    QStringList availablesWritersIds;
+    QString tmpFile(QDir::tempPath() + "/" + QUuid::createUuid().toString().replace("{", "").replace("}", ""));
+
+    QList<medAbstractDataWriter*> writers = getSuitableWriter(data, tmpFile);
+
+    for (auto writer : writers)
+    {
+        availablesWritersIds << writer->identifier();
+    }
+
+    return availablesWritersIds;
+}
+
+QStringList medDataExporter::getExtensionForWriter(QString writerId)
+{
+    QStringList exts;
+
+    auto *writer = medAbstractDataFactory::instance()->writer(writerId);
+
+    if (writer)
+    {
+        exts = writer->supportedFileExtensions();
+    }
+
+    return exts;
+}
+
+
+
+QList < medDataExporter::writerInfo > medDataExporter::getWriterInfoList(QStringList writers)
+{
+     QList < medDataExporter::writerInfo >  writerIdsDataTypesExtsMaps;
+
+     if (writers.isEmpty())
+     {
+         writers = medAbstractDataFactory::instance()->writers();
+     }
+
+     for (int i = 0; i < writers.size(); i++)
+     {
+         auto *dataWriter = dynamic_cast<medAbstractDataWriter*>(medAbstractDataFactory::instance()->writer(writers[i]));
+
+         auto description  = dataWriter->description();
+         auto dataTypeList = dataWriter->handled();
+         auto fileExtList  = dataWriter->supportedFileExtensions();
+
+         writerIdsDataTypesExtsMaps << medDataExporter::writerInfo{ writers[i], description, dataTypeList,  fileExtList };
+     }
+
+
+     return writerIdsDataTypesExtsMaps;
 }
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

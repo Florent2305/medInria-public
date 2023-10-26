@@ -90,7 +90,7 @@ QUuid medDataManager::importPath(const QString &dataPath, bool indexWithoutCopyi
 
 
 /** @brief return writers able to handle the data *Memory management is the
-   responsability of the caller*
+   responsibility of the caller*
 */
 QHash<QString, dtkAbstractDataWriter *> medDataManager::getPossibleWriters(medAbstractData *data)
 {

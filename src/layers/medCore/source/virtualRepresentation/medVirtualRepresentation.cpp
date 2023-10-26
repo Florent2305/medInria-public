@@ -336,9 +336,15 @@ QMimeData * medVirtualRepresentation::mimeData(const QModelIndexList & indexes) 
             }
         }
     }
-    mimeData->setUrls(urls);
 
-    mimeData->setData("med/index2", encodedData);
+    if (!encodedData.isEmpty())
+    {
+        mimeData->setData("med/index2", encodedData);
+    }
+    if (!urls.isEmpty())
+    {
+        mimeData->setUrls(urls);
+    }
     return mimeData;
 }
 

@@ -45,21 +45,31 @@ public:
     // Control functions 
     // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //medAbstractData * convertWithOtherReader(medAbstractData *&data, QString readerId = QString());
-    //bool              releaseReads(medAbstractData *data = nullptr);
+    //bool              releaseWriters(medAbstractData *data = nullptr);
     //bool              forgotData(medAbstractData *data = nullptr);
 
     // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Getters functions 
     // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //QList<medAbstractData*> getData();
-    //medAbstractDataReader*  getCurrentReaderInstance(QString volumeId = QString());
-    //medAbstractDataReader*  getCurrentReaderInstance(medAbstractData *data = nullptr);
-    //QString                 getCurrentReader(QString volumeId = QString());
-    //QString                 getCurrentReader(medAbstractData *data = nullptr);
-    //QStringList             getAvailableReader(QString volumeId = QString());
-    //QStringList             getAvailableReader(medAbstractData *data = nullptr);
+    //medAbstractDataReader*  getCurrentWriterInstance(QString volumeId = QString());
+    //medAbstractDataReader*  getCurrentWriterInstance(medAbstractData *data = nullptr);
+    //QString                 getCurrentWriter(QString volumeId = QString());
+    //QString                 getCurrentWriter(medAbstractData *data = nullptr);
+    //QStringList             getAvailableWriters(QString volumeId = QString());
+    static QStringList               getAvailableWriters(medAbstractData *data = nullptr);
+    static QStringList               getExtensionForWriter(QString writerId);
     //QStringList             getPaths(QString volumeId = QString());
     //QStringList             getPaths(medAbstractData *data = nullptr);
+
+    typedef struct writerInfo 
+    { 
+        QString Id; 
+        QString descr; 
+        QStringList dataType; 
+        QStringList File;
+    };
+    static QList <writerInfo> getWriterInfoList(QStringList writers = QStringList());
 
 
 private:
@@ -89,6 +99,8 @@ private:
     //QMap <QString, QStringList>            m_availablesReadersVolumesMap;
     //QMap <QString, medAbstractData*>       m_meddataVolumesMap;
     //QMap <QString, medAbstractDataReader*> m_currentReaderVolumesMap;
+
+    QMap <QString, QPair<QStringList, QStringList>> m_writerIdsDataTypesExtsMaps;
 };
 
 /*

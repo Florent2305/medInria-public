@@ -154,7 +154,7 @@ bool itkDataImagePlugin::initialize()
     if (!itkTIFFDataImageReader::registered())       { qWarning() << "Unable to register itkTIFFDataImageReader type";       }
     if (!itkPhilipsRECDataImageReader::registered()) { qWarning() << "Unable to register itkPhilipsRECDataImageReader type"; }
     if (!itkGISDataImageReader::registered())        { qWarning() << "Unable to register itkGISDataImageReader type";        }
-    //if (!itkDCMTKDataImageReader::registered())      { qWarning() << "Unable to register itkDCMTKDataImageReader type";      }
+    if (!itkDCMTKDataImageReader::registered())      { qWarning() << "Unable to register itkDCMTKDataImageReader type";      }
 
     if (!itkMetaDataImageWriter::registered())       { qWarning() << "Unable to register itkMetaDataImageWriter type";       }
     if (!itkNiftiDataImageWriter::registered())      { qWarning() << "Unable to register itkNiftiDataImageWriter type";      }

@@ -1,0 +1,75 @@
+@PACKAGE_INIT@
+
+
+if (CMAKE_VERSION VERSION_LESS @CMAKE_VERSION@)
+    message(FATAL_ERROR "medInria requires at least CMake version @CMAKE_VERSION@")
+endif()
+
+if (NOT medInria_FIND_COMPONENTS)
+    set(medInria_NOT_FOUND_MESSAGE "The medInria package requires at least one component")
+    set(medInria_FOUND False)
+    return()
+endif()
+
+
+
+set(_medInria_FIND_PARTS_REQUIRED)
+if (medInria_FIND_REQUIRED)
+    set(_medInria_FIND_PARTS_REQUIRED REQUIRED)
+endif()
+
+set(_medInria_FIND_PARTS_QUIET)
+if (medInria_FIND_QUIETLY)
+    set(_medInria_FIND_PARTS_QUIET QUIET)
+endif()
+
+get_filename_component(_medInria_install_prefix "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
+
+set(_medInria_NOTFOUND_MESSAGE)
+
+########################################################################################
+############################ Bolc for external dependencies ############################
+message("++++++++++ ${_medInria_install_prefix} +++++++++")
+
+if (NOT DEFINED ITK_DIR)
+    set(ITK_DIR ${_medInria_install_prefix}/../../dependencies/ITK/lib/cmake/ITK-5.0)
+endif()
+
+if (NOT DEFINED VTK_DIR)
+    set(VTK_DIR ${_medInria_install_prefix}/../../dependencies/VTK/lib/cmake/VTK)
+endif()
+
+if (NOT DEFINED dtk_DIR)
+    set(dtk_DIR ${_medInria_install_prefix}/../../dependencies/dtk/lib/cmake/dtk)
+endif()
+
+message("++++++++++++ ${ITK_DIR} ++++++++++++\n++++++++++++ ${VTK_DIR} ++++++++++++\n++++++++++++ ${dtk_DIR} ++++++++++++\n")
+######################## End of Bolc for external dependencies #########################
+########################################################################################
+
+include(${CMAKE_CURRENT_LIST_DIR}/medInriaModuleLocation.cmake)
+
+foreach(module ${medInria_FIND_COMPONENTS})
+    find_package(med${module}
+        ${_medInria_FIND_PARTS_QUIET}
+        ${_medInria_FIND_PARTS_REQUIRED}
+        PATHS ${_med_module_paths} NO_DEFAULT_PATH
+    )
+    if (NOT med${module}_FOUND)
+        string(CONFIGURE ${_med_module_location_template} _expected_module_location @ONLY)
+
+        if (medInria_FIND_REQUIRED_${module})
+            set(_medInria_NOTFOUND_MESSAGE "${_medInria_NOTFOUND_MESSAGE}Failed to find medInria component \"${module}\" config file at \"${_expected_module_location}\"\n")
+        elseif(NOT medInria_FIND_QUIETLY)
+            message(WARNING "Failed to find medInria component \"${module}\" config file at \"${_expected_module_location}\"")
+        endif()
+
+        unset(_expected_module_location)
+    endif()
+endforeach()
+
+if (_medInria_NOTFOUND_MESSAGE)
+    set(medInria_NOTFOUND_MESSAGE "${_medInria_NOTFOUND_MESSAGE}")
+    set(medInria_FOUND False)
+endif()
+
