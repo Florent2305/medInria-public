@@ -119,6 +119,7 @@ list(APPEND
 
 set(CPACK_INSTALL_CMAKE_PROJECTS
     ${pyncpp_ROOT} pyncpp Runtime "/"
+    ${PROJECT_BINARY_DIR} ${PROJECT_NAME} ALL "/"
     ${CPACK_INSTALL_CMAKE_PROJECTS}
     )
 
