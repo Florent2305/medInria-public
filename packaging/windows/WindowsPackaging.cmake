@@ -117,11 +117,7 @@ list(APPEND
   ${DCMTK_ROOT}/bin/${CONFIG_MODE}
   )
 
-set(CPACK_INSTALL_CMAKE_PROJECTS
-    ${pyncpp_ROOT} pyncpp Runtime "/"
-    ${PROJECT_BINARY_DIR} ${PROJECT_NAME} ALL "/"
-    ${CPACK_INSTALL_CMAKE_PROJECTS}
-    )
+install(CODE "execute_process( COMMAND ${CMAKE_COMMAND} --install ${pyncpp_ROOT} --prefix \"\${CMAKE_INSTALL_PREFIX}\" --component Runtime)" COMPONENT Runtime)
 
 install(CODE "
 
